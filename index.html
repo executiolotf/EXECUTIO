@@ -215,6 +215,36 @@ h2.dsp strong{font-weight:600}
 .process-steps.io .pstep:nth-child(4){transition-delay:.5s}
 .process-steps.io .pstep:nth-child(5){transition-delay:.65s}
 
+/* ── CONTACT FORM ── */
+.cfsec{background:var(--bg);position:relative;overflow:hidden}
+.cfsec::before{content:'';position:absolute;right:-5%;bottom:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(26,107,186,.14) 0%,transparent 70%);border-radius:50%;filter:blur(60px);pointer-events:none}
+.cf-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1}
+.cf-left .dsp{margin-bottom:1.2rem}
+.cf-left p{font-size:.9rem;color:var(--muted);line-height:1.85;margin-bottom:2rem}
+.cf-promises{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.cf-promises li{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.5)}
+.cf-promises li::before{content:'';display:block;width:16px;height:1px;background:var(--sky);flex-shrink:0}
+.cf-form{display:flex;flex-direction:column;gap:1.1rem}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cf-field{display:flex;flex-direction:column;gap:.4rem}
+.cf-field label{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.cf-field input,.cf-field select,.cf-field textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:.88rem;color:#fff;outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none}
+.cf-field input::placeholder,.cf-field textarea::placeholder{color:rgba(255,255,255,.2)}
+.cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{border-color:rgba(77,163,224,.5);background:rgba(77,163,224,.05)}
+.cf-field select{cursor:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.3)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+.cf-field select option{background:#0d2340;color:#fff}
+.cf-field textarea{resize:none;min-height:110px;line-height:1.6}
+.cf-submit{background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;border:none;padding:1rem 2rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.06em;border-radius:2px;cursor:none;transition:box-shadow .3s,opacity .2s;align-self:flex-start}
+.cf-submit:hover{box-shadow:0 8px 32px rgba(26,107,186,.45)}
+.cf-submit:disabled{opacity:.5}
+.cf-success{display:none;background:rgba(77,163,224,.08);border:1px solid rgba(77,163,224,.2);border-radius:6px;padding:2rem;text-align:center}
+.cf-success svg{width:40px;height:40px;stroke:var(--sky);fill:none;stroke-width:1.5;margin-bottom:1rem}
+.cf-success h4{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#fff;margin-bottom:.5rem}
+.cf-success p{font-size:.85rem;color:var(--muted)}
+.cf-error{font-size:.75rem;color:#f87171;margin-top:.25rem;display:none}
+.cfsec-wrap{position:relative;z-index:1}
+@media(max-width:900px){.cf-inner{grid-template-columns:1fr;gap:3rem}.cf-row{grid-template-columns:1fr}}
+
 /* ── BOOKING ── */
 .booking{position:relative;overflow:hidden}
 .borb{position:absolute;left:-5%;top:-20%;width:480px;height:480px;background:radial-gradient(circle,rgba(26,107,186,.18) 0%,transparent 70%);border-radius:50%;filter:blur(50px);pointer-events:none}
@@ -479,6 +509,62 @@ footer{background:#020b15;padding:2.5rem 5%;display:flex;justify-content:space-b
   </div>
 </section>
 
+<!-- CONTACT FORM -->
+<section class="cfsec sdd" id="contact">
+  <div class="cfsec-wrap">
+    <div class="cf-inner">
+      <div class="cf-left rv">
+        <div class="kicker klt"><span data-fr>Contact rapide</span><span data-en>Quick contact</span></div>
+        <h2 class="dsp lt"><span data-fr>Pas encore prêt<br>pour un appel ?<br><strong>Écrivez-nous.</strong></span><span data-en>Not ready yet<br>for a call?<br><strong>Write to us.</strong></span></h2>
+        <p><span data-fr>Décrivez votre situation en quelques lignes — on vous répond avec une première analyse sous 24h, gratuitement.</span><span data-en>Describe your situation in a few lines — we'll reply with a first analysis within 24h, free of charge.</span></p>
+        <ul class="cf-promises">
+          <li><span data-fr>Réponse personnelle sous 24h</span><span data-en>Personal reply within 24h</span></li>
+          <li><span data-fr>Aucun engagement, aucun argumentaire</span><span data-en>No commitment, no sales pitch</span></li>
+          <li><span data-fr>Analyse préliminaire gratuite</span><span data-en>Free preliminary analysis</span></li>
+        </ul>
+      </div>
+      <div class="cf-right rv">
+        <form class="cf-form" id="cf-form" novalidate>
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="cf-prenom"><span data-fr>Prénom</span><span data-en>First name</span></label>
+              <input type="text" id="cf-prenom" name="firstname" placeholder="Marie" required>
+            </div>
+            <div class="cf-field">
+              <label for="cf-email">Email</label>
+              <input type="email" id="cf-email" name="email" placeholder="marie@startup.com" required>
+              <span class="cf-error" id="cf-email-err">Email invalide</span>
+            </div>
+          </div>
+          <div class="cf-field">
+            <label for="cf-type"><span data-fr>Type de structure</span><span data-en>Company type</span></label>
+            <select id="cf-type" name="company_type" required>
+              <option value="" disabled selected><span data-fr>Choisissez...</span><span data-en>Choose...</span></option>
+              <option value="Startup">Startup</option>
+              <option value="PME">PME</option>
+              <option value="Indépendant / Freelance">Indépendant / Freelance</option>
+              <option value="Scale-up">Scale-up</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div class="cf-field">
+            <label for="cf-msg"><span data-fr>Votre situation en quelques mots</span><span data-en>Your situation in a few words</span></label>
+            <textarea id="cf-msg" name="message" placeholder="Ex : startup SaaS en phase seed, je cherche à préparer ma levée de fonds Série A..."></textarea>
+          </div>
+          <button type="submit" class="cf-submit" id="cf-btn">
+            <span data-fr>Envoyer ma demande →</span><span data-en>Send my request →</span>
+          </button>
+        </form>
+        <div class="cf-success" id="cf-success">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <h4><span data-fr>Message reçu !</span><span data-en>Message received!</span></h4>
+          <p><span data-fr>On revient vers vous sous 24h avec une première analyse.</span><span data-en>We'll get back to you within 24h with a first analysis.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- BOOKING -->
 <section class="booking sdd" id="booking">
   <div class="borb"></div>
@@ -613,6 +699,69 @@ document.querySelectorAll('.scard').forEach(function(card){
     // Re-observer les nouvelles cartes pour le reveal
     grid.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
   }).catch(function(){});
+})();
+
+// ── Contact Form → HubSpot API (public endpoint, no secret key) ──
+// ⚙️ SETUP: remplace ces deux valeurs avec celles de ton compte HubSpot
+// Portal ID : HubSpot > Settings > Account Defaults > Account ID
+// Form GUID : HubSpot > Marketing > Forms > ton formulaire > URL
+var HS_PORTAL = 'VOTRE_PORTAL_ID';
+var HS_FORM   = 'VOTRE_FORM_GUID';
+
+(function(){
+  var form = document.getElementById('cf-form');
+  var btn  = document.getElementById('cf-btn');
+  var succ = document.getElementById('cf-success');
+  var emailErr = document.getElementById('cf-email-err');
+  if(!form) return;
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    emailErr.style.display = 'none';
+
+    var firstname = form.querySelector('[name="firstname"]').value.trim();
+    var email     = form.querySelector('[name="email"]').value.trim();
+    var type      = form.querySelector('[name="company_type"]').value;
+    var message   = form.querySelector('[name="message"]').value.trim();
+
+    if(!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)){
+      emailErr.style.display = 'block'; return;
+    }
+    if(!firstname || !type){ return; }
+
+    btn.disabled = true;
+    btn.textContent = '...';
+
+    var payload = {
+      fields: [
+        {name:'firstname',    value: firstname},
+        {name:'email',        value: email},
+        {name:'company_type', value: type},
+        {name:'message',      value: message}
+      ],
+      context: { pageUri: 'https://exe-cutio.com', pageName: 'EXECUTIO' }
+    };
+
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+HS_PORTAL+'/'+HS_FORM, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    })
+    .then(function(r){
+      if(r.ok || r.status===200){
+        form.style.display = 'none';
+        succ.style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = '<span data-fr>Envoyer ma demande →</span><span data-en>Send my request →</span>';
+        alert('Erreur lors de l\'envoi. Réessayez ou écrivez à contact@exe-cutio.com');
+      }
+    })
+    .catch(function(){
+      btn.disabled = false;
+      btn.innerHTML = '<span data-fr>Envoyer ma demande →</span><span data-en>Send my request →</span>';
+    });
+  });
 })();
 
 // ── Magnetic CTA (direct style) ──
