@@ -9,273 +9,272 @@
 <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/bd845eb6b81c1b4aa1f6e240/script.js"></script>
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KN8X80V958"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-KN8X80V958');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KN8X80V958');</script>
 <style>
 :root {
-  --bg: #030d1a;
-  --surface: #060f1e;
-  --navy: #0d2340;
-  --blue: #1a6bba;
-  --sky: #4da3e0;
-  --gold: #c9a84c;
-  --white: #ffffff;
-  --muted: rgba(255,255,255,0.45);
-  --dim: rgba(255,255,255,0.2);
-  --border: rgba(255,255,255,0.07);
-  --light-bg: #f8fafc;
-  --light-navy: #0d2340;
-  --light-muted: #6b7a8d;
+  --bg: #030d1a; --surface: #060f1e; --navy: #0d2340;
+  --blue: #1a6bba; --sky: #4da3e0; --gold: #c9a84c;
+  --white: #fff; --muted: rgba(255,255,255,.45); --dim: rgba(255,255,255,.2);
+  --border: rgba(255,255,255,.07); --lgray: #f8fafc; --lnavy: #0d2340; --lmuted: #6b7a8d;
 }
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; cursor: none; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;cursor:none}
 
-/* ── CURSOR (CSS only — no mix-blend-mode) ── */
-#cursor {
-  position: fixed; width: 32px; height: 32px;
-  border: 1px solid rgba(77,163,224,0.55); border-radius: 50%;
-  pointer-events: none; z-index: 9999;
-  left: -100px; top: -100px;
-  transform: translate(-50%,-50%);
-  transition: left .14s ease, top .14s ease, width .22s, height .22s, background .22s, border-color .22s;
-}
-#cursor-dot {
-  position: fixed; width: 4px; height: 4px;
-  background: var(--sky); border-radius: 50%;
-  pointer-events: none; z-index: 10000;
-  left: -100px; top: -100px;
-  transform: translate(-50%,-50%);
-  transition: left .04s linear, top .04s linear;
-}
-.cur-hov { width: 54px !important; height: 54px !important; background: rgba(77,163,224,0.07) !important; border-color: var(--sky) !important; }
-@media (max-width: 900px) { body { cursor: auto; } #cursor, #cursor-dot { display: none; } }
+/* ── CURSOR (pure CSS, zero Motion) ── */
+#cursor{position:fixed;width:32px;height:32px;border:1px solid rgba(77,163,224,.5);border-radius:50%;pointer-events:none;z-index:9999;left:-80px;top:-80px;transform:translate(-50%,-50%);transition:left .13s ease,top .13s ease,width .2s,height .2s,background .2s,border-color .2s}
+#cdot{position:fixed;width:4px;height:4px;background:var(--sky);border-radius:50%;pointer-events:none;z-index:10000;left:-80px;top:-80px;transform:translate(-50%,-50%);transition:left .04s linear,top .04s linear}
+.ch{width:52px!important;height:52px!important;background:rgba(77,163,224,.07)!important;border-color:var(--sky)!important}
+@media(max-width:900px){body{cursor:auto}#cursor,#cdot{display:none}}
 
 /* ── SCROLL PROGRESS ── */
-#scroll-progress {
-  position: fixed; top: 0; left: 0; height: 2px; width: 100%;
-  background: linear-gradient(90deg, var(--blue), var(--sky), var(--gold));
-  transform-origin: left; transform: scaleX(0); z-index: 1001;
-}
+#sp{position:fixed;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,var(--blue),var(--sky),var(--gold));transform-origin:left;transform:scaleX(0);z-index:1001}
 
 /* ── AVAILABILITY BADGE ── */
-#availability-badge {
-  position: fixed; bottom: 2rem; right: 2rem;
-  background: rgba(6,15,30,0.92); backdrop-filter: blur(20px);
-  border: 1px solid rgba(77,163,224,0.18); border-radius: 100px;
-  padding: .65rem 1.2rem; display: flex; align-items: center; gap: 9px;
-  font-size: .7rem; letter-spacing: .08em; color: var(--muted);
-  z-index: 500; opacity: 0; box-shadow: 0 8px 32px rgba(0,0,0,.5);
-}
-.badge-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; animation: pdot 2s infinite; }
-@keyframes pdot { 0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,.5); } 50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); } }
+#badge{position:fixed;bottom:2rem;right:2rem;background:rgba(6,15,30,.92);backdrop-filter:blur(20px);border:1px solid rgba(77,163,224,.18);border-radius:100px;padding:.65rem 1.2rem;display:flex;align-items:center;gap:9px;font-size:.7rem;letter-spacing:.08em;color:var(--muted);z-index:500;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:fadeUp .6s 2.5s both}
+.bdot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:pdot 2s infinite}
+@keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
 
 /* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.3rem 5%;
-  transition: padding .3s, background .3s, box-shadow .3s;
-}
-nav.scrolled { padding: .8rem 5%; background: rgba(3,13,26,0.94); backdrop-filter: blur(20px); box-shadow: 0 1px 0 var(--border); }
-.logo-nav span { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 700; letter-spacing: .18em; }
-.nav-links { display: flex; gap: 2rem; align-items: center; }
-.nav-links a { text-decoration: none; font-size: .74rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); transition: color .2s; cursor: none; }
-.nav-links a:hover { color: var(--white); }
-.nav-cta { background: var(--blue) !important; color: white !important; padding: .5rem 1.3rem !important; border-radius: 2px !important; transition: background .2s !important; }
-.nav-cta:hover { background: var(--sky) !important; color: white !important; }
-.lang-toggle { display: flex; margin-left: .5rem; }
-.lang-btn { background: none; border: 1px solid rgba(255,255,255,.12); font-family: 'DM Sans', sans-serif; font-size: .68rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; cursor: none; padding: .28rem .6rem; color: var(--muted); transition: all .2s; }
-.lang-btn:first-child { border-radius: 2px 0 0 2px; }
-.lang-btn:last-child { border-radius: 0 2px 2px 0; border-left: none; }
-.lang-btn.active { background: rgba(255,255,255,.1); color: var(--white); border-color: rgba(255,255,255,.28); }
-.lang-btn:hover { color: var(--white); }
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 5%;transition:padding .3s,background .3s,box-shadow .3s}
+nav.scrolled{padding:.8rem 5%;background:rgba(3,13,26,.94);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--border)}
+.logo span{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:700;letter-spacing:.18em}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{text-decoration:none;font-size:.74rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .2s;cursor:none}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--blue)!important;color:#fff!important;padding:.5rem 1.3rem!important;border-radius:2px!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--sky)!important;color:#fff!important}
+.lang-toggle{display:flex;margin-left:.5rem}
+.lbtn{background:none;border:1px solid rgba(255,255,255,.12);font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:none;padding:.28rem .6rem;color:var(--muted);transition:all .2s}
+.lbtn:first-child{border-radius:2px 0 0 2px}
+.lbtn:last-child{border-radius:0 2px 2px 0;border-left:none}
+.lbtn.active{background:rgba(255,255,255,.1);color:var(--white);border-color:rgba(255,255,255,.28)}
+.lbtn:hover{color:var(--white)}
 
 /* ── HERO ── */
-.hero { min-height: 100vh; display: grid; grid-template-rows: 1fr auto; position: relative; overflow: hidden; background: var(--bg); padding-top: 80px; }
-.hero-inner { display: flex; align-items: center; padding: 5rem 5% 3rem; gap: 5%; position: relative; z-index: 3; }
+.hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;position:relative;overflow:hidden;background:var(--bg);padding-top:80px}
+.hero-inner{display:flex;align-items:center;padding:5rem 5% 3rem;gap:5%;position:relative;z-index:3}
 
-/* animated orb background (replaces video) */
-.hero-bg { position: absolute; inset: 0; z-index: 0; }
-.orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
-.orb-1 { width: 640px; height: 640px; background: radial-gradient(circle, rgba(26,107,186,.28) 0%, transparent 70%); top: -12%; right: 0%; animation: o1 14s ease-in-out infinite; }
-.orb-2 { width: 420px; height: 420px; background: radial-gradient(circle, rgba(77,163,224,.13) 0%, transparent 70%); bottom: 15%; left: -6%; animation: o2 17s ease-in-out infinite; }
-.orb-3 { width: 280px; height: 280px; background: radial-gradient(circle, rgba(201,168,76,.1) 0%, transparent 70%); top: 45%; right: 38%; animation: o3 20s ease-in-out infinite; }
-@keyframes o1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-50px,40px) scale(1.08)} 66%{transform:translate(30px,-60px) scale(.95)} }
-@keyframes o2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(70px,-50px)} }
-@keyframes o3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-40px,25px) scale(1.2)} }
-.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(77,163,224,.04) 1px,transparent 1px), linear-gradient(90deg,rgba(77,163,224,.04) 1px,transparent 1px); background-size: 64px 64px; }
-.hero-grid-fade { position: absolute; inset: 0; background: radial-gradient(ellipse 90% 55% at 50% 105%, var(--bg) 0%, transparent 100%); }
+/* Animated background */
+.hero-bg{position:absolute;inset:0;z-index:0}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.o1{width:640px;height:640px;background:radial-gradient(circle,rgba(26,107,186,.28) 0%,transparent 70%);top:-12%;right:0%;animation:o1 14s ease-in-out infinite}
+.o2{width:420px;height:420px;background:radial-gradient(circle,rgba(77,163,224,.13) 0%,transparent 70%);bottom:15%;left:-6%;animation:o2 17s ease-in-out infinite}
+.o3{width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,.1) 0%,transparent 70%);top:45%;right:38%;animation:o3 20s ease-in-out infinite}
+@keyframes o1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-50px,40px) scale(1.08)}66%{transform:translate(30px,-60px) scale(.95)}}
+@keyframes o2{0%,100%{transform:translate(0,0)}50%{transform:translate(70px,-50px)}}
+@keyframes o3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,25px) scale(1.2)}}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,163,224,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,163,224,.04) 1px,transparent 1px);background-size:64px 64px}
+.hgfade{position:absolute;inset:0;background:radial-gradient(ellipse 90% 55% at 50% 105%,var(--bg) 0%,transparent 100%)}
 
-/* ── HERO LEFT ── */
-.hero-left { flex: 1; max-width: 600px; }
-.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; opacity: 0; font-size: .67rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--sky); margin-bottom: 2rem; }
-.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--sky); }
-.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5.5vw, 5.2rem); font-weight: 300; line-height: 1.06; color: var(--white); margin-bottom: 1.8rem; opacity: 0; letter-spacing: -.01em; }
-.hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--sky) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-sub { font-size: .96rem; font-weight: 300; line-height: 1.9; color: var(--muted); max-width: 480px; margin-bottom: 3rem; opacity: 0; }
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; }
-.btn-primary { display: inline-flex; align-items: center; background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; text-decoration: none; border: none; padding: 1rem 2.4rem; font-family: 'DM Sans', sans-serif; font-size: .8rem; font-weight: 500; letter-spacing: .06em; border-radius: 2px; cursor: none; transition: box-shadow .3s; will-change: transform; }
-.btn-primary:hover { box-shadow: 0 8px 36px rgba(26,107,186,.45); }
-.btn-outline { display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,.2); color: var(--white); text-decoration: none; background: none; padding: 1rem 2.2rem; font-family: 'DM Sans', sans-serif; font-size: .8rem; font-weight: 500; letter-spacing: .06em; border-radius: 2px; cursor: none; transition: border-color .2s, background .2s; }
-.btn-outline:hover { border-color: var(--sky); background: rgba(77,163,224,.08); }
+/* ── HERO CONTENT — CSS animations (no JS dependency) ── */
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.67rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);margin-bottom:2rem;animation:slideIn .7s .3s both}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--sky)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5.2rem);font-weight:300;line-height:1.06;color:var(--white);margin-bottom:1.8rem;letter-spacing:-.01em;animation:slideUp .9s .5s both}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--sky) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:.96rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:480px;margin-bottom:3rem;animation:slideUp .8s .75s both}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:slideUp .7s 1s both}
+.btn-primary{display:inline-flex;align-items:center;background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;text-decoration:none;border:none;padding:1rem 2.4rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.06em;border-radius:2px;cursor:none;transition:box-shadow .3s;will-change:transform}
+.btn-primary:hover{box-shadow:0 8px 36px rgba(26,107,186,.45)}
+.btn-outline{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.2);color:var(--white);text-decoration:none;background:none;padding:1rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.06em;border-radius:2px;cursor:none;transition:border-color .2s,background .2s}
+.btn-outline:hover{border-color:var(--sky);background:rgba(77,163,224,.08)}
 
-/* ── HERO RIGHT — DASHBOARD ── */
-.hero-right { flex: 0 0 400px; opacity: 0; }
-.dashboard { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 1.6rem; backdrop-filter: blur(20px); box-shadow: 0 24px 64px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.05); }
-.db-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.3rem; }
-.db-title { font-size: .68rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.db-live { display: flex; align-items: center; gap: 6px; font-size: .63rem; letter-spacing: .1em; color: #22c55e; }
-.db-live::before { content: ''; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; animation: pdot 1.5s infinite; }
-.db-big { font-family: 'Cormorant Garamond', serif; font-size: 3.4rem; font-weight: 600; color: var(--white); line-height: 1; margin-bottom: .35rem; }
-.db-sub { font-size: .7rem; color: var(--muted); margin-bottom: 1.5rem; }
-.db-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.4rem; }
-.metric { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); border-radius: 6px; padding: .75rem; }
-.metric-val { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; display: block; margin-bottom: 2px; }
-.up { color: #22c55e; }
-.down { color: #ef4444; }
-.metric-key { font-size: .62rem; color: var(--dim); letter-spacing: .07em; text-transform: uppercase; }
-.chart-labels { display: flex; justify-content: space-between; margin-bottom: .4rem; }
-.chart-labels span { font-size: .6rem; color: var(--dim); }
-svg.sparkline { width: 100%; height: 76px; overflow: visible; }
-.spark-area { fill: url(#sg); opacity: .35; }
-.spark-line { fill: none; stroke: url(#slg); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 440; stroke-dashoffset: 440; animation: draw 2.4s ease 1.2s forwards; }
-@keyframes draw { to { stroke-dashoffset: 0; } }
+/* ── HERO ANIMATIONS ── */
+@keyframes slideIn{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+@keyframes slideUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+@keyframes slideRight{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── DASHBOARD ── */
+.hero-right{flex:0 0 400px;animation:slideRight 1s .85s both}
+.dashboard{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.6rem;backdrop-filter:blur(20px);box-shadow:0 24px 64px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05)}
+.db-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3rem}
+.db-title{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.db-live{display:flex;align-items:center;gap:6px;font-size:.63rem;letter-spacing:.1em;color:#22c55e}
+.db-live::before{content:'';width:6px;height:6px;background:#22c55e;border-radius:50%;animation:pdot 1.5s infinite}
+.db-big{font-family:'Cormorant Garamond',serif;font-size:3.4rem;font-weight:600;color:var(--white);line-height:1;margin-bottom:.35rem}
+.db-sub{font-size:.7rem;color:var(--muted);margin-bottom:1.5rem}
+.db-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.4rem}
+.metric{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:.75rem}
+.mval{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;display:block;margin-bottom:2px}
+.up{color:#22c55e}.dn{color:#ef4444}
+.mkey{font-size:.62rem;color:var(--dim);letter-spacing:.07em;text-transform:uppercase}
+.clabels{display:flex;justify-content:space-between;margin-bottom:.4rem}
+.clabels span{font-size:.6rem;color:var(--dim)}
+svg.spark{width:100%;height:76px;overflow:visible}
+.spark-area{fill:url(#sg);opacity:.35}
+.spark-line{fill:none;stroke:url(#slg);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:440;stroke-dashoffset:440;animation:drawl 2.4s ease 1.6s forwards}
+@keyframes drawl{to{stroke-dashoffset:0}}
 
 /* ── HERO STATS ── */
-.hero-stats { display: flex; padding: 1.6rem 5%; border-top: 1px solid rgba(255,255,255,.06); background: rgba(0,0,0,.22); gap: 3rem; flex-wrap: wrap; position: relative; z-index: 3; }
-.stat-item { opacity: 0; }
-.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; font-weight: 600; color: var(--white); line-height: 1; }
-.stat-label { font-size: .65rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.hero-stats{display:flex;padding:1.6rem 5%;border-top:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.22);gap:3rem;flex-wrap:wrap;position:relative;z-index:3}
+.stat-item{animation:fadeUp .5s both}
+.stat-item:nth-child(1){animation-delay:1.3s}
+.stat-item:nth-child(2){animation-delay:1.4s}
+.stat-item:nth-child(3){animation-delay:1.5s}
+.stat-item:nth-child(4){animation-delay:1.6s}
+.snum{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:600;color:var(--white);line-height:1}
+.slbl{font-size:.65rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 
 /* ── TICKER ── */
-.ticker { background: rgba(26,107,186,.07); border-top: 1px solid rgba(26,107,186,.14); border-bottom: 1px solid rgba(26,107,186,.14); overflow: hidden; padding: .55rem 0; position: relative; z-index: 2; }
-.ticker-track { display: flex; animation: tick 28s linear infinite; width: max-content; }
-.ticker-item { display: flex; align-items: center; gap: 1.4rem; padding: 0 1.8rem; font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(77,163,224,.65); white-space: nowrap; }
-.tick-dot { width: 3px; height: 3px; background: rgba(77,163,224,.4); border-radius: 50%; }
-@keyframes tick { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.ticker{background:rgba(26,107,186,.07);border-top:1px solid rgba(26,107,186,.14);border-bottom:1px solid rgba(26,107,186,.14);overflow:hidden;padding:.55rem 0;position:relative;z-index:2}
+.ticker-track{display:flex;animation:tick 28s linear infinite;width:max-content}
+.titem{display:flex;align-items:center;gap:1.4rem;padding:0 1.8rem;font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(77,163,224,.65);white-space:nowrap}
+.tdot{width:3px;height:3px;background:rgba(77,163,224,.4);border-radius:50%}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ── SECTIONS ── */
-section { padding: 7rem 5%; }
-.s-light { background: var(--light-bg); }
-.s-dark { background: var(--surface); }
-.s-darkest { background: var(--bg); }
-.kicker { font-size: .65rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; opacity: 0; }
-.kicker::before { content: ''; display: block; width: 20px; height: 1px; }
-.kicker.dk { color: var(--blue); } .kicker.dk::before { background: var(--blue); }
-.kicker.lt { color: var(--sky); } .kicker.lt::before { background: var(--sky); }
-h2.disp { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.18; margin-bottom: 1rem; opacity: 0; }
-h2.disp.dk { color: var(--light-navy); }
-h2.disp.lt { color: var(--white); }
-h2.disp strong { font-weight: 600; }
+section{padding:7rem 5%}
+.sl{background:var(--lgray)}
+.sd{background:var(--surface)}
+.sdd{background:var(--bg)}
+
+/* ── SCROLL REVEAL — via IntersectionObserver class .io ── */
+.rv,.rvl,.rvr{opacity:0;transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+.rv{transform:translateY(24px)}
+.rvl{transform:translateX(-40px)}
+.rvr{transform:translateX(40px)}
+.rv.io,.rvl.io,.rvr.io{opacity:1;transform:none}
+
+/* stagger delays via nth-child on parent .stg */
+.stg .rv:nth-child(1),.stg .rvl:nth-child(1),.stg .rvr:nth-child(1){transition-delay:.0s}
+.stg .rv:nth-child(2),.stg .rvl:nth-child(2),.stg .rvr:nth-child(2){transition-delay:.07s}
+.stg .rv:nth-child(3),.stg .rvl:nth-child(3),.stg .rvr:nth-child(3){transition-delay:.14s}
+.stg .rv:nth-child(4),.stg .rvl:nth-child(4),.stg .rvr:nth-child(4){transition-delay:.21s}
+.stg .rv:nth-child(5),.stg .rvl:nth-child(5),.stg .rvr:nth-child(5){transition-delay:.28s}
+.stg .rv:nth-child(6),.stg .rvl:nth-child(6),.stg .rvr:nth-child(6){transition-delay:.35s}
+
+/* ── KICKER & HEADING ── */
+.kicker{font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:10px}
+.kicker::before{content:'';display:block;width:20px;height:1px}
+.kdk{color:var(--blue)}.kdk::before{background:var(--blue)}
+.klt{color:var(--sky)}.klt::before{background:var(--sky)}
+h2.dsp{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.18;margin-bottom:1rem}
+h2.dsp.dk{color:var(--lnavy)}
+h2.dsp.lt{color:var(--white)}
+h2.dsp strong{font-weight:600}
 
 /* ── ABOUT ── */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
-.about-text { opacity: 0; }
-.about-text p { font-size: .93rem; line-height: 1.85; color: var(--light-muted); margin-bottom: 1.2rem; }
-.about-text p strong { color: var(--light-navy); font-weight: 500; }
-.credentials { display: flex; flex-direction: column; gap: .65rem; margin-top: 2rem; }
-.cred-item { display: flex; align-items: center; gap: 12px; padding: .85rem 1.1rem; border: 1px solid rgba(13,35,64,.08); border-radius: 4px; opacity: 0; transition: border-color .3s, box-shadow .3s; }
-.cred-item:hover { border-color: rgba(26,107,186,.3); box-shadow: 0 4px 20px rgba(26,107,186,.06); }
-.cred-icon { width: 32px; height: 32px; background: rgba(26,107,186,.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.cred-icon svg { width: 14px; height: 14px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.cred-text { font-size: .83rem; color: var(--light-navy); font-weight: 500; }
-.about-card-wrap { opacity: 0; }
-.about-card { background: var(--navy); border-radius: 8px; padding: 2.4rem; position: relative; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.25); }
-.about-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 160px; height: 160px; background: rgba(77,163,224,.08); border-radius: 50%; }
-.about-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; margin-bottom: .3rem; color: white; }
-.about-card-sub { font-size: .7rem; color: rgba(255,255,255,.35); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1.8rem; }
-.about-card-list { list-style: none; display: flex; flex-direction: column; gap: .72rem; }
-.about-card-list li { display: flex; align-items: flex-start; gap: 10px; font-size: .84rem; color: rgba(255,255,255,.65); line-height: 1.6; opacity: 0; }
-.about-card-list li::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--sky); flex-shrink: 0; margin-top: 7px; }
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem}
+.about-text p{font-size:.93rem;line-height:1.85;color:var(--lmuted);margin-bottom:1.2rem}
+.about-text p strong{color:var(--lnavy);font-weight:500}
+.creds{display:flex;flex-direction:column;gap:.65rem;margin-top:2rem}
+.cred{display:flex;align-items:center;gap:12px;padding:.85rem 1.1rem;border:1px solid rgba(13,35,64,.08);border-radius:4px;transition:border-color .3s,box-shadow .3s}
+.cred:hover{border-color:rgba(26,107,186,.3);box-shadow:0 4px 20px rgba(26,107,186,.06)}
+.cicon{width:32px;height:32px;background:rgba(26,107,186,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cicon svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ctxt{font-size:.83rem;color:var(--lnavy);font-weight:500}
+.ac{background:var(--navy);border-radius:8px;padding:2.4rem;position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+.ac::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(77,163,224,.08);border-radius:50%}
+.act{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;margin-bottom:.3rem;color:#fff}
+.acs{font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.8rem}
+.acl{list-style:none;display:flex;flex-direction:column;gap:.72rem}
+.acl li{display:flex;align-items:flex-start;gap:10px;font-size:.84rem;color:rgba(255,255,255,.65);line-height:1.6}
+.acl li::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--sky);flex-shrink:0;margin-top:7px}
 
 /* ── SERVICES ── */
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 3rem; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.05); border-radius: 8px; overflow: hidden; }
-.service-card { background: rgba(255,255,255,.02); padding: 2.2rem 1.8rem; cursor: none; position: relative; overflow: hidden; opacity: 0; transition: background .3s; }
-.service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--sky)); transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
-.service-card:hover { background: rgba(26,107,186,.09); }
-.service-card:hover::after { transform: scaleX(1); }
-.service-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: rgba(255,255,255,.05); line-height: 1; margin-bottom: .65rem; }
-.service-icon { width: 36px; height: 36px; background: rgba(77,163,224,.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: .9rem; transition: background .3s; }
-.service-card:hover .service-icon { background: rgba(77,163,224,.2); }
-.service-icon svg { width: 15px; height: 15px; stroke: var(--sky); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.service-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--white); margin-bottom: .65rem; line-height: 1.3; }
-.service-desc { font-size: .8rem; line-height: 1.78; color: var(--muted); }
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:3rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);border-radius:8px;overflow:hidden}
+.scard{background:rgba(255,255,255,.02);padding:2.2rem 1.8rem;cursor:none;position:relative;overflow:hidden;transition:background .3s,opacity .65s ease}
+.scard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.scard:hover{background:rgba(26,107,186,.09)}
+.scard:hover::after{transform:scaleX(1)}
+.snum{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:rgba(255,255,255,.05);line-height:1;margin-bottom:.65rem}
+.sicon{width:36px;height:36px;background:rgba(77,163,224,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.9rem;transition:background .3s}
+.scard:hover .sicon{background:rgba(77,163,224,.2)}
+.sicon svg{width:15px;height:15px;stroke:var(--sky);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--white);margin-bottom:.65rem;line-height:1.3}
+.sdesc{font-size:.8rem;line-height:1.78;color:var(--muted)}
+
+/* service card stagger */
+.services-grid .scard{opacity:0}
+.services-grid.io .scard{opacity:1}
+.services-grid.io .scard:nth-child(1){transition-delay:.0s}
+.services-grid.io .scard:nth-child(2){transition-delay:.07s}
+.services-grid.io .scard:nth-child(3){transition-delay:.14s}
+.services-grid.io .scard:nth-child(4){transition-delay:.21s}
+.services-grid.io .scard:nth-child(5){transition-delay:.28s}
+.services-grid.io .scard:nth-child(6){transition-delay:.35s}
 
 /* ── PROCESS ── */
-.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 4rem; position: relative; }
-.process-line { position: absolute; top: 26px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, var(--blue), var(--sky)); transform-origin: left; transform: scaleX(0); }
-.process-step { text-align: center; padding: 0 1rem; opacity: 0; }
-.step-dot { width: 52px; height: 52px; border: 1px solid rgba(77,163,224,.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.4rem; background: rgba(26,107,186,.08); position: relative; z-index: 1; transition: border-color .3s, background .3s, box-shadow .3s; }
-.step-dot:hover { border-color: var(--sky); background: rgba(77,163,224,.15); box-shadow: 0 0 0 6px rgba(77,163,224,.08); }
-.step-dot span { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--sky); }
-.step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: .45rem; }
-.step-desc { font-size: .78rem; line-height: 1.72; color: var(--muted); }
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:4rem;position:relative}
+.pline{position:absolute;top:26px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,var(--blue),var(--sky));transform-origin:left;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+.pline.io{transform:scaleX(1)}
+.pstep{text-align:center;padding:0 1rem}
+.pdot{width:52px;height:52px;border:1px solid rgba(77,163,224,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.4rem;background:rgba(26,107,186,.08);position:relative;z-index:1;transition:border-color .3s,background .3s,box-shadow .3s}
+.pdot:hover{border-color:var(--sky);background:rgba(77,163,224,.15);box-shadow:0 0 0 6px rgba(77,163,224,.08)}
+.pdot span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--sky)}
+.ptitle{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--white);margin-bottom:.45rem}
+.pdesc{font-size:.78rem;line-height:1.72;color:var(--muted)}
+
+/* process step stagger */
+.process-steps .pstep{opacity:0;transform:translateY(32px);transition:opacity .65s ease,transform .65s cubic-bezier(.16,1,.3,1)}
+.process-steps.io .pstep{opacity:1;transform:none}
+.process-steps.io .pstep:nth-child(2){transition-delay:.2s}
+.process-steps.io .pstep:nth-child(3){transition-delay:.35s}
+.process-steps.io .pstep:nth-child(4){transition-delay:.5s}
+.process-steps.io .pstep:nth-child(5){transition-delay:.65s}
 
 /* ── BOOKING ── */
-.booking { position: relative; overflow: hidden; }
-.booking-orb { position: absolute; left: -5%; top: -20%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(26,107,186,.18) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); pointer-events: none; }
-.booking-content { position: relative; z-index: 2; }
-.booking-header { margin-bottom: 2.5rem; opacity: 0; }
-.booking-sub { font-size: .92rem; color: var(--muted); line-height: 1.8; max-width: 460px; margin-top: .75rem; }
-.calendly-inline-widget { background: white; border-radius: 8px; overflow: hidden; min-height: 700px; opacity: 0; }
+.booking{position:relative;overflow:hidden}
+.borb{position:absolute;left:-5%;top:-20%;width:480px;height:480px;background:radial-gradient(circle,rgba(26,107,186,.18) 0%,transparent 70%);border-radius:50%;filter:blur(50px);pointer-events:none}
+.bcontent{position:relative;z-index:2}
+.bhdr{margin-bottom:2.5rem}
+.bsub{font-size:.92rem;color:var(--muted);line-height:1.8;max-width:460px;margin-top:.75rem}
+.calendly-inline-widget{background:#fff;border-radius:8px;overflow:hidden;min-height:700px}
 
 /* ── FOOTER ── */
-footer { background: #020b15; padding: 2.5rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,.04); }
-.footer-brand span { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: .18em; color: rgba(255,255,255,.3); }
-.footer-copy { font-size: .7rem; color: rgba(255,255,255,.2); }
-.footer-link { font-size: .7rem; color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; cursor: none; }
-.footer-link:hover { color: var(--sky); }
+footer{background:#020b15;padding:2.5rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,255,.04)}
+.fbrand span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.3)}
+.fcopy{font-size:.7rem;color:rgba(255,255,255,.2)}
+.flink{font-size:.7rem;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s;cursor:none}
+.flink:hover{color:var(--sky)}
 
 /* ── MULTILANG ── */
-.lang-fr [data-en] { display: none; }
-.lang-en [data-fr] { display: none; }
+.lang-fr [data-en]{display:none}
+.lang-en [data-fr]{display:none}
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1100px) { .hero-right { flex: 0 0 340px; } }
-@media (max-width: 900px) {
-  .hero-inner { flex-direction: column; padding: 3rem 5% 2rem; }
-  .hero-right { flex: 0 0 auto; width: 100%; max-width: 400px; }
-  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
-  .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-  .process-line { display: none; }
+@media(max-width:1100px){.hero-right{flex:0 0 340px}}
+@media(max-width:900px){
+  .hero-inner{flex-direction:column;padding:3rem 5% 2rem}
+  .hero-right{flex:0 0 auto;width:100%;max-width:400px}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .process-steps{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .pline{display:none}
 }
-@media (max-width: 600px) {
-  .nav-links { display: none; }
-  .services-grid { grid-template-columns: 1fr; }
-  .hero-stats { gap: 1.5rem; }
-  .process-steps { grid-template-columns: 1fr; }
+@media(max-width:600px){
+  .nav-links{display:none}
+  .services-grid{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+  .process-steps{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body class="lang-fr">
 
 <div id="cursor"></div>
-<div id="cursor-dot"></div>
-<div id="scroll-progress"></div>
+<div id="cdot"></div>
+<div id="sp"></div>
 
-<div id="availability-badge">
-  <div class="badge-dot"></div>
+<div id="badge">
+  <div class="bdot"></div>
   <span data-fr>Disponible pour nouveaux clients</span>
   <span data-en>Available for new clients</span>
 </div>
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="logo-nav"><span>EXECUTIO</span></div>
+  <div class="logo"><span>EXECUTIO</span></div>
   <div class="nav-links">
     <a onclick="goTo('about')"><span data-fr>À propos</span><span data-en>About</span></a>
     <a onclick="goTo('services')"><span data-fr>Services</span><span data-en>Services</span></a>
     <a onclick="goTo('process')"><span data-fr>Processus</span><span data-en>Process</span></a>
     <a onclick="openCalendly()" class="nav-cta"><span data-fr>Réserver un appel</span><span data-en>Book a call</span></a>
     <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lbtn active" onclick="setLang('fr')">FR</button>
+      <button class="lbtn" onclick="setLang('en')">EN</button>
     </div>
   </div>
 </nav>
@@ -283,15 +282,11 @@ footer { background: #020b15; padding: 2.5rem 5%; display: flex; justify-content
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-grid-fade"></div>
+    <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+    <div class="hgrid"></div><div class="hgfade"></div>
   </div>
-
   <div class="hero-inner">
-    <div class="hero-left">
+    <div style="flex:1;max-width:600px">
       <div class="hero-eyebrow">Financial Advisory · CFO Services · 100% Remote</div>
       <h1>
         <span data-fr>Votre <em>stratégie financière</em>,<br>au niveau des grandes entreprises</span>
@@ -303,43 +298,28 @@ footer { background: #020b15; padding: 2.5rem 5%; display: flex; justify-content
       </p>
       <div class="hero-actions">
         <button class="btn-primary" id="cta-main" onclick="openCalendly()">
-          <span data-fr>Réserver un appel gratuit</span>
-          <span data-en>Book a free call</span>
+          <span data-fr>Réserver un appel gratuit</span><span data-en>Book a free call</span>
         </button>
         <button class="btn-outline" onclick="goTo('services')">
-          <span data-fr>Découvrir les services</span>
-          <span data-en>Explore services</span>
+          <span data-fr>Découvrir les services</span><span data-en>Explore services</span>
         </button>
       </div>
     </div>
-
-    <!-- Financial dashboard — replaces video -->
-    <div class="hero-right" id="hero-dash">
+    <div class="hero-right">
       <div class="dashboard">
-        <div class="db-header">
+        <div class="db-head">
           <span class="db-title">Performance Clients</span>
           <span class="db-live">LIVE</span>
         </div>
         <div class="db-big">+142%</div>
         <div class="db-sub">Croissance moyenne — portefeuille accompagné</div>
         <div class="db-metrics">
-          <div class="metric">
-            <span class="metric-val up">+38%</span>
-            <span class="metric-key">Tréso.</span>
-          </div>
-          <div class="metric">
-            <span class="metric-val up">×2.4</span>
-            <span class="metric-key">ROI</span>
-          </div>
-          <div class="metric">
-            <span class="metric-val down">-22%</span>
-            <span class="metric-key">Charges</span>
-          </div>
+          <div class="metric"><span class="mval up">+38%</span><span class="mkey">Tréso.</span></div>
+          <div class="metric"><span class="mval up">×2.4</span><span class="mkey">ROI</span></div>
+          <div class="metric"><span class="mval dn">-22%</span><span class="mkey">Charges</span></div>
         </div>
-        <div class="chart-labels">
-          <span>Jan</span><span>Avr</span><span>Jul</span><span>Oct</span><span>Déc</span>
-        </div>
-        <svg class="sparkline" viewBox="0 0 300 76" preserveAspectRatio="none">
+        <div class="clabels"><span>Jan</span><span>Avr</span><span>Jul</span><span>Oct</span><span>Déc</span></div>
+        <svg class="spark" viewBox="0 0 300 76" preserveAspectRatio="none">
           <defs>
             <linearGradient id="sg" x1="0" x2="0" y1="0" y2="1">
               <stop offset="0%" stop-color="#4da3e0" stop-opacity=".5"/>
@@ -357,90 +337,66 @@ footer { background: #020b15; padding: 2.5rem 5%; display: flex; justify-content
       </div>
     </div>
   </div>
-
   <div class="hero-stats">
-    <div class="stat-item">
-      <div class="stat-num" data-count="5" data-suffix="+">0+</div>
-      <div class="stat-label"><span data-fr>Années d'expérience</span><span data-en>Years of experience</span></div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" data-count="10" data-suffix="+">0+</div>
-      <div class="stat-label"><span data-fr>Entreprises accompagnées</span><span data-en>Companies advised</span></div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" data-count="100" data-suffix="%">0%</div>
-      <div class="stat-label"><span data-fr>À distance</span><span data-en>Remote only</span></div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">CFO</div>
-      <div class="stat-label"><span data-fr>Expérience opérationnelle</span><span data-en>Operational experience</span></div>
-    </div>
+    <div class="stat-item"><div class="snum" data-count="5" data-suffix="+">5+</div><div class="slbl"><span data-fr>Années d'expérience</span><span data-en>Years of experience</span></div></div>
+    <div class="stat-item"><div class="snum" data-count="10" data-suffix="+">10+</div><div class="slbl"><span data-fr>Entreprises accompagnées</span><span data-en>Companies advised</span></div></div>
+    <div class="stat-item"><div class="snum" data-count="100" data-suffix="%">100%</div><div class="slbl"><span data-fr>À distance</span><span data-en>Remote only</span></div></div>
+    <div class="stat-item"><div class="snum">CFO</div><div class="slbl"><span data-fr>Expérience opérationnelle</span><span data-en>Operational experience</span></div></div>
   </div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-    <div class="ticker-item">Advisory Financier <span class="tick-dot"></span></div>
-    <div class="ticker-item">CFO as a Service <span class="tick-dot"></span></div>
-    <div class="ticker-item">Business Plan <span class="tick-dot"></span></div>
-    <div class="ticker-item">Modélisation Financière <span class="tick-dot"></span></div>
-    <div class="ticker-item">Levée de Fonds <span class="tick-dot"></span></div>
-    <div class="ticker-item">Trésorerie <span class="tick-dot"></span></div>
-    <div class="ticker-item">Restructuration <span class="tick-dot"></span></div>
-    <div class="ticker-item">KPIs Investisseurs <span class="tick-dot"></span></div>
-    <div class="ticker-item">Due Diligence <span class="tick-dot"></span></div>
-    <div class="ticker-item">Contrôle de Gestion <span class="tick-dot"></span></div>
-    <div class="ticker-item">Advisory Financier <span class="tick-dot"></span></div>
-    <div class="ticker-item">CFO as a Service <span class="tick-dot"></span></div>
-    <div class="ticker-item">Business Plan <span class="tick-dot"></span></div>
-    <div class="ticker-item">Modélisation Financière <span class="tick-dot"></span></div>
-    <div class="ticker-item">Levée de Fonds <span class="tick-dot"></span></div>
-    <div class="ticker-item">Trésorerie <span class="tick-dot"></span></div>
-    <div class="ticker-item">Restructuration <span class="tick-dot"></span></div>
-    <div class="ticker-item">KPIs Investisseurs <span class="tick-dot"></span></div>
-    <div class="ticker-item">Due Diligence <span class="tick-dot"></span></div>
-    <div class="ticker-item">Contrôle de Gestion <span class="tick-dot"></span></div>
+    <div class="titem">Advisory Financier <span class="tdot"></span></div>
+    <div class="titem">CFO as a Service <span class="tdot"></span></div>
+    <div class="titem">Business Plan <span class="tdot"></span></div>
+    <div class="titem">Modélisation Financière <span class="tdot"></span></div>
+    <div class="titem">Levée de Fonds <span class="tdot"></span></div>
+    <div class="titem">Trésorerie <span class="tdot"></span></div>
+    <div class="titem">Restructuration <span class="tdot"></span></div>
+    <div class="titem">KPIs Investisseurs <span class="tdot"></span></div>
+    <div class="titem">Due Diligence <span class="tdot"></span></div>
+    <div class="titem">Contrôle de Gestion <span class="tdot"></span></div>
+    <div class="titem">Advisory Financier <span class="tdot"></span></div>
+    <div class="titem">CFO as a Service <span class="tdot"></span></div>
+    <div class="titem">Business Plan <span class="tdot"></span></div>
+    <div class="titem">Modélisation Financière <span class="tdot"></span></div>
+    <div class="titem">Levée de Fonds <span class="tdot"></span></div>
+    <div class="titem">Trésorerie <span class="tdot"></span></div>
+    <div class="titem">Restructuration <span class="tdot"></span></div>
+    <div class="titem">KPIs Investisseurs <span class="tdot"></span></div>
+    <div class="titem">Due Diligence <span class="tdot"></span></div>
+    <div class="titem">Contrôle de Gestion <span class="tdot"></span></div>
   </div>
 </div>
 
 <!-- ABOUT -->
-<section class="s-light" id="about">
-  <div class="kicker dk"><span data-fr>À propos</span><span data-en>About</span></div>
+<section class="sl" id="about">
+  <div class="kicker kdk rv">
+    <span data-fr>À propos</span><span data-en>About</span>
+  </div>
   <div class="about-grid">
-    <div class="about-text">
-      <h2 class="disp dk" style="opacity:1">
+    <div class="rvl">
+      <h2 class="dsp dk" style="margin-bottom:1.4rem">
         <span data-fr>L'expertise CFO,<br><strong>sans le coût d'un CFO à plein temps</strong></span>
         <span data-en>CFO expertise,<br><strong>without the full-time CFO cost</strong></span>
       </h2>
-      <p>
-        <span data-fr>Avec une expérience solide comme <strong>CFO de multiples entreprises</strong> et en advisory financier, j'ai développé une vision claire de ce qui fait la différence entre une entreprise qui survit et une qui performe.</span>
-        <span data-en>With solid experience as <strong>CFO for multiple companies</strong> and in financial advisory, I developed a clear vision of what makes the difference between a company that survives and one that performs.</span>
-      </p>
-      <p>
-        <span data-fr>Je travaille exclusivement <strong>à distance</strong> — ce qui me permet d'intervenir rapidement, sans contrainte géographique, avec toute la rigueur d'un conseil senior.</span>
-        <span data-en>I work exclusively <strong>remotely</strong> — allowing me to intervene quickly, without geographic constraints, with all the rigor of senior advisory.</span>
-      </p>
-      <div class="credentials">
-        <div class="cred-item">
-          <div class="cred-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-          <span class="cred-text"><span data-fr>Expérience CFO opérationnelle — standards exigeants</span><span data-en>Operational CFO experience — demanding standards</span></span>
-        </div>
-        <div class="cred-item">
-          <div class="cred-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          <span class="cred-text"><span data-fr>Résultats concrets et mesurables dès la première session</span><span data-en>Concrete and measurable results from the first session</span></span>
-        </div>
-        <div class="cred-item">
-          <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-          <span class="cred-text"><span data-fr>Startups, PME, scale-ups — tous secteurs</span><span data-en>Startups, SMEs, scale-ups — all sectors</span></span>
-        </div>
+      <div class="about-text">
+        <p><span data-fr>Avec une expérience solide comme <strong>CFO de multiples entreprises</strong> et en advisory financier, j'ai développé une vision claire de ce qui fait la différence entre une entreprise qui survit et une qui performe.</span><span data-en>With solid experience as <strong>CFO for multiple companies</strong> and in financial advisory, I developed a clear vision of what makes the difference between a company that survives and one that performs.</span></p>
+        <p><span data-fr>Je travaille exclusivement <strong>à distance</strong> — ce qui me permet d'intervenir rapidement, sans contrainte géographique, avec toute la rigueur d'un conseil senior.</span><span data-en>I work exclusively <strong>remotely</strong> — allowing me to intervene quickly, without geographic constraints, with all the rigor of senior advisory.</span></p>
+      </div>
+      <div class="creds stg">
+        <div class="cred rv"><div class="cicon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><span class="ctxt"><span data-fr>Expérience CFO opérationnelle — standards exigeants</span><span data-en>Operational CFO experience — demanding standards</span></span></div>
+        <div class="cred rv"><div class="cicon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><span class="ctxt"><span data-fr>Résultats concrets et mesurables dès la première session</span><span data-en>Concrete and measurable results from the first session</span></span></div>
+        <div class="cred rv"><div class="cicon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><span class="ctxt"><span data-fr>Startups, PME, scale-ups — tous secteurs</span><span data-en>Startups, SMEs, scale-ups — all sectors</span></span></div>
       </div>
     </div>
-    <div class="about-card-wrap">
-      <div class="about-card">
-        <div class="about-card-title"><span data-fr>Ce que vous obtenez</span><span data-en>What you get</span></div>
-        <div class="about-card-sub"><span data-fr>Dès le premier appel</span><span data-en>From the first call</span></div>
-        <ul class="about-card-list">
+    <div class="rvr">
+      <div class="ac">
+        <div class="act"><span data-fr>Ce que vous obtenez</span><span data-en>What you get</span></div>
+        <div class="acs"><span data-fr>Dès le premier appel</span><span data-en>From the first call</span></div>
+        <ul class="acl">
           <li><span data-fr>Un diagnostic financier honnête et précis de votre situation</span><span data-en>An honest and precise financial diagnosis of your situation</span></li>
           <li><span data-fr>Des recommandations actionnables, pas de la théorie</span><span data-en>Actionable recommendations, not theory</span></li>
           <li><span data-fr>Un interlocuteur senior disponible et réactif</span><span data-en>A senior advisor available and responsive</span></li>
@@ -453,235 +409,153 @@ footer { background: #020b15; padding: 2.5rem 5%; display: flex; justify-content
 </section>
 
 <!-- SERVICES -->
-<section class="s-darkest" id="services">
-  <div class="kicker lt"><span data-fr>Services</span><span data-en>Services</span></div>
-  <h2 class="disp lt">
-    <span data-fr>Une expertise,<br><strong>plusieurs applications</strong></span>
-    <span data-en>One expertise,<br><strong>multiple applications</strong></span>
-  </h2>
+<section class="sdd" id="services">
+  <div class="kicker klt rv"><span data-fr>Services</span><span data-en>Services</span></div>
+  <h2 class="dsp lt rv"><span data-fr>Une expertise,<br><strong>plusieurs applications</strong></span><span data-en>One expertise,<br><strong>multiple applications</strong></span></h2>
   <div class="services-grid">
-    <div class="service-card">
-      <div class="service-num">01</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div class="service-title"><span data-fr>Advisory Financier Startup</span><span data-en>Startup Financial Advisory</span></div>
-      <p class="service-desc"><span data-fr>Levée de fonds, structure financière, modélisation, gestion de trésorerie, KPIs investisseurs. Tout ce qu'une startup doit maîtriser pour croître.</span><span data-en>Fundraising, financial structure, modeling, cash management, investor KPIs. Everything a startup needs to grow.</span></p>
-    </div>
-    <div class="service-card">
-      <div class="service-num">02</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
-      <div class="service-title"><span data-fr>CFO as a Service</span><span data-en>CFO as a Service</span></div>
-      <p class="service-desc"><span data-fr>Reporting, contrôle de gestion, tableaux de bord, relations avec les banques et investisseurs. La puissance d'un CFO, sans le salaire plein temps.</span><span data-en>Reporting, management control, dashboards, bank and investor relations. CFO power, without the full-time cost.</span></p>
-    </div>
-    <div class="service-card">
-      <div class="service-num">03</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-      <div class="service-title"><span data-fr>Coaching Financial Management</span><span data-en>Financial Management Coaching</span></div>
-      <p class="service-desc"><span data-fr>Pour les fondateurs et managers qui veulent piloter leurs finances en autonomie. Sessions structurées avec supports pratiques.</span><span data-en>For founders and managers who want to manage their finances independently. Structured sessions with practical materials.</span></p>
-    </div>
-    <div class="service-card">
-      <div class="service-num">04</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-      <div class="service-title"><span data-fr>Business Plan & Modélisation</span><span data-en>Business Plan & Modeling</span></div>
-      <p class="service-desc"><span data-fr>Business plans solides, modèles financiers robustes, projections de trésorerie et analyses de scénarios pour convaincre investisseurs et banquiers.</span><span data-en>Solid business plans, robust financial models, cash flow projections and scenario analysis.</span></p>
-    </div>
-    <div class="service-card">
-      <div class="service-num">05</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-      <div class="service-title"><span data-fr>Restructuration Financière</span><span data-en>Financial Restructuring</span></div>
-      <p class="service-desc"><span data-fr>Identification des risques, restructuration de la dette, optimisation des coûts. Une vision extérieure et objective pour stabiliser la situation financière.</span><span data-en>Risk identification, debt restructuring, cost optimization. An external view to stabilize the financial situation.</span></p>
-    </div>
-    <div class="service-card">
-      <div class="service-num">06</div>
-      <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-      <div class="service-title"><span data-fr>Session Stratégique 1:1</span><span data-en>Strategic 1:1 Session</span></div>
-      <p class="service-desc"><span data-fr>Une heure intense pour clarifier votre situation financière et repartir avec un plan d'action concret et immédiatement actionnable.</span><span data-en>One intense hour to clarify your financial situation and leave with a concrete, immediately actionable plan.</span></p>
-    </div>
+    <div class="scard"><div class="snum">01</div><div class="sicon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="stitle"><span data-fr>Advisory Financier Startup</span><span data-en>Startup Financial Advisory</span></div><p class="sdesc"><span data-fr>Levée de fonds, structure financière, modélisation, gestion de trésorerie, KPIs investisseurs.</span><span data-en>Fundraising, financial structure, modeling, cash management, investor KPIs.</span></p></div>
+    <div class="scard"><div class="snum">02</div><div class="sicon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div><div class="stitle"><span data-fr>CFO as a Service</span><span data-en>CFO as a Service</span></div><p class="sdesc"><span data-fr>Reporting, contrôle de gestion, tableaux de bord, relations avec les banques et investisseurs.</span><span data-en>Reporting, management control, dashboards, bank and investor relations.</span></p></div>
+    <div class="scard"><div class="snum">03</div><div class="sicon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div><div class="stitle"><span data-fr>Coaching Financial Management</span><span data-en>Financial Management Coaching</span></div><p class="sdesc"><span data-fr>Pour les fondateurs qui veulent piloter leurs finances en autonomie. Sessions structurées avec supports pratiques.</span><span data-en>For founders who want to manage their finances independently. Structured sessions with practical materials.</span></p></div>
+    <div class="scard"><div class="snum">04</div><div class="sicon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="stitle"><span data-fr>Business Plan & Modélisation</span><span data-en>Business Plan & Modeling</span></div><p class="sdesc"><span data-fr>Business plans solides, modèles financiers robustes, projections de trésorerie et analyses de scénarios.</span><span data-en>Solid business plans, robust financial models, cash flow projections and scenario analysis.</span></p></div>
+    <div class="scard"><div class="snum">05</div><div class="sicon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div class="stitle"><span data-fr>Restructuration Financière</span><span data-en>Financial Restructuring</span></div><p class="sdesc"><span data-fr>Identification des risques, restructuration de la dette, optimisation des coûts.</span><span data-en>Risk identification, debt restructuring, cost optimization.</span></p></div>
+    <div class="scard"><div class="snum">06</div><div class="sicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="stitle"><span data-fr>Session Stratégique 1:1</span><span data-en>Strategic 1:1 Session</span></div><p class="sdesc"><span data-fr>Une heure intense pour clarifier votre situation financière et repartir avec un plan d'action immédiatement actionnable.</span><span data-en>One intense hour to clarify your financial situation and leave with an immediately actionable plan.</span></p></div>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section class="s-dark" id="process">
-  <div class="kicker lt"><span data-fr>Comment ça fonctionne</span><span data-en>How it works</span></div>
-  <h2 class="disp lt">
-    <span data-fr>Simple, rapide,<br><strong>100% à distance</strong></span>
-    <span data-en>Simple, fast,<br><strong>100% remote</strong></span>
-  </h2>
+<section class="sd" id="process">
+  <div class="kicker klt rv"><span data-fr>Comment ça fonctionne</span><span data-en>How it works</span></div>
+  <h2 class="dsp lt rv"><span data-fr>Simple, rapide,<br><strong>100% à distance</strong></span><span data-en>Simple, fast,<br><strong>100% remote</strong></span></h2>
   <div class="process-steps">
-    <div class="process-line"></div>
-    <div class="process-step">
-      <div class="step-dot"><span>1</span></div>
-      <div class="step-title"><span data-fr>Réservez</span><span data-en>Book</span></div>
-      <p class="step-desc"><span data-fr>Choisissez un créneau dans mon agenda en ligne. 1 heure, sans engagement.</span><span data-en>Choose a slot in my online calendar. 1 hour, no commitment.</span></p>
-    </div>
-    <div class="process-step">
-      <div class="step-dot"><span>2</span></div>
-      <div class="step-title"><span data-fr>Diagnostiquez</span><span data-en>Diagnose</span></div>
-      <p class="step-desc"><span data-fr>Un premier appel pour comprendre votre situation, vos défis et vos objectifs financiers.</span><span data-en>A first call to understand your situation, challenges and financial objectives.</span></p>
-    </div>
-    <div class="process-step">
-      <div class="step-dot"><span>3</span></div>
-      <div class="step-title"><span data-fr>Collaborez</span><span data-en>Collaborate</span></div>
-      <p class="step-desc"><span data-fr>Plan d'action sur mesure, sessions régulières ou intervention ponctuelle selon vos besoins.</span><span data-en>Custom action plan, regular sessions or one-off intervention as needed.</span></p>
-    </div>
-    <div class="process-step">
-      <div class="step-dot"><span>4</span></div>
-      <div class="step-title"><span data-fr>Performez</span><span data-en>Perform</span></div>
-      <p class="step-desc"><span data-fr>Résultats mesurables, vision financière claire, outils pour piloter votre croissance en autonomie.</span><span data-en>Measurable results, clear financial vision, tools to drive your growth independently.</span></p>
-    </div>
+    <div class="pline"></div>
+    <div class="pstep"><div class="pdot"><span>1</span></div><div class="ptitle"><span data-fr>Réservez</span><span data-en>Book</span></div><p class="pdesc"><span data-fr>Choisissez un créneau dans mon agenda en ligne. 1 heure, sans engagement.</span><span data-en>Choose a slot in my online calendar. 1 hour, no commitment.</span></p></div>
+    <div class="pstep"><div class="pdot"><span>2</span></div><div class="ptitle"><span data-fr>Diagnostiquez</span><span data-en>Diagnose</span></div><p class="pdesc"><span data-fr>Un premier appel pour comprendre votre situation, vos défis et vos objectifs financiers.</span><span data-en>A first call to understand your situation, challenges and objectives.</span></p></div>
+    <div class="pstep"><div class="pdot"><span>3</span></div><div class="ptitle"><span data-fr>Collaborez</span><span data-en>Collaborate</span></div><p class="pdesc"><span data-fr>Plan d'action sur mesure, sessions régulières ou intervention ponctuelle selon vos besoins.</span><span data-en>Custom action plan, regular sessions or one-off intervention as needed.</span></p></div>
+    <div class="pstep"><div class="pdot"><span>4</span></div><div class="ptitle"><span data-fr>Performez</span><span data-en>Perform</span></div><p class="pdesc"><span data-fr>Résultats mesurables, vision financière claire, outils pour piloter votre croissance.</span><span data-en>Measurable results, clear financial vision, tools to drive your growth.</span></p></div>
   </div>
 </section>
 
 <!-- BOOKING -->
-<section class="booking s-darkest" id="booking">
-  <div class="booking-orb"></div>
-  <div class="booking-content">
-    <div class="booking-header">
-      <div class="kicker lt" style="opacity:1"><span data-fr>Réservez un appel</span><span data-en>Book a call</span></div>
-      <h2 class="disp lt" style="opacity:1">
-        <span data-fr>1 heure pour changer<br><strong>la trajectoire de votre entreprise</strong></span>
-        <span data-en>1 hour to change<br><strong>your company's trajectory</strong></span>
-      </h2>
-      <p class="booking-sub">
-        <span data-fr>Gratuit. Sans engagement. 100% à distance. Je réponds personnellement à chaque demande.</span>
-        <span data-en>Free. No commitment. 100% remote. I personally respond to every request.</span>
-      </p>
+<section class="booking sdd" id="booking">
+  <div class="borb"></div>
+  <div class="bcontent">
+    <div class="bhdr rv">
+      <div class="kicker klt" style="opacity:1"><span data-fr>Réservez un appel</span><span data-en>Book a call</span></div>
+      <h2 class="dsp lt" style="opacity:1"><span data-fr>1 heure pour changer<br><strong>la trajectoire de votre entreprise</strong></span><span data-en>1 hour to change<br><strong>your company's trajectory</strong></span></h2>
+      <p class="bsub"><span data-fr>Gratuit. Sans engagement. 100% à distance. Je réponds personnellement à chaque demande.</span><span data-en>Free. No commitment. 100% remote. I personally respond to every request.</span></p>
     </div>
-    <div class="calendly-inline-widget"
-      data-url="https://calendly.com/executio/30min?hide_gdpr_banner=1&primary_color=1a6bba"
-      style="min-width:320px;height:700px;">
-    </div>
+    <div class="calendly-inline-widget rv" data-url="https://calendly.com/executio/30min?hide_gdpr_banner=1&primary_color=1a6bba" style="min-width:320px;height:700px;"></div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand"><span>EXECUTIO</span></div>
-  <span class="footer-copy">
-    <span data-fr>© 2026 Executio — Financial Advisory · Tous droits réservés</span>
-    <span data-en>© 2026 Executio — Financial Advisory · All rights reserved</span>
-  </span>
-  <a href="mailto:contact@exe-cutio.com" class="footer-link">contact@exe-cutio.com</a>
+  <div class="fbrand"><span>EXECUTIO</span></div>
+  <span class="fcopy"><span data-fr>© 2026 Executio — Financial Advisory · Tous droits réservés</span><span data-en>© 2026 Executio — Financial Advisory · All rights reserved</span></span>
+  <a href="mailto:contact@exe-cutio.com" class="flink">contact@exe-cutio.com</a>
 </footer>
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-function goTo(id) { var el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-function openCalendly() { Calendly.initPopupWidget({ url: 'https://calendly.com/executio/30min' }); return false; }
-function setLang(lang) {
-  document.body.className = 'lang-' + lang;
-  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
-  document.querySelectorAll('.lang-btn').forEach(function(b) { if (b.textContent.trim().toLowerCase() === lang) b.classList.add('active'); });
-}
+function goTo(id){var e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth',block:'start'})}
+function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/executio/30min'});return false}
+function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.lbtn').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.lbtn').forEach(function(b){if(b.textContent.trim().toLowerCase()===l)b.classList.add('active')})}
 </script>
 
-<script type="module">
-import { animate, stagger, inView, scroll } from "https://esm.sh/motion@11.11.13"
+<script>
+// ── Cursor (no Motion, no lib dependency) ──
+var cursor=document.getElementById('cursor'),dot=document.getElementById('cdot');
+document.addEventListener('mousemove',function(e){
+  cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';
+  dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';
+});
+document.querySelectorAll('a,button,.scard').forEach(function(el){
+  el.addEventListener('mouseenter',function(){cursor.classList.add('ch')});
+  el.addEventListener('mouseleave',function(){cursor.classList.remove('ch')});
+});
 
-// Scroll progress
-scroll(({ y }) => {
-  document.getElementById('scroll-progress').style.transform = `scaleX(${y.progress})`
-})
+// ── Scroll progress ──
+window.addEventListener('scroll',function(){
+  var sp=document.getElementById('sp'),h=document.documentElement;
+  sp.style.transform='scaleX('+(window.scrollY/(h.scrollHeight-h.clientHeight))+')';
+},{ passive:true });
 
-// Cursor — CSS transitions only, no mix-blend-mode, no Motion animate
-const cursor = document.getElementById('cursor')
-const dot = document.getElementById('cursor-dot')
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px'
-  cursor.style.top = e.clientY + 'px'
-  dot.style.left = e.clientX + 'px'
-  dot.style.top = e.clientY + 'px'
-})
-document.querySelectorAll('a, button, .service-card').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('cur-hov'))
-  el.addEventListener('mouseleave', () => cursor.classList.remove('cur-hov'))
-})
+// ── Nav scrolled ──
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+},{passive:true});
 
-// Nav shrink
-const nav = document.getElementById('nav')
-scroll(({ y }) => { y.current > 60 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled') })
+// ── IntersectionObserver — scroll reveals ──
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('io');io.unobserve(e.target);}
+  });
+},{threshold:0.12});
+document.querySelectorAll('.rv,.rvl,.rvr').forEach(function(el){io.observe(el)});
 
-// Hero entrance
-animate('.hero-eyebrow', { opacity: [0,1], x: [-24,0] }, { duration: .7, delay: .35, ease: [.16,1,.3,1] })
-animate('.hero h1',      { opacity: [0,1], y: [40,0]  }, { duration: .9, delay: .55, ease: [.16,1,.3,1] })
-animate('.hero-sub',     { opacity: [0,1], y: [24,0]  }, { duration: .8, delay: .8,  ease: [.16,1,.3,1] })
-animate('.hero-actions', { opacity: [0,1], y: [20,0]  }, { duration: .7, delay: 1.05,ease: [.16,1,.3,1] })
-animate('#hero-dash',    { opacity: [0,1], x: [50,0]  }, { duration: 1,  delay: .9,  ease: [.16,1,.3,1] })
-animate('.stat-item',    { opacity: [0,1], y: [16,0]  }, { delay: stagger(.1,{start:1.3}), duration:.5, ease:[.16,1,.3,1] })
+// services grid trigger
+var sio=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('io');sio.unobserve(e.target);}});
+},{threshold:0.06});
+document.querySelectorAll('.services-grid').forEach(function(el){sio.observe(el)});
 
-// Counter animation
-function startCounters() {
-  document.querySelectorAll('[data-count]').forEach(el => {
-    const target = parseInt(el.dataset.count)
-    const suffix = el.dataset.suffix || ''
-    animate(0, target, { duration: 2.2, ease: [.16,1,.3,1], onUpdate: v => { el.textContent = Math.round(v) + suffix } })
-  })
+// process steps trigger
+var pio=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('io');pio.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.process-steps,.pline').forEach(function(el){pio.observe(el)});
+
+// ── Counter animation (no external lib needed) ──
+function animCount(el,target,suffix,dur){
+  var start=null;
+  function step(ts){
+    if(!start)start=ts;
+    var p=Math.min((ts-start)/dur,1);
+    var ease=1-Math.pow(1-p,4);
+    el.textContent=Math.round(ease*target)+suffix;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
 }
-inView('.hero-stats', startCounters, { amount: .5 })
+var cio=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-count]').forEach(function(el){
+        animCount(el,parseInt(el.dataset.count),el.dataset.suffix||'',2200);
+      });
+      cio.unobserve(e.target);
+    }
+  });
+},{threshold:0.4});
+document.querySelectorAll('.hero-stats').forEach(function(el){cio.observe(el)});
 
-// Availability badge
-animate('#availability-badge', { opacity: [0,1], y: [16,0] }, { delay: 2.5, duration: .6, ease: [.16,1,.3,1] })
+// ── Service card 3D tilt (direct style, no lib) ──
+document.querySelectorAll('.scard').forEach(function(card){
+  card.addEventListener('mouseenter',function(){card.style.transition='transform .18s linear'});
+  card.addEventListener('mousemove',function(e){
+    var r=card.getBoundingClientRect();
+    var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform='perspective(800px) rotateX('+(- y*6)+'deg) rotateY('+(x*6)+'deg) scale(1.02)';
+  });
+  card.addEventListener('mouseleave',function(){
+    card.style.transition='transform .45s cubic-bezier(.16,1,.3,1),background .3s,opacity .65s ease';
+    card.style.transform='perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
+  });
+});
 
-// Magnetic CTA
-const cta = document.getElementById('cta-main')
-if (cta) {
-  cta.addEventListener('mousemove', e => {
-    const r = cta.getBoundingClientRect()
-    animate(cta, { x: (e.clientX - r.left - r.width/2) * .25, y: (e.clientY - r.top - r.height/2) * .25 }, { duration: .2, ease: 'linear' })
-  })
-  cta.addEventListener('mouseleave', () => animate(cta, { x:0, y:0 }, { duration: .5, ease: [.16,1,.3,1] }))
+// ── Magnetic CTA (direct style) ──
+var cta=document.getElementById('cta-main');
+if(cta){
+  cta.addEventListener('mouseenter',function(){cta.style.transition='transform .2s linear'});
+  cta.addEventListener('mousemove',function(e){
+    var r=cta.getBoundingClientRect();
+    cta.style.transform='translate('+(e.clientX-r.left-r.width/2)*.25+'px,'+(e.clientY-r.top-r.height/2)*.25+'px)';
+  });
+  cta.addEventListener('mouseleave',function(){
+    cta.style.transition='transform .5s cubic-bezier(.16,1,.3,1)';
+    cta.style.transform='translate(0,0)';
+  });
 }
-
-// Section kickers
-document.querySelectorAll('.kicker').forEach(el => {
-  if (el.style.opacity === '1') return
-  inView(el, () => animate(el, { opacity:[0,1], x:[-16,0] }, { duration:.6, ease:[.16,1,.3,1] }))
-})
-
-// Section h2
-document.querySelectorAll('h2.disp').forEach(el => {
-  if (el.style.opacity === '1') return
-  inView(el, () => animate(el, { opacity:[0,1], y:[24,0] }, { duration:.7, ease:[.16,1,.3,1] }))
-})
-
-// About
-inView('.about-text', () => {
-  animate('.about-text', { opacity:[0,1], x:[-40,0] }, { duration:.8, ease:[.16,1,.3,1] })
-  animate('.cred-item',  { opacity:[0,1], x:[-18,0] }, { delay:stagger(.1,{start:.3}), duration:.5, ease:[.16,1,.3,1] })
-}, { amount:.2 })
-
-inView('.about-card-wrap', () => {
-  animate('.about-card-wrap', { opacity:[0,1], x:[40,0] }, { duration:.8, ease:[.16,1,.3,1] })
-  animate('.about-card-list li', { opacity:[0,1], x:[14,0] }, { delay:stagger(.08,{start:.4}), duration:.4, ease:[.16,1,.3,1] })
-}, { amount:.2 })
-
-// Services stagger + 3D tilt
-inView('.services-grid', () => {
-  animate('.service-card', { opacity:[0,1], y:[48,0] }, { delay:stagger(.07), duration:.65, ease:[.16,1,.3,1] })
-}, { amount:.08 })
-
-document.querySelectorAll('.service-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect()
-    const x = (e.clientX - r.left) / r.width - .5
-    const y = (e.clientY - r.top) / r.height - .5
-    animate(card, { rotateX: -y*6, rotateY: x*6, scale:1.02 }, { duration:.18, ease:'linear' })
-  })
-  card.addEventListener('mouseleave', () => animate(card, { rotateX:0, rotateY:0, scale:1 }, { duration:.45, ease:[.16,1,.3,1] }))
-})
-
-// Process
-inView('.process-steps', () => {
-  animate('.process-line', { scaleX:[0,1] }, { duration:1.4, ease:[.16,1,.3,1] })
-  animate('.process-step', { opacity:[0,1], y:[32,0] }, { delay:stagger(.15,{start:.2}), duration:.65, ease:[.16,1,.3,1] })
-}, { amount:.2 })
-
-// Booking
-inView('.booking-header', () => {
-  animate('.booking-header', { opacity:[0,1], y:[30,0] }, { duration:.8, ease:[.16,1,.3,1] })
-}, { amount:.2 })
-inView('.calendly-inline-widget', () => {
-  animate('.calendly-inline-widget', { opacity:[0,1], y:[20,0] }, { duration:.7, delay:.2, ease:[.16,1,.3,1] })
-}, { amount:.05 })
 </script>
 </body>
 </html>
