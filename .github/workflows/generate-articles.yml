@@ -34,6 +34,6 @@ jobs:
         run: |
           git config user.email "actions@github.com"
           git config user.name "EXECUTIO Bot"
-          git add insights/ data/articles.json
+          git add insights/ data/articles.json data/article-topics.json
           git diff --cached --quiet || git commit -m "feat(insights): nouvel article — ${{ steps.gen.outputs.title }}"
           git push

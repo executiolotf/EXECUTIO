@@ -49,6 +49,7 @@
 .tc-gold{background:linear-gradient(135deg,#0d2340,#c9a84c)}
 .tc-teal{background:linear-gradient(135deg,#0d3340,#1a8bba)}
 .tc-red{background:linear-gradient(135deg,#340d1a,#ba1a4d)}
+.tc-purple{background:linear-gradient(135deg,#1a0d34,#7a1aba)}
 .bcard-thumb svg{width:44px;height:44px;stroke:#fff;fill:none;stroke-width:1.5;position:relative;z-index:1;opacity:.85}
 .bcard-body{padding:1.3rem;flex:1;display:flex;flex-direction:column}
 .bcat{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:.55rem}
@@ -88,6 +89,7 @@
       <button class="filter-btn" data-filter="fonds">Levée de fonds</button>
       <button class="filter-btn" data-filter="kpis">KPIs</button>
       <button class="filter-btn" data-filter="tresorerie">Trésorerie</button>
+      <button class="filter-btn" data-filter="belgique">Fiscalité Belge</button>
       <button class="filter-btn" data-filter="restructuration">Restructuration</button>
     </div>
   </div>
@@ -125,15 +127,17 @@ var COLOR_MAP = {
   'Levée de fonds': 'tc-sky',
   'KPIs & Métriques': 'tc-gold',
   'Trésorerie': 'tc-teal',
-  'Restructuration': 'tc-red'
+  'Restructuration': 'tc-red',
+  'Fiscalité Belge': 'tc-purple'
 };
 
 var FILTER_MAP = {
-  'all': ['CFO as a Service','Levée de fonds','KPIs & Métriques','Trésorerie','Restructuration'],
+  'all': ['CFO as a Service','Levée de fonds','KPIs & Métriques','Trésorerie','Restructuration','Fiscalité Belge'],
   'cfo': ['CFO as a Service'],
   'fonds': ['Levée de fonds'],
   'kpis': ['KPIs & Métriques'],
   'tresorerie': ['Trésorerie'],
+  'belgique': ['Fiscalité Belge'],
   'restructuration': ['Restructuration']
 };
 

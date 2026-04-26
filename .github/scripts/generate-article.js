@@ -6,28 +6,9 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const ARTICLES_JSON = path.join(ROOT, 'data', 'articles.json');
+const TOPICS_JSON = path.join(ROOT, 'data', 'article-topics.json');
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
-// Sujets financiers ciblés SEO — enrichis automatiquement
-const TOPICS = [
-  { title: "Modèle financier SaaS : construire des projections qui convainquent les investisseurs", slug: "modele-financier-saas", category: "KPIs & Métriques", icon: "activity", keywords: "modèle financier SaaS, projections financières startup, ARR SaaS modélisation" },
-  { title: "Levée de fonds Seed : préparer son dossier pour les business angels", slug: "levee-fonds-seed-business-angels", category: "Levée de fonds", icon: "trending-up", keywords: "levée de fonds seed, business angels, dossier investisseur seed" },
-  { title: "Tableau de bord financier startup : les indicateurs essentiels à suivre chaque mois", slug: "tableau-de-bord-financier-startup", category: "KPIs & Métriques", icon: "bar-chart", keywords: "tableau de bord financier, indicateurs financiers startup, reporting mensuel" },
-  { title: "Valorisation startup : méthodes et benchmarks pour négocier sa levée de fonds", slug: "valorisation-startup-methodes", category: "Levée de fonds", icon: "dollar", keywords: "valorisation startup, méthodes valorisation, multiples SaaS, term sheet" },
-  { title: "Plan de trésorerie PME : comment anticiper et éviter les crises de liquidité", slug: "plan-tresorerie-pme", category: "Trésorerie", icon: "clock", keywords: "plan de trésorerie PME, gestion liquidité, prévisions trésorerie" },
-  { title: "Due diligence financière : ce que les VCs vérifient dans votre data room", slug: "due-diligence-financiere-vc", category: "Levée de fonds", icon: "shield", keywords: "due diligence financière, data room startup, vérification investisseur" },
-  { title: "Contrôle de gestion startup : mettre en place un reporting efficace", slug: "controle-de-gestion-startup", category: "CFO as a Service", icon: "briefcase", keywords: "contrôle de gestion startup, reporting financier, tableaux de bord gestion" },
-  { title: "Optimisation du BFR : libérer du cash sans emprunter", slug: "optimisation-bfr-besoin-fonds-roulement", category: "Trésorerie", icon: "activity", keywords: "BFR, besoin en fonds de roulement, optimisation trésorerie PME" },
-  { title: "Économie unitaire d'une startup : CAC, LTV et les ratios qui rassurent les VCs", slug: "economie-unitaire-startup-cac-ltv", category: "KPIs & Métriques", icon: "bar-chart", keywords: "économie unitaire startup, CAC LTV ratio, unit economics" },
-  { title: "Pacte d'actionnaires : clauses financières essentielles pour protéger les fondateurs", slug: "pacte-actionnaires-clauses-financieres", category: "Levée de fonds", icon: "users", keywords: "pacte d'actionnaires, clauses financières, ratchet, anti-dilution" },
-  { title: "Externalisation de la paie et des RH pour une startup en croissance", slug: "externalisation-paie-rh-startup", category: "CFO as a Service", icon: "users", keywords: "externalisation paie startup, RH externalisé, charges sociales startup" },
-  { title: "Comment fixer le prix de son SaaS : stratégies de pricing pour maximiser le MRR", slug: "pricing-saas-strategie-mrr", category: "KPIs & Métriques", icon: "dollar", keywords: "pricing SaaS, stratégie prix abonnement, MRR optimisation" }
-];
-
-function slugify(str) {
-  return str.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-}
 
 function formatDate(d) {
   return d.toISOString().split('T')[0];
@@ -38,19 +19,75 @@ function formatDateFR(d) {
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+async function regenerateTopics(existingSlugs) {
+  console.log('\n🔄 Pool de sujets épuisé — génération de nouveaux sujets via Claude...\n');
+
+  const currentYear = new Date().getFullYear();
+  const resp = await client.messages.create({
+    model: 'claude-haiku-4-5-20251001',
+    max_tokens: 2000,
+    messages: [{
+      role: 'user',
+      content: `Tu es un expert SEO spécialisé en finance d'entreprise pour la Belgique et la France.
+
+Génère exactement 20 nouveaux sujets d'articles de blog SEO pour un cabinet de conseil financier belge (Executio). Ces articles ciblent dirigeants de startups, PME, indépendants.
+
+Mélange obligatoire :
+- 6 sujets sur la fiscalité belge (VVPRbis, ISOC, TVA, cotisations INASTI, subsides régionaux, précompte, etc.)
+- 5 sujets sur l'actualité financière belge ${currentYear} (budget fédéral, réformes fiscales, aides régionales Wallonie/Bruxelles/Flandre)
+- 5 sujets evergreen finance startup/PME (KPIs, levée de fonds, trésorerie, modèles financiers)
+- 4 sujets sur la stratégie financière (optimisation rémunération dirigeant, exit, valorisation, restructuration)
+
+Pour chaque sujet, réponds en JSON strict (tableau de 20 objets), chaque objet ayant :
+- "title": titre SEO optimisé en français (60-80 chars, mot-clé principal dedans)
+- "slug": slug URL (minuscules, tirets, sans accents, 3-6 mots)
+- "category": une parmi ["Fiscalité Belge", "KPIs & Métriques", "Levée de fonds", "Trésorerie", "CFO as a Service"]
+- "icon": une parmi ["activity", "trending-up", "bar-chart", "dollar", "shield", "briefcase", "clock", "users"]
+- "keywords": 3 mots-clés SEO séparés par des virgules
+
+Réponds UNIQUEMENT avec le tableau JSON, sans texte autour.`
+    }]
+  });
+
+  const raw = resp.content[0].text.trim();
+  let newTopics;
+  try {
+    // Strip potential markdown code fences
+    const cleaned = raw.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '');
+    newTopics = JSON.parse(cleaned);
+  } catch (e) {
+    console.error('Erreur parsing JSON sujets:', e.message);
+    console.error('Raw response:', raw.substring(0, 500));
+    throw new Error('Impossible de parser les nouveaux sujets générés');
+  }
+
+  // Dédupliquer par rapport aux slugs existants
+  const fresh = newTopics.filter(t => !existingSlugs.has(t.slug));
+  console.log(`✓ ${fresh.length} nouveaux sujets générés (${newTopics.length - fresh.length} doublons ignorés)`);
+
+  fs.writeFileSync(TOPICS_JSON, JSON.stringify(fresh, null, 2), 'utf-8');
+  console.log(`✓ data/article-topics.json mis à jour\n`);
+
+  return fresh;
+}
+
 async function main() {
-  // Charger les articles existants
   const existing = JSON.parse(fs.readFileSync(ARTICLES_JSON, 'utf-8'));
   const existingSlugs = new Set(existing.map(a => a.slug));
 
-  // Trouver un sujet non encore publié
-  const available = TOPICS.filter(t => !existingSlugs.has(t.slug));
+  let topics = JSON.parse(fs.readFileSync(TOPICS_JSON, 'utf-8'));
+  let available = topics.filter(t => !existingSlugs.has(t.slug));
+
   if (!available.length) {
-    console.log('Tous les sujets ont été publiés. Ajoutez de nouveaux sujets dans TOPICS.');
+    topics = await regenerateTopics(existingSlugs);
+    available = topics;
+  }
+
+  if (!available.length) {
+    console.log('Aucun sujet disponible même après régénération.');
     process.exit(0);
   }
 
-  // Choisir le premier disponible
   const topic = available[0];
   const now = new Date();
   const dateStr = formatDate(now);
@@ -58,13 +95,12 @@ async function main() {
 
   console.log(`\n📝 Génération de l'article : "${topic.title}"\n`);
 
-  // Générer le contenu avec Claude Haiku
   const resp = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 3000,
     messages: [{
       role: 'user',
-      content: `Tu es un expert financier senior (CFO, advisory financier, startups et PME françaises) qui rédige un article de blog SEO professionnel en français.
+      content: `Tu es un expert financier senior (CFO, advisory financier, startups et PME belges et françaises) qui rédige un article de blog SEO professionnel en français.
 
 Rédige un article complet sur : "${topic.title}"
 
@@ -98,20 +134,17 @@ READTIME: [nombre de minutes de lecture estimé, entre 6 et 12]`
 
   const raw = resp.content[0].text.trim();
 
-  // Extraire excerpt et readtime
   const excerptMatch = raw.match(/\nEXCERPT:\s*(.+)/);
   const readtimeMatch = raw.match(/\nREADTIME:\s*(\d+)/);
   const excerpt = excerptMatch ? excerptMatch[1].trim() : topic.title;
   const readTime = readtimeMatch ? readtimeMatch[1] + ' min' : '8 min';
 
-  // Nettoyer le contenu (enlever les lignes EXCERPT/READTIME)
   const content = raw.replace(/\nEXCERPT:.+/, '').replace(/\nREADTIME:.+/, '').trim();
 
   console.log(`✓ Contenu généré (${content.length} caractères)`);
   console.log(`✓ Excerpt : ${excerpt}`);
   console.log(`✓ Temps de lecture : ${readTime}`);
 
-  // Articles liés (3 premiers autres que celui-ci)
   const related = existing.slice(0, 3).map(a => `
       <a href="/insights/${a.slug}/" class="rcard">
         <div class="rcat">${a.category}</div>
@@ -119,7 +152,6 @@ READTIME: [nombre de minutes de lecture estimé, entre 6 et 12]`
         <div class="rread">${a.readTime} de lecture</div>
       </a>`).join('');
 
-  // Générer le HTML de l'article
   const html = `<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -205,13 +237,11 @@ ${content}
 </body>
 </html>`;
 
-  // Écrire le fichier HTML
   const dir = path.join(ROOT, 'insights', topic.slug);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf-8');
   console.log(`✓ Fichier créé : insights/${topic.slug}/index.html`);
 
-  // Mettre à jour articles.json
   const newArticle = {
     slug: topic.slug,
     title: topic.title,
@@ -222,15 +252,17 @@ ${content}
     icon: topic.icon
   };
 
-  // Ajouter en début de tableau (plus récent en premier)
-  const updated = [newArticle, ...existing];
-  fs.writeFileSync(ARTICLES_JSON, JSON.stringify(updated, null, 2), 'utf-8');
-  console.log(`✓ data/articles.json mis à jour (${updated.length} articles)`);
+  const updatedArticles = [newArticle, ...existing];
+  fs.writeFileSync(ARTICLES_JSON, JSON.stringify(updatedArticles, null, 2), 'utf-8');
+  console.log(`✓ data/articles.json mis à jour (${updatedArticles.length} articles)`);
 
-  // Exporter le titre pour le message de commit
+  // Retirer le sujet publié du pool
+  const remainingTopics = topics.filter(t => t.slug !== topic.slug);
+  fs.writeFileSync(TOPICS_JSON, JSON.stringify(remainingTopics, null, 2), 'utf-8');
+  console.log(`✓ data/article-topics.json mis à jour (${remainingTopics.length} sujets restants)`);
+
   console.log(`\n✅ Article publié : "${topic.title}"`);
 
-  // Output pour GitHub Actions
   const output = process.env.GITHUB_OUTPUT;
   if (output) {
     fs.appendFileSync(output, `title=${topic.title.substring(0, 80)}\n`);
