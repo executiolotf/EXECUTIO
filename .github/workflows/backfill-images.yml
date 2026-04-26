@@ -1,0 +1,35 @@
+name: Backfill Pexels images on existing articles
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install @anthropic-ai/sdk
+
+      - name: Backfill images
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: node .github/scripts/backfill-images.js
+
+      - name: Commit and push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "EXECUTIO Bot"
+          git add insights/
+          git diff --cached --quiet || git commit -m "feat(insights): backfill Pexels images on existing articles"
+          git push

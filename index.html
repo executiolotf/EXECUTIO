@@ -22,8 +22,8 @@ html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;cursor:none}
 
 /* ── CURSOR (pure CSS, zero Motion) ── */
-#cursor{position:fixed;width:32px;height:32px;border:1px solid rgba(77,163,224,.5);border-radius:50%;pointer-events:none;z-index:9999;left:-80px;top:-80px;transform:translate(-50%,-50%);transition:left .13s ease,top .13s ease,width .2s,height .2s,background .2s,border-color .2s}
-#cdot{position:fixed;width:4px;height:4px;background:var(--sky);border-radius:50%;pointer-events:none;z-index:10000;left:-80px;top:-80px;transform:translate(-50%,-50%);transition:left .04s linear,top .04s linear}
+#cursor{position:fixed;width:32px;height:32px;border:1px solid rgba(77,163,224,.5);border-radius:50%;pointer-events:none;z-index:9999;top:0;left:0;will-change:transform;transition:width .2s,height .2s,background .2s,border-color .2s}
+#cdot{position:fixed;width:4px;height:4px;background:var(--sky);border-radius:50%;pointer-events:none;z-index:10000;top:0;left:0;will-change:transform}
 .ch{width:52px!important;height:52px!important;background:rgba(77,163,224,.07)!important;border-color:var(--sky)!important}
 @media(max-width:900px){body{cursor:auto}#cursor,#cdot{display:none}}
 
@@ -296,6 +296,7 @@ footer{background:#020b15;padding:2.5rem 5%;display:flex;justify-content:space-b
     <a onclick="goTo('about')"><span data-fr>À propos</span><span data-en>About</span></a>
     <a onclick="goTo('services')"><span data-fr>Services</span><span data-en>Services</span></a>
     <a onclick="goTo('process')"><span data-fr>Processus</span><span data-en>Process</span></a>
+    <a href="/insights/">Insights</a>
     <a onclick="openCalendly()" class="nav-cta"><span data-fr>Réserver un appel</span><span data-en>Book a call</span></a>
     <div class="lang-toggle">
       <button class="lbtn active" onclick="setLang('fr')">FR</button>
@@ -506,12 +507,16 @@ function setLang(l){document.body.className='lang-'+l;document.querySelectorAll(
 </script>
 
 <script>
-// ── Cursor (no Motion, no lib dependency) ──
+// ── Cursor — GPU-accelerated transform, lerp ring + instant dot ──
 var cursor=document.getElementById('cursor'),dot=document.getElementById('cdot');
-document.addEventListener('mousemove',function(e){
-  cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';
-  dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';
-});
+var mx=-80,my=-80,cx=-80,cy=-80;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
+(function loop(){
+  cx+=(mx-cx)*.12;cy+=(my-cy)*.12;
+  cursor.style.transform='translate3d('+(cx-16)+'px,'+(cy-16)+'px,0)';
+  dot.style.transform='translate3d('+(mx-2)+'px,'+(my-2)+'px,0)';
+  requestAnimationFrame(loop);
+})();
 document.querySelectorAll('a,button,.scard').forEach(function(el){
   el.addEventListener('mouseenter',function(){cursor.classList.add('ch')});
   el.addEventListener('mouseleave',function(){cursor.classList.remove('ch')});
