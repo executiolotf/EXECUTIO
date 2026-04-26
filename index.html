@@ -701,10 +701,7 @@ document.querySelectorAll('.scard').forEach(function(card){
   }).catch(function(){});
 })();
 
-// ── Contact Form → Web3Forms (clé publique, zéro backend, zéro Netlify) ──
-// ⚙️ SETUP : va sur web3forms.com → crée un compte avec contact@exe-cutio.com → copie ta clé ici
-var W3F_KEY = 'VOTRE_CLE_WEB3FORMS';
-
+// ── Contact Form → Netlify Function (appelle HubSpot + Brevo côté serveur) ──
 (function(){
   var form = document.getElementById('cf-form');
   var btn  = document.getElementById('cf-btn');
@@ -729,17 +726,10 @@ var W3F_KEY = 'VOTRE_CLE_WEB3FORMS';
     btn.disabled = true;
     btn.textContent = '...';
 
-    fetch('https://api.web3forms.com/submit', {
+    fetch('/.netlify/functions/contact', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        access_key: W3F_KEY,
-        subject: 'Nouveau contact Executio — ' + type,
-        name: firstname,
-        email: email,
-        type_structure: type,
-        message: message || '(pas de message)'
-      })
+      body: JSON.stringify({ firstname: firstname, email: email, company_type: type, message: message })
     })
     .then(function(r){ return r.json(); })
     .then(function(data){
