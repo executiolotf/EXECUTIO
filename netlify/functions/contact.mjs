@@ -53,9 +53,8 @@ async function upsertPerson(apiKey, fields) {
     {
       data: {
         values: {
-          name: [{ first_name: firstName, last_name: lastName }],
-          email_addresses: [{ email_address: fields.email }],
-          job_title: fields.role ? [{ value: fields.role }] : undefined
+          name:            [{ first_name: firstName, last_name: lastName }],
+          email_addresses: [{ email_address: fields.email }]
         }
       }
     }
@@ -69,27 +68,37 @@ async function upsertPerson(apiKey, fields) {
 }
 
 async function addToPipeline(apiKey, listId, personId, fields) {
-  const { amount, priority } = scoreDeal(fields);
-
-  const closeDate = new Date();
-  closeDate.setDate(closeDate.getDate() + 45);
-  const closeDateStr = closeDate.toISOString().split('T')[0];
-
-  const probabilityMap = { HIGH: 75, MEDIUM: 45, LOW: 20 };
-
+  // Step 1: create the entry (minimal — always works)
   const { status, data } = await attio(apiKey, 'POST',
     `/lists/${listId}/entries`,
+    { data: { record_id: { object: 'people', record_id: personId } } }
+  );
+  if (status !== 200 && status !== 201) {
+    console.error('[Attio] addToPipeline failed', status, JSON.stringify(data));
+    return;
+  }
+
+  // Step 2: patch custom fields (isolated — won't break entry creation if slugs differ)
+  const entryId = data?.data?.id?.entry_id;
+  if (!entryId) return;
+
+  const { amount, priority } = scoreDeal(fields);
+  const closeDate = new Date();
+  closeDate.setDate(closeDate.getDate() + 45);
+  const probabilityMap = { HIGH: 75, MEDIUM: 45, LOW: 20 };
+
+  const { status: ps, data: pd } = await attio(apiKey, 'PATCH',
+    `/lists/${listId}/entries/${entryId}`,
     {
       data: {
-        record_id:              { object: 'people', record_id: personId },
         valore_deal:            [{ currency_value: amount, currency_code: 'EUR' }],
-        data_chiusura_prevista: [{ value: closeDateStr }],
+        data_chiusura_prevista: [{ value: closeDate.toISOString().split('T')[0] }],
         probabilita:            [{ value: probabilityMap[priority] }]
       }
     }
   );
-  if (status !== 200 && status !== 201) {
-    console.error('[Attio] addToPipeline failed', status, JSON.stringify(data));
+  if (ps !== 200 && ps !== 201) {
+    console.error('[Attio] patchEntry failed', ps, JSON.stringify(pd));
   }
 }
 
