@@ -224,24 +224,45 @@ h2.dsp strong{font-weight:600}
 .cf-promises{list-style:none;display:flex;flex-direction:column;gap:.75rem}
 .cf-promises li{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.5)}
 .cf-promises li::before{content:'';display:block;width:16px;height:1px;background:var(--sky);flex-shrink:0}
-.cf-form{display:flex;flex-direction:column;gap:1.1rem}
+/* progress */
+.cf-progress{display:flex;align-items:center;gap:0;margin-bottom:2rem}
+.cf-prog-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative}
+.cf-prog-step:not(:last-child)::after{content:'';position:absolute;top:13px;left:50%;width:100%;height:1px;background:rgba(255,255,255,.1);z-index:0}
+.cf-prog-step.done::after,.cf-prog-step.active::after{background:var(--blue)}
+.cf-prog-dot{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:600;color:rgba(255,255,255,.3);position:relative;z-index:1;transition:all .3s}
+.cf-prog-step.active .cf-prog-dot{border-color:var(--sky);background:rgba(77,163,224,.15);color:var(--sky)}
+.cf-prog-step.done .cf-prog-dot{border-color:var(--blue);background:var(--blue);color:#fff}
+.cf-prog-label{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:.4rem;transition:color .3s}
+.cf-prog-step.active .cf-prog-label{color:var(--sky)}
+.cf-prog-step.done .cf-prog-label{color:rgba(255,255,255,.4)}
+/* steps */
+.cf-step{display:none;flex-direction:column;gap:1rem;animation:cfIn .3s ease}
+.cf-step.active{display:flex}
+@keyframes cfIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.cf-step-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:rgba(255,255,255,.6);margin-bottom:.2rem}
+/* fields */
 .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .cf-field{display:flex;flex-direction:column;gap:.4rem}
-.cf-field label{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35)}
-.cf-field input,.cf-field select,.cf-field textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:.88rem;color:#fff;outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none}
-.cf-field input::placeholder,.cf-field textarea::placeholder{color:rgba(255,255,255,.2)}
+.cf-field label{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.cf-field input,.cf-field select,.cf-field textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:.88rem;color:#fff;outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none;width:100%}
+.cf-field input::placeholder,.cf-field textarea::placeholder{color:rgba(255,255,255,.18)}
 .cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{border-color:rgba(77,163,224,.5);background:rgba(77,163,224,.05)}
 .cf-field select{cursor:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.3)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
 .cf-field select option{background:#0d2340;color:#fff}
-.cf-field textarea{resize:none;min-height:110px;line-height:1.6}
-.cf-submit{background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;border:none;padding:1rem 2rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.06em;border-radius:2px;cursor:none;transition:box-shadow .3s,opacity .2s;align-self:flex-start}
-.cf-submit:hover{box-shadow:0 8px 32px rgba(26,107,186,.45)}
+.cf-field textarea{resize:none;min-height:90px;line-height:1.6}
+.cf-field-err{font-size:.7rem;color:#f87171;margin-top:.2rem;display:none}
+/* nav */
+.cf-nav{display:flex;align-items:center;justify-content:space-between;margin-top:.5rem}
+.cf-prev{background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif;font-size:.78rem;padding:.7rem 1.3rem;border-radius:2px;cursor:none;transition:all .2s}
+.cf-prev:hover{border-color:rgba(255,255,255,.3);color:#fff}
+.cf-next,.cf-submit{background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;border:none;padding:.85rem 1.8rem;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.06em;border-radius:2px;cursor:none;transition:box-shadow .3s,opacity .2s;margin-left:auto}
+.cf-next:hover,.cf-submit:hover{box-shadow:0 8px 32px rgba(26,107,186,.45)}
 .cf-submit:disabled{opacity:.5}
-.cf-success{display:none;background:rgba(77,163,224,.08);border:1px solid rgba(77,163,224,.2);border-radius:6px;padding:2rem;text-align:center}
+/* success */
+.cf-success{display:none;background:rgba(77,163,224,.07);border:1px solid rgba(77,163,224,.2);border-radius:6px;padding:2.5rem;text-align:center}
 .cf-success svg{width:40px;height:40px;stroke:var(--sky);fill:none;stroke-width:1.5;margin-bottom:1rem}
-.cf-success h4{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#fff;margin-bottom:.5rem}
+.cf-success h4{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:#fff;margin-bottom:.5rem}
 .cf-success p{font-size:.85rem;color:var(--muted)}
-.cf-error{font-size:.75rem;color:#f87171;margin-top:.25rem;display:none}
 .cfsec-wrap{position:relative;z-index:1}
 @media(max-width:900px){.cf-inner{grid-template-columns:1fr;gap:3rem}.cf-row{grid-template-columns:1fr}}
 
@@ -524,41 +545,169 @@ footer{background:#020b15;padding:2.5rem 5%;display:flex;justify-content:space-b
         </ul>
       </div>
       <div class="cf-right rv">
-        <form class="cf-form" id="cf-form" novalidate>
-          <div class="cf-row">
-            <div class="cf-field">
-              <label for="cf-prenom"><span data-fr>Prénom</span><span data-en>First name</span></label>
-              <input type="text" id="cf-prenom" name="firstname" placeholder="Marie" required>
+        <!-- Progress indicator -->
+        <div class="cf-progress">
+          <div class="cf-prog-step active" id="cp1"><div class="cf-prog-dot">1</div><div class="cf-prog-label">Profil</div></div>
+          <div class="cf-prog-step" id="cp2"><div class="cf-prog-dot">2</div><div class="cf-prog-label">Entreprise</div></div>
+          <div class="cf-prog-step" id="cp3"><div class="cf-prog-dot">3</div><div class="cf-prog-label">Projet</div></div>
+        </div>
+
+        <form id="cf-form" novalidate>
+
+          <!-- ── Step 1 : Profil ── -->
+          <div class="cf-step active" id="cf-step-1">
+            <div class="cf-step-title">Qui êtes-vous ?</div>
+            <div class="cf-row">
+              <div class="cf-field">
+                <label>Prénom *</label>
+                <input type="text" name="firstname" placeholder="Marie" required>
+                <span class="cf-field-err">Requis</span>
+              </div>
+              <div class="cf-field">
+                <label>Email *</label>
+                <input type="email" name="email" placeholder="marie@startup.com" required>
+                <span class="cf-field-err">Email invalide</span>
+              </div>
             </div>
             <div class="cf-field">
-              <label for="cf-email">Email</label>
-              <input type="email" id="cf-email" name="email" placeholder="marie@startup.com" required>
-              <span class="cf-error" id="cf-email-err">Email invalide</span>
+              <label>Votre rôle dans la société *</label>
+              <select name="role" required>
+                <option value="" disabled selected>Choisissez...</option>
+                <option>Fondateur / CEO</option>
+                <option>Co-fondateur</option>
+                <option>Directeur Général</option>
+                <option>CFO / Directeur Financier</option>
+                <option>Directeur Associé</option>
+                <option>Manager / Responsable</option>
+                <option>Autre</option>
+              </select>
+              <span class="cf-field-err">Requis</span>
+            </div>
+            <div class="cf-field">
+              <label>Type de structure *</label>
+              <select name="company_type" required>
+                <option value="" disabled selected>Choisissez...</option>
+                <option>Startup (&lt; 3 ans)</option>
+                <option>Scale-up</option>
+                <option>PME établie</option>
+                <option>Indépendant / Freelance</option>
+                <option>Autre</option>
+              </select>
+              <span class="cf-field-err">Requis</span>
+            </div>
+            <div class="cf-nav"><button type="button" class="cf-next">Continuer →</button></div>
+          </div>
+
+          <!-- ── Step 2 : Entreprise ── -->
+          <div class="cf-step" id="cf-step-2">
+            <div class="cf-step-title">Votre entreprise</div>
+            <div class="cf-field">
+              <label>Secteur d'activité *</label>
+              <select name="industry" required>
+                <option value="" disabled selected>Choisissez...</option>
+                <option>SaaS / Tech</option>
+                <option>Fintech / Finance</option>
+                <option>E-commerce / Retail</option>
+                <option>Conseil / Services</option>
+                <option>Santé / Medtech</option>
+                <option>Industrie / Manufacturing</option>
+                <option>Immobilier</option>
+                <option>Média / Création</option>
+                <option>Autre</option>
+              </select>
+              <span class="cf-field-err">Requis</span>
+            </div>
+            <div class="cf-field">
+              <label>Stade de développement *</label>
+              <select name="stage" required>
+                <option value="" disabled selected>Choisissez...</option>
+                <option>Pré-seed / Idée</option>
+                <option>Seed</option>
+                <option>Série A</option>
+                <option>Série B+</option>
+                <option>PME en croissance</option>
+                <option>PME en restructuration</option>
+                <option>Indépendant / Solo</option>
+              </select>
+              <span class="cf-field-err">Requis</span>
+            </div>
+            <div class="cf-field">
+              <label>Chiffre d'affaires annuel</label>
+              <select name="revenue">
+                <option value="" disabled selected>Choisissez...</option>
+                <option>Pas encore de CA</option>
+                <option>Moins de €100K</option>
+                <option>€100K – €500K</option>
+                <option>€500K – €2M</option>
+                <option>Plus de €2M</option>
+              </select>
+            </div>
+            <div class="cf-nav">
+              <button type="button" class="cf-prev">← Retour</button>
+              <button type="button" class="cf-next">Continuer →</button>
             </div>
           </div>
-          <div class="cf-field">
-            <label for="cf-type"><span data-fr>Type de structure</span><span data-en>Company type</span></label>
-            <select id="cf-type" name="company_type" required>
-              <option value="" disabled selected><span data-fr>Choisissez...</span><span data-en>Choose...</span></option>
-              <option value="Startup">Startup</option>
-              <option value="PME">PME</option>
-              <option value="Indépendant / Freelance">Indépendant / Freelance</option>
-              <option value="Scale-up">Scale-up</option>
-              <option value="Autre">Autre</option>
-            </select>
+
+          <!-- ── Step 3 : Projet ── -->
+          <div class="cf-step" id="cf-step-3">
+            <div class="cf-step-title">Votre projet</div>
+            <div class="cf-field">
+              <label>Problème principal / Raison de la consultation *</label>
+              <select name="problem" required>
+                <option value="" disabled selected>Choisissez...</option>
+                <option>Manque de visibilité financière</option>
+                <option>Préparer une levée de fonds</option>
+                <option>Problèmes de trésorerie</option>
+                <option>Besoin d'un CFO sans embauche full-time</option>
+                <option>Optimisation fiscale (Belgique)</option>
+                <option>Restructuration financière urgente</option>
+                <option>Croissance rapide à structurer</option>
+                <option>Modèle financier / projections</option>
+                <option>Reporting &amp; KPIs investisseurs</option>
+                <option>Autre</option>
+              </select>
+              <span class="cf-field-err">Requis</span>
+            </div>
+            <div class="cf-row">
+              <div class="cf-field">
+                <label>Budget mensuel estimé *</label>
+                <select name="budget" required>
+                  <option value="" disabled selected>Choisissez...</option>
+                  <option>À définir</option>
+                  <option>Moins de €500 / mois</option>
+                  <option>€500 – €1.500 / mois</option>
+                  <option>€1.500 – €3.000 / mois</option>
+                  <option>Plus de €3.000 / mois</option>
+                </select>
+                <span class="cf-field-err">Requis</span>
+              </div>
+              <div class="cf-field">
+                <label>Urgence</label>
+                <select name="urgency">
+                  <option value="" disabled selected>Choisissez...</option>
+                  <option>Urgent (&lt; 1 mois)</option>
+                  <option>Dans 1 à 3 mois</option>
+                  <option>Dans 3 à 6 mois</option>
+                  <option>Pas encore défini</option>
+                </select>
+              </div>
+            </div>
+            <div class="cf-field">
+              <label>Décrivez votre situation en détail</label>
+              <textarea name="message" placeholder="Ex: startup SaaS seed, MRR €15K, levée Série A dans 6 mois, besoin modèle financier + accompagnement investisseurs..."></textarea>
+            </div>
+            <div class="cf-nav">
+              <button type="button" class="cf-prev">← Retour</button>
+              <button type="submit" class="cf-submit" id="cf-btn">Envoyer ma demande →</button>
+            </div>
           </div>
-          <div class="cf-field">
-            <label for="cf-msg"><span data-fr>Votre situation en quelques mots</span><span data-en>Your situation in a few words</span></label>
-            <textarea id="cf-msg" name="message" placeholder="Ex : startup SaaS en phase seed, je cherche à préparer ma levée de fonds Série A..."></textarea>
-          </div>
-          <button type="submit" class="cf-submit" id="cf-btn">
-            <span data-fr>Envoyer ma demande →</span><span data-en>Send my request →</span>
-          </button>
+
         </form>
+
         <div class="cf-success" id="cf-success">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <h4><span data-fr>Message reçu !</span><span data-en>Message received!</span></h4>
-          <p><span data-fr>On revient vers vous sous 24h avec une première analyse.</span><span data-en>We'll get back to you within 24h with a first analysis.</span></p>
+          <h4>Demande reçue !</h4>
+          <p>On revient vers vous sous 24h avec une première analyse personnalisée.</p>
         </div>
       </div>
     </div>
@@ -701,50 +850,89 @@ document.querySelectorAll('.scard').forEach(function(card){
   }).catch(function(){});
 })();
 
-// ── Contact Form → Netlify Function (appelle HubSpot + Brevo côté serveur) ──
+// ── Contact Form — wizard 3 steps ──
 (function(){
   var form = document.getElementById('cf-form');
-  var btn  = document.getElementById('cf-btn');
-  var succ = document.getElementById('cf-success');
-  var emailErr = document.getElementById('cf-email-err');
   if(!form) return;
+  var succ = document.getElementById('cf-success');
+  var cur  = 1;
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    emailErr.style.display = 'none';
+  function val(name){ var el=form.querySelector('[name="'+name+'"]'); return el?el.value.trim():''; }
 
-    var firstname = form.querySelector('[name="firstname"]').value.trim();
-    var email     = form.querySelector('[name="email"]').value.trim();
-    var type      = form.querySelector('[name="company_type"]').value;
-    var message   = form.querySelector('[name="message"]').value.trim();
-
-    if(!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)){
-      emailErr.style.display = 'block'; return;
-    }
-    if(!firstname || !type){ return; }
-
-    btn.disabled = true;
-    btn.textContent = '...';
-
-    fetch('/.netlify/functions/contact', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ firstname: firstname, email: email, company_type: type, message: message })
-    })
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      if(data.success){
-        form.style.display = 'none';
-        succ.style.display = 'block';
-      } else {
-        btn.disabled = false;
-        btn.innerHTML = '<span data-fr>Envoyer ma demande →</span><span data-en>Send my request →</span>';
-      }
-    })
-    .catch(function(){
-      btn.disabled = false;
-      btn.innerHTML = '<span data-fr>Envoyer ma demande →</span><span data-en>Send my request →</span>';
+  function setStep(n){
+    // progress dots
+    [1,2,3].forEach(function(i){
+      var dot=document.getElementById('cp'+i);
+      dot.classList.remove('active','done');
+      if(i<n) dot.classList.add('done');
+      if(i===n) dot.classList.add('active');
     });
+    // steps
+    document.querySelector('.cf-step.active').classList.remove('active');
+    document.getElementById('cf-step-'+n).classList.add('active');
+    cur=n;
+  }
+
+  function validateStep(n){
+    var step=document.getElementById('cf-step-'+n);
+    var ok=true;
+    step.querySelectorAll('[required]').forEach(function(el){
+      var err=el.parentNode.querySelector('.cf-field-err');
+      var v=el.value.trim();
+      var invalid=(el.type==='email')&&v&&!v.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+      if(!v||invalid){
+        if(err) err.style.display='block';
+        if(ok) el.focus();
+        ok=false;
+      } else {
+        if(err) err.style.display='none';
+      }
+    });
+    return ok;
+  }
+
+  // Next buttons
+  form.querySelectorAll('.cf-next').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      if(validateStep(cur)) setStep(cur+1);
+    });
+  });
+
+  // Back buttons
+  form.querySelectorAll('.cf-prev').forEach(function(btn){
+    btn.addEventListener('click',function(){ setStep(cur-1); });
+  });
+
+  // Submit
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!validateStep(3)) return;
+    var btn=document.getElementById('cf-btn');
+    btn.disabled=true; btn.textContent='...';
+
+    fetch('/.netlify/functions/contact',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        firstname:   val('firstname'),
+        email:       val('email'),
+        role:        val('role'),
+        company_type:val('company_type'),
+        industry:    val('industry'),
+        stage:       val('stage'),
+        revenue:     val('revenue'),
+        problem:     val('problem'),
+        budget:      val('budget'),
+        urgency:     val('urgency'),
+        message:     val('message')
+      })
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if(d.success){ form.style.display='none'; succ.style.display='block'; }
+      else{ btn.disabled=false; btn.textContent='Envoyer ma demande →'; }
+    })
+    .catch(function(){ btn.disabled=false; btn.textContent='Envoyer ma demande →'; });
   });
 })();
 

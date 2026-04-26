@@ -1,61 +1,68 @@
 // ─────────────────────────────────────────────────────────────────
-//  Executio — Contact Form Pipeline
-//  Flow: Contact form → HubSpot (contact + deal + association) + Brevo
+//  Executio — Lead Pipeline (form 3 steps)
+//  HubSpot: contact + deal avec lead score + Brevo: liste prospects
 //
-//  Env vars requis dans Netlify (Site settings > Environment variables) :
-//    HUBSPOT_TOKEN   — Private App token (scopes: contacts rw, deals w, associations w)
+//  Netlify env vars:
+//    HUBSPOT_TOKEN   — Private App (scopes: contacts rw, deals w, associations w)
 //    BREVO_API_KEY   — Brevo > Account > API Keys
-//    BREVO_LIST_ID   — (optionnel) ID de ta liste "Prospects" dans Brevo
+//    BREVO_LIST_ID   — (optionnel) ID liste "Prospects" dans Brevo
 // ─────────────────────────────────────────────────────────────────
 
-// Valeur estimée du deal selon le type de structure
-const DEAL_AMOUNTS = {
-  'Startup':               2500,
-  'Scale-up':              5000,
-  'PME':                   2000,
-  'Indépendant / Freelance': 900,
-  'Autre':                 2000
-};
+// Lead scoring : estime la valeur du deal selon le profil
+function scoreDeal({ role, company_type, stage, budget, urgency }) {
+  // Base par budget déclaré
+  const budgetMap = {
+    'Plus de €3.000 / mois':    5500,
+    '€1.500 – €3.000 / mois':  2500,
+    '€500 – €1.500 / mois':    1100,
+    'Moins de €500 / mois':     500,
+    'À définir':                2000
+  };
+  let amount = budgetMap[budget] || 2000;
 
-// ── HubSpot helpers ───────────────────────────────────────────────
+  // Boost rôle décisionnaire
+  if (['Fondateur / CEO','Co-fondateur','CFO / Directeur Financier'].includes(role)) amount *= 1.4;
 
-async function hsPost(token, path, body) {
+  // Boost stage avancé
+  if (['Série A','Série B+','Scale-up','PME en croissance'].includes(stage)) amount *= 1.2;
+
+  // Boost urgence
+  if (urgency === 'Urgent (< 1 mois)') amount *= 1.3;
+
+  // Priorité
+  const priority = amount >= 4000 ? 'HIGH' : amount >= 1500 ? 'MEDIUM' : 'LOW';
+
+  return { amount: Math.round(amount), priority };
+}
+
+// ── HubSpot helpers ──────────────────────────────────────────────
+
+async function hs(token, method, path, body) {
   const r = await fetch(`https://api.hubapi.com${path}`, {
-    method: 'POST',
+    method,
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-    body: JSON.stringify(body)
+    body: body ? JSON.stringify(body) : undefined
   });
   return { status: r.status, data: await r.json() };
 }
 
-async function hsPatch(token, path, body) {
-  const r = await fetch(`https://api.hubapi.com${path}`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-    body: JSON.stringify(body)
-  });
-  return { status: r.status, data: await r.json() };
-}
+async function upsertContact(token, fields) {
+  const props = {
+    firstname:      fields.firstname,
+    email:          fields.email,
+    jobtitle:       fields.role,
+    company:        fields.company_type,
+    industry:       fields.industry,
+    hs_lead_status: 'NEW'
+  };
 
-async function hsPut(token, path) {
-  await fetch(`https://api.hubapi.com${path}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
-  });
-}
-
-// ── 1. Upsert contact ─────────────────────────────────────────────
-
-async function upsertContact(token, { firstname, email, company_type }) {
-  const props = { firstname, email, company: company_type, hs_lead_status: 'NEW' };
-  const { status, data } = await hsPost(token, '/crm/v3/objects/contacts', { properties: props });
+  const { status, data } = await hs(token, 'POST', '/crm/v3/objects/contacts', { properties: props });
 
   if (status === 409) {
-    // Contact déjà existant → mise à jour + récupération de l'ID
-    const { data: updated } = await hsPatch(
-      token,
-      `/crm/v3/objects/contacts/${encodeURIComponent(email)}?idProperty=email`,
-      { properties: { firstname, company: company_type } }
+    const { data: updated } = await hs(
+      token, 'PATCH',
+      `/crm/v3/objects/contacts/${encodeURIComponent(fields.email)}?idProperty=email`,
+      { properties: { firstname: fields.firstname, jobtitle: fields.role, company: fields.company_type, industry: fields.industry } }
     );
     return updated.id || null;
   }
@@ -63,48 +70,50 @@ async function upsertContact(token, { firstname, email, company_type }) {
   return data.id || null;
 }
 
-// ── 2. Créer deal dans la pipeline ────────────────────────────────
+async function createDeal(token, fields, contactId) {
+  const { amount, priority } = scoreDeal(fields);
+  const close = new Date();
+  close.setDate(close.getDate() + 45);
 
-async function createDeal(token, { firstname, company_type, message }, contactId) {
-  const amount  = DEAL_AMOUNTS[company_type] || 2000;
-  const close   = new Date();
-  close.setDate(close.getDate() + 30);
+  const description = [
+    `Stade: ${fields.stage || '—'}`,
+    `CA annuel: ${fields.revenue || '—'}`,
+    `Problème: ${fields.problem || '—'}`,
+    `Urgence: ${fields.urgency || '—'}`,
+    fields.message ? `\nMessage: ${fields.message}` : ''
+  ].filter(Boolean).join('\n');
 
-  const { data: deal } = await hsPost(token, '/crm/v3/objects/deals', {
+  const { data: deal } = await hs(token, 'POST', '/crm/v3/objects/deals', {
     properties: {
-      dealname:    `Executio — ${firstname} (${company_type})`,
+      dealname:    `Executio — ${fields.firstname} (${fields.company_type})`,
       pipeline:    'default',
-      // Stage par défaut = premier stage "Appointment Scheduled"
-      // Si tu as une pipeline custom, remplace par l'ID de ton premier stage
       dealstage:   'appointmentscheduled',
-      amount:       amount,
-      closedate:    close.toISOString().split('T')[0],
-      description:  message || '',
+      amount,
+      closedate:   close.toISOString().split('T')[0],
+      description,
+      hs_priority: priority.toLowerCase(),
       deal_source: 'Website Form'
     }
   });
 
-  if (!deal.id) return null;
-
-  // ── 3. Associer contact ↔ deal ───────────────────────────────────
-  if (contactId) {
-    await hsPut(
-      token,
+  if (deal.id && contactId) {
+    await hs(token, 'PUT',
       `/crm/v4/objects/contacts/${contactId}/associations/default/deals/${deal.id}`
     );
   }
 
-  return deal.id;
+  return deal.id || null;
 }
 
-// ── 4. Brevo ──────────────────────────────────────────────────────
+// ── Brevo ────────────────────────────────────────────────────────
 
-async function addToBrevo(apiKey, listId, { firstname, email, company_type }) {
+async function addToBrevo(apiKey, listId, fields) {
   const payload = {
-    email,
+    email: fields.email,
     attributes: {
-      FIRSTNAME:  firstname,
-      COMPANY:    company_type,
+      FIRSTNAME:  fields.firstname,
+      COMPANY:    fields.company_type,
+      JOBTITLE:   fields.role,
       SOURCE:     'Site web Executio'
     },
     updateEnabled: true
@@ -118,22 +127,19 @@ async function addToBrevo(apiKey, listId, { firstname, email, company_type }) {
   });
 }
 
-// ── Handler principal ─────────────────────────────────────────────
+// ── Handler ──────────────────────────────────────────────────────
 
 export const handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
     return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Content-Type' } };
   }
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
-  }
+  if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' };
 
   let body;
   try { body = JSON.parse(event.body); }
   catch { return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON' }) }; }
 
-  const { firstname, email, company_type, message } = body;
-  if (!firstname || !email || !company_type) {
+  if (!body.firstname || !body.email || !body.company_type) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Champs requis manquants' }) };
   }
 
@@ -141,23 +147,16 @@ export const handler = async (event) => {
   const BR = process.env.BREVO_API_KEY;
   const BR_LIST = process.env.BREVO_LIST_ID;
 
-  // HubSpot : contact → deal → association (en séquence car le deal dépend de l'ID contact)
   if (HS) {
     try {
-      const contactId = await upsertContact(HS, { firstname, email, company_type });
-      await createDeal(HS, { firstname, company_type, message }, contactId);
-    } catch (e) {
-      console.error('[HubSpot]', e.message);
-    }
+      const contactId = await upsertContact(HS, body);
+      await createDeal(HS, body, contactId);
+    } catch (e) { console.error('[HubSpot]', e.message); }
   }
 
-  // Brevo : indépendant du reste
   if (BR) {
-    try {
-      await addToBrevo(BR, BR_LIST, { firstname, email, company_type });
-    } catch (e) {
-      console.error('[Brevo]', e.message);
-    }
+    try { await addToBrevo(BR, BR_LIST, body); }
+    catch (e) { console.error('[Brevo]', e.message); }
   }
 
   return {
