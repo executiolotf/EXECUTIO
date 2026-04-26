@@ -701,12 +701,9 @@ document.querySelectorAll('.scard').forEach(function(card){
   }).catch(function(){});
 })();
 
-// ── Contact Form → HubSpot API (public endpoint, no secret key) ──
-// ⚙️ SETUP: remplace ces deux valeurs avec celles de ton compte HubSpot
-// Portal ID : HubSpot > Settings > Account Defaults > Account ID
-// Form GUID : HubSpot > Marketing > Forms > ton formulaire > URL
-var HS_PORTAL = 'VOTRE_PORTAL_ID';
-var HS_FORM   = 'VOTRE_FORM_GUID';
+// ── Contact Form → Web3Forms (clé publique, zéro backend, zéro Netlify) ──
+// ⚙️ SETUP : va sur web3forms.com → crée un compte avec contact@exe-cutio.com → copie ta clé ici
+var W3F_KEY = 'VOTRE_CLE_WEB3FORMS';
 
 (function(){
   var form = document.getElementById('cf-form');
@@ -732,29 +729,26 @@ var HS_FORM   = 'VOTRE_FORM_GUID';
     btn.disabled = true;
     btn.textContent = '...';
 
-    var payload = {
-      fields: [
-        {name:'firstname',    value: firstname},
-        {name:'email',        value: email},
-        {name:'company_type', value: type},
-        {name:'message',      value: message}
-      ],
-      context: { pageUri: 'https://exe-cutio.com', pageName: 'EXECUTIO' }
-    };
-
-    fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+HS_PORTAL+'/'+HS_FORM, {
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        access_key: W3F_KEY,
+        subject: 'Nouveau contact Executio — ' + type,
+        name: firstname,
+        email: email,
+        type_structure: type,
+        message: message || '(pas de message)'
+      })
     })
-    .then(function(r){
-      if(r.ok || r.status===200){
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(data.success){
         form.style.display = 'none';
         succ.style.display = 'block';
       } else {
         btn.disabled = false;
         btn.innerHTML = '<span data-fr>Envoyer ma demande →</span><span data-en>Send my request →</span>';
-        alert('Erreur lors de l\'envoi. Réessayez ou écrivez à contact@exe-cutio.com');
       }
     })
     .catch(function(){
