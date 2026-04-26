@@ -68,12 +68,23 @@ async function upsertPerson(apiKey, fields) {
   return data?.data?.id?.record_id || null;
 }
 
-async function addToPipeline(apiKey, listId, personId) {
+async function addToPipeline(apiKey, listId, personId, fields) {
+  const { amount, priority } = scoreDeal(fields);
+
+  const closeDate = new Date();
+  closeDate.setDate(closeDate.getDate() + 45);
+  const closeDateStr = closeDate.toISOString().split('T')[0];
+
+  const probabilityMap = { HIGH: 75, MEDIUM: 45, LOW: 20 };
+
   const { status, data } = await attio(apiKey, 'POST',
     `/lists/${listId}/entries`,
     {
       data: {
-        record_id: { object: 'people', record_id: personId }
+        record_id:              { object: 'people', record_id: personId },
+        valore_deal:            [{ currency_value: amount, currency_code: 'EUR' }],
+        data_chiusura_prevista: [{ value: closeDateStr }],
+        probabilita:            [{ value: probabilityMap[priority] }]
       }
     }
   );
@@ -162,7 +173,7 @@ export const handler = async (event) => {
     try {
       const personId = await upsertPerson(AT, body);
       if (personId) {
-        if (AT_LIST) await addToPipeline(AT, AT_LIST, personId);
+        if (AT_LIST) await addToPipeline(AT, AT_LIST, personId, body);
         await createNote(AT, personId, body);
       }
     } catch (e) { console.error('[Attio]', e.message); }
