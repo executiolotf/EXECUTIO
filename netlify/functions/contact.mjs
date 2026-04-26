@@ -168,6 +168,20 @@ export const handler = async (event) => {
       headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Content-Type' }
     };
   }
+
+  // Diagnostic temporaire — GET retourne le statut des env vars
+  if (event.httpMethod === 'GET') {
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ATTIO_API_KEY:  !!process.env.ATTIO_API_KEY,
+        ATTIO_LIST_ID:  process.env.ATTIO_LIST_ID || null,
+        BREVO_API_KEY:  !!process.env.BREVO_API_KEY,
+      })
+    };
+  }
+
   if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' };
 
   let body;
