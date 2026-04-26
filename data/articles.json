@@ -6,7 +6,8 @@
     "excerpt": "Découvrez pourquoi de plus en plus de startups font appel à un directeur financier externalisé — et comment cette approche transforme le pilotage financier.",
     "readTime": "8 min",
     "date": "2025-01-15",
-    "icon": "briefcase"
+    "icon": "briefcase",
+    "image": "https://images.pexels.com/photos/8068724/pexels-photo-8068724.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
   },
   {
     "slug": "preparer-levee-de-fonds",
@@ -15,7 +16,8 @@
     "excerpt": "Business plan, modèle financier, due diligence — tout ce que les investisseurs examinent à la loupe avant d'investir dans votre startup.",
     "readTime": "11 min",
     "date": "2025-02-01",
-    "icon": "trending-up"
+    "icon": "trending-up",
+    "image": "https://images.pexels.com/photos/30917896/pexels-photo-30917896.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
   },
   {
     "slug": "kpis-financiers-investisseurs",
@@ -24,7 +26,8 @@
     "excerpt": "MRR, CAC, LTV, burn rate — les métriques que tout investisseur analysera en priorité et comment les optimiser avant votre pitch.",
     "readTime": "9 min",
     "date": "2025-02-15",
-    "icon": "bar-chart"
+    "icon": "bar-chart",
+    "image": "https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
   },
   {
     "slug": "burn-rate-runway-tresorerie",
@@ -33,7 +36,8 @@
     "excerpt": "Comment calculer et piloter votre burn rate et runway — le guide pour gérer la trésorerie et éviter de manquer de cash.",
     "readTime": "7 min",
     "date": "2025-03-01",
-    "icon": "clock"
+    "icon": "clock",
+    "image": "https://images.pexels.com/photos/545065/pexels-photo-545065.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
   },
   {
     "slug": "restructuration-financiere-pme",
@@ -42,6 +46,7 @@
     "excerpt": "Signaux d'alerte, étapes clés, renégociation de dette et optimisation des coûts. Guide pratique pour redresser votre situation financière.",
     "readTime": "8 min",
     "date": "2025-03-15",
-    "icon": "shield"
+    "icon": "shield",
+    "image": "https://images.pexels.com/photos/5816296/pexels-photo-5816296.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
   }
 ]
