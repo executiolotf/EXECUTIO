@@ -27,9 +27,54 @@
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+body { font-family: 'DM Sans', sans-serif; color: var(--navy); background: var(--white); overflow-x: hidden; cursor: none; }
 
-/* NAV */
+/* ── CURSOR ── */
+#cursor {
+  position: fixed; width: 36px; height: 36px;
+  border: 1.5px solid rgba(77,163,224,0.6); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .25s, height .25s, background .25s, border-color .25s;
+  mix-blend-mode: screen;
+}
+#cursor-dot {
+  position: fixed; width: 5px; height: 5px;
+  background: var(--sky); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform .08s;
+}
+.cursor-hover { width: 60px !important; height: 60px !important; background: rgba(77,163,224,0.08) !important; border-color: var(--sky) !important; }
+
+/* ── SCROLL PROGRESS ── */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--sky));
+  transform-origin: left; transform: scaleX(0);
+  z-index: 1001; transition: none;
+}
+
+/* ── AVAILABILITY BADGE ── */
+#availability-badge {
+  position: fixed; bottom: 2rem; right: 2rem;
+  background: rgba(9,27,48,0.92); backdrop-filter: blur(16px);
+  border: 1px solid rgba(77,163,224,0.22); border-radius: 100px;
+  padding: .65rem 1.1rem; display: flex; align-items: center; gap: 9px;
+  font-size: .71rem; letter-spacing: .06em; color: rgba(255,255,255,.65);
+  z-index: 500; opacity: 0; cursor: default;
+  box-shadow: 0 8px 32px rgba(0,0,0,.3);
+}
+.badge-dot {
+  width: 7px; height: 7px; background: #22c55e; border-radius: 50%;
+  flex-shrink: 0; animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,.5); }
+  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+
+/* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; justify-content: space-between; align-items: center;
@@ -37,67 +82,78 @@ nav {
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(13,35,64,0.09);
+  transition: padding .3s, box-shadow .3s;
 }
+nav.scrolled { padding: .7rem 5%; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
 .logo-nav span {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem; font-weight: 700;
-  letter-spacing: 0.14em; color: var(--navy);
+  letter-spacing: .14em; color: var(--navy);
 }
 .nav-links { display: flex; gap: 1.8rem; align-items: center; }
 .nav-links a {
-  text-decoration: none; font-size: 0.79rem; font-weight: 500;
-  letter-spacing: 0.07em; text-transform: uppercase;
-  color: var(--navy); opacity: 0.6; transition: opacity 0.2s;
-  cursor: pointer;
+  text-decoration: none; font-size: .79rem; font-weight: 500;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: var(--navy); opacity: .6; transition: opacity .2s; cursor: none;
 }
 .nav-links a:hover { opacity: 1; }
 .nav-cta {
   background: var(--navy) !important; color: white !important;
-  padding: 0.52rem 1.3rem !important; border-radius: 2px !important;
-  opacity: 1 !important; transition: background 0.2s !important;
+  padding: .52rem 1.3rem !important; border-radius: 2px !important;
+  opacity: 1 !important; transition: background .2s !important;
 }
 .nav-cta:hover { background: var(--blue) !important; }
-.lang-toggle { display: flex; margin-left: 0.4rem; }
+.lang-toggle { display: flex; margin-left: .4rem; }
 .lang-btn {
-  background: none; border: 1px solid rgba(13,35,64,0.2);
-  font-family: 'DM Sans', sans-serif; font-size: 0.69rem;
-  font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-  cursor: pointer; padding: 0.27rem 0.62rem; color: var(--navy); transition: all 0.2s;
+  background: none; border: 1px solid rgba(13,35,64,.2);
+  font-family: 'DM Sans', sans-serif; font-size: .69rem;
+  font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+  cursor: none; padding: .27rem .62rem; color: var(--navy); transition: all .2s;
 }
 .lang-btn:first-child { border-radius: 2px 0 0 2px; }
 .lang-btn:last-child { border-radius: 0 2px 2px 0; border-left: none; }
 .lang-btn.active { background: var(--navy); color: white; border-color: var(--navy); }
 
-/* HERO */
+/* ── HERO ── */
 .hero {
   min-height: 100vh; display: flex; align-items: center;
   position: relative; overflow: hidden; background: var(--navy);
   padding: 7rem 5% 11rem;
 }
+.hero-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: .18; z-index: 0;
+}
 .hero-grid {
-  position: absolute; inset: 0;
+  position: absolute; inset: 0; z-index: 1;
   background-image:
-    linear-gradient(rgba(74,163,224,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74,163,224,0.05) 1px, transparent 1px);
+    linear-gradient(rgba(74,163,224,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,163,224,.05) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 .hero-glow {
-  position: absolute; right: -5%; top: 5%;
-  width: 560px; height: 560px;
-  background: radial-gradient(circle, rgba(26,107,186,0.3) 0%, transparent 65%);
+  position: absolute; right: -5%; top: 5%; z-index: 1;
+  width: 640px; height: 640px;
+  background: radial-gradient(circle, rgba(26,107,186,.35) 0%, transparent 65%);
   pointer-events: none;
 }
-.hero-content { position: relative; z-index: 2; max-width: 680px; animation: fadeUp 0.9s ease both; }
+.hero-glow-2 {
+  position: absolute; left: -10%; bottom: 0%; z-index: 1;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(77,163,224,.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 680px; }
 .hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 0.69rem; font-weight: 500; letter-spacing: 0.2em;
+  display: inline-flex; align-items: center; gap: 10px; opacity: 0;
+  font-size: .69rem; font-weight: 500; letter-spacing: .2em;
   text-transform: uppercase; color: var(--sky); margin-bottom: 1.8rem;
 }
 .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--sky); }
 .hero h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300;
-  line-height: 1.1; color: white; margin-bottom: 1.5rem;
+  font-size: clamp(2.8rem, 5vw, 4.8rem); font-weight: 300;
+  line-height: 1.08; color: white; margin-bottom: 1.5rem; opacity: 0;
 }
 .hero h1 em {
   font-style: normal; font-weight: 600;
@@ -105,155 +161,177 @@ nav {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-sub {
-  font-size: 1rem; font-weight: 300; line-height: 1.8;
-  color: rgba(255,255,255,0.58); max-width: 500px; margin-bottom: 2.5rem;
+  font-size: 1rem; font-weight: 300; line-height: 1.85;
+  color: rgba(255,255,255,.55); max-width: 500px; margin-bottom: 2.5rem; opacity: 0;
 }
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; }
 .btn-primary {
   display: inline-block;
   background: linear-gradient(135deg, #1a6bba, #4da3e0);
   color: white; text-decoration: none;
-  padding: 0.9rem 2.1rem; font-size: 0.82rem; font-weight: 500;
-  letter-spacing: 0.06em; border-radius: 2px; border: none; cursor: pointer;
-  transition: opacity 0.2s, transform 0.2s;
+  padding: .95rem 2.2rem; font-size: .82rem; font-weight: 500;
+  letter-spacing: .06em; border-radius: 2px; border: none; cursor: none;
+  transition: opacity .2s, box-shadow .3s;
+  will-change: transform;
 }
-.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-primary:hover { opacity: .9; box-shadow: 0 8px 30px rgba(26,107,186,.4); }
 .btn-outline {
-  display: inline-block; border: 1px solid rgba(255,255,255,0.28);
+  display: inline-block; border: 1px solid rgba(255,255,255,.28);
   color: white; text-decoration: none;
-  padding: 0.9rem 2.1rem; font-size: 0.82rem; font-weight: 500;
-  letter-spacing: 0.06em; border-radius: 2px; background: none; cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
+  padding: .95rem 2.2rem; font-size: .82rem; font-weight: 500;
+  letter-spacing: .06em; border-radius: 2px; background: none; cursor: none;
+  transition: border-color .2s, background .2s;
 }
-.btn-outline:hover { border-color: var(--sky); background: rgba(77,163,224,0.1); }
+.btn-outline:hover { border-color: var(--sky); background: rgba(77,163,224,.1); }
 .hero-stats {
   position: absolute; bottom: 0; left: 0; right: 0;
   display: flex; padding: 1.8rem 5%;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  background: rgba(0,0,0,0.18); z-index: 2; gap: 3rem; flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.18); z-index: 2; gap: 3rem; flex-wrap: wrap;
 }
+.stat-item { opacity: 0; }
 .stat-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem; font-weight: 600; color: white; line-height: 1;
+  font-size: 2.2rem; font-weight: 600; color: white; line-height: 1;
 }
 .stat-label {
-  font-size: 0.68rem; font-weight: 400; letter-spacing: 0.1em;
-  text-transform: uppercase; color: rgba(255,255,255,0.38); margin-top: 3px;
+  font-size: .68rem; font-weight: 400; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.38); margin-top: 3px;
 }
 
-/* SECTIONS */
+/* ── SECTIONS ── */
 section { padding: 6rem 5%; }
 .section-label {
-  font-size: 0.69rem; font-weight: 500; letter-spacing: 0.18em;
+  font-size: .69rem; font-weight: 500; letter-spacing: .18em;
   text-transform: uppercase; color: var(--blue); margin-bottom: 1rem;
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 10px; opacity: 0;
 }
 .section-label::before { content: ''; display: block; width: 22px; height: 1px; background: var(--blue); }
 .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.9rem, 3vw, 2.7rem); font-weight: 300;
-  line-height: 1.2; color: var(--navy); margin-bottom: 0.8rem;
+  line-height: 1.2; color: var(--navy); margin-bottom: .8rem; opacity: 0;
 }
 .section-title strong { font-weight: 600; }
 
-/* ABOUT */
+/* ── ABOUT ── */
 .about { background: white; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
-.about-text p { font-size: 0.94rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.2rem; }
+.about-text { opacity: 0; }
+.about-text p { font-size: .94rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.2rem; }
 .about-text p strong { color: var(--navy); font-weight: 500; }
-.credentials { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+.credentials { display: flex; flex-direction: column; gap: .75rem; margin-top: 2rem; }
 .cred-item {
   display: flex; align-items: center; gap: 12px;
-  padding: 0.85rem 1.1rem; border: 1px solid rgba(13,35,64,0.08); border-radius: 4px;
+  padding: .85rem 1.1rem; border: 1px solid rgba(13,35,64,.08); border-radius: 4px;
+  opacity: 0; transition: border-color .3s, box-shadow .3s;
 }
+.cred-item:hover { border-color: rgba(26,107,186,.3); box-shadow: 0 4px 20px rgba(26,107,186,.06); }
 .cred-icon {
   width: 32px; height: 32px; background: var(--light);
   border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .cred-icon svg { width: 14px; height: 14px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.cred-text { font-size: 0.83rem; color: var(--navy); font-weight: 500; }
+.cred-text { font-size: .83rem; color: var(--navy); font-weight: 500; }
+.about-card-wrap { opacity: 0; }
 .about-card { background: var(--navy); border-radius: 4px; padding: 2.4rem; position: relative; overflow: hidden; }
 .about-card::before {
   content: ''; position: absolute; top: -40px; right: -40px;
-  width: 120px; height: 120px; background: rgba(77,163,224,0.1); border-radius: 50%;
+  width: 160px; height: 160px; background: rgba(77,163,224,.08); border-radius: 50%;
 }
-.about-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 300; margin-bottom: 0.35rem; color: white; }
-.about-card-sub { font-size: 0.73rem; color: rgba(255,255,255,0.42); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.8rem; }
-.about-card-list { list-style: none; display: flex; flex-direction: column; gap: 0.72rem; }
-.about-card-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.84rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
+.about-card::after {
+  content: ''; position: absolute; bottom: -60px; left: -30px;
+  width: 120px; height: 120px; background: rgba(26,107,186,.1); border-radius: 50%;
+}
+.about-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 300; margin-bottom: .35rem; color: white; }
+.about-card-sub { font-size: .73rem; color: rgba(255,255,255,.42); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1.8rem; }
+.about-card-list { list-style: none; display: flex; flex-direction: column; gap: .72rem; }
+.about-card-list li { display: flex; align-items: flex-start; gap: 10px; font-size: .84rem; color: rgba(255,255,255,.7); line-height: 1.55; }
 .about-card-list li::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--sky); flex-shrink: 0; margin-top: 6px; }
 
-/* SERVICES */
+/* ── SERVICES ── */
 .services { background: var(--gray); }
 .services-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1.5px; margin-top: 3rem;
-  background: rgba(13,35,64,0.07); border-radius: 4px; overflow: hidden;
+  background: rgba(13,35,64,.07); border-radius: 4px; overflow: hidden;
 }
-.service-card { background: white; padding: 2.1rem 1.7rem; transition: background 0.3s; }
+.service-card {
+  background: white; padding: 2.1rem 1.7rem;
+  transition: background .3s; opacity: 0;
+  transform-style: preserve-3d; will-change: transform; cursor: none;
+}
 .service-card:hover { background: var(--navy); }
 .service-card:hover .service-title { color: white; }
-.service-card:hover .service-num { color: rgba(255,255,255,0.1); }
-.service-card:hover .service-desc { color: rgba(255,255,255,0.52); }
-.service-card:hover .service-icon { background: rgba(255,255,255,0.08); }
+.service-card:hover .service-num { color: rgba(255,255,255,.07); }
+.service-card:hover .service-desc { color: rgba(255,255,255,.5); }
+.service-card:hover .service-icon { background: rgba(255,255,255,.08); }
 .service-card:hover .service-icon svg { stroke: var(--sky); }
-.service-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: rgba(13,35,64,0.07); line-height: 1; margin-bottom: 0.75rem; transition: color 0.3s; }
-.service-icon { width: 38px; height: 38px; background: var(--light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 0.9rem; transition: background 0.3s; }
-.service-icon svg { width: 16px; height: 16px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.3s; }
-.service-title { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 600; color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3; transition: color 0.3s; }
-.service-desc { font-size: 0.82rem; line-height: 1.75; color: var(--muted); transition: color 0.3s; }
+.service-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: rgba(13,35,64,.07); line-height: 1; margin-bottom: .75rem; transition: color .3s; }
+.service-icon { width: 38px; height: 38px; background: var(--light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: .9rem; transition: background .3s; }
+.service-icon svg { width: 16px; height: 16px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s; }
+.service-title { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 600; color: var(--navy); margin-bottom: .7rem; line-height: 1.3; transition: color .3s; }
+.service-desc { font-size: .82rem; line-height: 1.75; color: var(--muted); transition: color .3s; }
 
-/* PROCESS */
+/* ── PROCESS ── */
 .process { background: white; }
 .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 3rem; position: relative; }
-.process-steps::before { content: ''; position: absolute; top: 26px; left: 12.5%; right: 12.5%; height: 1px; background: rgba(13,35,64,0.1); }
-.process-step { text-align: center; padding: 0 1.1rem; }
-.step-dot { width: 52px; height: 52px; border: 1px solid rgba(13,35,64,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.4rem; background: white; position: relative; z-index: 1; }
+.process-line {
+  position: absolute; top: 26px; left: 12.5%; right: 12.5%;
+  height: 1px; background: linear-gradient(90deg, var(--blue), var(--sky));
+  transform-origin: left; transform: scaleX(0);
+}
+.process-step { text-align: center; padding: 0 1.1rem; opacity: 0; }
+.step-dot {
+  width: 52px; height: 52px; border: 1px solid rgba(13,35,64,.15); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.4rem; background: white; position: relative; z-index: 1;
+  transition: border-color .3s, box-shadow .3s;
+}
+.step-dot:hover { border-color: var(--blue); box-shadow: 0 0 0 6px rgba(26,107,186,.08); }
 .step-dot span { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); }
-.step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.45rem; }
-.step-desc { font-size: 0.8rem; line-height: 1.7; color: var(--muted); }
+.step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: .45rem; }
+.step-desc { font-size: .8rem; line-height: 1.7; color: var(--muted); }
 
-/* BOOKING */
+/* ── BOOKING ── */
 .booking { background: var(--navy); position: relative; overflow: hidden; }
 .booking-bg {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(74,163,224,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74,163,224,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(74,163,224,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,163,224,.04) 1px, transparent 1px);
   background-size: 50px 50px;
 }
-.booking-glow { position: absolute; left: -5%; top: -20%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(26,107,186,0.26) 0%, transparent 65%); pointer-events: none; }
+.booking-glow { position: absolute; left: -5%; top: -20%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(26,107,186,.26) 0%, transparent 65%); pointer-events: none; }
 .booking-content { position: relative; z-index: 2; }
-.booking-header { margin-bottom: 2.5rem; }
-.booking-header .section-label { color: var(--sky); }
+.booking-header { margin-bottom: 2.5rem; opacity: 0; }
+.booking-header .section-label { color: var(--sky); opacity: 1; }
 .booking-header .section-label::before { background: var(--sky); }
-.booking-header .section-title { color: white; }
+.booking-header .section-title { color: white; opacity: 1; }
 .booking-header .section-title strong { color: var(--sky); }
-.booking-sub { font-size: 0.93rem; color: rgba(255,255,255,0.48); line-height: 1.8; max-width: 460px; margin-top: 0.75rem; }
+.booking-sub { font-size: .93rem; color: rgba(255,255,255,.48); line-height: 1.8; max-width: 460px; margin-top: .75rem; }
+.calendly-wrap { opacity: 0; }
 .calendly-inline-widget { background: white; border-radius: 6px; overflow: hidden; min-height: 700px; }
 
-/* FOOTER */
+/* ── FOOTER ── */
 footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-.footer-brand span { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.14em; color: rgba(255,255,255,0.48); }
-.footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.26); }
-.footer-link { font-size: 0.72rem; color: rgba(255,255,255,0.36); text-decoration: none; transition: color 0.2s; }
+.footer-brand span { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: .14em; color: rgba(255,255,255,.48); }
+.footer-copy { font-size: .72rem; color: rgba(255,255,255,.26); }
+.footer-link { font-size: .72rem; color: rgba(255,255,255,.36); text-decoration: none; transition: color .2s; cursor: none; }
 .footer-link:hover { color: var(--sky); }
 
-/* ANIMATIONS */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-
-/* MULTILANG */
+/* ── MULTILANG ── */
 .lang-fr [data-en] { display: none; }
 .lang-en [data-fr] { display: none; }
 
-/* RESPONSIVE */
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .services-grid { grid-template-columns: 1fr 1fr; }
   .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-  .process-steps::before { display: none; }
+  .process-line { display: none; }
+  body { cursor: auto; }
+  #cursor, #cursor-dot { display: none; }
 }
 @media (max-width: 600px) {
   .nav-links { display: none; }
@@ -265,8 +343,22 @@ footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content
 </head>
 <body class="lang-fr">
 
+<!-- Cursor -->
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- Scroll progress -->
+<div id="scroll-progress"></div>
+
+<!-- Availability badge -->
+<div id="availability-badge">
+  <div class="badge-dot"></div>
+  <span data-fr>Disponible pour nouveaux clients</span>
+  <span data-en>Available for new clients</span>
+</div>
+
 <!-- NAV -->
-<nav>
+<nav id="nav">
   <div class="logo-nav"><span>EXECUTIO</span></div>
   <div class="nav-links">
     <a onclick="goTo('about')"><span data-fr>À propos</span><span data-en>About</span></a>
@@ -282,8 +374,13 @@ footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://videos.pexels.com/video-files/3195394/3195394-hd_1280_720_25fps.mp4" type="video/mp4">
+    <source src="https://videos.pexels.com/video-files/7578539/7578539-hd_1280_720_30fps.mp4" type="video/mp4">
+  </video>
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">
       <span>Financial Advisory · CFO Services · 100% Remote</span>
@@ -297,7 +394,7 @@ footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content
       <span data-en>Financial advisory and CFO management expert for dozens of companies. Today, I bring this expertise to startups and SMEs — 100% remote, no long-term commitment.</span>
     </p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="openCalendly()">
+      <button class="btn-primary" id="cta-main" onclick="openCalendly()">
         <span data-fr>Réserver un appel gratuit</span>
         <span data-en>Book a free call</span>
       </button>
@@ -309,15 +406,15 @@ footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content
   </div>
   <div class="hero-stats">
     <div class="stat-item">
-      <div class="stat-num">5+</div>
+      <div class="stat-num" data-count="5" data-suffix="+">0+</div>
       <div class="stat-label"><span data-fr>Années d'expérience</span><span data-en>Years of experience</span></div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">10+</div>
+      <div class="stat-num" data-count="10" data-suffix="+">0+</div>
       <div class="stat-label"><span data-fr>Entreprises accompagnées</span><span data-en>Companies advised</span></div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">100%</div>
+      <div class="stat-num" data-count="100" data-suffix="%">0%</div>
       <div class="stat-label"><span data-fr>À distance</span><span data-en>Remote only</span></div>
     </div>
     <div class="stat-item">
@@ -329,10 +426,10 @@ footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <div class="section-label fade-up"><span data-fr>À propos</span><span data-en>About</span></div>
-  <div class="about-grid fade-up">
+  <div class="section-label"><span data-fr>À propos</span><span data-en>About</span></div>
+  <div class="about-grid">
     <div class="about-text">
-      <h2 class="section-title">
+      <h2 class="section-title" style="opacity:1">
         <span data-fr>L'expertise CFO,<br><strong>sans le coût d'un CFO à plein temps</strong></span>
         <span data-en>CFO expertise,<br><strong>without the full-time CFO cost</strong></span>
       </h2>
@@ -360,16 +457,18 @@ footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content
       </div>
     </div>
     <div>
-      <div class="about-card">
-        <div class="about-card-title"><span data-fr>Ce que vous obtenez</span><span data-en>What you get</span></div>
-        <div class="about-card-sub"><span data-fr>Dès le premier appel</span><span data-en>From the first call</span></div>
-        <ul class="about-card-list">
-          <li><span data-fr>Un diagnostic financier honnête et précis de votre situation</span><span data-en>An honest and precise financial diagnosis of your situation</span></li>
-          <li><span data-fr>Des recommandations actionnables, pas de la théorie</span><span data-en>Actionable recommendations, not theory</span></li>
-          <li><span data-fr>Un interlocuteur senior disponible et réactif</span><span data-en>A senior advisor available and responsive</span></li>
-          <li><span data-fr>Flexibilité totale — session unique ou suivi régulier</span><span data-en>Total flexibility — single session or regular follow-up</span></li>
-          <li><span data-fr>Confidentialité absolue et rigueur professionnelle</span><span data-en>Absolute confidentiality and professional rigor</span></li>
-        </ul>
+      <div class="about-card-wrap">
+        <div class="about-card">
+          <div class="about-card-title"><span data-fr>Ce que vous obtenez</span><span data-en>What you get</span></div>
+          <div class="about-card-sub"><span data-fr>Dès le premier appel</span><span data-en>From the first call</span></div>
+          <ul class="about-card-list">
+            <li><span data-fr>Un diagnostic financier honnête et précis de votre situation</span><span data-en>An honest and precise financial diagnosis of your situation</span></li>
+            <li><span data-fr>Des recommandations actionnables, pas de la théorie</span><span data-en>Actionable recommendations, not theory</span></li>
+            <li><span data-fr>Un interlocuteur senior disponible et réactif</span><span data-en>A senior advisor available and responsive</span></li>
+            <li><span data-fr>Flexibilité totale — session unique ou suivi régulier</span><span data-en>Total flexibility — single session or regular follow-up</span></li>
+            <li><span data-fr>Confidentialité absolue et rigueur professionnelle</span><span data-en>Absolute confidentiality and professional rigor</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -377,84 +476,60 @@ footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content
 
 <!-- SERVICES -->
 <section class="services" id="services">
-  <div class="section-label fade-up"><span data-fr>Services</span><span data-en>Services</span></div>
-  <h2 class="section-title fade-up">
+  <div class="section-label"><span data-fr>Services</span><span data-en>Services</span></div>
+  <h2 class="section-title">
     <span data-fr>Une expertise,<br><strong>plusieurs applications</strong></span>
     <span data-en>One expertise,<br><strong>multiple applications</strong></span>
   </h2>
-  <div class="services-grid fade-up">
-
+  <div class="services-grid">
     <div class="service-card">
       <div class="service-num">01</div>
       <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
       <div class="service-title"><span data-fr>Advisory Financier Startup</span><span data-en>Startup Financial Advisory</span></div>
-      <p class="service-desc">
-        <span data-fr>Levée de fonds, structure financière, modélisation, gestion de trésorerie, KPIs investisseurs. Tout ce qu'une startup doit maîtriser pour croître.</span>
-        <span data-en>Fundraising, financial structure, modeling, cash management, investor KPIs. Everything a startup needs to master to grow.</span>
-      </p>
+      <p class="service-desc"><span data-fr>Levée de fonds, structure financière, modélisation, gestion de trésorerie, KPIs investisseurs. Tout ce qu'une startup doit maîtriser pour croître.</span><span data-en>Fundraising, financial structure, modeling, cash management, investor KPIs. Everything a startup needs to master to grow.</span></p>
     </div>
-
     <div class="service-card">
       <div class="service-num">02</div>
       <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
       <div class="service-title"><span data-fr>CFO as a Service</span><span data-en>CFO as a Service</span></div>
-      <p class="service-desc">
-        <span data-fr>Reporting, contrôle de gestion, tableaux de bord, relations avec les banques et investisseurs. La puissance d'un CFO, sans le salaire plein temps.</span>
-        <span data-en>Reporting, management control, dashboards, bank and investor relations. The power of a CFO, without the full-time salary.</span>
-      </p>
+      <p class="service-desc"><span data-fr>Reporting, contrôle de gestion, tableaux de bord, relations avec les banques et investisseurs. La puissance d'un CFO, sans le salaire plein temps.</span><span data-en>Reporting, management control, dashboards, bank and investor relations. The power of a CFO, without the full-time salary.</span></p>
     </div>
-
     <div class="service-card">
       <div class="service-num">03</div>
       <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
       <div class="service-title"><span data-fr>Coaching Financial Management</span><span data-en>Financial Management Coaching</span></div>
-      <p class="service-desc">
-        <span data-fr>Pour les fondateurs et managers qui veulent piloter leurs finances en autonomie. Sessions individuelles structurées avec supports pratiques.</span>
-        <span data-en>For founders and managers who want to manage their finances independently. Structured individual sessions with practical materials.</span>
-      </p>
+      <p class="service-desc"><span data-fr>Pour les fondateurs et managers qui veulent piloter leurs finances en autonomie. Sessions individuelles structurées avec supports pratiques.</span><span data-en>For founders and managers who want to manage their finances independently. Structured individual sessions with practical materials.</span></p>
     </div>
-
     <div class="service-card">
       <div class="service-num">04</div>
       <div class="service-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
       <div class="service-title"><span data-fr>Business Plan & Modélisation</span><span data-en>Business Plan & Modeling</span></div>
-      <p class="service-desc">
-        <span data-fr>Construction de business plans solides, modèles financiers robustes, projections de trésorerie et analyses de scénarios pour convaincre investisseurs et banquiers.</span>
-        <span data-en>Building solid business plans, robust financial models, cash flow projections and scenario analysis to convince investors and bankers.</span>
-      </p>
+      <p class="service-desc"><span data-fr>Construction de business plans solides, modèles financiers robustes, projections de trésorerie et analyses de scénarios pour convaincre investisseurs et banquiers.</span><span data-en>Building solid business plans, robust financial models, cash flow projections and scenario analysis to convince investors and bankers.</span></p>
     </div>
-
     <div class="service-card">
       <div class="service-num">05</div>
       <div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
       <div class="service-title"><span data-fr>Restructuration Financière</span><span data-en>Financial Restructuring</span></div>
-      <p class="service-desc">
-        <span data-fr>Identification des risques, restructuration de la dette, optimisation des coûts. Une vision extérieure et objective pour redresser et stabiliser la situation financière.</span>
-        <span data-en>Risk identification, debt restructuring, cost optimization. An external and objective view to stabilize and improve the financial situation.</span>
-      </p>
+      <p class="service-desc"><span data-fr>Identification des risques, restructuration de la dette, optimisation des coûts. Une vision extérieure et objective pour redresser et stabiliser la situation financière.</span><span data-en>Risk identification, debt restructuring, cost optimization. An external and objective view to stabilize and improve the financial situation.</span></p>
     </div>
-
     <div class="service-card">
       <div class="service-num">06</div>
       <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
       <div class="service-title"><span data-fr>Session Stratégique 1:1</span><span data-en>Strategic 1:1 Session</span></div>
-      <p class="service-desc">
-        <span data-fr>Une heure intense pour clarifier votre situation financière, identifier les priorités et repartir avec un plan d'action concret et immédiatement actionnable.</span>
-        <span data-en>One intense hour to clarify your financial situation, identify priorities and leave with a concrete and immediately actionable plan.</span>
-      </p>
+      <p class="service-desc"><span data-fr>Une heure intense pour clarifier votre situation financière, identifier les priorités et repartir avec un plan d'action concret et immédiatement actionnable.</span><span data-en>One intense hour to clarify your financial situation, identify priorities and leave with a concrete and immediately actionable plan.</span></p>
     </div>
-
   </div>
 </section>
 
 <!-- PROCESS -->
 <section class="process" id="process">
-  <div class="section-label fade-up"><span data-fr>Comment ça fonctionne</span><span data-en>How it works</span></div>
-  <h2 class="section-title fade-up">
+  <div class="section-label"><span data-fr>Comment ça fonctionne</span><span data-en>How it works</span></div>
+  <h2 class="section-title">
     <span data-fr>Simple, rapide,<br><strong>100% à distance</strong></span>
     <span data-en>Simple, fast,<br><strong>100% remote</strong></span>
   </h2>
-  <div class="process-steps fade-up">
+  <div class="process-steps">
+    <div class="process-line"></div>
     <div class="process-step">
       <div class="step-dot"><span>1</span></div>
       <div class="step-title"><span data-fr>Réservez</span><span data-en>Book</span></div>
@@ -483,7 +558,7 @@ footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content
   <div class="booking-bg"></div>
   <div class="booking-glow"></div>
   <div class="booking-content">
-    <div class="booking-header fade-up">
+    <div class="booking-header">
       <div class="section-label"><span data-fr>Réservez un appel</span><span data-en>Book a call</span></div>
       <h2 class="section-title">
         <span data-fr>1 heure pour changer<br><strong>la trajectoire de votre entreprise</strong></span>
@@ -494,9 +569,8 @@ footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content
         <span data-en>Free. No commitment. 100% remote. I personally respond to every request.</span>
       </p>
     </div>
-    <div class="fade-up">
-      <div
-        class="calendly-inline-widget"
+    <div class="calendly-wrap">
+      <div class="calendly-inline-widget"
         data-url="https://calendly.com/executio/30min?hide_gdpr_banner=1&primary_color=1a6bba"
         style="min-width:320px;height:700px;">
       </div>
@@ -515,17 +589,16 @@ footer { background: #091b30; padding: 2.4rem 5%; display: flex; justify-content
 </footer>
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
 <script>
 function goTo(id) {
   var el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
 function openCalendly() {
   Calendly.initPopupWidget({ url: 'https://calendly.com/executio/30min' });
   return false;
 }
-
 function setLang(lang) {
   document.body.className = 'lang-' + lang;
   document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -533,11 +606,151 @@ function setLang(lang) {
     if (b.textContent.trim().toLowerCase() === lang) b.classList.add('active');
   });
 }
+</script>
 
-var obs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fade-up').forEach(function(el) { obs.observe(el); });
+<script type="module">
+import { animate, stagger, inView, scroll } from "https://esm.sh/motion@11.11.13"
+
+// ── Scroll progress ──
+scroll(({ y }) => {
+  document.getElementById('scroll-progress').style.transform = `scaleX(${y.progress})`
+})
+
+// ── Custom cursor ──
+const cursor = document.getElementById('cursor')
+const dot = document.getElementById('cursor-dot')
+let cx = window.innerWidth / 2, cy = window.innerHeight / 2
+
+document.addEventListener('mousemove', e => {
+  cx = e.clientX; cy = e.clientY
+  dot.style.left = cx + 'px'; dot.style.top = cy + 'px'
+  animate(cursor, { left: cx, top: cy }, { duration: 0.12, ease: 'linear' })
+})
+
+document.querySelectorAll('a, button, .service-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'))
+  el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'))
+})
+
+// ── Nav shrink on scroll ──
+const nav = document.getElementById('nav')
+scroll(({ y }) => {
+  y.current > 60 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled')
+})
+
+// ── Hero entrance (staggered) ──
+animate('.hero-eyebrow', { opacity: [0, 1], x: [-24, 0] }, { duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] })
+animate('.hero h1', { opacity: [0, 1], y: [36, 0] }, { duration: 0.9, delay: 0.5, ease: [0.16, 1, 0.3, 1] })
+animate('.hero-sub', { opacity: [0, 1], y: [24, 0] }, { duration: 0.8, delay: 0.75, ease: [0.16, 1, 0.3, 1] })
+animate('.hero-actions', { opacity: [0, 1], y: [20, 0] }, { duration: 0.7, delay: 1, ease: [0.16, 1, 0.3, 1] })
+animate('.stat-item', { opacity: [0, 1], y: [16, 0] }, { delay: stagger(0.1, { start: 1.2 }), duration: 0.5, ease: [0.16, 1, 0.3, 1] })
+
+// ── Hero glow parallax ──
+scroll(animate('.hero-glow', { y: [0, -180] }), {
+  target: document.querySelector('.hero'),
+  offset: ['start start', 'end start']
+})
+scroll(animate('.hero-glow-2', { y: [0, -100] }), {
+  target: document.querySelector('.hero'),
+  offset: ['start start', 'end start']
+})
+
+// ── Counter animation ──
+function startCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.dataset.count)
+    const suffix = el.dataset.suffix || ''
+    animate(0, target, {
+      duration: 2,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: v => { el.textContent = Math.round(v) + suffix }
+    })
+  })
+}
+inView('.hero-stats', startCounters, { amount: 0.5 })
+
+// ── Availability badge ──
+animate('#availability-badge', { opacity: [0, 1], y: [16, 0] }, { delay: 2.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] })
+
+// ── Magnetic CTA ──
+const ctaMain = document.getElementById('cta-main')
+if (ctaMain) {
+  ctaMain.addEventListener('mousemove', e => {
+    const r = ctaMain.getBoundingClientRect()
+    const x = (e.clientX - r.left - r.width / 2) * 0.28
+    const y = (e.clientY - r.top - r.height / 2) * 0.28
+    animate(ctaMain, { x, y }, { duration: 0.2, ease: 'linear' })
+  })
+  ctaMain.addEventListener('mouseleave', () => {
+    animate(ctaMain, { x: 0, y: 0 }, { duration: 0.5, ease: [0.16, 1, 0.3, 1] })
+  })
+}
+
+// ── Section labels ──
+document.querySelectorAll('.section-label').forEach(el => {
+  if (el.closest('.booking-header')) return
+  inView(el, () => animate(el, { opacity: [0, 1], x: [-16, 0] }, { duration: 0.6, ease: [0.16, 1, 0.3, 1] }))
+})
+
+// ── Section titles ──
+document.querySelectorAll('.section-title').forEach(el => {
+  if (el.closest('.about-text') || el.closest('.booking-header')) return
+  inView(el, () => animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, ease: [0.16, 1, 0.3, 1] }))
+})
+
+// ── About ──
+inView('.about-text', () => {
+  animate('.about-text', { opacity: [0, 1], x: [-40, 0] }, { duration: 0.8, ease: [0.16, 1, 0.3, 1] })
+  animate('.cred-item', { opacity: [0, 1], x: [-20, 0] }, { delay: stagger(0.1, { start: 0.35 }), duration: 0.5, ease: [0.16, 1, 0.3, 1] })
+}, { amount: 0.2 })
+
+inView('.about-card-wrap', () => {
+  animate('.about-card-wrap', { opacity: [0, 1], x: [40, 0] }, { duration: 0.8, ease: [0.16, 1, 0.3, 1] })
+  animate('.about-card-list li', { opacity: [0, 1], x: [16, 0] }, { delay: stagger(0.08, { start: 0.4 }), duration: 0.4, ease: [0.16, 1, 0.3, 1] })
+}, { amount: 0.2 })
+
+// ── Services stagger + 3D tilt ──
+inView('.services-grid', () => {
+  animate('.service-card', { opacity: [0, 1], y: [48, 0] }, {
+    delay: stagger(0.07),
+    duration: 0.65,
+    ease: [0.16, 1, 0.3, 1]
+  })
+}, { amount: 0.1 })
+
+document.querySelectorAll('.service-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect()
+    const x = (e.clientX - r.left) / r.width - 0.5
+    const y = (e.clientY - r.top) / r.height - 0.5
+    animate(card, { rotateX: -y * 8, rotateY: x * 8, scale: 1.02 }, { duration: 0.18, ease: 'linear' })
+  })
+  card.addEventListener('mouseleave', () => {
+    animate(card, { rotateX: 0, rotateY: 0, scale: 1 }, { duration: 0.45, ease: [0.16, 1, 0.3, 1] })
+  })
+})
+
+// ── Process ──
+inView('.process-steps', () => {
+  animate('.process-line', { scaleX: [0, 1] }, { duration: 1.4, ease: [0.16, 1, 0.3, 1] })
+  animate('.process-step', { opacity: [0, 1], y: [32, 0] }, {
+    delay: stagger(0.15, { start: 0.2 }),
+    duration: 0.65,
+    ease: [0.16, 1, 0.3, 1]
+  })
+  animate('.step-dot', { borderColor: ['rgba(13,35,64,0.15)', 'rgba(26,107,186,0.6)'] }, {
+    delay: stagger(0.15, { start: 0.5 }),
+    duration: 0.4
+  })
+}, { amount: 0.2 })
+
+// ── Booking ──
+inView('.booking-header', () => {
+  animate('.booking-header', { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, ease: [0.16, 1, 0.3, 1] })
+}, { amount: 0.2 })
+inView('.calendly-wrap', () => {
+  animate('.calendly-wrap', { opacity: [0, 1], y: [20, 0] }, { duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] })
+}, { amount: 0.1 })
 </script>
 </body>
 </html>
