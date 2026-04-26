@@ -223,6 +223,31 @@ h2.dsp strong{font-weight:600}
 .bsub{font-size:.92rem;color:var(--muted);line-height:1.8;max-width:460px;margin-top:.75rem}
 .calendly-inline-widget{background:#fff;border-radius:8px;overflow:hidden;min-height:700px}
 
+/* ── INSIGHTS ── */
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.icard{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 20px rgba(13,35,64,.07);transition:transform .3s,box-shadow .3s;text-decoration:none;display:flex;flex-direction:column}
+.icard:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(13,35,64,.14)}
+.icard-thumb{height:130px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.icard-thumb::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.12)}
+.ic-blue{background:linear-gradient(135deg,#0d2340,#1a6bba)}
+.ic-sky{background:linear-gradient(135deg,#1a6bba,#4da3e0)}
+.ic-gold{background:linear-gradient(135deg,#0d2340,#c9a84c)}
+.ic-teal{background:linear-gradient(135deg,#0d3340,#1a8bba)}
+.ic-red{background:linear-gradient(135deg,#340d1a,#ba1a4d)}
+.icard-thumb svg{width:42px;height:42px;stroke:#fff;fill:none;stroke-width:1.5;position:relative;z-index:1;opacity:.85}
+.icard-body{padding:1.3rem;flex:1;display:flex;flex-direction:column}
+.icat{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
+.ititle{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--lnavy);margin-bottom:.6rem;line-height:1.3;flex:1}
+.iexcerpt{font-size:.78rem;line-height:1.68;color:var(--lmuted);margin-bottom:1rem}
+.imeta{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.iread{font-size:.64rem;color:var(--lmuted)}
+.ilink{font-size:.7rem;font-weight:600;color:var(--blue);letter-spacing:.03em}
+.insights-more{text-align:center;margin-top:2.5rem}
+.btn-more{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(13,35,64,.2);color:var(--lnavy);text-decoration:none;padding:.85rem 2rem;font-size:.78rem;font-weight:500;letter-spacing:.05em;border-radius:2px;transition:border-color .25s,background .25s}
+.btn-more:hover{border-color:var(--blue);background:rgba(26,107,186,.05)}
+@media(max-width:900px){.insights-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.insights-grid{grid-template-columns:1fr}}
+
 /* ── FOOTER ── */
 footer{background:#020b15;padding:2.5rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,255,.04)}
 .fbrand span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.3)}
@@ -435,6 +460,24 @@ footer{background:#020b15;padding:2.5rem 5%;display:flex;justify-content:space-b
   </div>
 </section>
 
+<!-- INSIGHTS -->
+<section class="sl" id="insights">
+  <div class="kicker kdk rv"><span>Insights</span></div>
+  <h2 class="dsp dk rv"><span data-fr>Stratégie financière,<br><strong>décryptée pour vous</strong></span><span data-en>Financial strategy,<br><strong>decoded for you</strong></span></h2>
+  <div class="insights-grid" id="home-insights">
+    <!-- chargé dynamiquement depuis /data/articles.json -->
+    <div class="icard rv" style="pointer-events:none;opacity:.4"><div class="icard-thumb ic-blue"></div><div class="icard-body"><div class="ititle" style="background:#e5e7eb;height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:#e5e7eb;height:.8rem;border-radius:4px;width:70%"></div></div></div>
+    <div class="icard rv" style="pointer-events:none;opacity:.4"><div class="icard-thumb ic-sky"></div><div class="icard-body"><div class="ititle" style="background:#e5e7eb;height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:#e5e7eb;height:.8rem;border-radius:4px;width:70%"></div></div></div>
+    <div class="icard rv" style="pointer-events:none;opacity:.4"><div class="icard-thumb ic-gold"></div><div class="icard-body"><div class="ititle" style="background:#e5e7eb;height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:#e5e7eb;height:.8rem;border-radius:4px;width:70%"></div></div></div>
+  </div>
+  <div class="insights-more rv">
+    <a href="/insights/" class="btn-more">
+      <span data-fr>Voir tous les articles</span><span data-en>View all articles</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
 <!-- BOOKING -->
 <section class="booking sdd" id="booking">
   <div class="borb"></div>
@@ -542,6 +585,27 @@ document.querySelectorAll('.scard').forEach(function(card){
     card.style.transform='perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
   });
 });
+
+// ── Insights dynamiques — 3 derniers articles ──
+(function(){
+  var ICONS={'briefcase':'<path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>','trending-up':'<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>','bar-chart':'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>','clock':'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>','shield':'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>','activity':'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>','dollar':'<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>','users':'<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>','book':'<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>'};
+  var COLORS={'CFO as a Service':'ic-blue','Levée de fonds':'ic-sky','KPIs & Métriques':'ic-gold','Trésorerie':'ic-teal','Restructuration':'ic-red'};
+  fetch('/data/articles.json').then(function(r){return r.json()}).then(function(articles){
+    var top3=articles.sort(function(a,b){return new Date(b.date)-new Date(a.date)}).slice(0,3);
+    var grid=document.getElementById('home-insights');
+    grid.innerHTML=top3.map(function(a){
+      var icon=ICONS[a.icon]||ICONS['book'];
+      var color=COLORS[a.category]||'ic-blue';
+      return '<a href="/insights/'+a.slug+'/" class="icard rv" style="text-decoration:none">'
+        +'<div class="icard-thumb '+color+'"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;opacity:.85;width:42px;height:42px">'+icon+'</svg></div>'
+        +'<div class="icard-body"><div class="icat">'+a.category+'</div><div class="ititle">'+a.title+'</div>'
+        +'<div class="iexcerpt">'+a.excerpt+'</div>'
+        +'<div class="imeta"><span class="iread">'+a.readTime+' de lecture</span><span class="ilink">Lire →</span></div></div></a>';
+    }).join('');
+    // Re-observer les nouvelles cartes pour le reveal
+    grid.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  }).catch(function(){});
+})();
 
 // ── Magnetic CTA (direct style) ──
 var cta=document.getElementById('cta-main');

@@ -1,0 +1,39 @@
+name: Generate Weekly Insights Articles
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'  # Chaque lundi à 9h
+    - cron: '0 8 * * 4'  # Chaque jeudi à 9h
+  workflow_dispatch:      # Déclenchement manuel
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install @anthropic-ai/sdk
+
+      - name: Generate article
+        id: gen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node .github/scripts/generate-article.js
+
+      - name: Commit and push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "EXECUTIO Bot"
+          git add insights/ data/articles.json
+          git diff --cached --quiet || git commit -m "feat(insights): nouvel article — ${{ steps.gen.outputs.title }}"
+          git push

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights financiers — Stratégie, KPIs, Levée de fonds | EXECUTIO</title>
+<meta name="description" content="Articles experts sur la finance d'entreprise : CFO as a Service, levée de fonds, KPIs, trésorerie, restructuration. Conseils concrets pour startups et PME.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://exe-cutio.com/insights/">
+<meta property="og:title" content="Insights financiers — Stratégie, KPIs, Levée de fonds | EXECUTIO">
+<meta property="og:description" content="Articles experts sur la finance d'entreprise : CFO as a Service, levée de fonds, KPIs, trésorerie, restructuration.">
+<meta property="og:url" content="https://exe-cutio.com/insights/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EXECUTIO — Financial Advisory">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "EXECUTIO Insights",
+  "description": "Articles experts sur la finance d'entreprise : CFO as a Service, levée de fonds, KPIs, trésorerie et restructuration financière.",
+  "url": "https://exe-cutio.com/insights/",
+  "publisher": {"@type": "Organization", "name": "EXECUTIO", "url": "https://exe-cutio.com"}
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/insights/style.css">
+<style>
+.blog-hero{padding:8rem 5% 4rem;background:var(--bg);position:relative;overflow:hidden}
+.blog-hero::before{content:'';position:absolute;top:-10%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(26,107,186,.22) 0%,transparent 70%);border-radius:50%;filter:blur(60px);pointer-events:none}
+.blog-hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:1}
+.blog-kicker{font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);margin-bottom:1.2rem;display:flex;align-items:center;gap:10px}
+.blog-kicker::before{content:'';display:block;width:20px;height:1px;background:var(--sky)}
+.blog-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;color:#fff;margin-bottom:1rem;letter-spacing:-.01em}
+.blog-hero h1 strong{font-weight:600}
+.blog-hero p{font-size:.96rem;color:rgba(255,255,255,.5);max-width:520px;line-height:1.8}
+
+.filters{display:flex;gap:.6rem;flex-wrap:wrap;margin:2rem 0}
+.filter-btn{background:none;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;cursor:pointer;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+
+.blog-wrap{max-width:960px;margin:0 auto;padding:3rem 5% 6rem}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.bcard{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 20px rgba(13,35,64,.07);transition:transform .3s,box-shadow .3s;text-decoration:none;display:flex;flex-direction:column}
+.bcard:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(13,35,64,.14)}
+.bcard-thumb{height:130px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bcard-thumb::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.12)}
+.tc-blue{background:linear-gradient(135deg,#0d2340,#1a6bba)}
+.tc-sky{background:linear-gradient(135deg,#1a6bba,#4da3e0)}
+.tc-gold{background:linear-gradient(135deg,#0d2340,#c9a84c)}
+.tc-teal{background:linear-gradient(135deg,#0d3340,#1a8bba)}
+.tc-red{background:linear-gradient(135deg,#340d1a,#ba1a4d)}
+.bcard-thumb svg{width:44px;height:44px;stroke:#fff;fill:none;stroke-width:1.5;position:relative;z-index:1;opacity:.85}
+.bcard-body{padding:1.3rem;flex:1;display:flex;flex-direction:column}
+.bcat{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:.55rem}
+.btitle{font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-weight:600;color:var(--lnavy);margin-bottom:.6rem;line-height:1.3;flex:1}
+.bexcerpt{font-size:.78rem;line-height:1.68;color:var(--lmuted);margin-bottom:1rem}
+.bmeta{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.bdate{font-size:.64rem;color:var(--lmuted)}
+.bread{font-size:.64rem;color:var(--lmuted)}
+.blog-cta{background:var(--navy);border-radius:8px;padding:3rem;text-align:center;margin-top:4rem}
+.blog-cta h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:#fff;margin-bottom:.7rem}
+.blog-cta p{font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:1.8rem}
+.blog-cta a{display:inline-flex;align-items:center;background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;text-decoration:none;padding:.9rem 2.2rem;font-size:.8rem;font-weight:500;letter-spacing:.06em;border-radius:2px;transition:box-shadow .3s}
+.blog-cta a:hover{box-shadow:0 8px 32px rgba(26,107,186,.4)}
+@media(max-width:860px){.blog-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.blog-grid{grid-template-columns:1fr}.filters{justify-content:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><span>EXECUTIO</span></a>
+  <div class="nav-links">
+    <a href="/#services">Services</a>
+    <a href="/insights/" style="color:#fff">Insights</a>
+    <a href="/#booking" class="nav-cta">Réserver un appel</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="blog-kicker">Insights financiers</div>
+    <h1>Stratégie financière,<br><strong>décryptée pour vous</strong></h1>
+    <p>Analyses, guides pratiques et conseils d'experts pour piloter votre entreprise avec rigueur financière.</p>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="cfo">CFO as a Service</button>
+      <button class="filter-btn" data-filter="fonds">Levée de fonds</button>
+      <button class="filter-btn" data-filter="kpis">KPIs</button>
+      <button class="filter-btn" data-filter="tresorerie">Trésorerie</button>
+      <button class="filter-btn" data-filter="restructuration">Restructuration</button>
+    </div>
+  </div>
+</div>
+
+<div class="blog-wrap">
+  <div class="blog-grid" id="blog-grid">
+    <!-- Injecté dynamiquement depuis /data/articles.json -->
+  </div>
+
+  <div class="blog-cta">
+    <h2>Une question sur votre situation financière ?</h2>
+    <p>Chaque entreprise est unique. Discutons de votre cas lors d'un appel de 30 minutes — gratuit et sans engagement.</p>
+    <a href="/#booking">Réserver un appel gratuit →</a>
+  </div>
+</div>
+
+<footer><div class="fbrand"><span>EXECUTIO</span></div><span class="fcopy">© 2026 Executio — Financial Advisory · Tous droits réservés</span><a href="mailto:contact@exe-cutio.com" class="flink">contact@exe-cutio.com</a></footer>
+
+<script>
+var ICONS = {
+  'briefcase': '<path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>',
+  'trending-up': '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
+  'bar-chart': '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+  'clock': '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+  'shield': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+  'book': '<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>',
+  'dollar': '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>',
+  'users': '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>',
+  'activity': '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>'
+};
+
+var COLOR_MAP = {
+  'CFO as a Service': 'tc-blue',
+  'Levée de fonds': 'tc-sky',
+  'KPIs & Métriques': 'tc-gold',
+  'Trésorerie': 'tc-teal',
+  'Restructuration': 'tc-red'
+};
+
+var FILTER_MAP = {
+  'all': ['CFO as a Service','Levée de fonds','KPIs & Métriques','Trésorerie','Restructuration'],
+  'cfo': ['CFO as a Service'],
+  'fonds': ['Levée de fonds'],
+  'kpis': ['KPIs & Métriques'],
+  'tresorerie': ['Trésorerie'],
+  'restructuration': ['Restructuration']
+};
+
+var allArticles = [];
+var currentFilter = 'all';
+
+function formatDate(dateStr) {
+  var d = new Date(dateStr);
+  var months = ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+  return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+}
+
+function renderCards(articles) {
+  var grid = document.getElementById('blog-grid');
+  if (!articles.length) {
+    grid.innerHTML = '<p style="color:var(--lmuted);grid-column:1/-1;text-align:center;padding:3rem 0">Aucun article dans cette catégorie pour le moment.</p>';
+    return;
+  }
+  grid.innerHTML = articles.map(function(a) {
+    var icon = ICONS[a.icon] || ICONS['book'];
+    var color = COLOR_MAP[a.category] || 'tc-blue';
+    return '<a href="/insights/' + a.slug + '/" class="bcard">'
+      + '<div class="bcard-thumb ' + color + '"><svg viewBox="0 0 24 24" width="44" height="44" stroke="#fff" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;opacity:.85">' + icon + '</svg></div>'
+      + '<div class="bcard-body">'
+      + '<div class="bcat">' + a.category + '</div>'
+      + '<div class="btitle">' + a.title + '</div>'
+      + '<div class="bexcerpt">' + a.excerpt + '</div>'
+      + '<div class="bmeta"><span class="bdate">' + formatDate(a.date) + '</span><span class="bread">' + a.readTime + ' de lecture</span></div>'
+      + '</div></a>';
+  }).join('');
+}
+
+function applyFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.filter === f);
+  });
+  var cats = FILTER_MAP[f] || FILTER_MAP['all'];
+  var filtered = allArticles.filter(function(a) { return cats.indexOf(a.category) !== -1; });
+  renderCards(filtered);
+}
+
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { applyFilter(btn.dataset.filter); });
+});
+
+fetch('/data/articles.json')
+  .then(function(r) { return r.json(); })
+  .then(function(articles) {
+    allArticles = articles.sort(function(a,b) { return new Date(b.date) - new Date(a.date); });
+    renderCards(allArticles);
+  })
+  .catch(function() {
+    document.getElementById('blog-grid').innerHTML = '<p style="color:var(--lmuted);grid-column:1/-1;text-align:center;padding:2rem">Chargement des articles...</p>';
+  });
+</script>
+</body>
+</html>

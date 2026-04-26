@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "cfo-as-a-service-startups",
+    "title": "CFO as a Service : la solution financière des startups en croissance",
+    "category": "CFO as a Service",
+    "excerpt": "Découvrez pourquoi de plus en plus de startups font appel à un directeur financier externalisé — et comment cette approche transforme le pilotage financier.",
+    "readTime": "8 min",
+    "date": "2025-01-15",
+    "icon": "briefcase"
+  },
+  {
+    "slug": "preparer-levee-de-fonds",
+    "title": "Comment préparer sa levée de fonds Série A : le guide financier complet",
+    "category": "Levée de fonds",
+    "excerpt": "Business plan, modèle financier, due diligence — tout ce que les investisseurs examinent à la loupe avant d'investir dans votre startup.",
+    "readTime": "11 min",
+    "date": "2025-02-01",
+    "icon": "trending-up"
+  },
+  {
+    "slug": "kpis-financiers-investisseurs",
+    "title": "Les 7 KPIs financiers indispensables pour convaincre les investisseurs",
+    "category": "KPIs & Métriques",
+    "excerpt": "MRR, CAC, LTV, burn rate — les métriques que tout investisseur analysera en priorité et comment les optimiser avant votre pitch.",
+    "readTime": "9 min",
+    "date": "2025-02-15",
+    "icon": "bar-chart"
+  },
+  {
+    "slug": "burn-rate-runway-tresorerie",
+    "title": "Burn rate et runway : comment piloter la trésorerie de votre startup",
+    "category": "Trésorerie",
+    "excerpt": "Comment calculer et piloter votre burn rate et runway — le guide pour gérer la trésorerie et éviter de manquer de cash.",
+    "readTime": "7 min",
+    "date": "2025-03-01",
+    "icon": "clock"
+  },
+  {
+    "slug": "restructuration-financiere-pme",
+    "title": "Restructuration financière d'une PME : quand intervenir et comment agir",
+    "category": "Restructuration",
+    "excerpt": "Signaux d'alerte, étapes clés, renégociation de dette et optimisation des coûts. Guide pratique pour redresser votre situation financière.",
+    "readTime": "8 min",
+    "date": "2025-03-15",
+    "icon": "shield"
+  }
+]
