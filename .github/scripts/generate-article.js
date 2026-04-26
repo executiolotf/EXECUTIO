@@ -291,7 +291,8 @@ ${image ? `<figure class="art-img">
     excerpt,
     readTime,
     date: dateStr,
-    icon: topic.icon
+    icon: topic.icon,
+    image: image ? image.medium : null
   };
 
   const updatedArticles = [newArticle, ...existing];

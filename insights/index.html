@@ -159,8 +159,11 @@ function renderCards(articles) {
   grid.innerHTML = articles.map(function(a) {
     var icon = ICONS[a.icon] || ICONS['book'];
     var color = COLOR_MAP[a.category] || 'tc-blue';
+    var thumb = a.image
+      ? '<div class="bcard-thumb" style="background-image:url(' + a.image + ');background-size:cover;background-position:center"></div>'
+      : '<div class="bcard-thumb ' + color + '"><svg viewBox="0 0 24 24" width="44" height="44" stroke="#fff" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;opacity:.85">' + icon + '</svg></div>';
     return '<a href="/insights/' + a.slug + '/" class="bcard">'
-      + '<div class="bcard-thumb ' + color + '"><svg viewBox="0 0 24 24" width="44" height="44" stroke="#fff" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;opacity:.85">' + icon + '</svg></div>'
+      + thumb
       + '<div class="bcard-body">'
       + '<div class="bcat">' + a.category + '</div>'
       + '<div class="btitle">' + a.title + '</div>'

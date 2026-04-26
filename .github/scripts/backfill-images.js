@@ -42,9 +42,16 @@ function buildFigure(img) {
 </figure>\n`;
 }
 
+// Extract image src from already-patched HTML
+function extractImageFromHtml(html) {
+  const match = html.match(/<figure class="art-img">[\s\S]*?<img[^>]+src="([^"]+)"/);
+  return match ? match[1] : null;
+}
+
 async function main() {
   const articles = JSON.parse(fs.readFileSync(ARTICLES_JSON, 'utf-8'));
-  let patched = 0;
+  let patchedHtml = 0;
+  let patchedJson = 0;
 
   for (const article of articles) {
     const htmlPath = path.join(ROOT, 'insights', article.slug, 'index.html');
@@ -54,53 +61,54 @@ async function main() {
     }
 
     const html = fs.readFileSync(htmlPath, 'utf-8');
+    const alreadyHasImg = html.includes('class="art-img"');
 
-    if (html.includes('class="art-img"')) {
-      console.log(`✓ Déjà une image : ${article.slug}`);
-      continue;
+    // Step 1 — patch HTML if needed
+    if (!alreadyHasImg) {
+      console.log(`🖼 Pexels pour "${article.title}" (${article.category})...`);
+      const img = await fetchPexelsImage(article.category);
+      if (!img) { console.warn('  ⚠ Aucune image trouvée'); continue; }
+
+      let updated = html;
+      if (!html.includes('og:image')) {
+        updated = updated.replace(
+          '<meta property="og:type" content="article">',
+          `<meta property="og:type" content="article">\n<meta property="og:image" content="${img.large}">`
+        );
+      }
+      const marker = '<div class="art-body">';
+      updated = updated.includes(marker + '\n')
+        ? updated.replace(marker + '\n', marker + '\n' + buildFigure(img))
+        : updated.replace(marker, marker + '\n' + buildFigure(img));
+
+      fs.writeFileSync(htmlPath, updated, 'utf-8');
+      article.image = img.medium;
+      console.log(`  ✓ HTML patché : ${img.medium}`);
+      patchedHtml++;
+      await new Promise(r => setTimeout(r, 1100));
+
+    // Step 2 — HTML already has image but articles.json is missing it
+    } else if (!article.image) {
+      const src = extractImageFromHtml(html);
+      if (src) {
+        article.image = src;
+        console.log(`✓ URL extraite dans articles.json : ${article.slug}`);
+        patchedJson++;
+      } else {
+        console.warn(`⚠ Impossible d'extraire l'URL : ${article.slug}`);
+      }
+    } else {
+      console.log(`✓ Déjà complet : ${article.slug}`);
     }
-
-    console.log(`🖼 Pexels pour "${article.title}" (${article.category})...`);
-    const img = await fetchPexelsImage(article.category);
-    if (!img) {
-      console.warn(`  ⚠ Aucune image trouvée`);
-      continue;
-    }
-
-    // Insert figure right after <div class="art-body"> (or <div class="art-body"\n>)
-    const marker = '<div class="art-body">';
-    if (!html.includes(marker)) {
-      console.warn(`  ⚠ Marqueur art-body introuvable dans ${article.slug}`);
-      continue;
-    }
-
-    // Also inject og:image if not present
-    let updated = html;
-    if (!html.includes('og:image')) {
-      updated = updated.replace(
-        '<meta property="og:type" content="article">',
-        `<meta property="og:type" content="article">\n<meta property="og:image" content="${img.large}">`
-      );
-    }
-
-    updated = updated.replace(
-      marker + '\n',
-      marker + '\n' + buildFigure(img)
-    );
-    // Fallback if no newline after marker
-    if (updated === html) {
-      updated = updated.replace(marker, marker + '\n' + buildFigure(img));
-    }
-
-    fs.writeFileSync(htmlPath, updated, 'utf-8');
-    console.log(`  ✓ Image ajoutée : ${img.medium}`);
-    patched++;
-
-    // Respect Pexels rate limit (1 req/s is safe)
-    await new Promise(r => setTimeout(r, 1100));
   }
 
-  console.log(`\n✅ Backfill terminé : ${patched} articles mis à jour`);
+  // Save updated articles.json
+  if (patchedHtml + patchedJson > 0) {
+    fs.writeFileSync(ARTICLES_JSON, JSON.stringify(articles, null, 2), 'utf-8');
+    console.log(`\n✓ data/articles.json mis à jour`);
+  }
+
+  console.log(`\n✅ Backfill terminé — HTML: ${patchedHtml}, JSON: ${patchedJson}`);
 }
 
 main().catch(err => {

@@ -31,6 +31,6 @@ jobs:
         run: |
           git config user.email "actions@github.com"
           git config user.name "EXECUTIO Bot"
-          git add insights/
-          git diff --cached --quiet || git commit -m "feat(insights): backfill Pexels images on existing articles"
+          git add insights/ data/articles.json
+          git diff --cached --quiet || git commit -m "feat(insights): backfill Pexels images + update articles.json"
           git push

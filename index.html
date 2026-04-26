@@ -601,8 +601,11 @@ document.querySelectorAll('.scard').forEach(function(card){
     grid.innerHTML=top3.map(function(a){
       var icon=ICONS[a.icon]||ICONS['book'];
       var color=COLORS[a.category]||'ic-blue';
+      var thumb=a.image
+        ?'<div class="icard-thumb" style="background-image:url('+a.image+');background-size:cover;background-position:center"></div>'
+        :'<div class="icard-thumb '+color+'"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;opacity:.85;width:42px;height:42px">'+icon+'</svg></div>';
       return '<a href="/insights/'+a.slug+'/" class="icard rv" style="text-decoration:none">'
-        +'<div class="icard-thumb '+color+'"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;opacity:.85;width:42px;height:42px">'+icon+'</svg></div>'
+        +thumb
         +'<div class="icard-body"><div class="icat">'+a.category+'</div><div class="ititle">'+a.title+'</div>'
         +'<div class="iexcerpt">'+a.excerpt+'</div>'
         +'<div class="imeta"><span class="iread">'+a.readTime+' de lecture</span><span class="ilink">Lire →</span></div></div></a>';
