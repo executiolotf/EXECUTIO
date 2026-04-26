@@ -10,6 +10,40 @@ const TOPICS_JSON = path.join(ROOT, 'data', 'article-topics.json');
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
+const PEXELS_SEARCH = {
+  'KPIs & Métriques':   'business analytics data',
+  'Levée de fonds':     'startup investment funding',
+  'Trésorerie':         'cash flow finance',
+  'CFO as a Service':   'financial advisor executive',
+  'Fiscalité Belge':    'tax business office',
+  'Restructuration':    'business strategy meeting'
+};
+
+async function fetchPexelsImage(category) {
+  const apiKey = process.env.PEXELS_API_KEY;
+  if (!apiKey) return null;
+  const query = PEXELS_SEARCH[category] || 'finance business';
+  try {
+    const res = await fetch(
+      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=10&orientation=landscape`,
+      { headers: { Authorization: apiKey } }
+    );
+    const data = await res.json();
+    if (!data.photos?.length) return null;
+    const photo = data.photos[Math.floor(Math.random() * data.photos.length)];
+    return {
+      large: photo.src.large2x,
+      medium: photo.src.large,
+      photographer: photo.photographer,
+      photographerUrl: photo.photographer_url,
+      alt: photo.alt || query
+    };
+  } catch (e) {
+    console.warn('Pexels API error:', e.message);
+    return null;
+  }
+}
+
 function formatDate(d) {
   return d.toISOString().split('T')[0];
 }
@@ -95,6 +129,10 @@ async function main() {
 
   console.log(`\n📝 Génération de l'article : "${topic.title}"\n`);
 
+  const image = await fetchPexelsImage(topic.category);
+  if (image) console.log(`✓ Image Pexels : ${image.medium}`);
+  else console.log('⚠ Pas d\'image Pexels (API key manquante ou erreur)');
+
   const resp = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 3000,
@@ -165,7 +203,7 @@ READTIME: [nombre de minutes de lecture estimé, entre 6 et 12]`
 <meta property="og:description" content="${excerpt}">
 <meta property="og:url" content="https://exe-cutio.com/insights/${topic.slug}/">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="EXECUTIO — Financial Advisory">
+<meta property="og:site_name" content="EXECUTIO — Financial Advisory">${image ? `\n<meta property="og:image" content="${image.large}">` : ''}
 <meta property="article:published_time" content="${dateStr}">
 <meta property="article:section" content="${topic.category}">
 <script type="application/ld+json">
@@ -212,7 +250,11 @@ READTIME: [nombre de minutes de lecture estimé, entre 6 et 12]`
 
 <div class="art-wrap">
   <div class="art-body">
-${content}
+${image ? `<figure class="art-img">
+  <img src="${image.medium}" alt="${image.alt}" loading="lazy">
+  <figcaption>Photo : <a href="${image.photographerUrl}" target="_blank" rel="noopener">${image.photographer}</a> via Pexels</figcaption>
+</figure>
+` : ''}${content}
   </div>
 
   <div class="art-cta">
