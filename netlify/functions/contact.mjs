@@ -44,12 +44,17 @@ async function attio(apiKey, method, path, body) {
 }
 
 async function upsertPerson(apiKey, fields) {
+  const parts     = (fields.firstname || '').trim().split(/\s+/);
+  const firstName = parts[0] || '';
+  const lastName  = parts.slice(1).join(' ') || '';
+  const fullName  = (fields.firstname || '').trim();
+
   const { status, data } = await attio(apiKey, 'PUT',
     '/objects/people/records?matching_attribute=email_addresses',
     {
       data: {
         values: {
-          name:            [{ full_name: (fields.firstname || '').trim() }],
+          name:            [{ first_name: firstName, last_name: lastName, full_name: fullName }],
           email_addresses: [{ email_address: fields.email }]
         }
       }
