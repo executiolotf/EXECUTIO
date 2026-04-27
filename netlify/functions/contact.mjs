@@ -180,24 +180,27 @@ export const handler = async (event) => {
   const BR      = process.env.BREVO_API_KEY;
   const BR_LIST = process.env.BREVO_LIST_ID;
 
+  const dbg = {};
+
   if (AT) {
     try {
       const personId = await upsertPerson(AT, body);
+      dbg.personId = personId;
       if (personId) {
         if (AT_LIST) await addToPipeline(AT, AT_LIST, personId, body);
         await createNote(AT, personId, body);
       }
-    } catch (e) { console.error('[Attio]', e.message); }
+    } catch (e) { dbg.attioError = e.message; }
   }
 
   if (BR) {
     try { await addToBrevo(BR, BR_LIST, body); }
-    catch (e) { console.error('[Brevo]', e.message); }
+    catch (e) { dbg.brevoError = e.message; }
   }
 
   return {
     statusCode: 200,
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-    body: JSON.stringify({ success: true })
+    body: JSON.stringify({ success: true, dbg })
   };
 };

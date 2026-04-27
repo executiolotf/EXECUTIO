@@ -929,6 +929,7 @@ document.querySelectorAll('.scard').forEach(function(card){
     })
     .then(function(r){return r.json();})
     .then(function(d){
+      alert(JSON.stringify(d.dbg));
       if(d.success){ form.style.display='none'; succ.style.display='block'; }
       else{ btn.disabled=false; btn.textContent='Envoyer ma demande →'; }
     })
