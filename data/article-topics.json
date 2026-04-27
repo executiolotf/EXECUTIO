@@ -1,22 +1,135 @@
 [
-  { "title": "Modèle financier SaaS : construire des projections qui convainquent les investisseurs", "slug": "modele-financier-saas", "category": "KPIs & Métriques", "icon": "activity", "keywords": "modèle financier SaaS, projections financières startup, ARR SaaS modélisation" },
-  { "title": "Levée de fonds Seed : préparer son dossier pour les business angels", "slug": "levee-fonds-seed-business-angels", "category": "Levée de fonds", "icon": "trending-up", "keywords": "levée de fonds seed, business angels, dossier investisseur seed" },
-  { "title": "Tableau de bord financier startup : les indicateurs essentiels à suivre chaque mois", "slug": "tableau-de-bord-financier-startup", "category": "KPIs & Métriques", "icon": "bar-chart", "keywords": "tableau de bord financier, indicateurs financiers startup, reporting mensuel" },
-  { "title": "Valorisation startup : méthodes et benchmarks pour négocier sa levée de fonds", "slug": "valorisation-startup-methodes", "category": "Levée de fonds", "icon": "dollar", "keywords": "valorisation startup, méthodes valorisation, multiples SaaS, term sheet" },
-  { "title": "Plan de trésorerie PME : comment anticiper et éviter les crises de liquidité", "slug": "plan-tresorerie-pme", "category": "Trésorerie", "icon": "clock", "keywords": "plan de trésorerie PME, gestion liquidité, prévisions trésorerie" },
-  { "title": "Due diligence financière : ce que les VCs vérifient dans votre data room", "slug": "due-diligence-financiere-vc", "category": "Levée de fonds", "icon": "shield", "keywords": "due diligence financière, data room startup, vérification investisseur" },
-  { "title": "Contrôle de gestion startup : mettre en place un reporting efficace", "slug": "controle-de-gestion-startup", "category": "CFO as a Service", "icon": "briefcase", "keywords": "contrôle de gestion startup, reporting financier, tableaux de bord gestion" },
-  { "title": "Optimisation du BFR : libérer du cash sans emprunter", "slug": "optimisation-bfr-besoin-fonds-roulement", "category": "Trésorerie", "icon": "activity", "keywords": "BFR, besoin en fonds de roulement, optimisation trésorerie PME" },
-  { "title": "Économie unitaire startup : CAC, LTV et les ratios qui rassurent les investisseurs", "slug": "economie-unitaire-startup-cac-ltv", "category": "KPIs & Métriques", "icon": "bar-chart", "keywords": "économie unitaire startup, CAC LTV ratio, unit economics" },
-  { "title": "VVPRbis en Belgique : comment distribuer vos dividendes à 15% de précompte", "slug": "vvprbis-belgique-dividendes-15-percent", "category": "Fiscalité Belge", "icon": "dollar", "keywords": "VVPRbis Belgique, dividendes 15%, précompte mobilier réduit, startup Belgique" },
-  { "title": "ISOC en Belgique : optimiser l'impôt des sociétés pour une PME", "slug": "isoc-belgique-optimisation-impot-societes", "category": "Fiscalité Belge", "icon": "shield", "keywords": "ISOC Belgique, impôt des sociétés, taux réduit PME, déductions fiscales" },
-  { "title": "Statut indépendant en Belgique : cotisations sociales et optimisation financière", "slug": "independant-belgique-cotisations-sociales", "category": "Fiscalité Belge", "icon": "users", "keywords": "indépendant Belgique, cotisations sociales, INASTI, optimisation rémunération" },
-  { "title": "Liquidation-réserve en Belgique : sortir ses bénéfices avec une taxation avantageuse", "slug": "liquidation-reserve-belgique-taxation", "category": "Fiscalité Belge", "icon": "dollar", "keywords": "liquidation-réserve Belgique, taxation avantageuse, bénéfices réserve, exit strategy" },
-  { "title": "Aides et subsides aux entreprises en Wallonie et Bruxelles en 2025", "slug": "aides-subsides-entreprises-wallonie-bruxelles-2025", "category": "Fiscalité Belge", "icon": "trending-up", "keywords": "aides entreprises Wallonie, subsides Bruxelles, financement startup Belgique" },
-  { "title": "TVA en Belgique : obligations, récupération et optimisation pour startups", "slug": "tva-belgique-obligations-startups", "category": "Fiscalité Belge", "icon": "activity", "keywords": "TVA Belgique, déclaration TVA, récupération TVA startup, obligations fiscales" },
-  { "title": "Budget fédéral belge 2025 : les mesures qui impactent les entrepreneurs", "slug": "budget-belge-2025-entrepreneurs", "category": "Fiscalité Belge", "icon": "bar-chart", "keywords": "budget Belgique 2025, réforme fiscale entrepreneurs, mesures PME Belgique" },
-  { "title": "Stock-options et warrants en Belgique : fiscalité et avantages pour les startups", "slug": "stock-options-warrants-belgique-fiscalite", "category": "Fiscalité Belge", "icon": "trending-up", "keywords": "stock-options Belgique, warrants startup, fiscalité options, rémunération variable" },
-  { "title": "Droit passerelle belge : protéger sa trésorerie en cas de coup dur", "slug": "droit-passerelle-belgique-tresorerie", "category": "Fiscalité Belge", "icon": "shield", "keywords": "droit passerelle Belgique, protection indépendant, interruption activité, aide financière" },
-  { "title": "Précompte professionnel en Belgique : calcul et optimisation pour dirigeants", "slug": "precompte-professionnel-belgique-dirigeants", "category": "Fiscalité Belge", "icon": "dollar", "keywords": "précompte professionnel Belgique, salaire dirigeant, optimisation fiscale" },
-  { "title": "Pacte d'actionnaires en Belgique : clauses essentielles pour startups", "slug": "pacte-actionnaires-belgique-startups", "category": "Levée de fonds", "icon": "users", "keywords": "pacte d'actionnaires Belgique, clauses investisseur, protection fondateur, SHA" }
+  {
+    "title": "Levée de fonds Seed : préparer son dossier pour les business angels",
+    "slug": "levee-fonds-seed-business-angels",
+    "category": "Levée de fonds",
+    "icon": "trending-up",
+    "keywords": "levée de fonds seed, business angels, dossier investisseur seed"
+  },
+  {
+    "title": "Tableau de bord financier startup : les indicateurs essentiels à suivre chaque mois",
+    "slug": "tableau-de-bord-financier-startup",
+    "category": "KPIs & Métriques",
+    "icon": "bar-chart",
+    "keywords": "tableau de bord financier, indicateurs financiers startup, reporting mensuel"
+  },
+  {
+    "title": "Valorisation startup : méthodes et benchmarks pour négocier sa levée de fonds",
+    "slug": "valorisation-startup-methodes",
+    "category": "Levée de fonds",
+    "icon": "dollar",
+    "keywords": "valorisation startup, méthodes valorisation, multiples SaaS, term sheet"
+  },
+  {
+    "title": "Plan de trésorerie PME : comment anticiper et éviter les crises de liquidité",
+    "slug": "plan-tresorerie-pme",
+    "category": "Trésorerie",
+    "icon": "clock",
+    "keywords": "plan de trésorerie PME, gestion liquidité, prévisions trésorerie"
+  },
+  {
+    "title": "Due diligence financière : ce que les VCs vérifient dans votre data room",
+    "slug": "due-diligence-financiere-vc",
+    "category": "Levée de fonds",
+    "icon": "shield",
+    "keywords": "due diligence financière, data room startup, vérification investisseur"
+  },
+  {
+    "title": "Contrôle de gestion startup : mettre en place un reporting efficace",
+    "slug": "controle-de-gestion-startup",
+    "category": "CFO as a Service",
+    "icon": "briefcase",
+    "keywords": "contrôle de gestion startup, reporting financier, tableaux de bord gestion"
+  },
+  {
+    "title": "Optimisation du BFR : libérer du cash sans emprunter",
+    "slug": "optimisation-bfr-besoin-fonds-roulement",
+    "category": "Trésorerie",
+    "icon": "activity",
+    "keywords": "BFR, besoin en fonds de roulement, optimisation trésorerie PME"
+  },
+  {
+    "title": "Économie unitaire startup : CAC, LTV et les ratios qui rassurent les investisseurs",
+    "slug": "economie-unitaire-startup-cac-ltv",
+    "category": "KPIs & Métriques",
+    "icon": "bar-chart",
+    "keywords": "économie unitaire startup, CAC LTV ratio, unit economics"
+  },
+  {
+    "title": "VVPRbis en Belgique : comment distribuer vos dividendes à 15% de précompte",
+    "slug": "vvprbis-belgique-dividendes-15-percent",
+    "category": "Fiscalité Belge",
+    "icon": "dollar",
+    "keywords": "VVPRbis Belgique, dividendes 15%, précompte mobilier réduit, startup Belgique"
+  },
+  {
+    "title": "ISOC en Belgique : optimiser l'impôt des sociétés pour une PME",
+    "slug": "isoc-belgique-optimisation-impot-societes",
+    "category": "Fiscalité Belge",
+    "icon": "shield",
+    "keywords": "ISOC Belgique, impôt des sociétés, taux réduit PME, déductions fiscales"
+  },
+  {
+    "title": "Statut indépendant en Belgique : cotisations sociales et optimisation financière",
+    "slug": "independant-belgique-cotisations-sociales",
+    "category": "Fiscalité Belge",
+    "icon": "users",
+    "keywords": "indépendant Belgique, cotisations sociales, INASTI, optimisation rémunération"
+  },
+  {
+    "title": "Liquidation-réserve en Belgique : sortir ses bénéfices avec une taxation avantageuse",
+    "slug": "liquidation-reserve-belgique-taxation",
+    "category": "Fiscalité Belge",
+    "icon": "dollar",
+    "keywords": "liquidation-réserve Belgique, taxation avantageuse, bénéfices réserve, exit strategy"
+  },
+  {
+    "title": "Aides et subsides aux entreprises en Wallonie et Bruxelles en 2025",
+    "slug": "aides-subsides-entreprises-wallonie-bruxelles-2025",
+    "category": "Fiscalité Belge",
+    "icon": "trending-up",
+    "keywords": "aides entreprises Wallonie, subsides Bruxelles, financement startup Belgique"
+  },
+  {
+    "title": "TVA en Belgique : obligations, récupération et optimisation pour startups",
+    "slug": "tva-belgique-obligations-startups",
+    "category": "Fiscalité Belge",
+    "icon": "activity",
+    "keywords": "TVA Belgique, déclaration TVA, récupération TVA startup, obligations fiscales"
+  },
+  {
+    "title": "Budget fédéral belge 2025 : les mesures qui impactent les entrepreneurs",
+    "slug": "budget-belge-2025-entrepreneurs",
+    "category": "Fiscalité Belge",
+    "icon": "bar-chart",
+    "keywords": "budget Belgique 2025, réforme fiscale entrepreneurs, mesures PME Belgique"
+  },
+  {
+    "title": "Stock-options et warrants en Belgique : fiscalité et avantages pour les startups",
+    "slug": "stock-options-warrants-belgique-fiscalite",
+    "category": "Fiscalité Belge",
+    "icon": "trending-up",
+    "keywords": "stock-options Belgique, warrants startup, fiscalité options, rémunération variable"
+  },
+  {
+    "title": "Droit passerelle belge : protéger sa trésorerie en cas de coup dur",
+    "slug": "droit-passerelle-belgique-tresorerie",
+    "category": "Fiscalité Belge",
+    "icon": "shield",
+    "keywords": "droit passerelle Belgique, protection indépendant, interruption activité, aide financière"
+  },
+  {
+    "title": "Précompte professionnel en Belgique : calcul et optimisation pour dirigeants",
+    "slug": "precompte-professionnel-belgique-dirigeants",
+    "category": "Fiscalité Belge",
+    "icon": "dollar",
+    "keywords": "précompte professionnel Belgique, salaire dirigeant, optimisation fiscale"
+  },
+  {
+    "title": "Pacte d'actionnaires en Belgique : clauses essentielles pour startups",
+    "slug": "pacte-actionnaires-belgique-startups",
+    "category": "Levée de fonds",
+    "icon": "users",
+    "keywords": "pacte d'actionnaires Belgique, clauses investisseur, protection fondateur, SHA"
+  }
 ]
