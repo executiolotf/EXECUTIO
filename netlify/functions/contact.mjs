@@ -165,19 +165,6 @@ export const handler = async (event) => {
     };
   }
 
-  // Diagnostic temporaire — GET retourne le statut des env vars
-  if (event.httpMethod === 'GET') {
-    return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ATTIO_API_KEY:  !!process.env.ATTIO_API_KEY,
-        ATTIO_LIST_ID:  process.env.ATTIO_LIST_ID || null,
-        BREVO_API_KEY:  !!process.env.BREVO_API_KEY,
-      })
-    };
-  }
-
   if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' };
 
   let body;
@@ -193,31 +180,24 @@ export const handler = async (event) => {
   const BR      = process.env.BREVO_API_KEY;
   const BR_LIST = process.env.BREVO_LIST_ID;
 
-  const debug = {};
-
   if (AT) {
     try {
       const personId = await upsertPerson(AT, body);
-      debug.personId = personId;
       if (personId) {
         if (AT_LIST) await addToPipeline(AT, AT_LIST, personId, body);
         await createNote(AT, personId, body);
       }
-    } catch (e) {
-      debug.attioError = e.message;
-    }
-  } else {
-    debug.attioError = 'ATTIO_API_KEY not set';
+    } catch (e) { console.error('[Attio]', e.message); }
   }
 
   if (BR) {
     try { await addToBrevo(BR, BR_LIST, body); }
-    catch (e) { debug.brevoError = e.message; }
+    catch (e) { console.error('[Brevo]', e.message); }
   }
 
   return {
     statusCode: 200,
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-    body: JSON.stringify({ success: true, debug })
+    body: JSON.stringify({ success: true })
   };
 };

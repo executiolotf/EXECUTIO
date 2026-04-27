@@ -929,11 +929,10 @@ document.querySelectorAll('.scard').forEach(function(card){
     })
     .then(function(r){return r.json();})
     .then(function(d){
-      alert('DEBUG: ' + JSON.stringify(d));
       if(d.success){ form.style.display='none'; succ.style.display='block'; }
       else{ btn.disabled=false; btn.textContent='Envoyer ma demande →'; }
     })
-    .catch(function(err){ alert('CATCH: ' + err); btn.disabled=false; btn.textContent='Envoyer ma demande →'; });
+    .catch(function(){ btn.disabled=false; btn.textContent='Envoyer ma demande →'; });
   });
 })();
 
