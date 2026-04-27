@@ -90,10 +90,11 @@ async function addToPipeline(apiKey, listId, personId, fields) {
         data_chiusura_prevista: [{ value: closeDate.toISOString().split('T')[0] }],
         probabilita:            [{ value: probabilityMap[priority] }],
         priorite:               [{ value: priority }],
-        urgence:                fields.urgency  ? [{ value: fields.urgency }]      : [],
-        industrie:              fields.industry ? [{ value: fields.industry }]     : [],
-        role_contact:           fields.role     ? [{ value: fields.role }]         : [],
-        type_structure:         fields.company_type ? [{ value: fields.company_type }] : []
+        urgence:                fields.urgency      ? [{ value: fields.urgency }]      : [],
+        industrie:              fields.industry     ? [{ value: fields.industry }]     : [],
+        role_contact:           fields.role         ? [{ value: fields.role }]         : [],
+        type_structure:         fields.company_type ? [{ value: fields.company_type }] : [],
+        message:                fields.message      ? [{ value: fields.message }]      : []
       }
     }
   );
