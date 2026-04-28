@@ -10,36 +10,81 @@ const TOPICS_JSON = path.join(ROOT, 'data', 'article-topics.json');
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-const PEXELS_SEARCH = {
-  'KPIs & Métriques':   'business analytics data',
-  'Levée de fonds':     'startup investment funding',
-  'Trésorerie':         'cash flow finance',
-  'CFO as a Service':   'financial advisor executive',
-  'Fiscalité Belge':    'tax business office',
-  'Restructuration':    'business strategy meeting'
-};
+async function buildFluxPrompt(title, category) {
+  const msg = await client.messages.create({
+    model: 'claude-haiku-4-5-20251001',
+    max_tokens: 180,
+    messages: [{
+      role: 'user',
+      content: `You are a creative director for a premium B2B financial advisory brand (Executio, CFO as a Service for startups and SMEs).
 
-async function fetchPexelsImage(category) {
-  const apiKey = process.env.PEXELS_API_KEY;
-  if (!apiKey) return null;
-  const query = PEXELS_SEARCH[category] || 'finance business';
-  try {
-    const res = await fetch(
-      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=10&orientation=landscape`,
-      { headers: { Authorization: apiKey } }
-    );
+Write a FLUX image generation prompt for a blog article hero image.
+Article title: "${title}"
+Category: "${category}"
+
+VISUAL DIRECTION: Editorial, clean, modern. Think McKinsey or HBR article imagery. A real productive workspace — laptop with a clean dashboard, open notebook with figures, natural window light. Professional but human, not cold or corporate.
+
+HARD RULES:
+- NO full human faces — hands, arms, silhouettes from behind only
+- NO stock-photo clichés: no handshakes, no stacks of coins, no generic suits
+- NO logos or brand names on any screen
+- Photorealistic, NOT illustrated
+- Clean neutral tones: white, warm grey, natural wood, soft light
+- Landscape 16:9 composition
+
+Reply with ONLY the prompt — 2 sharp sentences.`,
+    }],
+  });
+  return msg.content[0].text.trim();
+}
+
+async function pollReplicate(url, maxAttempts = 30) {
+  for (let i = 0; i < maxAttempts; i++) {
+    await new Promise(r => setTimeout(r, 3000));
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${process.env.REPLICATE_API_TOKEN}` },
+    });
     const data = await res.json();
-    if (!data.photos?.length) return null;
-    const photo = data.photos[Math.floor(Math.random() * data.photos.length)];
-    return {
-      large: photo.src.large2x,
-      medium: photo.src.large,
-      photographer: photo.photographer,
-      photographerUrl: photo.photographer_url,
-      alt: photo.alt || query
-    };
+    if (data.status === 'succeeded') return data.output;
+    if (data.status === 'failed') throw new Error(`Replicate failed: ${data.error}`);
+  }
+  throw new Error('Replicate timeout');
+}
+
+async function generateFluxImage(title, category) {
+  if (!process.env.REPLICATE_API_TOKEN) return null;
+  try {
+    const prompt = await buildFluxPrompt(title, category);
+    console.log(`  FLUX prompt: ${prompt.slice(0, 80)}...`);
+
+    const res = await fetch('https://api.replicate.com/v1/models/black-forest-labs/flux-1.1-pro/predictions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.REPLICATE_API_TOKEN}`,
+        'Content-Type': 'application/json',
+        Prefer: 'wait=60',
+      },
+      body: JSON.stringify({
+        input: {
+          prompt,
+          aspect_ratio: '16:9',
+          output_format: 'jpg',
+          output_quality: 90,
+          safety_tolerance: 2,
+          prompt_upsampling: true,
+        },
+      }),
+    });
+
+    if (!res.ok) throw new Error(`Replicate ${res.status}`);
+    const prediction = await res.json();
+    const imageUrl = prediction.status === 'succeeded'
+      ? prediction.output
+      : await pollReplicate(prediction.urls.get);
+
+    return { large: imageUrl, medium: imageUrl, alt: title };
   } catch (e) {
-    console.warn('Pexels API error:', e.message);
+    console.warn(`⚠ FLUX: ${e.message}`);
     return null;
   }
 }
@@ -129,9 +174,9 @@ async function main() {
 
   console.log(`\n📝 Génération de l'article : "${topic.title}"\n`);
 
-  const image = await fetchPexelsImage(topic.category);
-  if (image) console.log(`✓ Image Pexels : ${image.medium}`);
-  else console.log('⚠ Pas d\'image Pexels (API key manquante ou erreur)');
+  const image = await generateFluxImage(topic.title, topic.category);
+  if (image) console.log(`✓ Image FLUX générée`);
+  else console.log('⚠ Pas d\'image (Replicate indisponible)');
 
   const resp = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
@@ -252,7 +297,6 @@ READTIME: [nombre de minutes de lecture estimé, entre 6 et 12]`
   <div class="art-body">
 ${image ? `<figure class="art-img">
   <img src="${image.medium}" alt="${image.alt}" loading="lazy">
-  <figcaption>Photo : <a href="${image.photographerUrl}" target="_blank" rel="noopener">${image.photographer}</a> via Pexels</figcaption>
 </figure>
 ` : ''}${content}
   </div>
