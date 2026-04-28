@@ -21,17 +21,23 @@ Write a FLUX image generation prompt for a blog article hero image.
 Article title: "${title}"
 Category: "${category}"
 
-VISUAL DIRECTION: Editorial, clean, modern. Think McKinsey or HBR article imagery. A real productive workspace — laptop with a clean dashboard, open notebook with figures, natural window light. Professional but human, not cold or corporate.
+VISUAL DIRECTION: Editorial photography — McKinsey or HBR article imagery. BE SPECIFIC AND ORIGINAL based on the article topic. DO NOT default to the generic laptop+notebook scene. Choose a genuinely distinctive visual:
+- A dramatic action: hands marking a printed P&L with a highlighter, a whiteboard being filled with arrows and numbers, a founder reviewing a printed report
+- A strong setting: a glass-walled boardroom, an open-plan startup office at dusk, a city-view window, a printed financial deck spread on a conference table
+- A textural close-up: a dog-eared page with a red pen, a sticky note on a screen, a hand-written metric in a leather notebook
+- A human moment: silhouette at floor-to-ceiling windows, two people reviewing a projected chart, a lone founder still at work after hours
+
+The image must feel like a magazine editorial — specific, visually interesting, not generic.
 
 HARD RULES:
-- NO full human faces — hands, arms, silhouettes from behind only
-- NO stock-photo clichés: no handshakes, no stacks of coins, no generic suits
-- NO logos or brand names on any screen
-- Photorealistic, NOT illustrated
-- Clean neutral tones: white, warm grey, natural wood, soft light
+- NO full human faces — hands, arms, silhouettes only
+- NO stock-photo clichés: no handshakes, no coin stacks, no generic suits, no generic MacBook-on-white-desk
+- NO logos or brand names on any screen or document
+- Photorealistic — NOT illustrated, NOT CGI
+- Clean neutral tones: white, warm grey, natural wood, soft ambient or natural light
 - Landscape 16:9 composition
 
-Reply with ONLY the prompt — 2 sharp sentences.`,
+Reply with ONLY the prompt — 2 sharp, specific sentences.`,
     }],
   });
   return msg.content[0].text.trim();
