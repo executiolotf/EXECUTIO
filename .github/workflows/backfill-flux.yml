@@ -1,0 +1,36 @@
+name: Backfill FLUX Images
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install @anthropic-ai/sdk
+
+      - name: Backfill FLUX images
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_KEYS }}
+        run: node .github/scripts/backfill-flux-images.js
+
+      - name: Commit and push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "EXECUTIO Bot"
+          git add insights/ data/articles.json
+          git diff --cached --quiet || git commit -m "feat(insights): backfill images FLUX — tous les articles"
+          git push

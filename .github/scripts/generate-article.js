@@ -183,35 +183,47 @@ async function main() {
     max_tokens: 3000,
     messages: [{
       role: 'user',
-      content: `Tu es un expert financier senior (CFO, advisory financier, startups et PME belges et françaises) qui rédige un article de blog SEO professionnel en français.
+      content: `Tu es partner senior dans un cabinet de conseil financier de premier plan — l'équivalent d'un directeur McKinsey spécialisé finance d'entreprise. Tu rédiges des articles qui font référence dans la communauté des fondateurs et dirigeants de PME francophones.
 
-Rédige un article complet sur : "${topic.title}"
+Rédige un article de fond sur : "${topic.title}"
+Mots-clés à intégrer naturellement : ${topic.keywords}
 
-Mots-clés cibles : ${topic.keywords}
+VOIX ET TON — ce qui distingue un article d'autorité d'un article SEO générique :
+- Tu ouvres avec une vérité inconfortable, un paradoxe, ou une situation concrète que le lecteur reconnaît immédiatement. Jamais avec "Découvrez", "Dans cet article" ou une définition.
+- Tu as un point de vue affirmé : tu dis ce qui est vrai, ce qui est faux, ce que la majorité rate. Pas de langue de bois.
+- Tes exemples sont précis et crédibles : "un fondateur SaaS B2B que nous accompagnons depuis 18 mois" ou "sur les 40 levées suivies cette année". Jamais vagues.
+- Tes benchmarks ont un contexte : "un CAC payback > 18 mois dans le SaaS B2B mid-market est un signal d'alerte" plutôt que "un bon CAC".
+- Ton lecteur est un pair, pas un élève. Tu l'informes, tu ne l'instruis pas.
 
-Structure OBLIGATOIRE (HTML, utilise les balises suivantes uniquement) :
-- <p class="art-lead">...</p> pour le paragraphe d'introduction (2-3 phrases percutantes avec le mot-clé principal)
-- <h2>...</h2> pour les titres de section (4 à 6 sections)
-- <h3>...</h3> pour les sous-sections si nécessaire
-- <p>...</p> pour les paragraphes (contenu dense, pratique, actionnable)
-- <ul><li>...</li></ul> pour les listes à puces
-- <div class="highlight"><strong>...</strong>...</div> pour les encadrés conseil/définition (1-2 max)
-- <strong>...</strong> pour le gras (mots-clés importants)
-- <em>...</em> pour les formules de calcul
+STRUCTURE NARRATIVE — pas une liste de sections, une progression logique :
+1. Ouverture : une tension, un problème réel, une erreur commune (1 paragraphe percutant)
+2. Le fond du problème : pourquoi c'est plus complexe qu'il n'y paraît
+3. Ce que font les meilleurs : 2-3 pratiques concrètes, avec chiffres et contexte
+4. L'erreur classique à éviter : la chose que tout le monde fait et qui ne marche pas
+5. Ce qu'il faut retenir : synthèse actionnable, pas un résumé bateau
 
-Règles SEO strictes :
-1. Mot-clé principal dans le premier paragraphe
-2. Mots-clés secondaires dans au moins 2 titres H2
-3. Contenu utile, actionnable, basé sur l'expérience terrain
-4. Ton professionnel mais accessible, jamais condescendant
-5. Minimum 700 mots, maximum 1000 mots
-6. Inclure des chiffres, benchmarks, exemples concrets quand pertinent
-7. Terminer avec un paragraphe de conclusion (h2 "Conclusion") qui résume les points clés
-8. NE PAS inclure de CTA, de balises <html>, <head>, <body> — uniquement le contenu de l'article
+FORMAT HTML STRICT :
+- <p class="art-lead"> : UNE seule phrase d'ouverture, max 180 caractères, qui crée une tension immédiate
+- <h2> : 4-5 sections max, titres affirmés (pas de questions, pas de "comment")
+- <h3> : sous-sections uniquement si indispensable (2 max par article)
+- <p> : paragraphes courts, 2-4 phrases. Respiration entre les idées.
+- <ul><li> : listes de 3-5 items max, chacun actionnable et précis
+- <div class="highlight"><strong>Point clé :</strong> ...</div> : UN seul encadré, pour la donnée ou la formule la plus importante
+- <strong> : pour les termes techniques et chiffres clés — pas pour décorer
+- <em> : pour les formules de calcul uniquement
+
+RÈGLES ABSOLUES :
+✗ Jamais : "Dans cet article, nous allons", "Il est important de", "En conclusion, nous avons vu", "N'hésitez pas à"
+✗ Pas de conclusion bateau qui résume ce qui vient d'être dit
+✗ Pas de keyword stuffing — les mots-clés s'intègrent naturellement dans les phrases
+✗ Pas de rembourrage — si une phrase n'apporte pas de valeur nouvelle, elle n'existe pas
+✓ Minimum 750 mots, maximum 1100 mots
+✓ Au moins 3 chiffres/benchmarks contextualisés dans l'article
+✓ Terminer sur une note prospective ou une question qui pousse à l'action — pas une répétition
 
 À la fin, sur une NOUVELLE LIGNE, écris exactement :
-EXCERPT: [une phrase de 150-180 caractères max qui résume l'article, optimisée pour le meta excerpt]
-READTIME: [nombre de minutes de lecture estimé, entre 6 et 12]`
+EXCERPT: [une phrase de 150-180 caractères qui capture l'angle principal de l'article — écrite pour donner envie de lire, pas pour résumer]
+READTIME: [minutes de lecture entre 6 et 12]`
     }]
   });
 
