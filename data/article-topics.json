@@ -1,135 +1,142 @@
 [
   {
-    "title": "Levée de fonds Seed : préparer son dossier pour les business angels",
-    "slug": "levee-fonds-seed-business-angels",
-    "category": "Levée de fonds",
+    "title": "Les dirigeants qui scalent ne travaillent pas plus — ils travaillent différemment",
+    "slug": "dirigeants-qui-scalent-travaillent-differemment",
+    "category": "Stratégie dirigeant",
     "icon": "trending-up",
-    "keywords": "levée de fonds seed, business angels, dossier investisseur seed"
+    "keywords": "scale PME, croissance dirigeant, organisation entreprise croissance"
   },
   {
-    "title": "Tableau de bord financier startup : les indicateurs essentiels à suivre chaque mois",
-    "slug": "tableau-de-bord-financier-startup",
-    "category": "KPIs & Métriques",
-    "icon": "bar-chart",
-    "keywords": "tableau de bord financier, indicateurs financiers startup, reporting mensuel"
+    "title": "Pourquoi être le meilleur expert de votre équipe est votre principal frein à la croissance",
+    "slug": "expert-equipe-frein-croissance-dirigeant",
+    "category": "Vision & Recul",
+    "icon": "users",
+    "keywords": "délégation dirigeant, founder trap, syndrome fondateur expert"
   },
   {
-    "title": "Valorisation startup : méthodes et benchmarks pour négocier sa levée de fonds",
-    "slug": "valorisation-startup-methodes",
-    "category": "Levée de fonds",
-    "icon": "dollar",
-    "keywords": "valorisation startup, méthodes valorisation, multiples SaaS, term sheet"
+    "title": "Les 3 leviers de croissance qu'une PME peut activer sans lever de fonds",
+    "slug": "leviers-croissance-pme-sans-levee-fonds",
+    "category": "Croissance & Scale",
+    "icon": "trending-up",
+    "keywords": "croissance PME organique, leviers scale, croissance sans financement externe"
   },
   {
-    "title": "Plan de trésorerie PME : comment anticiper et éviter les crises de liquidité",
-    "slug": "plan-tresorerie-pme",
-    "category": "Trésorerie",
+    "title": "Déléguer sans perdre le contrôle : ce que font les PME qui y arrivent",
+    "slug": "deleguer-sans-perdre-controle-pme",
+    "category": "Organisation & Ops",
+    "icon": "users",
+    "keywords": "délégation PME, contrôle dirigeant, management croissance"
+  },
+  {
+    "title": "Priorisation stratégique : comment choisir quoi scaler quand tout semble urgent",
+    "slug": "priorisation-strategique-quoi-scaler",
+    "category": "Stratégie dirigeant",
+    "icon": "activity",
+    "keywords": "priorisation stratégie PME, focus croissance, décision stratégique dirigeant"
+  },
+  {
+    "title": "Ce que votre agenda dit de l'état réel de votre entreprise",
+    "slug": "agenda-dirigeant-etat-reel-entreprise",
+    "category": "Vision & Recul",
     "icon": "clock",
-    "keywords": "plan de trésorerie PME, gestion liquidité, prévisions trésorerie"
+    "keywords": "gestion du temps dirigeant, pilotage PME, recul stratégique"
   },
   {
-    "title": "Due diligence financière : ce que les VCs vérifient dans votre data room",
-    "slug": "due-diligence-financiere-vc",
-    "category": "Levée de fonds",
-    "icon": "shield",
-    "keywords": "due diligence financière, data room startup, vérification investisseur"
+    "title": "Comment identifier les 20% d'activités qui génèrent 80% de votre chiffre d'affaires",
+    "slug": "pareto-activites-chiffre-affaires-pme",
+    "category": "Croissance & Scale",
+    "icon": "bar-chart",
+    "keywords": "règle de Pareto PME, activités prioritaires, focus revenue"
   },
   {
-    "title": "Contrôle de gestion startup : mettre en place un reporting efficace",
-    "slug": "controle-de-gestion-startup",
-    "category": "CFO as a Service",
+    "title": "Les 4 réunions qui remplacent 80% des problèmes d'organisation d'une PME",
+    "slug": "reunions-organisation-pme-efficaces",
+    "category": "Organisation & Ops",
     "icon": "briefcase",
-    "keywords": "contrôle de gestion startup, reporting financier, tableaux de bord gestion"
+    "keywords": "réunions efficaces PME, cadence équipe, management opérationnel"
   },
   {
-    "title": "Optimisation du BFR : libérer du cash sans emprunter",
-    "slug": "optimisation-bfr-besoin-fonds-roulement",
-    "category": "Trésorerie",
-    "icon": "activity",
-    "keywords": "BFR, besoin en fonds de roulement, optimisation trésorerie PME"
-  },
-  {
-    "title": "Économie unitaire startup : CAC, LTV et les ratios qui rassurent les investisseurs",
-    "slug": "economie-unitaire-startup-cac-ltv",
-    "category": "KPIs & Métriques",
-    "icon": "bar-chart",
-    "keywords": "économie unitaire startup, CAC LTV ratio, unit economics"
-  },
-  {
-    "title": "VVPRbis en Belgique : comment distribuer vos dividendes à 15% de précompte",
-    "slug": "vvprbis-belgique-dividendes-15-percent",
-    "category": "Fiscalité Belge",
-    "icon": "dollar",
-    "keywords": "VVPRbis Belgique, dividendes 15%, précompte mobilier réduit, startup Belgique"
-  },
-  {
-    "title": "ISOC en Belgique : optimiser l'impôt des sociétés pour une PME",
-    "slug": "isoc-belgique-optimisation-impot-societes",
-    "category": "Fiscalité Belge",
-    "icon": "shield",
-    "keywords": "ISOC Belgique, impôt des sociétés, taux réduit PME, déductions fiscales"
-  },
-  {
-    "title": "Statut indépendant en Belgique : cotisations sociales et optimisation financière",
-    "slug": "independant-belgique-cotisations-sociales",
-    "category": "Fiscalité Belge",
-    "icon": "users",
-    "keywords": "indépendant Belgique, cotisations sociales, INASTI, optimisation rémunération"
-  },
-  {
-    "title": "Liquidation-réserve en Belgique : sortir ses bénéfices avec une taxation avantageuse",
-    "slug": "liquidation-reserve-belgique-taxation",
-    "category": "Fiscalité Belge",
-    "icon": "dollar",
-    "keywords": "liquidation-réserve Belgique, taxation avantageuse, bénéfices réserve, exit strategy"
-  },
-  {
-    "title": "Aides et subsides aux entreprises en Wallonie et Bruxelles en 2025",
-    "slug": "aides-subsides-entreprises-wallonie-bruxelles-2025",
-    "category": "Fiscalité Belge",
+    "title": "Scaler sans se perdre : comment garder le cap quand l'entreprise grandit vite",
+    "slug": "scaler-sans-se-perdre-cap-croissance",
+    "category": "Croissance & Scale",
     "icon": "trending-up",
-    "keywords": "aides entreprises Wallonie, subsides Bruxelles, financement startup Belgique"
+    "keywords": "croissance rapide PME, cap stratégique, scale organisation"
   },
   {
-    "title": "TVA en Belgique : obligations, récupération et optimisation pour startups",
-    "slug": "tva-belgique-obligations-startups",
-    "category": "Fiscalité Belge",
+    "title": "L'angle mort du dirigeant : ce que la proximité vous empêche de voir",
+    "slug": "angle-mort-dirigeant-proximite-vision",
+    "category": "Vision & Recul",
     "icon": "activity",
-    "keywords": "TVA Belgique, déclaration TVA, récupération TVA startup, obligations fiscales"
+    "keywords": "biais cognitif dirigeant, angle mort stratégique, regard extérieur entreprise"
   },
   {
-    "title": "Budget fédéral belge 2025 : les mesures qui impactent les entrepreneurs",
-    "slug": "budget-belge-2025-entrepreneurs",
-    "category": "Fiscalité Belge",
+    "title": "Croissance sans rentabilité : le piège dans lequel tombent 6 PME sur 10 en phase de scale",
+    "slug": "croissance-sans-rentabilite-piege-pme",
+    "category": "Croissance & Scale",
     "icon": "bar-chart",
-    "keywords": "budget Belgique 2025, réforme fiscale entrepreneurs, mesures PME Belgique"
+    "keywords": "rentabilité croissance PME, scale profitabilité, unité économique PME"
   },
   {
-    "title": "Stock-options et warrants en Belgique : fiscalité et avantages pour les startups",
-    "slug": "stock-options-warrants-belgique-fiscalite",
-    "category": "Fiscalité Belge",
+    "title": "Les 5 processus qui libèrent le dirigeant des tâches récurrentes",
+    "slug": "processus-liberation-dirigeant-taches-recurrentes",
+    "category": "Organisation & Ops",
+    "icon": "clock",
+    "keywords": "processus PME, systématisation, délégation opérationnelle dirigeant"
+  },
+  {
+    "title": "Décider sans données parfaites : la méthode des dirigeants qui avancent vite",
+    "slug": "decision-sans-donnees-parfaites-methode-dirigeant",
+    "category": "Stratégie dirigeant",
+    "icon": "briefcase",
+    "keywords": "décision stratégique incertitude, management sous contrainte, vitesse décision PME"
+  },
+  {
+    "title": "Exit ou scale : comment décider ce que vous voulez vraiment pour votre entreprise",
+    "slug": "exit-ou-scale-decision-dirigeant",
+    "category": "Stratégie dirigeant",
     "icon": "trending-up",
-    "keywords": "stock-options Belgique, warrants startup, fiscalité options, rémunération variable"
+    "keywords": "exit strategy PME, cession entreprise, scale vs vente, stratégie fondateur"
   },
   {
-    "title": "Droit passerelle belge : protéger sa trésorerie en cas de coup dur",
-    "slug": "droit-passerelle-belgique-tresorerie",
-    "category": "Fiscalité Belge",
-    "icon": "shield",
-    "keywords": "droit passerelle Belgique, protection indépendant, interruption activité, aide financière"
-  },
-  {
-    "title": "Précompte professionnel en Belgique : calcul et optimisation pour dirigeants",
-    "slug": "precompte-professionnel-belgique-dirigeants",
-    "category": "Fiscalité Belge",
-    "icon": "dollar",
-    "keywords": "précompte professionnel Belgique, salaire dirigeant, optimisation fiscale"
-  },
-  {
-    "title": "Pacte d'actionnaires en Belgique : clauses essentielles pour startups",
-    "slug": "pacte-actionnaires-belgique-startups",
-    "category": "Levée de fonds",
+    "title": "Ce que vos 3 meilleurs clients savent de vous que vous ne voyez plus",
+    "slug": "meilleurs-clients-positionnement-reel-pme",
+    "category": "Vision & Recul",
     "icon": "users",
-    "keywords": "pacte d'actionnaires Belgique, clauses investisseur, protection fondateur, SHA"
+    "keywords": "positionnement PME, voix client, perception marché, valeur réelle offre"
+  },
+  {
+    "title": "La différence entre une PME qui tourne et une PME qui scale",
+    "slug": "difference-pme-tourne-vs-scale",
+    "category": "Organisation & Ops",
+    "icon": "activity",
+    "keywords": "structure PME scalable, organisation croissance, modèle opérationnel"
+  },
+  {
+    "title": "Recruter, automatiser ou externaliser : comment trancher quand on a un problème de capacité",
+    "slug": "recruter-automatiser-externaliser-capacite-pme",
+    "category": "Organisation & Ops",
+    "icon": "users",
+    "keywords": "ressources humaines PME, automatisation vs recrutement, externalisation"
+  },
+  {
+    "title": "Les signaux qui montrent qu'une PME est prête à passer au niveau supérieur",
+    "slug": "signaux-pme-prete-niveau-superieur",
+    "category": "Croissance & Scale",
+    "icon": "trending-up",
+    "keywords": "indicateurs scale PME, maturité organisationnelle, palier croissance"
+  },
+  {
+    "title": "Quand changer de positionnement — et comment le reconnaître avant qu'il soit trop tard",
+    "slug": "quand-changer-positionnement-pme",
+    "category": "Stratégie dirigeant",
+    "icon": "bar-chart",
+    "keywords": "repositionnement PME, pivot stratégique, évolution marché offre"
+  },
+  {
+    "title": "Le recul stratégique : comment le planifier quand on n'a jamais le temps",
+    "slug": "recul-strategique-planifier-temps-dirigeant",
+    "category": "Vision & Recul",
+    "icon": "clock",
+    "keywords": "recul stratégique dirigeant, temps de réflexion, off-site stratégique PME"
   }
 ]

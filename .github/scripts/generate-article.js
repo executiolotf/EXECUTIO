@@ -16,7 +16,7 @@ async function buildFluxPrompt(title, category) {
     max_tokens: 180,
     messages: [{
       role: 'user',
-      content: `You are a creative director for a premium B2B financial advisory brand (Executio, CFO as a Service for startups and SMEs).
+      content: `You are a creative director for a premium B2B strategic advisory brand (Executio, strategic partner for SME leaders and founders).
 
 Write a FLUX image generation prompt for a blog article hero image.
 Article title: "${title}"
@@ -113,23 +113,24 @@ async function regenerateTopics(existingSlugs) {
     max_tokens: 2000,
     messages: [{
       role: 'user',
-      content: `Tu es un expert SEO spécialisé en finance d'entreprise pour la France et la Belgique.
+      content: `Tu es un expert SEO spécialisé en stratégie d'entreprise et management pour les PME et startups en France et en Belgique.
 
-Génère exactement 20 nouveaux sujets d'articles de blog SEO pour Executio (CFO as a Service pour startups et PME en France et en Belgique). Ces articles ciblent dirigeants de startups, PME, indépendants.
+Génère exactement 20 nouveaux sujets d'articles de blog SEO pour Executio (partenaire stratégique externe pour dirigeants de PME). Ces articles ciblent des dirigeants de PME (5 à 50 personnes), fondateurs et entrepreneurs en croissance.
+
+Narrative centrale : les dirigeants sont trop souvent "la tête dans le guidon" — pris dans l'opérationnel, sans recul pour voir ce qui freine leur croissance et ce qui mérite d'être scalé. Executio apporte ce regard extérieur.
 
 Mélange obligatoire :
-- 5 sujets finance evergreen avec forte intention de recherche (trésorerie, burn rate, BFR, KPIs, modèles financiers) — titres type "Comment", "Les X erreurs", "Guide complet"
-- 4 sujets CFO externalisé / DAF à temps partagé : comparaison coûts, cas d'usage, timing, retour sur investissement
-- 4 sujets fiscalité et réglementation France ${currentYear} (facturation électronique obligatoire, IS, BPI, LME, dispositifs aides PME)
-- 4 sujets fiscalité et réglementation Belgique ${currentYear} (VVPRbis, ISOC, INASTI, Peppol, subsides régionaux Wallonie/Bruxelles/Flandre)
-- 3 sujets stratégie financière à fort enjeu (valorisation, levée de fonds, exit, restructuration de dette)
+- 5 sujets "Stratégie dirigeant" : décision stratégique, priorisation, positionnement, sortie vs croissance, gestion de l'incertitude
+- 5 sujets "Vision & Recul" : angles morts, biais du fondateur, regard extérieur, recul stratégique, ce que la proximité cache
+- 5 sujets "Croissance & Scale" : paliers de croissance, unit economics, leviers de scale organique, croissance rentable, modèle scalable
+- 5 sujets "Organisation & Ops" : délégation, processus, réunions, recrutement vs automatisation, structure organisationnelle
 
 Pour chaque sujet, réponds en JSON strict (tableau de 20 objets), chaque objet ayant :
-- "title": titre SEO optimisé en français (60-80 chars, mot-clé principal dedans)
+- "title": titre SEO en français (60-80 chars, direct, affirmé — éviter "Comment", préférer "Les X...", "Pourquoi...", affirmations directes)
 - "slug": slug URL (minuscules, tirets, sans accents, 3-6 mots)
-- "category": une parmi ["Fiscalité Belge", "KPIs & Métriques", "Levée de fonds", "Trésorerie", "CFO as a Service"]
-- "icon": une parmi ["activity", "trending-up", "bar-chart", "dollar", "shield", "briefcase", "clock", "users"]
-- "keywords": 3 mots-clés SEO séparés par des virgules
+- "category": une parmi ["Stratégie dirigeant", "Vision & Recul", "Croissance & Scale", "Organisation & Ops"]
+- "icon": une parmi ["activity", "trending-up", "bar-chart", "briefcase", "clock", "users"]
+- "keywords": 3 mots-clés SEO séparés par des virgules (focus scale PME, stratégie dirigeant, croissance)
 
 Réponds UNIQUEMENT avec le tableau JSON, sans texte autour.`
     }]
@@ -190,7 +191,9 @@ async function main() {
     max_tokens: 3000,
     messages: [{
       role: 'user',
-      content: `Tu es partner senior dans un cabinet de conseil financier de premier plan — l'équivalent d'un directeur McKinsey spécialisé finance d'entreprise, opérant principalement en France et en Belgique. Tu rédiges des articles qui font référence dans la communauté des fondateurs et dirigeants de PME francophones.
+      content: `Tu es un conseiller stratégique senior — l'équivalent d'un partner de cabinet de conseil de direction (McKinsey OPS, Roland Berger, Kearney) qui travaille exclusivement avec des dirigeants de PME et de startups en croissance en France et en Belgique. Tu rédiges des articles qui font référence dans la communauté des fondateurs et dirigeants francophones.
+
+Narrative de marque : les dirigeants sont trop souvent "la tête dans le guidon" — absorbés par l'opérationnel, sans recul pour voir ce qui freine leur croissance ou ce qui mérite d'être scalé. Le regard extérieur d'un partenaire stratégique change ça.
 
 Rédige un article de fond sur : "${topic.title}"
 Mots-clés à intégrer naturellement : ${topic.keywords}
@@ -198,17 +201,17 @@ Mots-clés à intégrer naturellement : ${topic.keywords}
 VOIX ET TON — ce qui distingue un article d'autorité d'un article SEO générique :
 - Tu ouvres avec une vérité inconfortable, un paradoxe, ou une situation concrète que le lecteur reconnaît immédiatement. Jamais avec "Découvrez", "Dans cet article" ou une définition.
 - Tu as un point de vue affirmé : tu dis ce qui est vrai, ce qui est faux, ce que la majorité rate. Pas de langue de bois.
-- Tes exemples sont précis et crédibles : "un fondateur SaaS B2B que nous accompagnons depuis 18 mois" ou "sur les 40 levées suivies cette année". Jamais vagues.
-- Tes benchmarks ont un contexte ET une source de marché réelle : "en France, le délai moyen de paiement inter-entreprises est de 54 jours (Banque de France, 2024)" ou "un DAF salarié en France coûte entre €80k et €130k charges incluses" ou "les PME belges éligibles au VVPRbis bénéficient d'un précompte réduit à 15% sur dividendes".
-- Quand c'est pertinent, ancre l'article dans la réalité réglementaire française ou belge (LME, BPI, IS, TVA, INASTI, facturation électronique obligatoire en France 2026, Peppol Belgique, etc.)
+- Tes exemples sont précis et crédibles : "un fondateur e-commerce que nous accompagnons depuis 14 mois" ou "sur les 30 dirigeants de PME rencontrés cette année". Jamais vagues.
+- Tes benchmarks ont un contexte réel : "en France, 73% des dirigeants de PME déclarent manquer de temps pour la réflexion stratégique (Bpifrance, 2024)" ou "les PME qui franchissent le palier 2M→5M de CA ont presque toutes structuré leur délégation avant de scaler".
+- Tu parles de croissance, d'organisation, de décision, de recul — pas de fiscalité ou de comptabilité sauf si le sujet l'exige.
 - Ton lecteur est un pair, pas un élève. Tu l'informes, tu ne l'instruis pas.
 
 STRUCTURE NARRATIVE — pas une liste de sections, une progression logique :
-1. Ouverture : une tension, un problème réel, une erreur commune (1 paragraphe percutant)
-2. Le fond du problème : pourquoi c'est plus complexe qu'il n'y paraît
-3. Ce que font les meilleurs : 2-3 pratiques concrètes, avec chiffres et contexte
-4. L'erreur classique à éviter : la chose que tout le monde fait et qui ne marche pas
-5. Ce qu'il faut retenir : synthèse actionnable, pas un résumé bateau
+1. Ouverture : une tension, un problème réel, une situation concrète que le lecteur vit (1 paragraphe percutant)
+2. Le fond du problème : pourquoi c'est plus complexe et systémique qu'il n'y paraît
+3. Ce que font les dirigeants qui s'en sortent : 2-3 pratiques concrètes, avec observations de terrain
+4. L'erreur classique à éviter : la chose que tout le monde fait et qui bloque la croissance
+5. Ce qu'il faut retenir : synthèse actionnable avec une question ou une tension qui pousse à l'action
 
 FORMAT HTML STRICT :
 - <p class="art-lead"> : UNE seule phrase d'ouverture, max 180 caractères, qui crée une tension immédiate
@@ -216,18 +219,19 @@ FORMAT HTML STRICT :
 - <h3> : sous-sections uniquement si indispensable (2 max par article)
 - <p> : paragraphes courts, 2-4 phrases. Respiration entre les idées.
 - <ul><li> : listes de 3-5 items max, chacun actionnable et précis
-- <div class="highlight"><strong>Point clé :</strong> ...</div> : UN seul encadré, pour la donnée ou la formule la plus importante
-- <strong> : pour les termes techniques et chiffres clés — pas pour décorer
-- <em> : pour les formules de calcul uniquement
+- <div class="highlight"><strong>Point clé :</strong> ...</div> : UN seul encadré, pour l'observation ou le principe le plus important
+- <strong> : pour les concepts clés et chiffres — pas pour décorer
+- <em> : pour les formules ou principes synthétiques uniquement
 
 RÈGLES ABSOLUES :
 ✗ Jamais : "Dans cet article, nous allons", "Il est important de", "En conclusion, nous avons vu", "N'hésitez pas à"
 ✗ Pas de conclusion bateau qui résume ce qui vient d'être dit
 ✗ Pas de keyword stuffing — les mots-clés s'intègrent naturellement dans les phrases
 ✗ Pas de rembourrage — si une phrase n'apporte pas de valeur nouvelle, elle n'existe pas
+✗ Pas de conseils sur la comptabilité, la fiscalité ou les outils logiciels sauf si directement lié au sujet
 ✓ Minimum 750 mots, maximum 1100 mots
-✓ Au moins 3 chiffres/benchmarks contextualisés dans l'article
-✓ Terminer sur une note prospective ou une question qui pousse à l'action — pas une répétition
+✓ Au moins 3 observations concrètes ou benchmarks contextualisés dans l'article
+✓ Terminer sur une note prospective ou une tension qui pousse à l'action — pas une répétition
 
 À la fin, sur une NOUVELLE LIGNE, écris exactement :
 EXCERPT: [une phrase de 150-180 caractères qui capture l'angle principal de l'article — écrite pour donner envie de lire, pas pour résumer]
