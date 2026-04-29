@@ -113,15 +113,16 @@ async function regenerateTopics(existingSlugs) {
     max_tokens: 2000,
     messages: [{
       role: 'user',
-      content: `Tu es un expert SEO spécialisé en finance d'entreprise pour la Belgique et la France.
+      content: `Tu es un expert SEO spécialisé en finance d'entreprise pour la France et la Belgique.
 
-Génère exactement 20 nouveaux sujets d'articles de blog SEO pour un cabinet de conseil financier belge (Executio). Ces articles ciblent dirigeants de startups, PME, indépendants.
+Génère exactement 20 nouveaux sujets d'articles de blog SEO pour Executio (CFO as a Service pour startups et PME en France et en Belgique). Ces articles ciblent dirigeants de startups, PME, indépendants.
 
 Mélange obligatoire :
-- 6 sujets sur la fiscalité belge (VVPRbis, ISOC, TVA, cotisations INASTI, subsides régionaux, précompte, etc.)
-- 5 sujets sur l'actualité financière belge ${currentYear} (budget fédéral, réformes fiscales, aides régionales Wallonie/Bruxelles/Flandre)
-- 5 sujets evergreen finance startup/PME (KPIs, levée de fonds, trésorerie, modèles financiers)
-- 4 sujets sur la stratégie financière (optimisation rémunération dirigeant, exit, valorisation, restructuration)
+- 5 sujets finance evergreen avec forte intention de recherche (trésorerie, burn rate, BFR, KPIs, modèles financiers) — titres type "Comment", "Les X erreurs", "Guide complet"
+- 4 sujets CFO externalisé / DAF à temps partagé : comparaison coûts, cas d'usage, timing, retour sur investissement
+- 4 sujets fiscalité et réglementation France ${currentYear} (facturation électronique obligatoire, IS, BPI, LME, dispositifs aides PME)
+- 4 sujets fiscalité et réglementation Belgique ${currentYear} (VVPRbis, ISOC, INASTI, Peppol, subsides régionaux Wallonie/Bruxelles/Flandre)
+- 3 sujets stratégie financière à fort enjeu (valorisation, levée de fonds, exit, restructuration de dette)
 
 Pour chaque sujet, réponds en JSON strict (tableau de 20 objets), chaque objet ayant :
 - "title": titre SEO optimisé en français (60-80 chars, mot-clé principal dedans)
@@ -189,7 +190,7 @@ async function main() {
     max_tokens: 3000,
     messages: [{
       role: 'user',
-      content: `Tu es partner senior dans un cabinet de conseil financier de premier plan — l'équivalent d'un directeur McKinsey spécialisé finance d'entreprise. Tu rédiges des articles qui font référence dans la communauté des fondateurs et dirigeants de PME francophones.
+      content: `Tu es partner senior dans un cabinet de conseil financier de premier plan — l'équivalent d'un directeur McKinsey spécialisé finance d'entreprise, opérant principalement en France et en Belgique. Tu rédiges des articles qui font référence dans la communauté des fondateurs et dirigeants de PME francophones.
 
 Rédige un article de fond sur : "${topic.title}"
 Mots-clés à intégrer naturellement : ${topic.keywords}
@@ -198,7 +199,8 @@ VOIX ET TON — ce qui distingue un article d'autorité d'un article SEO génér
 - Tu ouvres avec une vérité inconfortable, un paradoxe, ou une situation concrète que le lecteur reconnaît immédiatement. Jamais avec "Découvrez", "Dans cet article" ou une définition.
 - Tu as un point de vue affirmé : tu dis ce qui est vrai, ce qui est faux, ce que la majorité rate. Pas de langue de bois.
 - Tes exemples sont précis et crédibles : "un fondateur SaaS B2B que nous accompagnons depuis 18 mois" ou "sur les 40 levées suivies cette année". Jamais vagues.
-- Tes benchmarks ont un contexte : "un CAC payback > 18 mois dans le SaaS B2B mid-market est un signal d'alerte" plutôt que "un bon CAC".
+- Tes benchmarks ont un contexte ET une source de marché réelle : "en France, le délai moyen de paiement inter-entreprises est de 54 jours (Banque de France, 2024)" ou "un DAF salarié en France coûte entre €80k et €130k charges incluses" ou "les PME belges éligibles au VVPRbis bénéficient d'un précompte réduit à 15% sur dividendes".
+- Quand c'est pertinent, ancre l'article dans la réalité réglementaire française ou belge (LME, BPI, IS, TVA, INASTI, facturation électronique obligatoire en France 2026, Peppol Belgique, etc.)
 - Ton lecteur est un pair, pas un élève. Tu l'informes, tu ne l'instruis pas.
 
 STRUCTURE NARRATIVE — pas une liste de sections, une progression logique :

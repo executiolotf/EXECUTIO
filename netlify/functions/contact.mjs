@@ -185,14 +185,20 @@ export const handler = async (event) => {
   const BR      = process.env.BREVO_API_KEY;
   const BR_LIST = process.env.BREVO_LIST_ID;
 
+  const dbg = {};
   if (AT) {
     try {
       const personId = await upsertPerson(AT, body);
+      dbg.personId = personId;
       if (personId) {
-        if (AT_LIST) await addToPipeline(AT, AT_LIST, personId, body);
-        await createNote(AT, personId, body);
+        if (AT_LIST) {
+          try { await addToPipeline(AT, AT_LIST, personId, body); dbg.pipeline = 'ok'; }
+          catch (e) { dbg.pipelineError = e.message; }
+        }
+        try { await createNote(AT, personId, body); dbg.note = 'ok'; }
+        catch (e) { dbg.noteError = e.message; }
       }
-    } catch (e) { console.error('[Attio]', e.message); }
+    } catch (e) { dbg.attioError = e.message; }
   }
 
   if (BR) {
