@@ -38,5 +38,5 @@ jobs:
           git config user.name "EXECUTIO Bot"
           git add insights/ data/articles.json data/article-topics.json
           git diff --cached --quiet || git commit -m "feat(insights): nouvel article — ${{ steps.gen.outputs.title }}"
-          git pull --rebase origin main
+          git pull --rebase --autostash origin main
           git push
