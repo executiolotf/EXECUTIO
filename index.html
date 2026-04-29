@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="facebook-domain-verification" content="8tc4hqyoq0nl4x4xmetbsgv4s13at0" />
-<title>EXECUTIO — Business Operating System</title>
-<meta name="description" content="Executio conçoit le système d'exploitation de votre entreprise — outils, automatisation, dashboards et workflows documentaires unifiés.">
+<title>EXECUTIO — Conseil Opérationnel & Business Operating System</title>
+<meta name="description" content="Executio analyse vos processus, identifie les frictions et vous livre un plan d'action concret pour automatiser, connecter et mieux piloter votre entreprise.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/bd845eb6b81c1b4aa1f6e240/script.js"></script>
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -21,6 +21,7 @@
   --cyan: #22d3ee;
   --violet: #8b5cf6;
   --green: #22c55e;
+  --amber: #f59e0b;
   --red: #ef4444;
   --white: #f8fafc;
   --muted: rgba(248,250,252,.42);
@@ -67,8 +68,6 @@ nav.scrolled{padding:.8rem 5%;background:rgba(8,9,14,.92);backdrop-filter:blur(2
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;position:relative;overflow:hidden;background:var(--bg);padding-top:80px}
 .hero-inner{display:flex;align-items:center;padding:5rem 5% 3rem;gap:5%;position:relative;z-index:3}
-
-/* Hero background */
 .hero-bg{position:absolute;inset:0;z-index:0}
 .orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
 .o1{width:700px;height:700px;background:radial-gradient(circle,rgba(99,102,241,.22) 0%,transparent 70%);top:-15%;right:-5%;animation:o1 16s ease-in-out infinite}
@@ -99,33 +98,31 @@ nav.scrolled{padding:.8rem 5%;background:rgba(8,9,14,.92);backdrop-filter:blur(2
 @keyframes slideUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
 @keyframes slideRight{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:none}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* ── OS DASHBOARD WIDGET ── */
-.hero-right{flex:0 0 400px;animation:slideRight 1s .85s both}
+/* ── AUDIT WIDGET ── */
+.hero-right{flex:0 0 390px;animation:slideRight 1s .85s both}
 .dashboard{background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.6rem;backdrop-filter:blur(20px);box-shadow:0 24px 64px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.05)}
-.db-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.4rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
-.db-title{font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.db-status{display:flex;align-items:center;gap:6px;font-size:.62rem;letter-spacing:.1em;color:var(--green);font-weight:500}
-.db-status::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:pdot 1.5s infinite}
-.db-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.3rem}
-.db-kpi{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:.7rem .8rem}
-.kpi-val{font-size:1.3rem;font-weight:600;color:var(--white);display:block;margin-bottom:2px;font-variant-numeric:tabular-nums}
+.db-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.db-title{font-size:.63rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.db-badge{font-size:.6rem;font-weight:600;letter-spacing:.08em;color:var(--indigo);background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);padding:.18rem .6rem;border-radius:4px}
+.db-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-bottom:1.2rem}
+.db-kpi{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem}
+.kpi-val{font-size:1.25rem;font-weight:600;color:var(--white);display:block;margin-bottom:2px;font-variant-numeric:tabular-nums}
+.kpi-val.amber{color:var(--amber)}
+.kpi-val.green{color:var(--green)}
 .kpi-key{font-size:.58rem;color:var(--muted);letter-spacing:.07em;text-transform:uppercase}
-.kpi-up{color:var(--green)}
-.db-modules{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.3rem}
-.db-mod{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:7px;transition:border-color .25s}
-.db-mod:hover{border-color:var(--border-hi)}
-.mod-dot{width:7px;height:7px;background:var(--green);border-radius:50%;flex-shrink:0;animation:pdot 2s infinite}
-.mod-dot.sync{animation-delay:.4s}
-.mod-dot.live{animation-delay:.8s}
-.mod-dot.auto{animation-delay:1.2s}
-.mod-name{font-size:.72rem;color:rgba(248,250,252,.6);flex:1;font-weight:400}
-.mod-badge{font-size:.6rem;font-weight:500;letter-spacing:.06em;color:var(--green);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);padding:.18rem .5rem;border-radius:4px}
-.db-eff-label{display:flex;justify-content:space-between;font-size:.62rem;color:var(--muted);margin-bottom:.4rem}
-.db-eff-label span:last-child{color:var(--indigo);font-weight:600}
-.db-eff-bar{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
-.db-eff-fill{height:100%;background:var(--grad);border-radius:2px;width:0;transition:width 2s cubic-bezier(.16,1,.3,1) 2s}
+.db-findings{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem}
+.db-finding{display:flex;align-items:center;gap:.65rem;padding:.55rem .75rem;border-radius:7px;border:1px solid var(--border)}
+.finding-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.dot-red{background:var(--red)}
+.dot-amber{background:var(--amber)}
+.dot-green{background:var(--green)}
+.finding-text{font-size:.7rem;color:rgba(248,250,252,.55);flex:1;line-height:1.45}
+.finding-text strong{color:var(--white);font-weight:500}
+.db-score-label{display:flex;justify-content:space-between;font-size:.62rem;color:var(--muted);margin-bottom:.4rem}
+.db-score-label span:last-child{color:var(--indigo);font-weight:600}
+.db-score-bar{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.db-score-fill{height:100%;background:var(--grad);border-radius:3px;width:0;transition:width 2.2s cubic-bezier(.16,1,.3,1) 2s}
 
 /* ── HERO STATS ── */
 .hero-stats{display:flex;padding:1.6rem 5%;border-top:1px solid rgba(255,255,255,.05);background:rgba(0,0,0,.22);gap:3rem;flex-wrap:wrap;position:relative;z-index:3}
@@ -139,7 +136,7 @@ nav.scrolled{padding:.8rem 5%;background:rgba(8,9,14,.92);backdrop-filter:blur(2
 
 /* ── TICKER ── */
 .ticker{background:rgba(99,102,241,.06);border-top:1px solid rgba(99,102,241,.12);border-bottom:1px solid rgba(99,102,241,.12);overflow:hidden;padding:.55rem 0;position:relative;z-index:2}
-.ticker-track{display:flex;animation:tick 32s linear infinite;width:max-content}
+.ticker-track{display:flex;animation:tick 34s linear infinite;width:max-content}
 .titem{display:flex;align-items:center;gap:1.4rem;padding:0 1.8rem;font-size:.67rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(99,102,241,.65);white-space:nowrap}
 .tdot{width:3px;height:3px;background:rgba(99,102,241,.4);border-radius:50%}
 @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -156,12 +153,10 @@ section{padding:7rem 5%}
 .rvl{transform:translateX(-40px)}
 .rvr{transform:translateX(40px)}
 .rv.io,.rvl.io,.rvr.io{opacity:1;transform:none}
-.stg .rv:nth-child(1),.stg .rvl:nth-child(1),.stg .rvr:nth-child(1){transition-delay:.0s}
-.stg .rv:nth-child(2),.stg .rvl:nth-child(2),.stg .rvr:nth-child(2){transition-delay:.08s}
-.stg .rv:nth-child(3),.stg .rvl:nth-child(3),.stg .rvr:nth-child(3){transition-delay:.16s}
-.stg .rv:nth-child(4),.stg .rvl:nth-child(4),.stg .rvr:nth-child(4){transition-delay:.24s}
-.stg .rv:nth-child(5),.stg .rvl:nth-child(5),.stg .rvr:nth-child(5){transition-delay:.32s}
-.stg .rv:nth-child(6),.stg .rvl:nth-child(6),.stg .rvr:nth-child(6){transition-delay:.40s}
+.stg .rv:nth-child(1),.stg .rvl:nth-child(1){transition-delay:.0s}
+.stg .rv:nth-child(2),.stg .rvl:nth-child(2){transition-delay:.1s}
+.stg .rv:nth-child(3),.stg .rvl:nth-child(3){transition-delay:.2s}
+.stg .rv:nth-child(4),.stg .rvl:nth-child(4){transition-delay:.3s}
 
 /* ── KICKER & HEADINGS ── */
 .kicker{font-size:.63rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:10px}
@@ -171,7 +166,7 @@ section{padding:7rem 5%}
 h2.dsp{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.18;margin-bottom:1rem;color:var(--white)}
 h2.dsp strong{font-weight:600}
 
-/* ── PROBLEM SECTION ── */
+/* ── PROBLEM ── */
 .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
 .pain-card{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;padding:1.8rem;position:relative;overflow:hidden;transition:border-color .3s}
 .pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),rgba(239,68,68,0));opacity:.6}
@@ -179,23 +174,22 @@ h2.dsp strong{font-weight:600}
 .pain-icon{width:36px;height:36px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
 .pain-icon svg{width:16px;height:16px;stroke:#ef4444;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .pain-title{font-size:.92rem;font-weight:600;color:var(--white);margin-bottom:.6rem}
-.pain-desc{font-size:.8rem;line-height:1.75;color:var(--muted)}
+.pain-desc{font-size:.8rem;line-height:1.78;color:var(--muted)}
 .problem-callout{margin-top:3rem;padding:1.6rem 2rem;background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.1);border-radius:8px;display:flex;align-items:center;gap:1.2rem}
 .problem-callout svg{width:20px;height:20px;stroke:#ef4444;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.problem-callout p{font-size:.85rem;line-height:1.7;color:rgba(248,250,252,.55);}
+.problem-callout p{font-size:.85rem;line-height:1.7;color:rgba(248,250,252,.55)}
 .problem-callout strong{color:var(--white)}
 
-/* ── SOLUTION SECTION ── */
-.solution-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-top:3rem}
-.solution-text p{font-size:.9rem;line-height:1.88;color:var(--muted);margin-bottom:1.2rem}
-.solution-pillars{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.pillar-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:1.4rem;position:relative;overflow:hidden;transition:border-color .3s,background .3s}
-.pillar-card::after{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .3s}
-.pillar-card:hover{border-color:var(--border-hi);background:rgba(99,102,241,.05)}
-.pc-icon{width:32px;height:32px;background:rgba(99,102,241,.12);border-radius:7px;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem}
-.pc-icon svg{width:14px;height:14px;stroke:var(--indigo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.pc-title{font-size:.8rem;font-weight:600;color:var(--white);margin-bottom:.25rem}
-.pc-sub{font-size:.73rem;color:var(--muted);line-height:1.55}
+/* ── APPROACH ── */
+.approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem}
+.approach-text p{font-size:.9rem;line-height:1.88;color:var(--muted);margin-bottom:1.2rem}
+.approach-text p strong{color:var(--white);font-weight:500}
+.approach-cards{display:flex;flex-direction:column;gap:.85rem}
+.approach-card{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.2rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;transition:border-color .25s,background .25s}
+.approach-card:hover{border-color:var(--border-hi);background:rgba(99,102,241,.05)}
+.ac-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--indigo);line-height:1;flex-shrink:0;width:32px}
+.ac-body strong{display:block;font-size:.84rem;font-weight:600;color:var(--white);margin-bottom:.2rem}
+.ac-body span{font-size:.78rem;color:var(--muted);line-height:1.55}
 
 /* ── SERVICES ── */
 .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:3rem;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden}
@@ -208,7 +202,7 @@ h2.dsp strong{font-weight:600}
 .scard:hover .sicon{background:rgba(99,102,241,.2)}
 .sicon svg{width:16px;height:16px;stroke:var(--indigo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .stitle{font-size:1.05rem;font-weight:600;color:var(--white);margin-bottom:.6rem;line-height:1.3}
-.sdesc{font-size:.8rem;line-height:1.78;color:var(--muted);margin-bottom:1rem}
+.sdesc{font-size:.8rem;line-height:1.8;color:var(--muted);margin-bottom:1rem}
 .stags{display:flex;flex-wrap:wrap;gap:.4rem}
 .stag{font-size:.6rem;font-weight:500;letter-spacing:.05em;color:rgba(99,102,241,.8);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);padding:.2rem .55rem;border-radius:4px}
 .services-grid .scard{opacity:0}
@@ -235,20 +229,20 @@ h2.dsp strong{font-weight:600}
 .process-steps.io .pstep:nth-child(4){transition-delay:.5s}
 .process-steps.io .pstep:nth-child(5){transition-delay:.65s}
 
-/* ── OFFER SECTION ── */
+/* ── OFFER ── */
 .offer-section{position:relative;overflow:hidden}
-.offer-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(99,102,241,.12) 0%,transparent 70%)}
+.offer-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(99,102,241,.1) 0%,transparent 70%)}
 .offer-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1;margin-top:3rem}
 .offer-card{background:rgba(255,255,255,.03);border:1px solid var(--border-hi);border-radius:14px;padding:2.4rem;position:relative;overflow:hidden}
 .offer-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-wide)}
 .offer-label{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--indigo);margin-bottom:.6rem}
 .offer-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--white);line-height:1.2;margin-bottom:.4rem}
 .offer-sub{font-size:.82rem;color:var(--muted);margin-bottom:1.6rem;line-height:1.7}
-.offer-items{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin-bottom:2rem}
+.offer-items{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.8rem}
 .offer-items li{display:flex;align-items:flex-start;gap:.75rem;font-size:.82rem;color:rgba(248,250,252,.65);line-height:1.6}
 .offer-items li::before{content:'';display:block;width:16px;height:16px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:50%;flex-shrink:0;margin-top:1px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 24 24'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%236366f1' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
-.offer-note{font-size:.72rem;color:var(--dim);font-style:italic}
-.offer-right p{font-size:.88rem;line-height:1.85;color:var(--muted);margin-bottom:1.5rem}
+.offer-note{font-size:.75rem;color:rgba(99,102,241,.7);font-style:italic;padding:.75rem 1rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.12);border-radius:6px;margin-bottom:1.6rem;line-height:1.6}
+.offer-right p{font-size:.88rem;line-height:1.88;color:var(--muted);margin-bottom:1.5rem}
 .offer-extras{display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem}
 .offer-extra{display:flex;align-items:center;gap:.8rem;padding:.9rem 1rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;transition:border-color .25s}
 .offer-extra:hover{border-color:var(--border-hi)}
@@ -337,6 +331,15 @@ h2.dsp strong{font-weight:600}
 .bsub{font-size:.92rem;color:var(--muted);line-height:1.8;max-width:460px;margin-top:.75rem}
 .calendly-inline-widget{background:#fff;border-radius:8px;overflow:hidden;min-height:700px}
 
+/* ── FINAL CTA ── */
+.final-cta{position:relative;overflow:hidden;text-align:center;padding:8rem 5%}
+.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(99,102,241,.12) 0%,transparent 70%)}
+.final-cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.final-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:300;line-height:1.15;margin-bottom:1.2rem;color:var(--white)}
+.final-cta h2 em{font-style:italic;background:var(--grad-wide);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.final-cta p{font-size:.92rem;line-height:1.85;color:var(--muted);margin-bottom:2.5rem}
+.final-cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
 /* ── FOOTER ── */
 footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--border)}
 .fbrand span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.3)}
@@ -348,27 +351,17 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 .lang-fr [data-en]{display:none}
 .lang-en [data-fr]{display:none}
 
-/* ── FINAL CTA ── */
-.final-cta{position:relative;overflow:hidden;text-align:center;padding:8rem 5%}
-.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(99,102,241,.14) 0%,transparent 70%)}
-.final-cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
-.final-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:300;line-height:1.15;margin-bottom:1.2rem;color:var(--white)}
-.final-cta h2 em{font-style:italic;background:var(--grad-wide);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.final-cta p{font-size:.92rem;line-height:1.85;color:var(--muted);margin-bottom:2.5rem}
-.final-cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){.hero-right{flex:0 0 340px}}
 @media(max-width:900px){
   .hero-inner{flex-direction:column;padding:3rem 5% 2rem}
   .hero-right{flex:0 0 auto;width:100%;max-width:420px}
-  .solution-inner{grid-template-columns:1fr;gap:3rem}
+  .approach-grid{grid-template-columns:1fr;gap:3rem}
   .services-grid{grid-template-columns:1fr}
   .offer-inner{grid-template-columns:1fr;gap:3rem}
   .process-steps{grid-template-columns:1fr 1fr;gap:2.5rem}
   .pline{display:none}
   .problem-grid{grid-template-columns:1fr}
-  .solution-pillars{grid-template-columns:1fr}
 }
 @media(max-width:600px){
   .nav-links{display:none}
@@ -396,7 +389,7 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
   <div class="logo"><span>EXECUTIO</span></div>
   <div class="nav-links">
     <a onclick="goTo('problem')"><span data-fr>Problème</span><span data-en>Problem</span></a>
-    <a onclick="goTo('services')"><span data-fr>Services</span><span data-en>Services</span></a>
+    <a onclick="goTo('services')"><span data-fr>Approche</span><span data-en>Approach</span></a>
     <a onclick="goTo('process')"><span data-fr>Processus</span><span data-en>Process</span></a>
     <a href="/insights/">Insights</a>
     <a onclick="openCalendly()" class="nav-cta"><span data-fr>Réserver un audit</span><span data-en>Book an audit</span></a>
@@ -416,74 +409,73 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
   <div class="hero-inner">
     <div style="flex:1;max-width:600px">
       <div class="hero-eyebrow">
-        <span data-fr>Business Operating System · Automation · Infrastructure</span>
-        <span data-en>Business Operating System · Automation · Infrastructure</span>
+        <span>Conseil opérationnel · Audit des processus · Design de système</span>
       </div>
       <h1>
-        <span data-fr>Nous construisons<br><em>le système d'exploitation</em><br>de votre entreprise.</span>
-        <span data-en>We build the<br><em>operating system</em><br>of your business.</span>
+        <span data-fr>Nous concevons<br><em>le système d'exploitation</em><br>de votre entreprise.</span>
+        <span data-en>We design the<br><em>operating system</em><br>of your business.</span>
       </h1>
       <p class="hero-sub">
-        <span data-fr>Executio structure vos outils, automatise vos workflows et vous donne une visibilité totale sur vos opérations et vos performances.</span>
-        <span data-en>Executio structures your tools, automates your workflows, and gives you full visibility on operations and performance.</span>
+        <span data-fr>Executio analyse vos processus, identifie les frictions et vous livre un plan d'action concret pour connecter vos logiciels, automatiser vos tâches et piloter votre activité avec clarté.</span>
+        <span data-en>Executio analyzes your processes, identifies friction points, and delivers a concrete action plan to connect your tools, automate tasks, and run your business with clarity.</span>
       </p>
       <div class="hero-actions">
         <button class="btn-primary" id="cta-main" onclick="openCalendly()">
           <span data-fr>Réserver un audit opérationnel</span><span data-en>Book an operations audit</span>
         </button>
         <button class="btn-outline" onclick="goTo('services')">
-          <span data-fr>Explorer le système</span><span data-en>Explore the system</span>
+          <span data-fr>Découvrir l'approche</span><span data-en>Discover our approach</span>
         </button>
       </div>
     </div>
     <div class="hero-right">
       <div class="dashboard">
         <div class="db-head">
-          <span class="db-title">Business Operating System</span>
-          <span class="db-status">Running</span>
+          <span class="db-title">Rapport d'audit opérationnel</span>
+          <span class="db-badge">En cours</span>
         </div>
         <div class="db-kpis">
           <div class="db-kpi">
-            <span class="kpi-val" data-count="12" data-suffix="">12</span>
-            <span class="kpi-key">Tools live</span>
+            <span class="kpi-val" data-count="48" data-suffix="">48</span>
+            <span class="kpi-key">Processus analysés</span>
           </div>
           <div class="db-kpi">
-            <span class="kpi-val" data-count="24" data-suffix="">24</span>
-            <span class="kpi-key">Automations</span>
+            <span class="kpi-val amber" data-count="14" data-suffix="">14</span>
+            <span class="kpi-key">Frictions détectées</span>
           </div>
           <div class="db-kpi">
-            <span class="kpi-val kpi-up">38h</span>
-            <span class="kpi-key">Saved / week</span>
+            <span class="kpi-val green" data-count="9" data-suffix="">9</span>
+            <span class="kpi-key">Quick wins</span>
+          </div>
+          <div class="db-kpi">
+            <span class="kpi-val green">-38h</span>
+            <span class="kpi-key">Gain estimé / sem.</span>
           </div>
         </div>
-        <div class="db-modules">
-          <div class="db-mod">
-            <div class="mod-dot"></div>
-            <span class="mod-name">Tools &amp; Infrastructure</span>
-            <span class="mod-badge">Synced</span>
+        <div class="db-findings">
+          <div class="db-finding">
+            <div class="finding-dot dot-red"></div>
+            <span class="finding-text"><strong>3 logiciels non connectés</strong> — données saisies manuellement entre systèmes</span>
           </div>
-          <div class="db-mod">
-            <div class="mod-dot sync"></div>
-            <span class="mod-name">Workflow Engine</span>
-            <span class="mod-badge">24 running</span>
+          <div class="db-finding">
+            <div class="finding-dot dot-amber"></div>
+            <span class="finding-text"><strong>6 processus manuels</strong> — automatisables avec les outils existants</span>
           </div>
-          <div class="db-mod">
-            <div class="mod-dot live"></div>
-            <span class="mod-name">Dashboards &amp; KPIs</span>
-            <span class="mod-badge">Live</span>
+          <div class="db-finding">
+            <div class="finding-dot dot-amber"></div>
+            <span class="finding-text"><strong>KPIs absents</strong> — aucun tableau de bord opérationnel en place</span>
           </div>
-          <div class="db-mod">
-            <div class="mod-dot auto"></div>
-            <span class="mod-name">Document Flows</span>
-            <span class="mod-badge">Automated</span>
+          <div class="db-finding">
+            <div class="finding-dot dot-green"></div>
+            <span class="finding-text"><strong>Base solide</strong> — 4 outils adaptés, à connecter et optimiser</span>
           </div>
         </div>
-        <div class="db-eff-label">
-          <span>Operational efficiency</span>
-          <span>+78%</span>
+        <div class="db-score-label">
+          <span>Score opérationnel actuel</span>
+          <span>42 → objectif 85+</span>
         </div>
-        <div class="db-eff-bar">
-          <div class="db-eff-fill" id="eff-fill"></div>
+        <div class="db-score-bar">
+          <div class="db-score-fill" id="score-fill"></div>
         </div>
       </div>
     </div>
@@ -495,15 +487,15 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
     </div>
     <div class="stat-item">
       <div class="snum" data-count="80" data-suffix="%">80%</div>
-      <div class="slbl"><span data-fr>Tâches manuelles supprimées</span><span data-en>Manual tasks eliminated</span></div>
+      <div class="slbl"><span data-fr>Tâches manuelles éliminables</span><span data-en>Manual tasks eliminable</span></div>
     </div>
     <div class="stat-item">
       <div class="snum" data-count="4" data-suffix="">4</div>
-      <div class="slbl"><span data-fr>Modules, 1 système unifié</span><span data-en>Modules, 1 unified system</span></div>
+      <div class="slbl"><span data-fr>Domaines d'analyse couverts</span><span data-en>Analysis domains covered</span></div>
     </div>
     <div class="stat-item">
-      <div class="snum" data-count="8" data-suffix=" sem.">8 sem.</div>
-      <div class="slbl"><span data-fr>De l'audit au déploiement</span><span data-en>Audit to full deployment</span></div>
+      <div class="snum" data-count="100" data-suffix="%">100%</div>
+      <div class="slbl"><span data-fr>Recommandations actionnables</span><span data-en>Actionable recommendations</span></div>
     </div>
   </div>
 </section>
@@ -511,26 +503,26 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-    <div class="titem">Business Operating System <span class="tdot"></span></div>
-    <div class="titem">Tool Stack Design <span class="tdot"></span></div>
-    <div class="titem">Workflow Automation <span class="tdot"></span></div>
-    <div class="titem">CRM · ERP · Integrations <span class="tdot"></span></div>
-    <div class="titem">Operational Dashboards <span class="tdot"></span></div>
-    <div class="titem">Document Flows <span class="tdot"></span></div>
-    <div class="titem">Process Optimization <span class="tdot"></span></div>
-    <div class="titem">KPI Infrastructure <span class="tdot"></span></div>
-    <div class="titem">No-Code · Low-Code <span class="tdot"></span></div>
-    <div class="titem">Visibility &amp; Control <span class="tdot"></span></div>
-    <div class="titem">Business Operating System <span class="tdot"></span></div>
-    <div class="titem">Tool Stack Design <span class="tdot"></span></div>
-    <div class="titem">Workflow Automation <span class="tdot"></span></div>
-    <div class="titem">CRM · ERP · Integrations <span class="tdot"></span></div>
-    <div class="titem">Operational Dashboards <span class="tdot"></span></div>
-    <div class="titem">Document Flows <span class="tdot"></span></div>
-    <div class="titem">Process Optimization <span class="tdot"></span></div>
-    <div class="titem">KPI Infrastructure <span class="tdot"></span></div>
-    <div class="titem">No-Code · Low-Code <span class="tdot"></span></div>
-    <div class="titem">Visibility &amp; Control <span class="tdot"></span></div>
+    <div class="titem">Audit Opérationnel <span class="tdot"></span></div>
+    <div class="titem">Cartographie des Processus <span class="tdot"></span></div>
+    <div class="titem">Design de Workflows <span class="tdot"></span></div>
+    <div class="titem">Recommandation d'Outils <span class="tdot"></span></div>
+    <div class="titem">Architecture KPIs <span class="tdot"></span></div>
+    <div class="titem">Conseil en Organisation <span class="tdot"></span></div>
+    <div class="titem">Optimisation des Processus <span class="tdot"></span></div>
+    <div class="titem">Connexion Logiciels <span class="tdot"></span></div>
+    <div class="titem">Pilotage & Visibilité <span class="tdot"></span></div>
+    <div class="titem">Transformation Opérationnelle <span class="tdot"></span></div>
+    <div class="titem">Audit Opérationnel <span class="tdot"></span></div>
+    <div class="titem">Cartographie des Processus <span class="tdot"></span></div>
+    <div class="titem">Design de Workflows <span class="tdot"></span></div>
+    <div class="titem">Recommandation d'Outils <span class="tdot"></span></div>
+    <div class="titem">Architecture KPIs <span class="tdot"></span></div>
+    <div class="titem">Conseil en Organisation <span class="tdot"></span></div>
+    <div class="titem">Optimisation des Processus <span class="tdot"></span></div>
+    <div class="titem">Connexion Logiciels <span class="tdot"></span></div>
+    <div class="titem">Pilotage & Visibilité <span class="tdot"></span></div>
+    <div class="titem">Transformation Opérationnelle <span class="tdot"></span></div>
   </div>
 </div>
 
@@ -540,15 +532,15 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
     <span data-fr>Le problème</span><span data-en>The problem</span>
   </div>
   <h2 class="dsp rv">
-    <span data-fr>La plupart des entreprises n'ont pas<br><strong>de système. Elles ont du chaos.</strong></span>
-    <span data-en>Most companies don't have<br><strong>a system. They have chaos.</strong></span>
+    <span data-fr>Vous avez des logiciels.<br><strong>Vous n'avez pas de système.</strong></span>
+    <span data-en>You have software.<br><strong>You don't have a system.</strong></span>
   </h2>
   <div class="problem-grid stg">
     <div class="pain-card rv">
       <div class="pain-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="8" y1="8" x2="16" y2="16"/><line x1="16" y1="8" x2="8" y2="16"/></svg>
       </div>
-      <div class="pain-title"><span data-fr>Outils déconnectés</span><span data-en>Disconnected tools</span></div>
+      <div class="pain-title"><span data-fr>Des outils qui ne se parlent pas</span><span data-en>Tools that don't talk to each other</span></div>
       <p class="pain-desc">
         <span data-fr>Votre CRM ne parle pas à votre logiciel de facturation. Votre outil de gestion de projet ne se synchronise pas avec votre comptabilité. Vous avez des logiciels — mais pas de système. On connecte ce que vous utilisez déjà pour vous donner une vision claire, automatiser vos tâches manuelles et piloter votre entreprise sans friction.</span>
         <span data-en>Your CRM doesn't talk to your invoicing software. Your project management tool doesn't sync with your accounting. You have software — but no system. We connect what you already use to give you a clear view, automate manual tasks, and run your business without friction.</span>
@@ -558,82 +550,88 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
       <div class="pain-icon">
         <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
       </div>
-      <div class="pain-title"><span data-fr>Tout est manuel</span><span data-en>Everything is manual</span></div>
+      <div class="pain-title"><span data-fr>Trop de tâches encore manuelles</span><span data-en>Too many tasks still manual</span></div>
       <p class="pain-desc">
-        <span data-fr>Validations par email. Rapports copiés-collés le lundi matin. Relances envoyées à la main. Des heures perdues chaque semaine sur des tâches qui devraient tourner seules.</span>
-        <span data-en>Approvals by email. Reports copy-pasted every Monday. Follow-ups sent by hand. Hours lost every week on tasks that should run themselves.</span>
+        <span data-fr>Validations par email. Rapports copiés-collés chaque semaine. Relances envoyées à la main. Ce ne sont pas des problèmes de personnel — ce sont des processus mal conçus. On identifie exactement ce qui peut être automatisé et comment.</span>
+        <span data-en>Approvals by email. Reports copy-pasted every week. Follow-ups sent by hand. These aren't people problems — they're poorly designed processes. We identify exactly what can be automated and how.</span>
       </p>
     </div>
     <div class="pain-card rv">
       <div class="pain-icon">
         <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
       </div>
-      <div class="pain-title"><span data-fr>Zéro visibilité</span><span data-en>Zero visibility</span></div>
+      <div class="pain-title"><span data-fr>Aucune visibilité sur les opérations</span><span data-en>No visibility on operations</span></div>
       <p class="pain-desc">
-        <span data-fr>Vous ne connaissez pas vos vraies marges. Vous ne savez pas ce qui se passe réellement. Vous décidez à l'instinct, pas avec des données. Et vous le savez.</span>
-        <span data-en>You don't know your real margins. You can't see what's actually happening. You make decisions on gut, not data. And you know it.</span>
+        <span data-fr>Vous ne savez pas exactement où en est votre activité. Les KPIs sont éparpillés, le reporting est manuel, les décisions se prennent à l'instinct. On conçoit le tableau de bord et les indicateurs qui vous donnent la clarté dont vous avez besoin.</span>
+        <span data-en>You don't know exactly where your business stands. KPIs are scattered, reporting is manual, decisions are made on gut. We design the dashboards and indicators that give you the clarity you need.</span>
       </p>
     </div>
   </div>
   <div class="problem-callout rv">
     <svg viewBox="0 0 24 24"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
     <p>
-      <span data-fr><strong>Ce n'est pas un problème de personnes. C'est un problème de système.</strong> Ou plutôt : l'absence de système. Les entreprises qui scalent ont une infrastructure opérationnelle. Les autres improvisent.</span>
-      <span data-en><strong>This isn't a people problem. It's a system problem.</strong> Or rather: the absence of a system. Companies that scale have operational infrastructure. The rest improvise.</span>
+      <span data-fr><strong>Ce n'est pas un problème de budget ou de talent. C'est un problème de méthode.</strong> Les entreprises qui avancent vite ont une vision claire de leurs processus — et savent exactement ce qu'il faut améliorer. C'est précisément ce qu'on vous apporte.</span>
+      <span data-en><strong>This isn't a budget or talent problem. It's a method problem.</strong> Companies that move fast have a clear view of their processes — and know exactly what to improve. That's precisely what we bring you.</span>
     </p>
   </div>
 </section>
 
-<!-- SOLUTION -->
-<section class="sd" id="solution">
+<!-- APPROACH -->
+<section class="sd" id="approach">
   <div class="kicker kc rv">
-    <span data-fr>La solution</span><span data-en>The solution</span>
+    <span data-fr>Notre rôle</span><span data-en>Our role</span>
   </div>
   <h2 class="dsp rv">
-    <span data-fr>Votre <strong>Business Operating System.</strong></span>
-    <span data-en>Your <strong>Business Operating System.</strong></span>
+    <span data-fr>Nous analysons, conseillons<br><strong>et vous accompagnons.</strong></span>
+    <span data-en>We analyze, advise<br><strong>and support you.</strong></span>
   </h2>
-  <div class="solution-inner">
+  <div class="approach-grid">
     <div class="rvl">
-      <p>
-        <span data-fr>Un Business Operating System, c'est l'infrastructure opérationnelle qui connecte vos outils, automatise vos workflows, vous donne une visibilité en temps réel sur vos performances, et gère vos flux documentaires — de façon autonome.</span>
-        <span data-en>A Business Operating System is the operational infrastructure that connects your tools, automates your workflows, gives you real-time performance visibility, and manages your document flows — automatically.</span>
-      </p>
-      <p>
-        <span data-fr>Pas un logiciel. Pas une méthode. <strong>Un système complet, conçu pour votre activité, déployé et piloté par Executio.</strong></span>
-        <span data-en>Not software. Not a methodology. <strong>A complete system, designed for your activity, deployed and monitored by Executio.</strong></span>
-      </p>
-      <p>
-        <span data-fr>Votre équipe arrête d'improviser et commence à opérer avec la rigueur et la clarté d'une entreprise deux fois votre taille.</span>
-        <span data-en>Your team stops improvising and starts operating with the rigor and clarity of a company twice your size.</span>
-      </p>
+      <div class="approach-text">
+        <p>
+          <span data-fr>Nous ne changeons pas votre entreprise à votre place. Nous vous donnons la vision, le plan et les recommandations pour le faire vous-même — ou avec vos équipes. <strong>Vous gardez le contrôle. On vous apporte la clarté.</strong></span>
+          <span data-en>We don't change your company for you. We give you the vision, the plan, and the recommendations to do it yourself — or with your teams. <strong>You keep control. We bring clarity.</strong></span>
+        </p>
+        <p>
+          <span data-fr>Notre valeur, c'est le regard extérieur. Après des années passées à analyser des dizaines d'entreprises, on voit en quelques heures ce que vous ne voyez plus — les inefficacités devenues habitudes, les outils sous-exploités, les processus qui freinent sans que personne ne s'en rende compte.</span>
+          <span data-en>Our value is the outside perspective. After years analyzing dozens of companies, we see in a few hours what you no longer see — inefficiencies turned into habits, underused tools, processes that slow things down without anyone noticing.</span>
+        </p>
+      </div>
       <div style="margin-top:2rem">
-        <button class="btn-primary" onclick="goTo('offer')" style="cursor:none">
-          <span data-fr>Voir l'offre</span><span data-en>See the offer</span>
+        <button class="btn-primary" onclick="openCalendly()" style="cursor:none">
+          <span data-fr>Réserver un audit gratuit</span><span data-en>Book a free audit</span>
         </button>
       </div>
     </div>
     <div class="rvr">
-      <div class="solution-pillars">
-        <div class="pillar-card">
-          <div class="pc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <div class="pc-title"><span data-fr>Outils & Infrastructure</span><span data-en>Tools & Infrastructure</span></div>
-          <div class="pc-sub"><span data-fr>CRM, ERP, intégrations, stack sur mesure</span><span data-en>CRM, ERP, integrations, custom stack</span></div>
+      <div class="approach-cards">
+        <div class="approach-card">
+          <div class="ac-num">01</div>
+          <div class="ac-body">
+            <strong><span data-fr>On analyse ce qui existe</span><span data-en>We analyze what exists</span></strong>
+            <span><span data-fr>Vos logiciels, vos processus, vos flux — sans préjugé. On part de votre réalité, pas d'un modèle théorique.</span><span data-en>Your tools, processes, flows — without preconceptions. We start from your reality, not a theoretical model.</span></span>
+          </div>
         </div>
-        <div class="pillar-card">
-          <div class="pc-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-          <div class="pc-title"><span data-fr>Automatisation</span><span data-en>Automation</span></div>
-          <div class="pc-sub"><span data-fr>Workflows, no-code, réduction des tâches manuelles</span><span data-en>Workflows, no-code, manual task elimination</span></div>
+        <div class="approach-card">
+          <div class="ac-num">02</div>
+          <div class="ac-body">
+            <strong><span data-fr>On identifie les leviers</span><span data-en>We identify the levers</span></strong>
+            <span><span data-fr>Frictions, doublons, tâches automatisables, outils manquants ou mal utilisés. On priorise ce qui aura le plus d'impact.</span><span data-en>Friction, redundancies, automatable tasks, missing or misused tools. We prioritize what will have the most impact.</span></span>
+          </div>
         </div>
-        <div class="pillar-card">
-          <div class="pc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <div class="pc-title"><span data-fr>Visibilité & KPIs</span><span data-en>Visibility & KPIs</span></div>
-          <div class="pc-sub"><span data-fr>Dashboards, reporting, prise de décision</span><span data-en>Dashboards, reporting, decision-making</span></div>
+        <div class="approach-card">
+          <div class="ac-num">03</div>
+          <div class="ac-body">
+            <strong><span data-fr>On conçoit le système cible</span><span data-en>We design the target system</span></strong>
+            <span><span data-fr>Recommandations concrètes : quels outils, quels workflows, quels KPIs. Un plan d'action priorisé, pas un rapport de 80 pages.</span><span data-en>Concrete recommendations: which tools, which workflows, which KPIs. A prioritized action plan, not an 80-page report.</span></span>
+          </div>
         </div>
-        <div class="pillar-card">
-          <div class="pc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-          <div class="pc-title"><span data-fr>Flux Documentaires</span><span data-en>Document Flows</span></div>
-          <div class="pc-sub"><span data-fr>Factures, contrats, validations, admin paperless</span><span data-en>Invoices, contracts, approvals, paperless admin</span></div>
+        <div class="approach-card">
+          <div class="ac-num">04</div>
+          <div class="ac-body">
+            <strong><span data-fr>On vous accompagne dans la mise en œuvre</span><span data-en>We support you through implementation</span></strong>
+            <span><span data-fr>Vous gardez la main. On reste disponibles pour ajuster les recommandations, mesurer les progrès et répondre aux questions.</span><span data-en>You stay in charge. We remain available to refine recommendations, measure progress, and answer questions.</span></span>
+          </div>
         </div>
       </div>
     </div>
@@ -642,119 +640,121 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 
 <!-- SERVICES -->
 <section class="sdd" id="services">
-  <div class="kicker ki rv"><span data-fr>Les 4 modules</span><span data-en>The 4 modules</span></div>
+  <div class="kicker ki rv"><span data-fr>Les 4 domaines d'intervention</span><span data-en>4 areas of expertise</span></div>
   <h2 class="dsp rv">
-    <span data-fr>Une expertise,<br><strong>quatre piliers opérationnels.</strong></span>
-    <span data-en>One expertise,<br><strong>four operational pillars.</strong></span>
+    <span data-fr>Un regard expert<br><strong>sur chaque dimension opérationnelle.</strong></span>
+    <span data-en>Expert insight<br><strong>on every operational dimension.</strong></span>
   </h2>
   <div class="services-grid">
     <div class="scard">
       <div class="snum">01</div>
       <div class="sicon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-      <div class="stitle"><span data-fr>Outils & Infrastructure</span><span data-en>Tools & Infrastructure</span></div>
-      <p class="sdesc"><span data-fr>Nous concevons et déployons votre stack technologique — CRM, ERP, outils métier, intégrations entre systèmes. Votre infrastructure opérationnelle, construite pour votre activité, pas pour une entreprise générique.</span><span data-en>We design and deploy your technology stack — CRM, ERP, business tools, system integrations. Your operational infrastructure, built for your activity, not for a generic company.</span></p>
-      <div class="stags"><span class="stag">CRM</span><span class="stag">ERP</span><span class="stag">Integrations</span><span class="stag">Tool stack</span><span class="stag">Internal systems</span></div>
+      <div class="stitle"><span data-fr>Audit des Outils & Processus</span><span data-en>Tools & Process Audit</span></div>
+      <p class="sdesc"><span data-fr>On analyse vos logiciels existants, comment ils sont utilisés (ou pas), et comment ils s'articulent — ou ne s'articulent pas — entre eux. On identifie les outils manquants, les doublons, et les connexions à mettre en place pour que votre stack travaille pour vous.</span><span data-en>We analyze your existing software, how they're used (or not), and how they connect — or don't. We identify missing tools, redundancies, and the connections needed to make your stack work for you.</span></p>
+      <div class="stags"><span class="stag">Analyse de stack</span><span class="stag">Cartographie</span><span class="stag">Connexions logiciels</span><span class="stag">Gap analysis</span></div>
     </div>
     <div class="scard">
       <div class="snum">02</div>
       <div class="sicon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <div class="stitle"><span data-fr>Automatisation & Workflows</span><span data-en>Automation & Workflows</span></div>
-      <p class="sdesc"><span data-fr>Chaque processus manuel est un coût caché. Nous automatisons vos workflows critiques — relances, validations, synchronisations, reporting — avec des outils no-code et low-code robustes et maintenables.</span><span data-en>Every manual process is a hidden cost. We automate your critical workflows — follow-ups, approvals, syncs, reporting — using robust, maintainable no-code and low-code tools.</span></p>
-      <div class="stags"><span class="stag">Process automation</span><span class="stag">No-code</span><span class="stag">Workflows</span><span class="stag">BPO</span></div>
+      <div class="stitle"><span data-fr>Design de Workflows & Automatisation</span><span data-en>Workflow Design & Automation</span></div>
+      <p class="sdesc"><span data-fr>On cartographie vos processus manuels et on conçoit les workflows optimisés — qui peut être automatisé, avec quel outil, dans quel ordre. Vous repartez avec un plan précis : plus de tâches inutiles, plus de temps perdu, plus d'erreurs de saisie.</span><span data-en>We map your manual processes and design optimized workflows — what can be automated, with which tool, in what order. You leave with a precise plan: no more unnecessary tasks, wasted time, or data entry errors.</span></p>
+      <div class="stags"><span class="stag">Process mapping</span><span class="stag">Workflow design</span><span class="stag">Automatisation</span><span class="stag">Optimisation</span></div>
     </div>
     <div class="scard">
       <div class="snum">03</div>
       <div class="sicon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-      <div class="stitle"><span data-fr>Visibilité & KPIs</span><span data-en>Visibility & KPIs</span></div>
-      <p class="sdesc"><span data-fr>Des dashboards qui centralisent vos données opérationnelles et financières en temps réel. KPIs actionnables, reportings automatisés, alertes intelligentes. Vous décidez sur des faits, pas des impressions.</span><span data-en>Dashboards centralizing your operational and financial data in real time. Actionable KPIs, automated reporting, smart alerts. You decide on facts, not impressions.</span></p>
-      <div class="stags"><span class="stag">Dashboards</span><span class="stag">KPIs</span><span class="stag">Reporting</span><span class="stag">Analytics</span></div>
+      <div class="stitle"><span data-fr>Architecture KPIs & Dashboards</span><span data-en>KPI & Dashboard Architecture</span></div>
+      <p class="sdesc"><span data-fr>On conçoit les indicateurs qui comptent vraiment pour votre activité — pas une liste générique de 50 métriques. Et on design la structure du tableau de bord qui vous permet de piloter en temps réel, sans chercher l'information dans 5 endroits différents.</span><span data-en>We design the indicators that truly matter for your business — not a generic list of 50 metrics. And we design the dashboard structure that lets you steer in real time, without searching for information in 5 different places.</span></p>
+      <div class="stags"><span class="stag">KPI design</span><span class="stag">Dashboard</span><span class="stag">Reporting</span><span class="stag">Pilotage</span></div>
     </div>
     <div class="scard">
       <div class="snum">04</div>
-      <div class="sicon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+      <div class="sicon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
       <div class="stitle"><span data-fr>Flux Documentaires & Admin</span><span data-en>Document & Admin Flows</span></div>
-      <p class="sdesc"><span data-fr>Facturation automatisée, contrats digitaux, circuits de validation dématérialisés, archivage structuré. L'administration de votre entreprise tourne sans friction, sans papier, sans relance manuelle.</span><span data-en>Automated invoicing, digital contracts, paperless approval flows, structured archiving. Your company admin runs without friction, paper, or manual follow-up.</span></p>
-      <div class="stags"><span class="stag">Invoicing</span><span class="stag">Contracts</span><span class="stag">Approvals</span><span class="stag">Paperless</span></div>
+      <p class="sdesc"><span data-fr>Factures, contrats, validations, archivage — on analyse comment ces flux fonctionnent aujourd'hui et on recommande comment les structurer, les digitaliser et les automatiser. Moins de papier, moins de relances manuelles, moins de risque d'erreur.</span><span data-en>Invoices, contracts, approvals, archiving — we analyze how these flows work today and recommend how to structure, digitalize, and automate them. Less paper, fewer manual follow-ups, less risk of error.</span></p>
+      <div class="stags"><span class="stag">Facturation</span><span class="stag">Contrats</span><span class="stag">Validations</span><span class="stag">Digitalisation</span></div>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
 <section class="sd" id="process">
-  <div class="kicker kc rv"><span data-fr>Comment ça fonctionne</span><span data-en>How it works</span></div>
-  <h2 class="dsp rv"><span data-fr>De l'audit<br><strong>au système opérationnel.</strong></span><span data-en>From audit<br><strong>to operational system.</strong></span></h2>
+  <div class="kicker kc rv"><span data-fr>Notre méthode</span><span data-en>Our method</span></div>
+  <h2 class="dsp rv"><span data-fr>De l'audit<br><strong>aux recommandations actionnables.</strong></span><span data-en>From audit<br><strong>to actionable recommendations.</strong></span></h2>
   <div class="process-steps">
     <div class="pline"></div>
     <div class="pstep">
       <div class="pdot"><span>1</span></div>
       <div class="ptitle"><span data-fr>Audit</span><span data-en>Audit</span></div>
-      <p class="pdesc"><span data-fr>Cartographie complète de vos processus, outils et flux actuels. On identifie les frictions, les angles morts et les opportunités d'automatisation.</span><span data-en>Complete mapping of your current processes, tools, and flows. We identify friction points, blind spots, and automation opportunities.</span></p>
+      <p class="pdesc"><span data-fr>On passe du temps à comprendre comment votre entreprise fonctionne vraiment — vos outils, vos processus, vos flux. Sans préjugé, sans solution préconçue.</span><span data-en>We take time to understand how your company truly works — your tools, processes, flows. Without preconceptions, without a preset solution.</span></p>
     </div>
     <div class="pstep">
       <div class="pdot"><span>2</span></div>
       <div class="ptitle"><span data-fr>Design</span><span data-en>Design</span></div>
-      <p class="pdesc"><span data-fr>Conception de votre système cible — stack d'outils, architecture des workflows, structure des dashboards. Un blueprint opérationnel précis avant toute implémentation.</span><span data-en>Design of your target system — tool stack, workflow architecture, dashboard structure. A precise operational blueprint before any implementation.</span></p>
+      <p class="pdesc"><span data-fr>On conçoit votre système cible — comment vos outils devraient s'articuler, quels processus automatiser, quels indicateurs suivre. Un blueprint opérationnel précis.</span><span data-en>We design your target system — how your tools should connect, which processes to automate, which indicators to track. A precise operational blueprint.</span></p>
     </div>
     <div class="pstep">
       <div class="pdot"><span>3</span></div>
       <div class="ptitle"><span data-fr>Recommandations</span><span data-en>Recommendations</span></div>
-      <p class="pdesc"><span data-fr>Plan d'action priorisé : quoi changer, dans quel ordre, avec quels outils. Des recommandations concrètes et actionnables — pas de la théorie.</span><span data-en>Prioritized action plan: what to change, in what order, with which tools. Concrete, actionable recommendations — not theory.</span></p>
+      <p class="pdesc"><span data-fr>Plan d'action priorisé : quoi changer, dans quel ordre, avec quels outils. Des recommandations concrètes et actionnables — pas de la théorie, pas un rapport de 80 pages.</span><span data-en>Prioritized action plan: what to change, in what order, with which tools. Concrete, actionable recommendations — not theory, not an 80-page report.</span></p>
     </div>
     <div class="pstep">
       <div class="pdot"><span>4</span></div>
       <div class="ptitle"><span data-fr>Suivi</span><span data-en>Follow-up</span></div>
-      <p class="pdesc"><span data-fr>On vous accompagne dans la mise en œuvre — on ajuste les recommandations, on mesure les progrès, on reste disponibles. Vous avancez, on reste dans la boucle.</span><span data-en>We support you through implementation — we refine recommendations, measure progress, and stay available. You move forward, we stay in the loop.</span></p>
+      <p class="pdesc"><span data-fr>Vous gardez la main sur l'exécution. On reste disponibles pour affiner les recommandations, répondre aux questions et mesurer les progrès avec vous.</span><span data-en>You keep ownership of execution. We stay available to refine recommendations, answer questions, and measure progress with you.</span></p>
     </div>
   </div>
 </section>
 
 <!-- OFFER -->
 <section class="sdd offer-section" id="offer">
-  <div class="kicker ki rv"><span data-fr>L'offre flagship</span><span data-en>Flagship offer</span></div>
-  <h2 class="dsp rv"><span data-fr><strong>Business Operating System</strong><br>Setup.</span><span data-en><strong>Business Operating System</strong><br>Setup.</span></h2>
+  <div class="kicker ki rv"><span data-fr>L'offre</span><span data-en>The offer</span></div>
+  <h2 class="dsp rv"><span data-fr><strong>Audit &amp; Advisory</strong><br>Opérationnel.</span><span data-en><strong>Operational</strong><br>Audit &amp; Advisory.</span></h2>
   <div class="offer-inner">
     <div class="offer-card rvl">
       <div class="offer-label"><span data-fr>Ce que vous obtenez</span><span data-en>What you get</span></div>
       <div class="offer-name"><span data-fr>Audit & Advisory Opérationnel</span><span data-en>Operational Audit & Advisory</span></div>
-      <div class="offer-sub"><span data-fr>Nous analysons vos processus, identifions les frictions et les opportunités d'amélioration, et vous livrons un plan d'action concret — sans tout changer, sans tout casser.</span><span data-en>We analyze your processes, identify friction points and improvement opportunities, and deliver a concrete action plan — without changing everything or breaking what works.</span></div>
+      <div class="offer-sub"><span data-fr>Nous analysons vos processus, identifions les frictions et les opportunités d'amélioration, et vous livrons un plan d'action concret — sans tout changer, sans tout casser.</span><span data-en>We analyze your processes, identify friction and improvement opportunities, and deliver a concrete action plan — without changing everything or breaking what works.</span></div>
       <ul class="offer-items">
         <li><span data-fr>Cartographie complète de vos processus et flux actuels</span><span data-en>Full mapping of your current processes and flows</span></li>
-        <li><span data-fr>Identification des frictions, doublons et tâches à automatiser</span><span data-en>Identification of friction, redundancies, and tasks to automate</span></li>
+        <li><span data-fr>Analyse de votre stack logiciel et des connexions manquantes</span><span data-en>Analysis of your software stack and missing connections</span></li>
+        <li><span data-fr>Identification des frictions, doublons et tâches à automatiser</span><span data-en>Identification of friction, redundancies, and automatable tasks</span></li>
         <li><span data-fr>Recommandation des outils adaptés à votre activité</span><span data-en>Tool recommendations tailored to your activity</span></li>
         <li><span data-fr>Design de votre système opérationnel cible</span><span data-en>Design of your target operating system</span></li>
         <li><span data-fr>Roadmap priorisée — quick wins + améliorations structurelles</span><span data-en>Prioritized roadmap — quick wins + structural improvements</span></li>
         <li><span data-fr>Suivi et accompagnement dans la mise en œuvre</span><span data-en>Guidance and support through implementation</span></li>
       </ul>
-      <div class="offer-note"><span data-fr>Nous conseillons, nous ne remplaçons pas vos équipes. Vous gardez le contrôle, on vous donne la vision.</span><span data-en>We advise, we don't replace your teams. You keep control, we give you the vision.</span></div>
-      <div style="margin-top:1.8rem">
-        <button class="btn-primary" onclick="openCalendly()" style="cursor:none;width:100%;justify-content:center">
-          <span data-fr>Réserver un audit opérationnel gratuit</span><span data-en>Book a free operations audit</span>
-        </button>
+      <div class="offer-note">
+        <span data-fr>Nous conseillons, nous ne remplaçons pas vos équipes. Vous gardez le contrôle — on vous donne la vision et le plan.</span>
+        <span data-en>We advise, we don't replace your teams. You keep control — we give you the vision and the plan.</span>
       </div>
+      <button class="btn-primary" onclick="openCalendly()" style="cursor:none;width:100%;justify-content:center">
+        <span data-fr>Réserver un audit opérationnel gratuit</span><span data-en>Book a free operations audit</span>
+      </button>
     </div>
     <div class="rvr">
-      <p><span data-fr>La plupart des entreprises n'ont pas besoin d'une révolution. Elles ont besoin d'un regard extérieur qui voit ce qu'elles ne voient plus — les inefficacités devenues habitudes, les outils mal utilisés, les processus qui freinent sans qu'on le réalise.</span><span data-en>Most companies don't need a revolution. They need an outside perspective that sees what they no longer see — inefficiencies turned habits, poorly used tools, processes that slow things down without anyone realizing it.</span></p>
+      <p><span data-fr>La plupart des entreprises n'ont pas besoin d'une révolution. Elles ont besoin d'un regard extérieur qui voit ce qu'elles ne voient plus — les inefficacités devenues habitudes, les outils mal utilisés, les processus qui freinent sans que personne ne le réalise.</span><span data-en>Most companies don't need a revolution. They need an outside perspective that sees what they no longer see — inefficiencies turned into habits, poorly used tools, processes that slow things down without anyone noticing.</span></p>
       <p><span data-fr>Notre rôle : analyser, recommander, prioriser. Vous gardez la main sur l'exécution. On vous donne la clarté pour avancer vite et bien.</span><span data-en>Our role: analyze, recommend, prioritize. You keep ownership of execution. We give you the clarity to move fast and right.</span></p>
       <div class="offer-extras">
         <div class="offer-extra">
           <div class="oe-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div class="oe-text">
-            <strong><span data-fr>Support opérationnel continu</span><span data-en>Ongoing operational support</span></strong>
-            <span><span data-fr>Suivi mensuel, optimisations, évolutions du système</span><span data-en>Monthly monitoring, optimizations, system evolution</span></span>
+            <strong><span data-fr>Accompagnement continu</span><span data-en>Ongoing advisory</span></strong>
+            <span><span data-fr>Suivi mensuel, ajustements, réponse aux questions opérationnelles</span><span data-en>Monthly follow-up, adjustments, operational Q&A</span></span>
           </div>
         </div>
         <div class="offer-extra">
           <div class="oe-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
           <div class="oe-text">
             <strong><span data-fr>Pilotage financier</span><span data-en>Financial steering</span></strong>
-            <span><span data-fr>KPIs financiers, trésorerie, reporting investisseurs</span><span data-en>Financial KPIs, cash flow, investor reporting</span></span>
+            <span><span data-fr>KPIs financiers, trésorerie, structure et reporting</span><span data-en>Financial KPIs, cash flow, structure and reporting</span></span>
           </div>
         </div>
         <div class="offer-extra">
           <div class="oe-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
           <div class="oe-text">
-            <strong><span data-fr>Accompagnement croissance</span><span data-en>Growth support</span></strong>
-            <span><span data-fr>Scalabilité des opérations, expansion, levée de fonds</span><span data-en>Operations scalability, expansion, fundraising</span></span>
+            <strong><span data-fr>Conseil en croissance</span><span data-en>Growth advisory</span></strong>
+            <span><span data-fr>Scalabilité des opérations, structuration, stratégie</span><span data-en>Operations scalability, structuring, strategy</span></span>
           </div>
         </div>
       </div>
@@ -765,7 +765,7 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 <!-- INSIGHTS -->
 <section class="insights-sec" id="insights">
   <div class="kicker ki rv"><span>Insights</span></div>
-  <h2 class="dsp rv"><span data-fr>Opérations, automatisation,<br><strong>stratégie d'entreprise.</strong></span><span data-en>Operations, automation,<br><strong>business strategy.</strong></span></h2>
+  <h2 class="dsp rv"><span data-fr>Opérations, processus,<br><strong>stratégie d'entreprise.</strong></span><span data-en>Operations, processes,<br><strong>business strategy.</strong></span></h2>
   <div class="insights-grid" id="home-insights">
     <div class="icard rv" style="pointer-events:none;opacity:.35"><div class="icard-thumb ic-indigo"></div><div class="icard-body"><div class="ititle" style="background:rgba(255,255,255,.06);height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:rgba(255,255,255,.04);height:.8rem;border-radius:4px;width:70%"></div></div></div>
     <div class="icard rv" style="pointer-events:none;opacity:.35"><div class="icard-thumb ic-blue"></div><div class="icard-body"><div class="ititle" style="background:rgba(255,255,255,.06);height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:rgba(255,255,255,.04);height:.8rem;border-radius:4px;width:70%"></div></div></div>
@@ -784,24 +784,21 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
   <div class="cfsec-wrap">
     <div class="cf-inner">
       <div class="cf-left rv">
-        <div class="kicker ki">
-          <span data-fr>Contact rapide</span><span data-en>Quick contact</span>
-        </div>
-        <h2 class="dsp"><span data-fr>Pas encore prêt<br>pour un appel ?<br><strong>Écrivez-nous.</strong></span><span data-en>Not ready yet<br>for a call?<br><strong>Write to us.</strong></span></h2>
-        <p><span data-fr>Décrivez votre situation — on vous répond avec une première analyse sous 24h, sans engagement.</span><span data-en>Describe your situation — we'll reply with a first analysis within 24h, no commitment.</span></p>
+        <div class="kicker ki"><span data-fr>Écrivez-nous</span><span data-en>Write to us</span></div>
+        <h2 class="dsp"><span data-fr>Pas encore prêt<br>pour un appel ?<br><strong>Décrivez votre situation.</strong></span><span data-en>Not ready yet<br>for a call?<br><strong>Describe your situation.</strong></span></h2>
+        <p><span data-fr>En quelques lignes, dites-nous où vous en êtes — on vous répond avec une première analyse sous 24h, sans engagement.</span><span data-en>In a few lines, tell us where you stand — we'll reply with a first analysis within 24h, no commitment.</span></p>
         <ul class="cf-promises">
           <li><span data-fr>Réponse personnelle sous 24h</span><span data-en>Personal reply within 24h</span></li>
-          <li><span data-fr>Aucun engagement, aucun argumentaire</span><span data-en>No commitment, no sales pitch</span></li>
-          <li><span data-fr>Analyse préliminaire gratuite</span><span data-en>Free preliminary analysis</span></li>
+          <li><span data-fr>Première analyse offerte, sans engagement</span><span data-en>First analysis free, no commitment</span></li>
+          <li><span data-fr>Aucun argumentaire commercial</span><span data-en>No sales pitch</span></li>
         </ul>
       </div>
       <div class="cf-right rv">
         <div class="cf-progress">
           <div class="cf-prog-step active" id="cp1"><div class="cf-prog-dot">1</div><div class="cf-prog-label">Profil</div></div>
           <div class="cf-prog-step" id="cp2"><div class="cf-prog-dot">2</div><div class="cf-prog-label">Entreprise</div></div>
-          <div class="cf-prog-step" id="cp3"><div class="cf-prog-dot">3</div><div class="cf-prog-label">Projet</div></div>
+          <div class="cf-prog-step" id="cp3"><div class="cf-prog-dot">3</div><div class="cf-prog-label">Situation</div></div>
         </div>
-
         <form id="cf-form" novalidate>
 
           <!-- Step 1 -->
@@ -815,7 +812,7 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
               </div>
               <div class="cf-field">
                 <label>Email *</label>
-                <input type="email" name="email" placeholder="marie@startup.com" required>
+                <input type="email" name="email" placeholder="marie@entreprise.com" required>
                 <span class="cf-field-err">Email invalide</span>
               </div>
             </div>
@@ -852,7 +849,7 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
           <div class="cf-step" id="cf-step-2">
             <div class="cf-step-title">Votre entreprise</div>
             <div class="cf-field">
-              <label>Secteur d'activité *</label>
+              <label>Secteur *</label>
               <select name="industry" required>
                 <option value="" disabled selected>Choisissez...</option>
                 <option>SaaS / Tech</option>
@@ -868,7 +865,7 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
               <span class="cf-field-err">Requis</span>
             </div>
             <div class="cf-field">
-              <label>Nombre d'employés *</label>
+              <label>Taille de l'équipe *</label>
               <select name="stage" required>
                 <option value="" disabled selected>Choisissez...</option>
                 <option>1 — solo</option>
@@ -898,20 +895,19 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 
           <!-- Step 3 -->
           <div class="cf-step" id="cf-step-3">
-            <div class="cf-step-title">Votre projet</div>
+            <div class="cf-step-title">Votre situation</div>
             <div class="cf-field">
-              <label>Besoin principal *</label>
+              <label>Ce que vous cherchez *</label>
               <select name="problem" required>
                 <option value="" disabled selected>Choisissez...</option>
-                <option>Outillage et infrastructure (CRM, ERP, stack)</option>
-                <option>Automatisation de processus manuels</option>
-                <option>Manque de visibilité opérationnelle</option>
-                <option>Workflows et gestion documentaire</option>
-                <option>Dashboards et KPIs</option>
-                <option>Digitalisation administrative</option>
-                <option>Structuration et scalabilité des opérations</option>
-                <option>Audit opérationnel complet (BOS Setup)</option>
-                <option>Pilotage financier et reporting</option>
+                <option>Audit de mes processus et outils actuels</option>
+                <option>Identifier les bons logiciels pour mon activité</option>
+                <option>Connecter et faire communiquer mes outils existants</option>
+                <option>Automatiser des tâches manuelles répétitives</option>
+                <option>Mettre en place des dashboards et KPIs</option>
+                <option>Digitaliser les flux documentaires et admin</option>
+                <option>Structurer les opérations pour la croissance</option>
+                <option>Avoir une vision globale — audit opérationnel complet</option>
                 <option>Autre</option>
               </select>
               <span class="cf-field-err">Requis</span>
@@ -922,10 +918,10 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
                 <select name="budget" required>
                   <option value="" disabled selected>Choisissez...</option>
                   <option>À définir</option>
-                  <option>Moins de €2.000</option>
-                  <option>€2.000 – €5.000</option>
-                  <option>€5.000 – €15.000</option>
-                  <option>Plus de €15.000</option>
+                  <option>Moins de €1.500</option>
+                  <option>€1.500 – €4.000</option>
+                  <option>€4.000 – €10.000</option>
+                  <option>Plus de €10.000</option>
                 </select>
                 <span class="cf-field-err">Requis</span>
               </div>
@@ -942,19 +938,18 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
             </div>
             <div class="cf-field">
               <label>Décrivez votre situation</label>
-              <textarea name="message" placeholder="Ex: PME 20 personnes, outils déconnectés, reporting manuel toutes les semaines, besoin d'automatiser les relances et mettre en place un dashboard opérationnel..."></textarea>
+              <textarea name="message" placeholder="Ex: PME de 15 personnes, on utilise 6 logiciels différents qui ne communiquent pas, le reporting est fait à la main chaque lundi — on cherche à rationaliser tout ça..."></textarea>
             </div>
             <div class="cf-nav">
               <button type="button" class="cf-prev">← Retour</button>
-              <button type="submit" class="cf-submit" id="cf-btn">Envoyer ma demande →</button>
+              <button type="submit" class="cf-submit" id="cf-btn">Envoyer →</button>
             </div>
           </div>
 
         </form>
-
         <div class="cf-success" id="cf-success">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <h4>Demande reçue !</h4>
+          <h4>Message reçu !</h4>
           <p>On revient vers vous sous 24h avec une première analyse personnalisée.</p>
         </div>
       </div>
@@ -965,21 +960,21 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 <!-- FINAL CTA -->
 <section class="final-cta sdd">
   <div class="final-cta-inner">
-    <div class="kicker ki rv" style="justify-content:center"><span data-fr>Passez à l'action</span><span data-en>Take action</span></div>
+    <div class="kicker ki rv" style="justify-content:center"><span data-fr>Commencez par l'audit</span><span data-en>Start with the audit</span></div>
     <h2 class="rv">
-      <span data-fr>Votre entreprise mérite<br>un vrai <em>système opérationnel.</em></span>
-      <span data-en>Your company deserves<br>a real <em>operating system.</em></span>
+      <span data-fr>Obtenez enfin de la clarté<br>sur <em>comment fonctionne vraiment</em><br>votre entreprise.</span>
+      <span data-en>Finally get clarity<br>on <em>how your business really works</em><br>— and how to make it better.</span>
     </h2>
     <p class="rv">
-      <span data-fr>Un audit opérationnel de 48h pour cartographier vos processus, identifier les leviers d'automatisation et concevoir votre Business Operating System. Gratuit. Sans engagement.</span>
-      <span data-en>A 48h operational audit to map your processes, identify automation levers, and design your Business Operating System. Free. No commitment.</span>
+      <span data-fr>Un audit opérationnel de 48h pour cartographier vos processus, identifier vos frictions et repartir avec un plan d'action concret. Gratuit. Sans engagement.</span>
+      <span data-en>A 48h operational audit to map your processes, identify your friction points, and leave with a concrete action plan. Free. No commitment.</span>
     </p>
     <div class="final-cta-actions rv">
       <button class="btn-primary" onclick="openCalendly()" style="cursor:none">
-        <span data-fr>Réserver un audit opérationnel</span><span data-en>Book an operations audit</span>
+        <span data-fr>Réserver l'audit opérationnel</span><span data-en>Book the operations audit</span>
       </button>
       <button class="btn-outline" onclick="goTo('contact')" style="cursor:none">
-        <span data-fr>Nous écrire</span><span data-en>Write to us</span>
+        <span data-fr>Nous écrire d'abord</span><span data-en>Write to us first</span>
       </button>
     </div>
   </div>
@@ -990,9 +985,9 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
   <div class="borb"></div>
   <div class="bcontent">
     <div class="bhdr rv">
-      <div class="kicker kc" style="opacity:1"><span data-fr>Réservez un audit</span><span data-en>Book an audit</span></div>
-      <h2 class="dsp" style="opacity:1"><span data-fr>48h pour cartographier<br><strong>votre système opérationnel.</strong></span><span data-en>48h to map<br><strong>your operational system.</strong></span></h2>
-      <p class="bsub"><span data-fr>Gratuit. Sans engagement. On identifie ensemble vos frictions, vos angles morts et vos opportunités d'automatisation.</span><span data-en>Free. No commitment. We identify together your friction points, blind spots, and automation opportunities.</span></p>
+      <div class="kicker kc" style="opacity:1"><span data-fr>Réservez votre audit</span><span data-en>Book your audit</span></div>
+      <h2 class="dsp" style="opacity:1"><span data-fr>48h pour savoir exactement<br><strong>ce qui freine votre entreprise.</strong></span><span data-en>48h to know exactly<br><strong>what's holding your business back.</strong></span></h2>
+      <p class="bsub"><span data-fr>Gratuit. Sans engagement. On identifie ensemble vos frictions, vos angles morts et les premières améliorations à mettre en place.</span><span data-en>Free. No commitment. We identify together your friction points, blind spots, and first improvements to put in place.</span></p>
     </div>
     <div class="calendly-inline-widget rv" data-url="https://calendly.com/executio/30min?hide_gdpr_banner=1&primary_color=6366f1" style="min-width:320px;height:700px;"></div>
   </div>
@@ -1001,7 +996,7 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 <!-- FOOTER -->
 <footer>
   <div class="fbrand"><span>EXECUTIO</span></div>
-  <span class="fcopy"><span data-fr>© 2026 Executio — Business Operating System · Tous droits réservés</span><span data-en>© 2026 Executio — Business Operating System · All rights reserved</span></span>
+  <span class="fcopy"><span data-fr>© 2026 Executio — Conseil Opérationnel · Tous droits réservés</span><span data-en>© 2026 Executio — Operational Advisory · All rights reserved</span></span>
   <a href="mailto:contact@exe-cutio.com" class="flink">contact@exe-cutio.com</a>
 </footer>
 
@@ -1023,7 +1018,7 @@ document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY},{pa
   dot.style.transform='translate3d('+(mx-2)+'px,'+(my-2)+'px,0)';
   requestAnimationFrame(loop);
 })();
-document.querySelectorAll('a,button,.scard,.pillar-card,.pain-card,.offer-extra,.db-mod').forEach(function(el){
+document.querySelectorAll('a,button,.scard,.approach-card,.pain-card,.offer-extra,.db-finding').forEach(function(el){
   el.addEventListener('mouseenter',function(){cursor.classList.add('ch')});
   el.addEventListener('mouseleave',function(){cursor.classList.remove('ch')});
 });
@@ -1041,9 +1036,7 @@ window.addEventListener('scroll',function(){
 
 // ── IntersectionObserver — scroll reveals ──
 var io=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){e.target.classList.add('io');io.unobserve(e.target);}
-  });
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('io');io.unobserve(e.target);}});
 },{threshold:0.12});
 document.querySelectorAll('.rv,.rvl,.rvr').forEach(function(el){io.observe(el)});
 
@@ -1059,17 +1052,17 @@ var pio=new IntersectionObserver(function(entries){
 },{threshold:0.1});
 document.querySelectorAll('.process-steps,.pline').forEach(function(el){pio.observe(el)});
 
-// ── Dashboard efficiency bar ──
-var eio=new IntersectionObserver(function(entries){
+// score bar animation
+var scoreIo=new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if(e.isIntersecting){
-      document.getElementById('eff-fill').style.width='78%';
-      eio.unobserve(e.target);
+      document.getElementById('score-fill').style.width='42%';
+      scoreIo.unobserve(e.target);
     }
   });
 },{threshold:0.5});
-var effEl=document.querySelector('.db-eff-bar');
-if(effEl) eio.observe(effEl);
+var scoreEl=document.querySelector('.db-score-bar');
+if(scoreEl) scoreIo.observe(scoreEl);
 
 // ── Counter animation ──
 function animCount(el,target,suffix,dur){
@@ -1118,18 +1111,9 @@ document.querySelectorAll('.scard').forEach(function(card){
     'clock':'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
     'shield':'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
     'activity':'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
-    'dollar':'<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>',
     'book':'<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>'
   };
-  var COLORS={'ic-indigo':1,'ic-blue':1,'ic-cyan':1,'ic-violet':1,'ic-teal':1};
-  var CATS=['CFO as a Service','Levée de fonds','KPIs & Métriques','Trésorerie','Restructuration'];
-  var CARD_COLORS={
-    'CFO as a Service':'ic-indigo',
-    'Levée de fonds':'ic-blue',
-    'KPIs & Métriques':'ic-cyan',
-    'Trésorerie':'ic-teal',
-    'Restructuration':'ic-violet'
-  };
+  var CARD_COLORS={'CFO as a Service':'ic-indigo','Levée de fonds':'ic-blue','KPIs & Métriques':'ic-cyan','Trésorerie':'ic-teal','Restructuration':'ic-violet'};
   fetch('/data/articles.json').then(function(r){return r.json()}).then(function(articles){
     var top3=articles.sort(function(a,b){return new Date(b.date)-new Date(a.date)}).slice(0,3);
     var grid=document.getElementById('home-insights');
@@ -1140,8 +1124,7 @@ document.querySelectorAll('.scard').forEach(function(card){
         ?'<div class="icard-thumb" style="background-image:url('+a.image+');background-size:cover;background-position:center"></div>'
         :'<div class="icard-thumb '+color+'"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;opacity:.85;width:42px;height:42px">'+icon+'</svg></div>';
       return '<a href="/insights/'+a.slug+'/" class="icard rv" style="text-decoration:none">'
-        +thumb
-        +'<div class="icard-body"><div class="icat">'+a.category+'</div><div class="ititle">'+a.title+'</div>'
+        +thumb+'<div class="icard-body"><div class="icat">'+a.category+'</div><div class="ititle">'+a.title+'</div>'
         +'<div class="iexcerpt">'+a.excerpt+'</div>'
         +'<div class="imeta"><span class="iread">'+a.readTime+' de lecture</span><span class="ilink">Lire →</span></div></div></a>';
     }).join('');
@@ -1168,8 +1151,7 @@ document.querySelectorAll('.scard').forEach(function(card){
     cur=n;
   }
   function validateStep(n){
-    var step=document.getElementById('cf-step-'+n);
-    var ok=true;
+    var step=document.getElementById('cf-step-'+n);var ok=true;
     step.querySelectorAll('[required]').forEach(function(el){
       var err=el.parentNode.querySelector('.cf-field-err');
       var v=el.value.trim();
@@ -1191,8 +1173,7 @@ document.querySelectorAll('.scard').forEach(function(card){
     var btn=document.getElementById('cf-btn');
     btn.disabled=true;btn.textContent='...';
     fetch('/.netlify/functions/contact',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
+      method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         firstname:val('firstname'),email:val('email'),role:val('role'),
         company_type:val('company_type'),industry:val('industry'),stage:val('stage'),
@@ -1203,9 +1184,9 @@ document.querySelectorAll('.scard').forEach(function(card){
     .then(function(r){return r.json();})
     .then(function(d){
       if(d.success){form.style.display='none';succ.style.display='block';}
-      else{btn.disabled=false;btn.textContent='Envoyer ma demande →';}
+      else{btn.disabled=false;btn.textContent='Envoyer →';}
     })
-    .catch(function(){btn.disabled=false;btn.textContent='Envoyer ma demande →';});
+    .catch(function(){btn.disabled=false;btn.textContent='Envoyer →';});
   });
 })();
 
