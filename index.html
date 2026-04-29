@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="facebook-domain-verification" content="8tc4hqyoq0nl4x4xmetbsgv4s13at0" />
-<title>EXECUTIO — Conseil Opérationnel & Business Operating System</title>
-<meta name="description" content="Executio analyse vos processus, identifie les frictions et vous livre un plan d'action concret pour automatiser, connecter et mieux piloter votre entreprise.">
+<title>EXECUTIO — Conseil stratégique & opérationnel pour dirigeants</title>
+<meta name="description" content="Vous avez la tête dans le guidon. Executio prend le recul à votre place — pour voir ce qui freine, ce qui mérite d'être scalé, et tracer le bon cap.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/bd845eb6b81c1b4aa1f6e240/script.js"></script>
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -19,15 +19,14 @@
   --indigo: #6366f1;
   --blue: #3b82f6;
   --cyan: #22d3ee;
-  --violet: #8b5cf6;
   --green: #22c55e;
-  --amber: #f59e0b;
   --red: #ef4444;
+  --amber: #f59e0b;
   --white: #f8fafc;
   --muted: rgba(248,250,252,.42);
   --dim: rgba(248,250,252,.18);
   --border: rgba(255,255,255,.06);
-  --border-hi: rgba(99,102,241,.3);
+  --border-hi: rgba(99,102,241,.28);
   --grad: linear-gradient(135deg,#6366f1,#3b82f6);
   --grad-wide: linear-gradient(135deg,#6366f1 0%,#3b82f6 60%,#22d3ee 100%);
 }
@@ -56,7 +55,7 @@ nav.scrolled{padding:.8rem 5%;background:rgba(8,9,14,.92);backdrop-filter:blur(2
 .nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{text-decoration:none;font-size:.74rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .2s;cursor:none}
 .nav-links a:hover{color:var(--white)}
-.nav-cta{background:var(--indigo)!important;color:#fff!important;padding:.5rem 1.3rem!important;border-radius:4px!important;transition:background .2s,box-shadow .2s!important}
+.nav-cta{background:var(--indigo)!important;color:#fff!important;padding:.5rem 1.4rem!important;border-radius:4px!important;transition:background .2s,box-shadow .2s!important;letter-spacing:.04em!important}
 .nav-cta:hover{background:var(--blue)!important;box-shadow:0 4px 20px rgba(99,102,241,.4)!important}
 .lang-toggle{display:flex;margin-left:.5rem}
 .lbtn{background:none;border:1px solid rgba(255,255,255,.12);font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:none;padding:.28rem .6rem;color:var(--muted);transition:all .2s}
@@ -66,78 +65,59 @@ nav.scrolled{padding:.8rem 5%;background:rgba(8,9,14,.92);backdrop-filter:blur(2
 .lbtn:hover{color:var(--white)}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;position:relative;overflow:hidden;background:var(--bg);padding-top:80px}
-.hero-inner{display:flex;align-items:center;padding:5rem 5% 3rem;gap:5%;position:relative;z-index:3}
+.hero{min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden;background:var(--bg);padding-top:80px}
+.hero-inner{display:flex;align-items:center;padding:5rem 5% 3rem;gap:6%;position:relative;z-index:3;flex:1}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-.o1{width:700px;height:700px;background:radial-gradient(circle,rgba(99,102,241,.22) 0%,transparent 70%);top:-15%;right:-5%;animation:o1 16s ease-in-out infinite}
-.o2{width:440px;height:440px;background:radial-gradient(circle,rgba(59,130,246,.12) 0%,transparent 70%);bottom:10%;left:-8%;animation:o2 19s ease-in-out infinite}
-.o3{width:300px;height:300px;background:radial-gradient(circle,rgba(34,211,238,.08) 0%,transparent 70%);top:40%;right:35%;animation:o3 22s ease-in-out infinite}
-@keyframes o1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-40px,50px) scale(1.06)}66%{transform:translate(25px,-40px) scale(.96)}}
-@keyframes o2{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,-40px)}}
-@keyframes o3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,20px) scale(1.15)}}
-.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.04) 1px,transparent 1px);background-size:52px 52px}
-.hgfade{position:absolute;inset:0;background:radial-gradient(ellipse 90% 55% at 50% 105%,var(--bg) 0%,transparent 100%)}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.o1{width:720px;height:720px;background:radial-gradient(circle,rgba(99,102,241,.18) 0%,transparent 70%);top:-20%;right:-8%;animation:o1 18s ease-in-out infinite}
+.o2{width:460px;height:460px;background:radial-gradient(circle,rgba(59,130,246,.1) 0%,transparent 70%);bottom:5%;left:-10%;animation:o2 22s ease-in-out infinite}
+.o3{width:260px;height:260px;background:radial-gradient(circle,rgba(34,211,238,.07) 0%,transparent 70%);top:35%;right:30%;animation:o3 26s ease-in-out infinite}
+@keyframes o1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-30px,40px) scale(1.04)}66%{transform:translate(20px,-30px) scale(.97)}}
+@keyframes o2{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-30px)}}
+@keyframes o3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,15px) scale(1.1)}}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.03) 1px,transparent 1px);background-size:56px 56px}
+.hgfade{position:absolute;inset:0;background:radial-gradient(ellipse 90% 55% at 50% 110%,var(--bg) 0%,transparent 100%)}
 
-/* Hero copy */
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.67rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--indigo);margin-bottom:2rem;animation:slideIn .7s .3s both}
 .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--indigo)}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5.2rem);font-weight:300;line-height:1.06;color:var(--white);margin-bottom:1.8rem;letter-spacing:-.01em;animation:slideUp .9s .5s both}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.2vw,5rem);font-weight:300;line-height:1.08;color:var(--white);margin-bottom:1.8rem;letter-spacing:-.01em;animation:slideUp .9s .5s both}
 .hero h1 em{font-style:italic;background:var(--grad-wide);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:.96rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:480px;margin-bottom:3rem;animation:slideUp .8s .75s both}
+.hero-sub{font-size:.96rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:500px;margin-bottom:3rem;animation:slideUp .8s .75s both}
 .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:slideUp .7s 1s both}
 
-/* Buttons */
 .btn-primary{display:inline-flex;align-items:center;background:var(--grad);color:#fff;text-decoration:none;border:none;padding:1rem 2.4rem;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.04em;border-radius:6px;cursor:none;transition:box-shadow .3s,transform .2s;will-change:transform}
 .btn-primary:hover{box-shadow:0 8px 36px rgba(99,102,241,.45)}
 .btn-outline{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.15);color:var(--white);text-decoration:none;background:none;padding:1rem 2.2rem;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.04em;border-radius:6px;cursor:none;transition:border-color .2s,background .2s}
 .btn-outline:hover{border-color:var(--indigo);background:rgba(99,102,241,.08)}
 
-/* Animations */
 @keyframes slideIn{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
 @keyframes slideUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
 @keyframes slideRight{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:none}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-/* ── AUDIT WIDGET ── */
-.hero-right{flex:0 0 390px;animation:slideRight 1s .85s both}
-.dashboard{background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.6rem;backdrop-filter:blur(20px);box-shadow:0 24px 64px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.05)}
-.db-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
-.db-title{font-size:.63rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.db-badge{font-size:.6rem;font-weight:600;letter-spacing:.08em;color:var(--indigo);background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);padding:.18rem .6rem;border-radius:4px}
-.db-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-bottom:1.2rem}
-.db-kpi{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem}
-.kpi-val{font-size:1.25rem;font-weight:600;color:var(--white);display:block;margin-bottom:2px;font-variant-numeric:tabular-nums}
-.kpi-val.amber{color:var(--amber)}
-.kpi-val.green{color:var(--green)}
-.kpi-key{font-size:.58rem;color:var(--muted);letter-spacing:.07em;text-transform:uppercase}
-.db-findings{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem}
-.db-finding{display:flex;align-items:center;gap:.65rem;padding:.55rem .75rem;border-radius:7px;border:1px solid var(--border)}
-.finding-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.dot-red{background:var(--red)}
-.dot-amber{background:var(--amber)}
-.dot-green{background:var(--green)}
-.finding-text{font-size:.7rem;color:rgba(248,250,252,.55);flex:1;line-height:1.45}
-.finding-text strong{color:var(--white);font-weight:500}
-.db-score-label{display:flex;justify-content:space-between;font-size:.62rem;color:var(--muted);margin-bottom:.4rem}
-.db-score-label span:last-child{color:var(--indigo);font-weight:600}
-.db-score-bar{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
-.db-score-fill{height:100%;background:var(--grad);border-radius:3px;width:0;transition:width 2.2s cubic-bezier(.16,1,.3,1) 2s}
-
-/* ── HERO STATS ── */
-.hero-stats{display:flex;padding:1.6rem 5%;border-top:1px solid rgba(255,255,255,.05);background:rgba(0,0,0,.22);gap:3rem;flex-wrap:wrap;position:relative;z-index:3}
-.stat-item{animation:fadeUp .5s both}
-.stat-item:nth-child(1){animation-delay:1.3s}
-.stat-item:nth-child(2){animation-delay:1.4s}
-.stat-item:nth-child(3){animation-delay:1.5s}
-.stat-item:nth-child(4){animation-delay:1.6s}
-.snum{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:600;color:var(--white);line-height:1}
-.slbl{font-size:.62rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+/* ── WEEK CARD ── */
+.hero-right{flex:0 0 380px;animation:slideRight 1s .85s both}
+.week-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:1.6rem;backdrop-filter:blur(20px);box-shadow:0 24px 64px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05)}
+.wk-head{padding-bottom:1rem;border-bottom:1px solid var(--border);margin-bottom:1.1rem}
+.wk-title{display:block;font-size:.63rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
+.wk-sub{font-size:.72rem;color:var(--dim)}
+.wk-days{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.3rem}
+.wk-day{display:flex;align-items:flex-start;gap:.75rem}
+.wk-d{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);width:26px;flex-shrink:0;padding-top:1px}
+.wk-e{font-size:.78rem;color:rgba(248,250,252,.5);line-height:1.45}
+.wk-ven .wk-e{color:rgba(248,250,252,.28);font-style:italic}
+.wk-result{display:flex;align-items:center;gap:0;padding:1rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;margin-bottom:.9rem}
+.wk-r-item{flex:1;text-align:center}
+.wk-r-num{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--white);line-height:1}
+.wk-r-num.red{color:var(--red)}
+.wk-r-lbl{font-size:.62rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px;display:block}
+.wk-r-sep{width:1px;height:40px;background:var(--border)}
+.wk-bottom{font-size:.75rem;color:rgba(248,250,252,.3);text-align:center;font-style:italic;padding-top:.2rem}
 
 /* ── TICKER ── */
-.ticker{background:rgba(99,102,241,.06);border-top:1px solid rgba(99,102,241,.12);border-bottom:1px solid rgba(99,102,241,.12);overflow:hidden;padding:.55rem 0;position:relative;z-index:2}
-.ticker-track{display:flex;animation:tick 34s linear infinite;width:max-content}
-.titem{display:flex;align-items:center;gap:1.4rem;padding:0 1.8rem;font-size:.67rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(99,102,241,.65);white-space:nowrap}
+.ticker{background:rgba(99,102,241,.05);border-top:1px solid rgba(99,102,241,.1);border-bottom:1px solid rgba(99,102,241,.1);overflow:hidden;padding:.55rem 0;position:relative;z-index:2}
+.ticker-track{display:flex;animation:tick 36s linear infinite;width:max-content}
+.titem{display:flex;align-items:center;gap:1.4rem;padding:0 1.8rem;font-size:.67rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(99,102,241,.6);white-space:nowrap}
 .tdot{width:3px;height:3px;background:rgba(99,102,241,.4);border-radius:50%}
 @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
@@ -149,16 +129,12 @@ section{padding:7rem 5%}
 
 /* ── SCROLL REVEAL ── */
 .rv,.rvl,.rvr{opacity:0;transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
-.rv{transform:translateY(24px)}
-.rvl{transform:translateX(-40px)}
-.rvr{transform:translateX(40px)}
+.rv{transform:translateY(24px)}.rvl{transform:translateX(-40px)}.rvr{transform:translateX(40px)}
 .rv.io,.rvl.io,.rvr.io{opacity:1;transform:none}
-.stg .rv:nth-child(1),.stg .rvl:nth-child(1){transition-delay:.0s}
-.stg .rv:nth-child(2),.stg .rvl:nth-child(2){transition-delay:.1s}
-.stg .rv:nth-child(3),.stg .rvl:nth-child(3){transition-delay:.2s}
-.stg .rv:nth-child(4),.stg .rvl:nth-child(4){transition-delay:.3s}
+.stg .rv:nth-child(1){transition-delay:.0s}.stg .rv:nth-child(2){transition-delay:.1s}
+.stg .rv:nth-child(3){transition-delay:.2s}.stg .rv:nth-child(4){transition-delay:.3s}
 
-/* ── KICKER & HEADINGS ── */
+/* ── KICKER & HEADING ── */
 .kicker{font-size:.63rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:10px}
 .kicker::before{content:'';display:block;width:20px;height:1px}
 .ki{color:var(--indigo)}.ki::before{background:var(--indigo)}
@@ -169,42 +145,37 @@ h2.dsp strong{font-weight:600}
 /* ── PROBLEM ── */
 .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
 .pain-card{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;padding:1.8rem;position:relative;overflow:hidden;transition:border-color .3s}
-.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),rgba(239,68,68,0));opacity:.6}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),rgba(239,68,68,0));opacity:.55}
 .pain-card:hover{border-color:rgba(239,68,68,.2)}
-.pain-icon{width:36px;height:36px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.pain-icon{width:36px;height:36px;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.14);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
 .pain-icon svg{width:16px;height:16px;stroke:#ef4444;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .pain-title{font-size:.92rem;font-weight:600;color:var(--white);margin-bottom:.6rem}
-.pain-desc{font-size:.8rem;line-height:1.78;color:var(--muted)}
-.problem-callout{margin-top:3rem;padding:1.6rem 2rem;background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.1);border-radius:8px;display:flex;align-items:center;gap:1.2rem}
-.problem-callout svg{width:20px;height:20px;stroke:#ef4444;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.problem-callout p{font-size:.85rem;line-height:1.7;color:rgba(248,250,252,.55)}
-.problem-callout strong{color:var(--white)}
+.pain-desc{font-size:.8rem;line-height:1.8;color:var(--muted)}
 
-/* ── APPROACH ── */
-.approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem}
-.approach-text p{font-size:.9rem;line-height:1.88;color:var(--muted);margin-bottom:1.2rem}
-.approach-text p strong{color:var(--white);font-weight:500}
-.approach-cards{display:flex;flex-direction:column;gap:.85rem}
-.approach-card{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.2rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;transition:border-color .25s,background .25s}
-.approach-card:hover{border-color:var(--border-hi);background:rgba(99,102,241,.05)}
-.ac-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--indigo);line-height:1;flex-shrink:0;width:32px}
-.ac-body strong{display:block;font-size:.84rem;font-weight:600;color:var(--white);margin-bottom:.2rem}
-.ac-body span{font-size:.78rem;color:var(--muted);line-height:1.55}
+/* ── WHO WE ARE ── */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-top:3rem}
+.who-text p{font-size:.92rem;line-height:1.9;color:var(--muted);margin-bottom:1.3rem}
+.who-text p strong{color:var(--white);font-weight:500}
+.who-values{display:flex;flex-direction:column;gap:.8rem}
+.who-val{display:flex;align-items:flex-start;gap:.85rem;padding:1rem 1.1rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;transition:border-color .25s}
+.who-val:hover{border-color:var(--border-hi)}
+.wv-icon{width:32px;height:32px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.14);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.wv-icon svg{width:13px;height:13px;stroke:var(--indigo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wv-body strong{display:block;font-size:.84rem;font-weight:600;color:var(--white);margin-bottom:.2rem}
+.wv-body span{font-size:.78rem;color:var(--muted);line-height:1.55}
 
 /* ── SERVICES ── */
 .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:3rem;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .scard{background:rgba(255,255,255,.02);padding:2.4rem 2rem;cursor:none;position:relative;overflow:hidden;transition:background .3s,opacity .65s ease}
 .scard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
-.scard:hover{background:rgba(99,102,241,.07)}
+.scard:hover{background:rgba(99,102,241,.06)}
 .scard:hover::after{transform:scaleX(1)}
 .snum{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:rgba(255,255,255,.04);line-height:1;margin-bottom:.7rem}
 .sicon{width:38px;height:38px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.15);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;transition:background .3s}
 .scard:hover .sicon{background:rgba(99,102,241,.2)}
 .sicon svg{width:16px;height:16px;stroke:var(--indigo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .stitle{font-size:1.05rem;font-weight:600;color:var(--white);margin-bottom:.6rem;line-height:1.3}
-.sdesc{font-size:.8rem;line-height:1.8;color:var(--muted);margin-bottom:1rem}
-.stags{display:flex;flex-wrap:wrap;gap:.4rem}
-.stag{font-size:.6rem;font-weight:500;letter-spacing:.05em;color:rgba(99,102,241,.8);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);padding:.2rem .55rem;border-radius:4px}
+.sdesc{font-size:.8rem;line-height:1.82;color:var(--muted)}
 .services-grid .scard{opacity:0}
 .services-grid.io .scard{opacity:1}
 .services-grid.io .scard:nth-child(1){transition-delay:.0s}
@@ -221,7 +192,7 @@ h2.dsp strong{font-weight:600}
 .pdot:hover{border-color:var(--indigo);background:rgba(99,102,241,.18);box-shadow:0 0 0 6px rgba(99,102,241,.08)}
 .pdot span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--indigo)}
 .ptitle{font-size:.92rem;font-weight:600;color:var(--white);margin-bottom:.45rem}
-.pdesc{font-size:.78rem;line-height:1.72;color:var(--muted)}
+.pdesc{font-size:.78rem;line-height:1.75;color:var(--muted)}
 .process-steps .pstep{opacity:0;transform:translateY(32px);transition:opacity .65s ease,transform .65s cubic-bezier(.16,1,.3,1)}
 .process-steps.io .pstep{opacity:1;transform:none}
 .process-steps.io .pstep:nth-child(2){transition-delay:.2s}
@@ -231,19 +202,20 @@ h2.dsp strong{font-weight:600}
 
 /* ── OFFER ── */
 .offer-section{position:relative;overflow:hidden}
-.offer-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(99,102,241,.1) 0%,transparent 70%)}
+.offer-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(99,102,241,.09) 0%,transparent 70%)}
 .offer-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1;margin-top:3rem}
 .offer-card{background:rgba(255,255,255,.03);border:1px solid var(--border-hi);border-radius:14px;padding:2.4rem;position:relative;overflow:hidden}
 .offer-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-wide)}
 .offer-label{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--indigo);margin-bottom:.6rem}
-.offer-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--white);line-height:1.2;margin-bottom:.4rem}
-.offer-sub{font-size:.82rem;color:var(--muted);margin-bottom:1.6rem;line-height:1.7}
-.offer-items{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.8rem}
-.offer-items li{display:flex;align-items:flex-start;gap:.75rem;font-size:.82rem;color:rgba(248,250,252,.65);line-height:1.6}
-.offer-items li::before{content:'';display:block;width:16px;height:16px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:50%;flex-shrink:0;margin-top:1px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 24 24'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%236366f1' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
-.offer-note{font-size:.75rem;color:rgba(99,102,241,.7);font-style:italic;padding:.75rem 1rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.12);border-radius:6px;margin-bottom:1.6rem;line-height:1.6}
-.offer-right p{font-size:.88rem;line-height:1.88;color:var(--muted);margin-bottom:1.5rem}
-.offer-extras{display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem}
+.offer-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--white);line-height:1.2;margin-bottom:.5rem}
+.offer-sub{font-size:.84rem;color:var(--muted);margin-bottom:1.6rem;line-height:1.72}
+.offer-items{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.6rem}
+.offer-items li{display:flex;align-items:flex-start;gap:.75rem;font-size:.82rem;color:rgba(248,250,252,.62);line-height:1.65}
+.offer-items li::before{content:'';display:block;width:16px;height:16px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:50%;flex-shrink:0;margin-top:1px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%236366f1' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:9px}
+.offer-note{font-size:.75rem;color:rgba(99,102,241,.7);font-style:italic;padding:.75rem 1rem;background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.12);border-radius:6px;margin-bottom:1.6rem;line-height:1.65}
+.offer-right p{font-size:.9rem;line-height:1.9;color:var(--muted);margin-bottom:1.4rem}
+.offer-right p strong{color:var(--white)}
+.offer-extras{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
 .offer-extra{display:flex;align-items:center;gap:.8rem;padding:.9rem 1rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;transition:border-color .25s}
 .offer-extra:hover{border-color:var(--border-hi)}
 .oe-icon{width:30px;height:30px;background:rgba(99,102,241,.08);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -279,14 +251,14 @@ h2.dsp strong{font-weight:600}
 
 /* ── CONTACT FORM ── */
 .cfsec{background:var(--bg);position:relative;overflow:hidden}
-.cfsec::before{content:'';position:absolute;right:-5%;bottom:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(99,102,241,.1) 0%,transparent 70%);border-radius:50%;filter:blur(60px);pointer-events:none}
+.cfsec::before{content:'';position:absolute;right:-5%;bottom:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(99,102,241,.09) 0%,transparent 70%);border-radius:50%;filter:blur(60px);pointer-events:none}
 .cf-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1}
 .cf-left .dsp{margin-bottom:1.2rem}
 .cf-left p{font-size:.9rem;color:var(--muted);line-height:1.85;margin-bottom:2rem}
 .cf-promises{list-style:none;display:flex;flex-direction:column;gap:.75rem}
-.cf-promises li{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(248,250,252,.45)}
+.cf-promises li{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(248,250,252,.42)}
 .cf-promises li::before{content:'';display:block;width:16px;height:1px;background:var(--indigo);flex-shrink:0}
-.cf-progress{display:flex;align-items:center;gap:0;margin-bottom:2rem}
+.cf-progress{display:flex;align-items:center;margin-bottom:2rem}
 .cf-prog-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative}
 .cf-prog-step:not(:last-child)::after{content:'';position:absolute;top:13px;left:50%;width:100%;height:1px;background:rgba(255,255,255,.1);z-index:0}
 .cf-prog-step.done::after,.cf-prog-step.active::after{background:var(--indigo)}
@@ -299,13 +271,13 @@ h2.dsp strong{font-weight:600}
 .cf-step{display:none;flex-direction:column;gap:1rem;animation:cfIn .3s ease}
 .cf-step.active{display:flex}
 @keyframes cfIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
-.cf-step-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:rgba(248,250,252,.6);margin-bottom:.2rem}
+.cf-step-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:rgba(248,250,252,.55);margin-bottom:.2rem}
 .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .cf-field{display:flex;flex-direction:column;gap:.4rem}
-.cf-field label{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.cf-field label{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28)}
 .cf-field input,.cf-field select,.cf-field textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:.75rem 1rem;font-family:'Inter',sans-serif;font-size:.88rem;color:#fff;outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none;width:100%}
 .cf-field input::placeholder,.cf-field textarea::placeholder{color:rgba(255,255,255,.18)}
-.cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{border-color:rgba(99,102,241,.5);background:rgba(99,102,241,.05)}
+.cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{border-color:rgba(99,102,241,.45);background:rgba(99,102,241,.04)}
 .cf-field select{cursor:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.3)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
 .cf-field select option{background:#0d1018;color:#fff}
 .cf-field textarea{resize:none;min-height:90px;line-height:1.6}
@@ -313,10 +285,10 @@ h2.dsp strong{font-weight:600}
 .cf-nav{display:flex;align-items:center;justify-content:space-between;margin-top:.5rem}
 .cf-prev{background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);font-family:'Inter',sans-serif;font-size:.78rem;padding:.7rem 1.3rem;border-radius:6px;cursor:none;transition:all .2s}
 .cf-prev:hover{border-color:rgba(255,255,255,.3);color:#fff}
-.cf-next,.cf-submit{background:var(--grad);color:#fff;border:none;padding:.85rem 1.8rem;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.04em;border-radius:6px;cursor:none;transition:box-shadow .3s,opacity .2s;margin-left:auto}
+.cf-next,.cf-submit{background:var(--grad);color:#fff;border:none;padding:.85rem 1.8rem;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.04em;border-radius:6px;cursor:none;transition:box-shadow .3s;margin-left:auto}
 .cf-next:hover,.cf-submit:hover{box-shadow:0 8px 32px rgba(99,102,241,.45)}
 .cf-submit:disabled{opacity:.5}
-.cf-success{display:none;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:8px;padding:2.5rem;text-align:center}
+.cf-success{display:none;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:8px;padding:2.5rem;text-align:center}
 .cf-success svg{width:40px;height:40px;stroke:var(--indigo);fill:none;stroke-width:1.5;margin-bottom:1rem}
 .cf-success h4{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:#fff;margin-bottom:.5rem}
 .cf-success p{font-size:.85rem;color:var(--muted)}
@@ -325,7 +297,7 @@ h2.dsp strong{font-weight:600}
 
 /* ── BOOKING ── */
 .booking{position:relative;overflow:hidden;background:var(--surface)}
-.borb{position:absolute;left:-5%;top:-20%;width:480px;height:480px;background:radial-gradient(circle,rgba(99,102,241,.15) 0%,transparent 70%);border-radius:50%;filter:blur(50px);pointer-events:none}
+.borb{position:absolute;left:-5%;top:-20%;width:480px;height:480px;background:radial-gradient(circle,rgba(99,102,241,.14) 0%,transparent 70%);border-radius:50%;filter:blur(50px);pointer-events:none}
 .bcontent{position:relative;z-index:2}
 .bhdr{margin-bottom:2.5rem}
 .bsub{font-size:.92rem;color:var(--muted);line-height:1.8;max-width:460px;margin-top:.75rem}
@@ -333,8 +305,8 @@ h2.dsp strong{font-weight:600}
 
 /* ── FINAL CTA ── */
 .final-cta{position:relative;overflow:hidden;text-align:center;padding:8rem 5%}
-.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(99,102,241,.12) 0%,transparent 70%)}
-.final-cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(99,102,241,.11) 0%,transparent 70%)}
+.final-cta-inner{position:relative;z-index:1;max-width:660px;margin:0 auto}
 .final-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:300;line-height:1.15;margin-bottom:1.2rem;color:var(--white)}
 .final-cta h2 em{font-style:italic;background:var(--grad-wide);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .final-cta p{font-size:.92rem;line-height:1.85;color:var(--muted);margin-bottom:2.5rem}
@@ -356,7 +328,7 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 @media(max-width:900px){
   .hero-inner{flex-direction:column;padding:3rem 5% 2rem}
   .hero-right{flex:0 0 auto;width:100%;max-width:420px}
-  .approach-grid{grid-template-columns:1fr;gap:3rem}
+  .who-grid{grid-template-columns:1fr;gap:3rem}
   .services-grid{grid-template-columns:1fr}
   .offer-inner{grid-template-columns:1fr;gap:3rem}
   .process-steps{grid-template-columns:1fr 1fr;gap:2.5rem}
@@ -365,7 +337,6 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 }
 @media(max-width:600px){
   .nav-links{display:none}
-  .services-grid{grid-template-columns:1fr}
   .hero-stats{gap:1.5rem}
   .process-steps{grid-template-columns:1fr}
   .final-cta-actions{flex-direction:column;align-items:center}
@@ -380,19 +351,19 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 
 <div id="badge">
   <div class="bdot"></div>
-  <span data-fr>Disponible — audit opérationnel</span>
-  <span data-en>Available — operations audit</span>
+  <span data-fr>Disponible — session stratégique offerte</span>
+  <span data-en>Available — free strategy session</span>
 </div>
 
 <!-- NAV -->
 <nav id="nav">
   <div class="logo"><span>EXECUTIO</span></div>
   <div class="nav-links">
-    <a onclick="goTo('problem')"><span data-fr>Problème</span><span data-en>Problem</span></a>
-    <a onclick="goTo('services')"><span data-fr>Approche</span><span data-en>Approach</span></a>
-    <a onclick="goTo('process')"><span data-fr>Processus</span><span data-en>Process</span></a>
+    <a onclick="goTo('problem')"><span data-fr>Le problème</span><span data-en>The problem</span></a>
+    <a onclick="goTo('services')"><span data-fr>Ce qu'on fait</span><span data-en>What we do</span></a>
+    <a onclick="goTo('offer')"><span data-fr>Offre</span><span data-en>Offer</span></a>
     <a href="/insights/">Insights</a>
-    <a onclick="openCalendly()" class="nav-cta"><span data-fr>Réserver un audit</span><span data-en>Book an audit</span></a>
+    <a onclick="openCalendly()" class="nav-cta"><span data-fr>Prendre du recul</span><span data-en>Get perspective</span></a>
     <div class="lang-toggle">
       <button class="lbtn active" onclick="setLang('fr')">FR</button>
       <button class="lbtn" onclick="setLang('en')">EN</button>
@@ -407,95 +378,69 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
     <div class="hgrid"></div><div class="hgfade"></div>
   </div>
   <div class="hero-inner">
-    <div style="flex:1;max-width:600px">
+    <div style="flex:1;max-width:560px">
       <div class="hero-eyebrow">
-        <span>Conseil opérationnel · Audit des processus · Design de système</span>
+        <span data-fr>Conseil stratégique & opérationnel</span>
+        <span data-en>Strategic & operational advisory</span>
       </div>
       <h1>
-        <span data-fr>Nous concevons<br><em>le système d'exploitation</em><br>de votre entreprise.</span>
-        <span data-en>We design the<br><em>operating system</em><br>of your business.</span>
+        <span data-fr>Vous avez la tête<br>dans le guidon.<br><em>On prend la hauteur.</em></span>
+        <span data-en>You're deep in<br>the day-to-day.<br><em>We take the view from above.</em></span>
       </h1>
       <p class="hero-sub">
-        <span data-fr>Executio analyse vos processus, identifie les frictions et vous livre un plan d'action concret pour connecter vos logiciels, automatiser vos tâches et piloter votre activité avec clarté.</span>
-        <span data-en>Executio analyzes your processes, identifies friction points, and delivers a concrete action plan to connect your tools, automate tasks, and run your business with clarity.</span>
+        <span data-fr>Executio est le regard extérieur et le partenaire stratégique dont les dirigeants ont besoin pour voir clairement ce qui freine leur croissance — et scaler ce qui mérite de l'être.</span>
+        <span data-en>Executio is the outside perspective and strategic partner that leaders need to clearly see what's holding back their growth — and scale what deserves it.</span>
       </p>
       <div class="hero-actions">
         <button class="btn-primary" id="cta-main" onclick="openCalendly()">
-          <span data-fr>Réserver un audit opérationnel</span><span data-en>Book an operations audit</span>
+          <span data-fr>Prendre du recul — session offerte</span><span data-en>Get perspective — free session</span>
         </button>
         <button class="btn-outline" onclick="goTo('services')">
-          <span data-fr>Découvrir l'approche</span><span data-en>Discover our approach</span>
+          <span data-fr>Ce qu'on fait concrètement</span><span data-en>What we actually do</span>
         </button>
       </div>
     </div>
     <div class="hero-right">
-      <div class="dashboard">
-        <div class="db-head">
-          <span class="db-title">Rapport d'audit opérationnel</span>
-          <span class="db-badge">En cours</span>
+      <div class="week-card">
+        <div class="wk-head">
+          <span class="wk-title">Semaine type d'un dirigeant</span>
+          <span class="wk-sub">PME · 15 personnes · €1.2M CA</span>
         </div>
-        <div class="db-kpis">
-          <div class="db-kpi">
-            <span class="kpi-val" data-count="48" data-suffix="">48</span>
-            <span class="kpi-key">Processus analysés</span>
+        <div class="wk-days">
+          <div class="wk-day">
+            <span class="wk-d">Lun</span>
+            <span class="wk-e">Urgence client non anticipée — tout s'arrête</span>
           </div>
-          <div class="db-kpi">
-            <span class="kpi-val amber" data-count="14" data-suffix="">14</span>
-            <span class="kpi-key">Frictions détectées</span>
+          <div class="wk-day">
+            <span class="wk-d">Mar</span>
+            <span class="wk-e">Réunion d'équipe qui dure 3h pour pas grand chose</span>
           </div>
-          <div class="db-kpi">
-            <span class="kpi-val green" data-count="9" data-suffix="">9</span>
-            <span class="kpi-key">Quick wins</span>
+          <div class="wk-day">
+            <span class="wk-d">Mer</span>
+            <span class="wk-e">Problème RH inattendu à gérer en urgence</span>
           </div>
-          <div class="db-kpi">
-            <span class="kpi-val green">-38h</span>
-            <span class="kpi-key">Gain estimé / sem.</span>
+          <div class="wk-day">
+            <span class="wk-d">Jeu</span>
+            <span class="wk-e">Relances fournisseurs + admin + emails en retard</span>
           </div>
-        </div>
-        <div class="db-findings">
-          <div class="db-finding">
-            <div class="finding-dot dot-red"></div>
-            <span class="finding-text"><strong>3 logiciels non connectés</strong> — données saisies manuellement entre systèmes</span>
-          </div>
-          <div class="db-finding">
-            <div class="finding-dot dot-amber"></div>
-            <span class="finding-text"><strong>6 processus manuels</strong> — automatisables avec les outils existants</span>
-          </div>
-          <div class="db-finding">
-            <div class="finding-dot dot-amber"></div>
-            <span class="finding-text"><strong>KPIs absents</strong> — aucun tableau de bord opérationnel en place</span>
-          </div>
-          <div class="db-finding">
-            <div class="finding-dot dot-green"></div>
-            <span class="finding-text"><strong>Base solide</strong> — 4 outils adaptés, à connecter et optimiser</span>
+          <div class="wk-day wk-ven">
+            <span class="wk-d">Ven</span>
+            <span class="wk-e">Tentative de "prendre du recul"... reportée à lundi</span>
           </div>
         </div>
-        <div class="db-score-label">
-          <span>Score opérationnel actuel</span>
-          <span>42 → objectif 85+</span>
+        <div class="wk-result">
+          <div class="wk-r-item">
+            <span class="wk-r-num">55h</span>
+            <span class="wk-r-lbl">travaillées</span>
+          </div>
+          <div class="wk-r-sep"></div>
+          <div class="wk-r-item">
+            <span class="wk-r-num red">0h</span>
+            <span class="wk-r-lbl">sur la stratégie</span>
+          </div>
         </div>
-        <div class="db-score-bar">
-          <div class="db-score-fill" id="score-fill"></div>
-        </div>
+        <div class="wk-bottom">Et la semaine d'après, on recommence.</div>
       </div>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat-item">
-      <div class="snum" data-count="48" data-suffix="h">48h</div>
-      <div class="slbl"><span data-fr>Audit livré</span><span data-en>Audit delivered</span></div>
-    </div>
-    <div class="stat-item">
-      <div class="snum" data-count="80" data-suffix="%">80%</div>
-      <div class="slbl"><span data-fr>Tâches manuelles éliminables</span><span data-en>Manual tasks eliminable</span></div>
-    </div>
-    <div class="stat-item">
-      <div class="snum" data-count="4" data-suffix="">4</div>
-      <div class="slbl"><span data-fr>Domaines d'analyse couverts</span><span data-en>Analysis domains covered</span></div>
-    </div>
-    <div class="stat-item">
-      <div class="snum" data-count="100" data-suffix="%">100%</div>
-      <div class="slbl"><span data-fr>Recommandations actionnables</span><span data-en>Actionable recommendations</span></div>
     </div>
   </div>
 </section>
@@ -503,134 +448,123 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-    <div class="titem">Audit Opérationnel <span class="tdot"></span></div>
-    <div class="titem">Cartographie des Processus <span class="tdot"></span></div>
-    <div class="titem">Design de Workflows <span class="tdot"></span></div>
-    <div class="titem">Recommandation d'Outils <span class="tdot"></span></div>
-    <div class="titem">Architecture KPIs <span class="tdot"></span></div>
-    <div class="titem">Conseil en Organisation <span class="tdot"></span></div>
-    <div class="titem">Optimisation des Processus <span class="tdot"></span></div>
-    <div class="titem">Connexion Logiciels <span class="tdot"></span></div>
-    <div class="titem">Pilotage & Visibilité <span class="tdot"></span></div>
-    <div class="titem">Transformation Opérationnelle <span class="tdot"></span></div>
-    <div class="titem">Audit Opérationnel <span class="tdot"></span></div>
-    <div class="titem">Cartographie des Processus <span class="tdot"></span></div>
-    <div class="titem">Design de Workflows <span class="tdot"></span></div>
-    <div class="titem">Recommandation d'Outils <span class="tdot"></span></div>
-    <div class="titem">Architecture KPIs <span class="tdot"></span></div>
-    <div class="titem">Conseil en Organisation <span class="tdot"></span></div>
-    <div class="titem">Optimisation des Processus <span class="tdot"></span></div>
-    <div class="titem">Connexion Logiciels <span class="tdot"></span></div>
-    <div class="titem">Pilotage & Visibilité <span class="tdot"></span></div>
-    <div class="titem">Transformation Opérationnelle <span class="tdot"></span></div>
+    <div class="titem">Prise de hauteur <span class="tdot"></span></div>
+    <div class="titem">Vision stratégique <span class="tdot"></span></div>
+    <div class="titem">Scale ce qui marche <span class="tdot"></span></div>
+    <div class="titem">Clarté opérationnelle <span class="tdot"></span></div>
+    <div class="titem">Regard extérieur <span class="tdot"></span></div>
+    <div class="titem">Décisions éclairées <span class="tdot"></span></div>
+    <div class="titem">Croissance maîtrisée <span class="tdot"></span></div>
+    <div class="titem">Sortir du guidon <span class="tdot"></span></div>
+    <div class="titem">Cap & Priorités <span class="tdot"></span></div>
+    <div class="titem">Partenaire de confiance <span class="tdot"></span></div>
+    <div class="titem">Prise de hauteur <span class="tdot"></span></div>
+    <div class="titem">Vision stratégique <span class="tdot"></span></div>
+    <div class="titem">Scale ce qui marche <span class="tdot"></span></div>
+    <div class="titem">Clarté opérationnelle <span class="tdot"></span></div>
+    <div class="titem">Regard extérieur <span class="tdot"></span></div>
+    <div class="titem">Décisions éclairées <span class="tdot"></span></div>
+    <div class="titem">Croissance maîtrisée <span class="tdot"></span></div>
+    <div class="titem">Sortir du guidon <span class="tdot"></span></div>
+    <div class="titem">Cap & Priorités <span class="tdot"></span></div>
+    <div class="titem">Partenaire de confiance <span class="tdot"></span></div>
   </div>
 </div>
 
 <!-- PROBLEM -->
 <section class="sdd" id="problem">
   <div class="kicker ki rv">
-    <span data-fr>Le problème</span><span data-en>The problem</span>
+    <span data-fr>Le vrai problème</span><span data-en>The real problem</span>
   </div>
   <h2 class="dsp rv">
-    <span data-fr>Vous avez des logiciels.<br><strong>Vous n'avez pas de système.</strong></span>
-    <span data-en>You have software.<br><strong>You don't have a system.</strong></span>
+    <span data-fr>Vous connaissez votre business<br><strong>mieux que personne. Mais vous n'avez<br>plus le temps de le regarder.</strong></span>
+    <span data-en>You know your business<br><strong>better than anyone. But you no longer<br>have time to look at it.</strong></span>
   </h2>
   <div class="problem-grid stg">
     <div class="pain-card rv">
-      <div class="pain-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="8" y1="8" x2="16" y2="16"/><line x1="16" y1="8" x2="8" y2="16"/></svg>
-      </div>
-      <div class="pain-title"><span data-fr>Des outils qui ne se parlent pas</span><span data-en>Tools that don't talk to each other</span></div>
+      <div class="pain-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="pain-title"><span data-fr>Toujours dans l'opérationnel</span><span data-en>Always in the operational</span></div>
       <p class="pain-desc">
-        <span data-fr>Votre CRM ne parle pas à votre logiciel de facturation. Votre outil de gestion de projet ne se synchronise pas avec votre comptabilité. Vous avez des logiciels — mais pas de système. On connecte ce que vous utilisez déjà pour vous donner une vision claire, automatiser vos tâches manuelles et piloter votre entreprise sans friction.</span>
-        <span data-en>Your CRM doesn't talk to your invoicing software. Your project management tool doesn't sync with your accounting. You have software — but no system. We connect what you already use to give you a clear view, automate manual tasks, and run your business without friction.</span>
+        <span data-fr>Les urgences s'enchaînent. Les réunions prennent la place de la réflexion. Chaque semaine ressemble à la précédente. Vous avancez, mais vous ne savez plus vraiment dans quelle direction — ni si c'est la bonne.</span>
+        <span data-en>Urgencies pile up. Meetings replace thinking. Each week looks like the last. You're moving forward, but you're no longer sure in which direction — or whether it's the right one.</span>
       </p>
     </div>
     <div class="pain-card rv">
-      <div class="pain-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-      </div>
-      <div class="pain-title"><span data-fr>Trop de tâches encore manuelles</span><span data-en>Too many tasks still manual</span></div>
+      <div class="pain-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div>
+      <div class="pain-title"><span data-fr>Vous scalez… mais pas les bons trucs</span><span data-en>You're scaling… but the wrong things</span></div>
       <p class="pain-desc">
-        <span data-fr>Validations par email. Rapports copiés-collés chaque semaine. Relances envoyées à la main. Ce ne sont pas des problèmes de personnel — ce sont des processus mal conçus. On identifie exactement ce qui peut être automatisé et comment.</span>
-        <span data-en>Approvals by email. Reports copy-pasted every week. Follow-ups sent by hand. These aren't people problems — they're poorly designed processes. We identify exactly what can be automated and how.</span>
+        <span data-fr>On investit dans ce qui est visible plutôt que dans ce qui rapporte vraiment. On accélère des processus qui mériteraient d'être supprimés. On recrute là où il faudrait automatiser. Pas par manque d'intelligence — par manque de recul.</span>
+        <span data-en>We invest in what's visible rather than what truly pays off. We accelerate processes that should be eliminated. We hire where we should automate. Not for lack of intelligence — for lack of perspective.</span>
       </p>
     </div>
     <div class="pain-card rv">
-      <div class="pain-icon">
-        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-      </div>
-      <div class="pain-title"><span data-fr>Aucune visibilité sur les opérations</span><span data-en>No visibility on operations</span></div>
+      <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div class="pain-title"><span data-fr>Les vraies décisions restent en attente</span><span data-en>The real decisions stay pending</span></div>
       <p class="pain-desc">
-        <span data-fr>Vous ne savez pas exactement où en est votre activité. Les KPIs sont éparpillés, le reporting est manuel, les décisions se prennent à l'instinct. On conçoit le tableau de bord et les indicateurs qui vous donnent la clarté dont vous avez besoin.</span>
-        <span data-en>You don't know exactly where your business stands. KPIs are scattered, reporting is manual, decisions are made on gut. We design the dashboards and indicators that give you the clarity you need.</span>
+        <span data-fr>La restructuration qu'on reporte. L'outil qu'on n'a pas encore choisi. Le recrutement stratégique qu'on hésite à faire. La direction qu'on n'a pas prise. Les décisions importantes attendent — parce qu'on n'a jamais le temps d'y réfléchir vraiment.</span>
+        <span data-en>The restructuring you keep postponing. The tool you haven't chosen yet. The strategic hire you're hesitating on. Important decisions wait — because you never have time to really think them through.</span>
       </p>
     </div>
-  </div>
-  <div class="problem-callout rv">
-    <svg viewBox="0 0 24 24"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <p>
-      <span data-fr><strong>Ce n'est pas un problème de budget ou de talent. C'est un problème de méthode.</strong> Les entreprises qui avancent vite ont une vision claire de leurs processus — et savent exactement ce qu'il faut améliorer. C'est précisément ce qu'on vous apporte.</span>
-      <span data-en><strong>This isn't a budget or talent problem. It's a method problem.</strong> Companies that move fast have a clear view of their processes — and know exactly what to improve. That's precisely what we bring you.</span>
-    </p>
   </div>
 </section>
 
-<!-- APPROACH -->
-<section class="sd" id="approach">
-  <div class="kicker kc rv">
-    <span data-fr>Notre rôle</span><span data-en>Our role</span>
-  </div>
+<!-- WHO WE ARE -->
+<section class="sd" id="who">
+  <div class="kicker kc rv"><span data-fr>Ce qu'on est</span><span data-en>What we are</span></div>
   <h2 class="dsp rv">
-    <span data-fr>Nous analysons, conseillons<br><strong>et vous accompagnons.</strong></span>
-    <span data-en>We analyze, advise<br><strong>and support you.</strong></span>
+    <span data-fr>Pas des consultants qui livrent<br><strong>des rapports. Un partenaire<br>qui prend le recul à votre place.</strong></span>
+    <span data-en>Not consultants who deliver<br><strong>reports. A partner who takes<br>the strategic view for you.</strong></span>
   </h2>
-  <div class="approach-grid">
+  <div class="who-grid">
     <div class="rvl">
-      <div class="approach-text">
+      <div class="who-text">
         <p>
-          <span data-fr>Nous ne changeons pas votre entreprise à votre place. Nous vous donnons la vision, le plan et les recommandations pour le faire vous-même — ou avec vos équipes. <strong>Vous gardez le contrôle. On vous apporte la clarté.</strong></span>
-          <span data-en>We don't change your company for you. We give you the vision, the plan, and the recommendations to do it yourself — or with your teams. <strong>You keep control. We bring clarity.</strong></span>
+          <span data-fr>La plupart des dirigeants savent, au fond, ce qui ne fonctionne pas. Le problème, c'est qu'ils n'ont jamais le temps d'y penser sérieusement — et encore moins de passer à l'action.</span>
+          <span data-en>Most leaders know, deep down, what isn't working. The problem is they never have time to think about it seriously — let alone act on it.</span>
         </p>
         <p>
-          <span data-fr>Notre valeur, c'est le regard extérieur. Après des années passées à analyser des dizaines d'entreprises, on voit en quelques heures ce que vous ne voyez plus — les inefficacités devenues habitudes, les outils sous-exploités, les processus qui freinent sans que personne ne s'en rende compte.</span>
-          <span data-en>Our value is the outside perspective. After years analyzing dozens of companies, we see in a few hours what you no longer see — inefficiencies turned into habits, underused tools, processes that slow things down without anyone noticing.</span>
+          <span data-fr><strong>Executio, c'est le regard extérieur que vous n'avez pas le temps d'avoir vous-même.</strong> On prend le temps de comprendre votre business, on identifie ce qui freine vraiment votre croissance, et on vous donne la clarté pour prendre les bonnes décisions — et scaler ce qui mérite de l'être.</span>
+          <span data-en><strong>Executio is the outside perspective you don't have time to get yourself.</strong> We take time to understand your business, identify what's truly holding back your growth, and give you the clarity to make the right decisions — and scale what deserves it.</span>
+        </p>
+        <p>
+          <span data-fr>On ne vous apprend pas comment fonctionne votre entreprise. Vous le savez mieux que nous. On vous aide à voir ce que la proximité vous empêche de voir.</span>
+          <span data-en>We don't teach you how your business works. You know that better than us. We help you see what proximity prevents you from seeing.</span>
         </p>
       </div>
       <div style="margin-top:2rem">
         <button class="btn-primary" onclick="openCalendly()" style="cursor:none">
-          <span data-fr>Réserver un audit gratuit</span><span data-en>Book a free audit</span>
+          <span data-fr>Session stratégique offerte</span><span data-en>Free strategy session</span>
         </button>
       </div>
     </div>
     <div class="rvr">
-      <div class="approach-cards">
-        <div class="approach-card">
-          <div class="ac-num">01</div>
-          <div class="ac-body">
-            <strong><span data-fr>On analyse ce qui existe</span><span data-en>We analyze what exists</span></strong>
-            <span><span data-fr>Vos logiciels, vos processus, vos flux — sans préjugé. On part de votre réalité, pas d'un modèle théorique.</span><span data-en>Your tools, processes, flows — without preconceptions. We start from your reality, not a theoretical model.</span></span>
+      <div class="who-values">
+        <div class="who-val">
+          <div class="wv-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="wv-body">
+            <strong><span data-fr>On voit ce que vous ne voyez plus</span><span data-en>We see what you no longer see</span></strong>
+            <span><span data-fr>La proximité crée des angles morts. Après des années à analyser des dizaines d'entreprises, on identifie en quelques heures ce que vous n'avez plus le temps de remarquer.</span><span data-en>Proximity creates blind spots. After years analyzing dozens of companies, we identify in a few hours what you no longer have time to notice.</span></span>
           </div>
         </div>
-        <div class="approach-card">
-          <div class="ac-num">02</div>
-          <div class="ac-body">
-            <strong><span data-fr>On identifie les leviers</span><span data-en>We identify the levers</span></strong>
-            <span><span data-fr>Frictions, doublons, tâches automatisables, outils manquants ou mal utilisés. On priorise ce qui aura le plus d'impact.</span><span data-en>Friction, redundancies, automatable tasks, missing or misused tools. We prioritize what will have the most impact.</span></span>
+        <div class="who-val">
+          <div class="wv-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="wv-body">
+            <strong><span data-fr>On s'intéresse à ce qui mérite d'être scalé</span><span data-en>We focus on what deserves to scale</span></strong>
+            <span><span data-fr>Pas tout accélérer — identifier ce qui fonctionne vraiment, l'amplifier, et arrêter d'investir dans ce qui freine.</span><span data-en>Not accelerating everything — identifying what truly works, amplifying it, and stopping investment in what slows you down.</span></span>
           </div>
         </div>
-        <div class="approach-card">
-          <div class="ac-num">03</div>
-          <div class="ac-body">
-            <strong><span data-fr>On conçoit le système cible</span><span data-en>We design the target system</span></strong>
-            <span><span data-fr>Recommandations concrètes : quels outils, quels workflows, quels KPIs. Un plan d'action priorisé, pas un rapport de 80 pages.</span><span data-en>Concrete recommendations: which tools, which workflows, which KPIs. A prioritized action plan, not an 80-page report.</span></span>
+        <div class="who-val">
+          <div class="wv-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="wv-body">
+            <strong><span data-fr>Des recommandations, pas des rapports</span><span data-en>Recommendations, not reports</span></strong>
+            <span><span data-fr>On livre de la clarté et des décisions actionnables. Pas 80 pages de PowerPoint que personne ne lit.</span><span data-en>We deliver clarity and actionable decisions. Not 80 pages of PowerPoint nobody reads.</span></span>
           </div>
         </div>
-        <div class="approach-card">
-          <div class="ac-num">04</div>
-          <div class="ac-body">
-            <strong><span data-fr>On vous accompagne dans la mise en œuvre</span><span data-en>We support you through implementation</span></strong>
-            <span><span data-fr>Vous gardez la main. On reste disponibles pour ajuster les recommandations, mesurer les progrès et répondre aux questions.</span><span data-en>You stay in charge. We remain available to refine recommendations, measure progress, and answer questions.</span></span>
+        <div class="who-val">
+          <div class="wv-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div class="wv-body">
+            <strong><span data-fr>Vous gardez le contrôle</span><span data-en>You stay in control</span></strong>
+            <span><span data-fr>On n'est pas là pour remplacer votre jugement. On est là pour l'affûter — avec un regard neuf, des données claires et une priorité sur vos vrais enjeux.</span><span data-en>We're not here to replace your judgment. We're here to sharpen it — with fresh eyes, clear data, and focus on your real stakes.</span></span>
           </div>
         </div>
       </div>
@@ -640,68 +574,79 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 
 <!-- SERVICES -->
 <section class="sdd" id="services">
-  <div class="kicker ki rv"><span data-fr>Les 4 domaines d'intervention</span><span data-en>4 areas of expertise</span></div>
+  <div class="kicker ki rv"><span data-fr>Ce qu'on fait concrètement</span><span data-en>What we actually do</span></div>
   <h2 class="dsp rv">
-    <span data-fr>Un regard expert<br><strong>sur chaque dimension opérationnelle.</strong></span>
-    <span data-en>Expert insight<br><strong>on every operational dimension.</strong></span>
+    <span data-fr>Quatre angles,<br><strong>un seul objectif : vous donner la clarté<br>pour avancer vite et bien.</strong></span>
+    <span data-en>Four angles,<br><strong>one goal: give you the clarity<br>to move fast and right.</strong></span>
   </h2>
   <div class="services-grid">
     <div class="scard">
       <div class="snum">01</div>
-      <div class="sicon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-      <div class="stitle"><span data-fr>Audit des Outils & Processus</span><span data-en>Tools & Process Audit</span></div>
-      <p class="sdesc"><span data-fr>On analyse vos logiciels existants, comment ils sont utilisés (ou pas), et comment ils s'articulent — ou ne s'articulent pas — entre eux. On identifie les outils manquants, les doublons, et les connexions à mettre en place pour que votre stack travaille pour vous.</span><span data-en>We analyze your existing software, how they're used (or not), and how they connect — or don't. We identify missing tools, redundancies, and the connections needed to make your stack work for you.</span></p>
-      <div class="stags"><span class="stag">Analyse de stack</span><span class="stag">Cartographie</span><span class="stag">Connexions logiciels</span><span class="stag">Gap analysis</span></div>
+      <div class="sicon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <div class="stitle"><span data-fr>Vision & Diagnostic</span><span data-en>Vision & Diagnosis</span></div>
+      <p class="sdesc">
+        <span data-fr>On prend le temps de regarder votre business de l'extérieur. Où vous en êtes vraiment. Ce qui fonctionne et ce qui freine. Ce que la croissance cache parfois. Pas un audit — une lecture honnête et directe de votre situation.</span>
+        <span data-en>We take time to look at your business from the outside. Where you truly stand. What's working and what's holding you back. What growth sometimes hides. Not an audit — an honest, direct reading of your situation.</span>
+      </p>
     </div>
     <div class="scard">
       <div class="snum">02</div>
-      <div class="sicon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <div class="stitle"><span data-fr>Design de Workflows & Automatisation</span><span data-en>Workflow Design & Automation</span></div>
-      <p class="sdesc"><span data-fr>On cartographie vos processus manuels et on conçoit les workflows optimisés — qui peut être automatisé, avec quel outil, dans quel ordre. Vous repartez avec un plan précis : plus de tâches inutiles, plus de temps perdu, plus d'erreurs de saisie.</span><span data-en>We map your manual processes and design optimized workflows — what can be automated, with which tool, in what order. You leave with a precise plan: no more unnecessary tasks, wasted time, or data entry errors.</span></p>
-      <div class="stags"><span class="stag">Process mapping</span><span class="stag">Workflow design</span><span class="stag">Automatisation</span><span class="stag">Optimisation</span></div>
+      <div class="sicon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <div class="stitle"><span data-fr>Stratégie de croissance</span><span data-en>Growth strategy</span></div>
+      <p class="sdesc">
+        <span data-fr>Quoi scaler ? Dans quel ordre ? Avec quelles ressources ? On aide à identifier les véritables leviers de croissance — ceux qui méritent l'investissement — et à éviter d'accélérer ce qui ne rapporte pas assez.</span>
+        <span data-en>What to scale? In what order? With what resources? We help identify the real growth levers — those that deserve investment — and avoid accelerating what doesn't pay off enough.</span>
+      </p>
     </div>
     <div class="scard">
       <div class="snum">03</div>
-      <div class="sicon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-      <div class="stitle"><span data-fr>Architecture KPIs & Dashboards</span><span data-en>KPI & Dashboard Architecture</span></div>
-      <p class="sdesc"><span data-fr>On conçoit les indicateurs qui comptent vraiment pour votre activité — pas une liste générique de 50 métriques. Et on design la structure du tableau de bord qui vous permet de piloter en temps réel, sans chercher l'information dans 5 endroits différents.</span><span data-en>We design the indicators that truly matter for your business — not a generic list of 50 metrics. And we design the dashboard structure that lets you steer in real time, without searching for information in 5 different places.</span></p>
-      <div class="stags"><span class="stag">KPI design</span><span class="stag">Dashboard</span><span class="stag">Reporting</span><span class="stag">Pilotage</span></div>
+      <div class="sicon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <div class="stitle"><span data-fr>Organisation & Opérations</span><span data-en>Organisation & Operations</span></div>
+      <p class="sdesc">
+        <span data-fr>Comment votre entreprise opère au quotidien — qui fait quoi, quels outils, quels processus, quelles frictions. On identifie ce qui peut être simplifié, délégué ou automatisé pour que vous puissiez passer votre temps sur ce qui compte vraiment.</span>
+        <span data-en>How your company operates day-to-day — who does what, which tools, which processes, which friction. We identify what can be simplified, delegated, or automated so you can spend time on what truly matters.</span>
+      </p>
     </div>
     <div class="scard">
       <div class="snum">04</div>
-      <div class="sicon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <div class="stitle"><span data-fr>Flux Documentaires & Admin</span><span data-en>Document & Admin Flows</span></div>
-      <p class="sdesc"><span data-fr>Factures, contrats, validations, archivage — on analyse comment ces flux fonctionnent aujourd'hui et on recommande comment les structurer, les digitaliser et les automatiser. Moins de papier, moins de relances manuelles, moins de risque d'erreur.</span><span data-en>Invoices, contracts, approvals, archiving — we analyze how these flows work today and recommend how to structure, digitalize, and automate them. Less paper, fewer manual follow-ups, less risk of error.</span></p>
-      <div class="stags"><span class="stag">Facturation</span><span class="stag">Contrats</span><span class="stag">Validations</span><span class="stag">Digitalisation</span></div>
+      <div class="sicon"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+      <div class="stitle"><span data-fr>Pilotage & Décision</span><span data-en>Steering & Decision-making</span></div>
+      <p class="sdesc">
+        <span data-fr>Les bons indicateurs, les bons moments pour décider, les bons critères pour arbitrer. On travaille avec vous sur la façon dont vous pilotez — pour que vous décidiez sur des faits plutôt que sur des intuitions, et que votre cap soit toujours clair.</span>
+        <span data-en>The right indicators, the right moments to decide, the right criteria to arbitrate. We work with you on how you steer — so you decide on facts rather than gut, and your direction is always clear.</span>
+      </p>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
 <section class="sd" id="process">
-  <div class="kicker kc rv"><span data-fr>Notre méthode</span><span data-en>Our method</span></div>
-  <h2 class="dsp rv"><span data-fr>De l'audit<br><strong>aux recommandations actionnables.</strong></span><span data-en>From audit<br><strong>to actionable recommendations.</strong></span></h2>
+  <div class="kicker kc rv"><span data-fr>Comment on travaille</span><span data-en>How we work</span></div>
+  <h2 class="dsp rv">
+    <span data-fr>Simple, direct,<br><strong>centré sur vos vrais enjeux.</strong></span>
+    <span data-en>Simple, direct,<br><strong>focused on your real stakes.</strong></span>
+  </h2>
   <div class="process-steps">
     <div class="pline"></div>
     <div class="pstep">
       <div class="pdot"><span>1</span></div>
-      <div class="ptitle"><span data-fr>Audit</span><span data-en>Audit</span></div>
-      <p class="pdesc"><span data-fr>On passe du temps à comprendre comment votre entreprise fonctionne vraiment — vos outils, vos processus, vos flux. Sans préjugé, sans solution préconçue.</span><span data-en>We take time to understand how your company truly works — your tools, processes, flows. Without preconceptions, without a preset solution.</span></p>
+      <div class="ptitle"><span data-fr>Écoute</span><span data-en>Listen</span></div>
+      <p class="pdesc"><span data-fr>On prend le temps de comprendre votre business, votre contexte, vos ambitions et ce qui vous empêche de dormir. Sans présupposés, sans solution toute faite.</span><span data-en>We take time to understand your business, your context, your ambitions, and what keeps you up at night. Without preconceptions, without ready-made solutions.</span></p>
     </div>
     <div class="pstep">
       <div class="pdot"><span>2</span></div>
-      <div class="ptitle"><span data-fr>Design</span><span data-en>Design</span></div>
-      <p class="pdesc"><span data-fr>On conçoit votre système cible — comment vos outils devraient s'articuler, quels processus automatiser, quels indicateurs suivre. Un blueprint opérationnel précis.</span><span data-en>We design your target system — how your tools should connect, which processes to automate, which indicators to track. A precise operational blueprint.</span></p>
+      <div class="ptitle"><span data-fr>Analyse</span><span data-en>Analyze</span></div>
+      <p class="pdesc"><span data-fr>On prend de la hauteur sur votre situation. On identifie les vraies frictions, les opportunités sous-exploitées et ce qui mérite d'être priorisé. On va là où ça fait vraiment la différence.</span><span data-en>We step back from your situation. We identify real friction, underexploited opportunities, and what deserves to be prioritized. We go where it truly makes a difference.</span></p>
     </div>
     <div class="pstep">
       <div class="pdot"><span>3</span></div>
-      <div class="ptitle"><span data-fr>Recommandations</span><span data-en>Recommendations</span></div>
-      <p class="pdesc"><span data-fr>Plan d'action priorisé : quoi changer, dans quel ordre, avec quels outils. Des recommandations concrètes et actionnables — pas de la théorie, pas un rapport de 80 pages.</span><span data-en>Prioritized action plan: what to change, in what order, with which tools. Concrete, actionable recommendations — not theory, not an 80-page report.</span></p>
+      <div class="ptitle"><span data-fr>Clarté</span><span data-en>Clarity</span></div>
+      <p class="pdesc"><span data-fr>On vous livre notre diagnostic et nos recommandations — directement, sans jargon, sans sur-compliquer. Un plan d'action concret et priorisé que vous pouvez mettre en œuvre dès la semaine suivante.</span><span data-en>We deliver our diagnosis and recommendations — directly, without jargon, without overcomplicating. A concrete, prioritized action plan you can implement the following week.</span></p>
     </div>
     <div class="pstep">
       <div class="pdot"><span>4</span></div>
-      <div class="ptitle"><span data-fr>Suivi</span><span data-en>Follow-up</span></div>
-      <p class="pdesc"><span data-fr>Vous gardez la main sur l'exécution. On reste disponibles pour affiner les recommandations, répondre aux questions et mesurer les progrès avec vous.</span><span data-en>You keep ownership of execution. We stay available to refine recommendations, answer questions, and measure progress with you.</span></p>
+      <div class="ptitle"><span data-fr>Cap</span><span data-en>Direction</span></div>
+      <p class="pdesc"><span data-fr>On reste dans la boucle. Pour ajuster le cap quand les choses évoluent, pour vous challenger sur les décisions importantes, et pour s'assurer que vous avancez dans la bonne direction.</span><span data-en>We stay in the loop. To adjust direction as things evolve, to challenge you on important decisions, and to ensure you're moving in the right direction.</span></p>
     </div>
   </div>
 </section>
@@ -709,52 +654,54 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 <!-- OFFER -->
 <section class="sdd offer-section" id="offer">
   <div class="kicker ki rv"><span data-fr>L'offre</span><span data-en>The offer</span></div>
-  <h2 class="dsp rv"><span data-fr><strong>Audit &amp; Advisory</strong><br>Opérationnel.</span><span data-en><strong>Operational</strong><br>Audit &amp; Advisory.</span></h2>
+  <h2 class="dsp rv">
+    <span data-fr>Un accompagnement<br><strong>conçu pour les dirigeants<br>qui veulent aller plus loin.</strong></span>
+    <span data-en>An advisory partnership<br><strong>designed for leaders<br>who want to go further.</strong></span>
+  </h2>
   <div class="offer-inner">
     <div class="offer-card rvl">
       <div class="offer-label"><span data-fr>Ce que vous obtenez</span><span data-en>What you get</span></div>
-      <div class="offer-name"><span data-fr>Audit & Advisory Opérationnel</span><span data-en>Operational Audit & Advisory</span></div>
-      <div class="offer-sub"><span data-fr>Nous analysons vos processus, identifions les frictions et les opportunités d'amélioration, et vous livrons un plan d'action concret — sans tout changer, sans tout casser.</span><span data-en>We analyze your processes, identify friction and improvement opportunities, and deliver a concrete action plan — without changing everything or breaking what works.</span></div>
+      <div class="offer-name"><span data-fr>Accompagnement Stratégique</span><span data-en>Strategic Partnership</span></div>
+      <div class="offer-sub"><span data-fr>Un partenaire de confiance qui prend régulièrement du recul avec vous — pour voir clairement, décider juste et scaler ce qui mérite de l'être.</span><span data-en>A trusted partner who regularly steps back with you — to see clearly, decide wisely, and scale what deserves it.</span></div>
       <ul class="offer-items">
-        <li><span data-fr>Cartographie complète de vos processus et flux actuels</span><span data-en>Full mapping of your current processes and flows</span></li>
-        <li><span data-fr>Analyse de votre stack logiciel et des connexions manquantes</span><span data-en>Analysis of your software stack and missing connections</span></li>
-        <li><span data-fr>Identification des frictions, doublons et tâches à automatiser</span><span data-en>Identification of friction, redundancies, and automatable tasks</span></li>
-        <li><span data-fr>Recommandation des outils adaptés à votre activité</span><span data-en>Tool recommendations tailored to your activity</span></li>
-        <li><span data-fr>Design de votre système opérationnel cible</span><span data-en>Design of your target operating system</span></li>
-        <li><span data-fr>Roadmap priorisée — quick wins + améliorations structurelles</span><span data-en>Prioritized roadmap — quick wins + structural improvements</span></li>
-        <li><span data-fr>Suivi et accompagnement dans la mise en œuvre</span><span data-en>Guidance and support through implementation</span></li>
+        <li><span data-fr>Session de diagnostic — vision extérieure honnête sur votre situation</span><span data-en>Diagnostic session — honest outside view on your situation</span></li>
+        <li><span data-fr>Identification de ce qui freine vraiment votre croissance</span><span data-en>Identification of what's truly holding back your growth</span></li>
+        <li><span data-fr>Clarté sur ce qui mérite d'être scalé — et ce qui ne le mérite pas</span><span data-en>Clarity on what deserves to scale — and what doesn't</span></li>
+        <li><span data-fr>Recommandations concrètes et priorisées, actionnables immédiatement</span><span data-en>Concrete, prioritized recommendations, immediately actionable</span></li>
+        <li><span data-fr>Conseil sur l'organisation, les outils et les processus clés</span><span data-en>Advice on organization, tools, and key processes</span></li>
+        <li><span data-fr>Suivi régulier — on reste dans la boucle pour ajuster et avancer</span><span data-en>Regular follow-up — we stay in the loop to adjust and progress</span></li>
       </ul>
       <div class="offer-note">
-        <span data-fr>Nous conseillons, nous ne remplaçons pas vos équipes. Vous gardez le contrôle — on vous donne la vision et le plan.</span>
-        <span data-en>We advise, we don't replace your teams. You keep control — we give you the vision and the plan.</span>
+        <span data-fr>On est le partenaire stratégique, pas l'exécutant. Vous gardez le contrôle — on vous donne la vision et le cap.</span>
+        <span data-en>We are the strategic partner, not the executor. You keep control — we give you vision and direction.</span>
       </div>
       <button class="btn-primary" onclick="openCalendly()" style="cursor:none;width:100%;justify-content:center">
-        <span data-fr>Réserver un audit opérationnel gratuit</span><span data-en>Book a free operations audit</span>
+        <span data-fr>Session stratégique offerte — sans engagement</span><span data-en>Free strategy session — no commitment</span>
       </button>
     </div>
     <div class="rvr">
-      <p><span data-fr>La plupart des entreprises n'ont pas besoin d'une révolution. Elles ont besoin d'un regard extérieur qui voit ce qu'elles ne voient plus — les inefficacités devenues habitudes, les outils mal utilisés, les processus qui freinent sans que personne ne le réalise.</span><span data-en>Most companies don't need a revolution. They need an outside perspective that sees what they no longer see — inefficiencies turned into habits, poorly used tools, processes that slow things down without anyone noticing.</span></p>
-      <p><span data-fr>Notre rôle : analyser, recommander, prioriser. Vous gardez la main sur l'exécution. On vous donne la clarté pour avancer vite et bien.</span><span data-en>Our role: analyze, recommend, prioritize. You keep ownership of execution. We give you the clarity to move fast and right.</span></p>
+      <p><span data-fr>Les dirigeants qui avancent le plus vite ont presque tous un point commun : <strong>ils ont quelqu'un à qui parler franchement de leur business.</strong> Pas leur associé, pas leurs salariés, pas leur comptable. Quelqu'un qui voit la situation de l'extérieur, sans filtre, et qui peut dire ce qu'il pense vraiment.</span><span data-en>Leaders who move fastest almost all share one thing: <strong>they have someone to speak honestly with about their business.</strong> Not their partner, not their employees, not their accountant. Someone who sees the situation from outside, without filter, and can say what they really think.</span></p>
+      <p><span data-fr>C'est ce que nous faisons. Avec la rigueur d'une analyse sérieuse et la franchise d'un vrai partenaire.</span><span data-en>That's what we do. With the rigor of serious analysis and the directness of a real partner.</span></p>
       <div class="offer-extras">
         <div class="offer-extra">
-          <div class="oe-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="oe-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
           <div class="oe-text">
-            <strong><span data-fr>Accompagnement continu</span><span data-en>Ongoing advisory</span></strong>
-            <span><span data-fr>Suivi mensuel, ajustements, réponse aux questions opérationnelles</span><span data-en>Monthly follow-up, adjustments, operational Q&A</span></span>
+            <strong><span data-fr>Stratégie de croissance</span><span data-en>Growth strategy</span></strong>
+            <span><span data-fr>Quoi accélérer, quoi arrêter, dans quel ordre et pourquoi</span><span data-en>What to accelerate, what to stop, in what order and why</span></span>
+          </div>
+        </div>
+        <div class="offer-extra">
+          <div class="oe-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="oe-text">
+            <strong><span data-fr>Organisation & Outils</span><span data-en>Organisation & Tools</span></strong>
+            <span><span data-fr>Simplifier, déléguer, automatiser ce qui prend du temps inutilement</span><span data-en>Simplify, delegate, automate what wastes time unnecessarily</span></span>
           </div>
         </div>
         <div class="offer-extra">
           <div class="oe-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
           <div class="oe-text">
             <strong><span data-fr>Pilotage financier</span><span data-en>Financial steering</span></strong>
-            <span><span data-fr>KPIs financiers, trésorerie, structure et reporting</span><span data-en>Financial KPIs, cash flow, structure and reporting</span></span>
-          </div>
-        </div>
-        <div class="offer-extra">
-          <div class="oe-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-          <div class="oe-text">
-            <strong><span data-fr>Conseil en croissance</span><span data-en>Growth advisory</span></strong>
-            <span><span data-fr>Scalabilité des opérations, structuration, stratégie</span><span data-en>Operations scalability, structuring, strategy</span></span>
+            <span><span data-fr>Les indicateurs qui comptent vraiment pour piloter votre croissance</span><span data-en>The indicators that truly matter for steering your growth</span></span>
           </div>
         </div>
       </div>
@@ -765,11 +712,14 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 <!-- INSIGHTS -->
 <section class="insights-sec" id="insights">
   <div class="kicker ki rv"><span>Insights</span></div>
-  <h2 class="dsp rv"><span data-fr>Opérations, processus,<br><strong>stratégie d'entreprise.</strong></span><span data-en>Operations, processes,<br><strong>business strategy.</strong></span></h2>
+  <h2 class="dsp rv">
+    <span data-fr>Croissance, organisation<br><strong>et stratégie dirigeant.</strong></span>
+    <span data-en>Growth, organisation<br><strong>and leadership strategy.</strong></span>
+  </h2>
   <div class="insights-grid" id="home-insights">
-    <div class="icard rv" style="pointer-events:none;opacity:.35"><div class="icard-thumb ic-indigo"></div><div class="icard-body"><div class="ititle" style="background:rgba(255,255,255,.06);height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:rgba(255,255,255,.04);height:.8rem;border-radius:4px;width:70%"></div></div></div>
-    <div class="icard rv" style="pointer-events:none;opacity:.35"><div class="icard-thumb ic-blue"></div><div class="icard-body"><div class="ititle" style="background:rgba(255,255,255,.06);height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:rgba(255,255,255,.04);height:.8rem;border-radius:4px;width:70%"></div></div></div>
-    <div class="icard rv" style="pointer-events:none;opacity:.35"><div class="icard-thumb ic-violet"></div><div class="icard-body"><div class="ititle" style="background:rgba(255,255,255,.06);height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:rgba(255,255,255,.04);height:.8rem;border-radius:4px;width:70%"></div></div></div>
+    <div class="icard rv" style="pointer-events:none;opacity:.3"><div class="icard-thumb ic-indigo"></div><div class="icard-body"><div class="ititle" style="background:rgba(255,255,255,.05);height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:rgba(255,255,255,.04);height:.8rem;border-radius:4px;width:70%"></div></div></div>
+    <div class="icard rv" style="pointer-events:none;opacity:.3"><div class="icard-thumb ic-blue"></div><div class="icard-body"><div class="ititle" style="background:rgba(255,255,255,.05);height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:rgba(255,255,255,.04);height:.8rem;border-radius:4px;width:70%"></div></div></div>
+    <div class="icard rv" style="pointer-events:none;opacity:.3"><div class="icard-thumb ic-violet"></div><div class="icard-body"><div class="ititle" style="background:rgba(255,255,255,.05);height:1rem;border-radius:4px;margin-bottom:.5rem"></div><div class="ititle" style="background:rgba(255,255,255,.04);height:.8rem;border-radius:4px;width:70%"></div></div></div>
   </div>
   <div class="insights-more rv">
     <a href="/insights/" class="btn-more">
@@ -785,36 +735,30 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
     <div class="cf-inner">
       <div class="cf-left rv">
         <div class="kicker ki"><span data-fr>Écrivez-nous</span><span data-en>Write to us</span></div>
-        <h2 class="dsp"><span data-fr>Pas encore prêt<br>pour un appel ?<br><strong>Décrivez votre situation.</strong></span><span data-en>Not ready yet<br>for a call?<br><strong>Describe your situation.</strong></span></h2>
-        <p><span data-fr>En quelques lignes, dites-nous où vous en êtes — on vous répond avec une première analyse sous 24h, sans engagement.</span><span data-en>In a few lines, tell us where you stand — we'll reply with a first analysis within 24h, no commitment.</span></p>
+        <h2 class="dsp">
+          <span data-fr>Pas encore prêt<br>pour un appel ?<br><strong>Parlez-nous de votre situation.</strong></span>
+          <span data-en>Not ready yet<br>for a call?<br><strong>Tell us about your situation.</strong></span>
+        </h2>
+        <p><span data-fr>Quelques lignes sur où vous en êtes — on vous répond avec un premier regard honnête sous 24h, sans engagement.</span><span data-en>A few lines on where you stand — we'll reply with an honest first perspective within 24h, no commitment.</span></p>
         <ul class="cf-promises">
           <li><span data-fr>Réponse personnelle sous 24h</span><span data-en>Personal reply within 24h</span></li>
-          <li><span data-fr>Première analyse offerte, sans engagement</span><span data-en>First analysis free, no commitment</span></li>
-          <li><span data-fr>Aucun argumentaire commercial</span><span data-en>No sales pitch</span></li>
+          <li><span data-fr>Premier regard offert, sans engagement</span><span data-en>First perspective free, no commitment</span></li>
+          <li><span data-fr>Aucun argumentaire — que de la franchise</span><span data-en>No sales pitch — just directness</span></li>
         </ul>
       </div>
       <div class="cf-right rv">
         <div class="cf-progress">
           <div class="cf-prog-step active" id="cp1"><div class="cf-prog-dot">1</div><div class="cf-prog-label">Profil</div></div>
-          <div class="cf-prog-step" id="cp2"><div class="cf-prog-dot">2</div><div class="cf-prog-label">Entreprise</div></div>
+          <div class="cf-prog-step" id="cp2"><div class="cf-prog-dot">2</div><div class="cf-prog-label">Contexte</div></div>
           <div class="cf-prog-step" id="cp3"><div class="cf-prog-dot">3</div><div class="cf-prog-label">Situation</div></div>
         </div>
         <form id="cf-form" novalidate>
 
-          <!-- Step 1 -->
           <div class="cf-step active" id="cf-step-1">
             <div class="cf-step-title">Qui êtes-vous ?</div>
             <div class="cf-row">
-              <div class="cf-field">
-                <label>Prénom *</label>
-                <input type="text" name="firstname" placeholder="Marie" required>
-                <span class="cf-field-err">Requis</span>
-              </div>
-              <div class="cf-field">
-                <label>Email *</label>
-                <input type="email" name="email" placeholder="marie@entreprise.com" required>
-                <span class="cf-field-err">Email invalide</span>
-              </div>
+              <div class="cf-field"><label>Prénom *</label><input type="text" name="firstname" placeholder="Thomas" required><span class="cf-field-err">Requis</span></div>
+              <div class="cf-field"><label>Email *</label><input type="email" name="email" placeholder="thomas@entreprise.com" required><span class="cf-field-err">Email invalide</span></div>
             </div>
             <div class="cf-field">
               <label>Votre rôle *</label>
@@ -823,9 +767,8 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
                 <option>Fondateur / CEO</option>
                 <option>Co-fondateur</option>
                 <option>Directeur Général</option>
-                <option>Directeur Opérationnel (COO)</option>
-                <option>Directeur Financier (CFO)</option>
-                <option>Manager / Responsable</option>
+                <option>Directeur Opérationnel</option>
+                <option>Associé dirigeant</option>
                 <option>Autre</option>
               </select>
               <span class="cf-field-err">Requis</span>
@@ -834,10 +777,10 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
               <label>Type de structure *</label>
               <select name="company_type" required>
                 <option value="" disabled selected>Choisissez...</option>
-                <option>Startup (&lt; 3 ans)</option>
+                <option>Startup (moins de 3 ans)</option>
                 <option>Scale-up en croissance</option>
                 <option>PME établie</option>
-                <option>Indépendant / Freelance</option>
+                <option>Indépendant / Consultant</option>
                 <option>Autre</option>
               </select>
               <span class="cf-field-err">Requis</span>
@@ -845,47 +788,47 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
             <div class="cf-nav"><button type="button" class="cf-next">Continuer →</button></div>
           </div>
 
-          <!-- Step 2 -->
           <div class="cf-step" id="cf-step-2">
-            <div class="cf-step-title">Votre entreprise</div>
+            <div class="cf-step-title">Votre contexte</div>
             <div class="cf-field">
               <label>Secteur *</label>
               <select name="industry" required>
                 <option value="" disabled selected>Choisissez...</option>
                 <option>SaaS / Tech</option>
-                <option>Fintech / Finance</option>
                 <option>E-commerce / Retail</option>
                 <option>Conseil / Services B2B</option>
-                <option>Santé / Medtech</option>
                 <option>Industrie / Manufacturing</option>
+                <option>Santé / Medtech</option>
                 <option>Immobilier</option>
-                <option>Média / Création</option>
+                <option>Fintech</option>
                 <option>Autre</option>
               </select>
               <span class="cf-field-err">Requis</span>
             </div>
-            <div class="cf-field">
-              <label>Taille de l'équipe *</label>
-              <select name="stage" required>
-                <option value="" disabled selected>Choisissez...</option>
-                <option>1 — solo</option>
-                <option>2 – 10</option>
-                <option>10 – 50</option>
-                <option>50 – 200</option>
-                <option>200+</option>
-              </select>
-              <span class="cf-field-err">Requis</span>
-            </div>
-            <div class="cf-field">
-              <label>Chiffre d'affaires annuel</label>
-              <select name="revenue">
-                <option value="" disabled selected>Choisissez...</option>
-                <option>Pas encore de CA</option>
-                <option>Moins de €200K</option>
-                <option>€200K – €1M</option>
-                <option>€1M – €5M</option>
-                <option>Plus de €5M</option>
-              </select>
+            <div class="cf-row">
+              <div class="cf-field">
+                <label>Taille équipe *</label>
+                <select name="stage" required>
+                  <option value="" disabled selected>Choisissez...</option>
+                  <option>Solo / 1–2 pers.</option>
+                  <option>3 – 10 personnes</option>
+                  <option>10 – 50 personnes</option>
+                  <option>50 – 200 personnes</option>
+                  <option>200+</option>
+                </select>
+                <span class="cf-field-err">Requis</span>
+              </div>
+              <div class="cf-field">
+                <label>CA annuel</label>
+                <select name="revenue">
+                  <option value="" disabled selected>Choisissez...</option>
+                  <option>Pré-revenu</option>
+                  <option>Moins de €500K</option>
+                  <option>€500K – €2M</option>
+                  <option>€2M – €10M</option>
+                  <option>Plus de €10M</option>
+                </select>
+              </div>
             </div>
             <div class="cf-nav">
               <button type="button" class="cf-prev">← Retour</button>
@@ -893,52 +836,49 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
             </div>
           </div>
 
-          <!-- Step 3 -->
           <div class="cf-step" id="cf-step-3">
             <div class="cf-step-title">Votre situation</div>
             <div class="cf-field">
-              <label>Ce que vous cherchez *</label>
+              <label>Ce qui vous amène *</label>
               <select name="problem" required>
                 <option value="" disabled selected>Choisissez...</option>
-                <option>Audit de mes processus et outils actuels</option>
-                <option>Identifier les bons logiciels pour mon activité</option>
-                <option>Connecter et faire communiquer mes outils existants</option>
-                <option>Automatiser des tâches manuelles répétitives</option>
-                <option>Mettre en place des dashboards et KPIs</option>
-                <option>Digitaliser les flux documentaires et admin</option>
-                <option>Structurer les opérations pour la croissance</option>
-                <option>Avoir une vision globale — audit opérationnel complet</option>
+                <option>Je manque de recul sur ma situation globale</option>
+                <option>Je ne sais pas quoi prioriser pour scaler</option>
+                <option>Mon organisation ne suit plus ma croissance</option>
+                <option>Je prends trop de décisions au feeling</option>
+                <option>Je veux structurer mes opérations pour déléguer</option>
+                <option>J'ai besoin d'un regard extérieur sur ma stratégie</option>
+                <option>Je veux identifier ce qui freine vraiment ma croissance</option>
                 <option>Autre</option>
               </select>
               <span class="cf-field-err">Requis</span>
             </div>
+            <div class="cf-field">
+              <label>Décrivez votre situation</label>
+              <textarea name="message" placeholder="Ex: on a doublé notre CA cette année mais j'ai l'impression qu'on perd en efficacité, je n'arrive plus à savoir où concentrer mon énergie et j'aimerais un regard extérieur honnête sur notre situation..."></textarea>
+            </div>
             <div class="cf-row">
               <div class="cf-field">
-                <label>Budget estimé *</label>
-                <select name="budget" required>
+                <label>Budget envisagé</label>
+                <select name="budget">
                   <option value="" disabled selected>Choisissez...</option>
-                  <option>À définir</option>
+                  <option>À définir ensemble</option>
                   <option>Moins de €1.500</option>
                   <option>€1.500 – €4.000</option>
                   <option>€4.000 – €10.000</option>
                   <option>Plus de €10.000</option>
                 </select>
-                <span class="cf-field-err">Requis</span>
               </div>
               <div class="cf-field">
                 <label>Urgence</label>
                 <select name="urgency">
                   <option value="" disabled selected>Choisissez...</option>
-                  <option>Urgent (&lt; 1 mois)</option>
+                  <option>Urgent — dès que possible</option>
+                  <option>Dans le mois qui vient</option>
                   <option>Dans 1 à 3 mois</option>
-                  <option>Dans 3 à 6 mois</option>
                   <option>Pas encore défini</option>
                 </select>
               </div>
-            </div>
-            <div class="cf-field">
-              <label>Décrivez votre situation</label>
-              <textarea name="message" placeholder="Ex: PME de 15 personnes, on utilise 6 logiciels différents qui ne communiquent pas, le reporting est fait à la main chaque lundi — on cherche à rationaliser tout ça..."></textarea>
             </div>
             <div class="cf-nav">
               <button type="button" class="cf-prev">← Retour</button>
@@ -950,7 +890,7 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
         <div class="cf-success" id="cf-success">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           <h4>Message reçu !</h4>
-          <p>On revient vers vous sous 24h avec une première analyse personnalisée.</p>
+          <p>On revient vers vous sous 24h avec un premier regard honnête sur votre situation.</p>
         </div>
       </div>
     </div>
@@ -960,18 +900,18 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 <!-- FINAL CTA -->
 <section class="final-cta sdd">
   <div class="final-cta-inner">
-    <div class="kicker ki rv" style="justify-content:center"><span data-fr>Commencez par l'audit</span><span data-en>Start with the audit</span></div>
+    <div class="kicker ki rv" style="justify-content:center"><span data-fr>Prenez du recul</span><span data-en>Get perspective</span></div>
     <h2 class="rv">
-      <span data-fr>Obtenez enfin de la clarté<br>sur <em>comment fonctionne vraiment</em><br>votre entreprise.</span>
-      <span data-en>Finally get clarity<br>on <em>how your business really works</em><br>— and how to make it better.</span>
+      <span data-fr>Vous méritez de <em>voir clairement</em><br>où va votre entreprise.</span>
+      <span data-en>You deserve to <em>see clearly</em><br>where your business is going.</span>
     </h2>
     <p class="rv">
-      <span data-fr>Un audit opérationnel de 48h pour cartographier vos processus, identifier vos frictions et repartir avec un plan d'action concret. Gratuit. Sans engagement.</span>
-      <span data-en>A 48h operational audit to map your processes, identify your friction points, and leave with a concrete action plan. Free. No commitment.</span>
+      <span data-fr>Une session stratégique pour prendre enfin du recul — voir ce qui freine, ce qui mérite d'être scalé, et repartir avec un cap clair. Gratuit. Sans engagement. Sans argumentaire.</span>
+      <span data-en>A strategy session to finally step back — see what's holding you back, what deserves to scale, and leave with a clear direction. Free. No commitment. No sales pitch.</span>
     </p>
     <div class="final-cta-actions rv">
       <button class="btn-primary" onclick="openCalendly()" style="cursor:none">
-        <span data-fr>Réserver l'audit opérationnel</span><span data-en>Book the operations audit</span>
+        <span data-fr>Réserver la session — c'est gratuit</span><span data-en>Book the session — it's free</span>
       </button>
       <button class="btn-outline" onclick="goTo('contact')" style="cursor:none">
         <span data-fr>Nous écrire d'abord</span><span data-en>Write to us first</span>
@@ -985,9 +925,12 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
   <div class="borb"></div>
   <div class="bcontent">
     <div class="bhdr rv">
-      <div class="kicker kc" style="opacity:1"><span data-fr>Réservez votre audit</span><span data-en>Book your audit</span></div>
-      <h2 class="dsp" style="opacity:1"><span data-fr>48h pour savoir exactement<br><strong>ce qui freine votre entreprise.</strong></span><span data-en>48h to know exactly<br><strong>what's holding your business back.</strong></span></h2>
-      <p class="bsub"><span data-fr>Gratuit. Sans engagement. On identifie ensemble vos frictions, vos angles morts et les premières améliorations à mettre en place.</span><span data-en>Free. No commitment. We identify together your friction points, blind spots, and first improvements to put in place.</span></p>
+      <div class="kicker kc" style="opacity:1"><span data-fr>Réservez votre session</span><span data-en>Book your session</span></div>
+      <h2 class="dsp" style="opacity:1">
+        <span data-fr>30 minutes pour voir votre business<br><strong>autrement.</strong></span>
+        <span data-en>30 minutes to see your business<br><strong>differently.</strong></span>
+      </h2>
+      <p class="bsub"><span data-fr>Gratuit. Sans engagement. On prend le temps de comprendre votre situation et de vous donner un premier regard honnête — sans vous vendre quoi que ce soit.</span><span data-en>Free. No commitment. We take time to understand your situation and give you an honest first perspective — without selling you anything.</span></p>
     </div>
     <div class="calendly-inline-widget rv" data-url="https://calendly.com/executio/30min?hide_gdpr_banner=1&primary_color=6366f1" style="min-width:320px;height:700px;"></div>
   </div>
@@ -996,7 +939,7 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 <!-- FOOTER -->
 <footer>
   <div class="fbrand"><span>EXECUTIO</span></div>
-  <span class="fcopy"><span data-fr>© 2026 Executio — Conseil Opérationnel · Tous droits réservés</span><span data-en>© 2026 Executio — Operational Advisory · All rights reserved</span></span>
+  <span class="fcopy"><span data-fr>© 2026 Executio — Conseil stratégique & opérationnel · Tous droits réservés</span><span data-en>© 2026 Executio — Strategic & operational advisory · All rights reserved</span></span>
   <a href="mailto:contact@exe-cutio.com" class="flink">contact@exe-cutio.com</a>
 </footer>
 
@@ -1006,203 +949,63 @@ function goTo(id){var e=document.getElementById(id);if(e)e.scrollIntoView({behav
 function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/executio/30min'});return false}
 function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.lbtn').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.lbtn').forEach(function(b){if(b.textContent.trim().toLowerCase()===l)b.classList.add('active')})}
 </script>
-
 <script>
-// ── Cursor ──
 var cursor=document.getElementById('cursor'),dot=document.getElementById('cdot');
 var mx=-80,my=-80,cx=-80,cy=-80;
 document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
-(function loop(){
-  cx+=(mx-cx)*.12;cy+=(my-cy)*.12;
-  cursor.style.transform='translate3d('+(cx-16)+'px,'+(cy-16)+'px,0)';
-  dot.style.transform='translate3d('+(mx-2)+'px,'+(my-2)+'px,0)';
-  requestAnimationFrame(loop);
-})();
-document.querySelectorAll('a,button,.scard,.approach-card,.pain-card,.offer-extra,.db-finding').forEach(function(el){
-  el.addEventListener('mouseenter',function(){cursor.classList.add('ch')});
-  el.addEventListener('mouseleave',function(){cursor.classList.remove('ch')});
-});
+(function loop(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cursor.style.transform='translate3d('+(cx-16)+'px,'+(cy-16)+'px,0)';dot.style.transform='translate3d('+(mx-2)+'px,'+(my-2)+'px,0)';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.scard,.who-val,.pain-card,.offer-extra').forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('ch')});el.addEventListener('mouseleave',function(){cursor.classList.remove('ch')});});
 
-// ── Scroll progress ──
-window.addEventListener('scroll',function(){
-  var sp=document.getElementById('sp'),h=document.documentElement;
-  sp.style.transform='scaleX('+(window.scrollY/(h.scrollHeight-h.clientHeight))+')';
-},{passive:true});
+window.addEventListener('scroll',function(){var sp=document.getElementById('sp'),h=document.documentElement;sp.style.transform='scaleX('+(window.scrollY/(h.scrollHeight-h.clientHeight))+')';},{passive:true});
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 
-// ── Nav scrolled ──
-window.addEventListener('scroll',function(){
-  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
-},{passive:true});
-
-// ── IntersectionObserver — scroll reveals ──
-var io=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('io');io.unobserve(e.target);}});
-},{threshold:0.12});
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('io');io.unobserve(e.target);}});},{threshold:0.12});
 document.querySelectorAll('.rv,.rvl,.rvr').forEach(function(el){io.observe(el)});
 
-// services grid
-var sio=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('io');sio.unobserve(e.target);}});
-},{threshold:0.06});
+var sio=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('io');sio.unobserve(e.target);}});},{threshold:0.06});
 document.querySelectorAll('.services-grid').forEach(function(el){sio.observe(el)});
 
-// process steps
-var pio=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('io');pio.unobserve(e.target);}});
-},{threshold:0.1});
+var pio=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('io');pio.unobserve(e.target);}});},{threshold:0.1});
 document.querySelectorAll('.process-steps,.pline').forEach(function(el){pio.observe(el)});
 
-// score bar animation
-var scoreIo=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      document.getElementById('score-fill').style.width='42%';
-      scoreIo.unobserve(e.target);
-    }
-  });
-},{threshold:0.5});
-var scoreEl=document.querySelector('.db-score-bar');
-if(scoreEl) scoreIo.observe(scoreEl);
-
-// ── Counter animation ──
-function animCount(el,target,suffix,dur){
-  var start=null;
-  function step(ts){
-    if(!start)start=ts;
-    var p=Math.min((ts-start)/dur,1);
-    var ease=1-Math.pow(1-p,4);
-    el.textContent=Math.round(ease*target)+suffix;
-    if(p<1)requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-var cio=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      e.target.querySelectorAll('[data-count]').forEach(function(el){
-        animCount(el,parseInt(el.dataset.count),el.dataset.suffix||'',2200);
-      });
-      cio.unobserve(e.target);
-    }
-  });
-},{threshold:0.4});
-document.querySelectorAll('.hero-stats,.db-kpis').forEach(function(el){cio.observe(el)});
-
-// ── Service card 3D tilt ──
 document.querySelectorAll('.scard').forEach(function(card){
   card.addEventListener('mouseenter',function(){card.style.transition='transform .18s linear'});
-  card.addEventListener('mousemove',function(e){
-    var r=card.getBoundingClientRect();
-    var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform='perspective(800px) rotateX('+(- y*5)+'deg) rotateY('+(x*5)+'deg) scale(1.02)';
-  });
-  card.addEventListener('mouseleave',function(){
-    card.style.transition='transform .45s cubic-bezier(.16,1,.3,1),background .3s,opacity .65s ease';
-    card.style.transform='perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
-  });
+  card.addEventListener('mousemove',function(e){var r=card.getBoundingClientRect();var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform='perspective(800px) rotateX('+(- y*5)+'deg) rotateY('+(x*5)+'deg) scale(1.02)';});
+  card.addEventListener('mouseleave',function(){card.style.transition='transform .45s cubic-bezier(.16,1,.3,1),background .3s,opacity .65s ease';card.style.transform='perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';});
 });
 
-// ── Insights dynamiques ──
 (function(){
-  var ICONS={
-    'briefcase':'<path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>',
-    'trending-up':'<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
-    'bar-chart':'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
-    'clock':'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
-    'shield':'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-    'activity':'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
-    'book':'<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>'
-  };
-  var CARD_COLORS={'CFO as a Service':'ic-indigo','Levée de fonds':'ic-blue','KPIs & Métriques':'ic-cyan','Trésorerie':'ic-teal','Restructuration':'ic-violet'};
+  var ICONS={'briefcase':'<path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>','trending-up':'<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>','bar-chart':'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>','clock':'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>','shield':'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>','activity':'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>','book':'<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>'};
+  var CC={'Croissance & Scale':'ic-indigo','Stratégie dirigeant':'ic-blue','Opérations':'ic-cyan','Outils & Productivité':'ic-violet','Vision & Recul':'ic-teal'};
   fetch('/data/articles.json').then(function(r){return r.json()}).then(function(articles){
     var top3=articles.sort(function(a,b){return new Date(b.date)-new Date(a.date)}).slice(0,3);
     var grid=document.getElementById('home-insights');
     grid.innerHTML=top3.map(function(a){
       var icon=ICONS[a.icon]||ICONS['book'];
-      var color=CARD_COLORS[a.category]||'ic-indigo';
-      var thumb=a.image
-        ?'<div class="icard-thumb" style="background-image:url('+a.image+');background-size:cover;background-position:center"></div>'
-        :'<div class="icard-thumb '+color+'"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;opacity:.85;width:42px;height:42px">'+icon+'</svg></div>';
-      return '<a href="/insights/'+a.slug+'/" class="icard rv" style="text-decoration:none">'
-        +thumb+'<div class="icard-body"><div class="icat">'+a.category+'</div><div class="ititle">'+a.title+'</div>'
-        +'<div class="iexcerpt">'+a.excerpt+'</div>'
-        +'<div class="imeta"><span class="iread">'+a.readTime+' de lecture</span><span class="ilink">Lire →</span></div></div></a>';
+      var color=CC[a.category]||'ic-indigo';
+      var thumb=a.image?'<div class="icard-thumb" style="background-image:url('+a.image+');background-size:cover;background-position:center"></div>':'<div class="icard-thumb '+color+'"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;opacity:.85;width:42px;height:42px">'+icon+'</svg></div>';
+      return '<a href="/insights/'+a.slug+'/" class="icard rv" style="text-decoration:none">'+thumb+'<div class="icard-body"><div class="icat">'+a.category+'</div><div class="ititle">'+a.title+'</div><div class="iexcerpt">'+a.excerpt+'</div><div class="imeta"><span class="iread">'+a.readTime+' de lecture</span><span class="ilink">Lire →</span></div></div></a>';
     }).join('');
     grid.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
   }).catch(function(){});
 })();
 
-// ── Contact Form — wizard 3 steps ──
 (function(){
-  var form=document.getElementById('cf-form');
-  if(!form)return;
-  var succ=document.getElementById('cf-success');
-  var cur=1;
-  function val(name){var el=form.querySelector('[name="'+name+'"]');return el?el.value.trim():'';}
-  function setStep(n){
-    [1,2,3].forEach(function(i){
-      var dot=document.getElementById('cp'+i);
-      dot.classList.remove('active','done');
-      if(i<n)dot.classList.add('done');
-      if(i===n)dot.classList.add('active');
-    });
-    document.querySelector('.cf-step.active').classList.remove('active');
-    document.getElementById('cf-step-'+n).classList.add('active');
-    cur=n;
-  }
-  function validateStep(n){
-    var step=document.getElementById('cf-step-'+n);var ok=true;
-    step.querySelectorAll('[required]').forEach(function(el){
-      var err=el.parentNode.querySelector('.cf-field-err');
-      var v=el.value.trim();
-      var invalid=(el.type==='email')&&v&&!v.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-      if(!v||invalid){if(err)err.style.display='block';if(ok)el.focus();ok=false;}
-      else{if(err)err.style.display='none';}
-    });
-    return ok;
-  }
-  form.querySelectorAll('.cf-next').forEach(function(btn){
-    btn.addEventListener('click',function(){if(validateStep(cur))setStep(cur+1);});
-  });
-  form.querySelectorAll('.cf-prev').forEach(function(btn){
-    btn.addEventListener('click',function(){setStep(cur-1);});
-  });
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    if(!validateStep(3))return;
-    var btn=document.getElementById('cf-btn');
-    btn.disabled=true;btn.textContent='...';
-    fetch('/.netlify/functions/contact',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        firstname:val('firstname'),email:val('email'),role:val('role'),
-        company_type:val('company_type'),industry:val('industry'),stage:val('stage'),
-        revenue:val('revenue'),problem:val('problem'),budget:val('budget'),
-        urgency:val('urgency'),message:val('message')
-      })
-    })
-    .then(function(r){return r.json();})
-    .then(function(d){
-      if(d.success){form.style.display='none';succ.style.display='block';}
-      else{btn.disabled=false;btn.textContent='Envoyer →';}
-    })
-    .catch(function(){btn.disabled=false;btn.textContent='Envoyer →';});
+  var form=document.getElementById('cf-form');if(!form)return;
+  var succ=document.getElementById('cf-success');var cur=1;
+  function val(n){var e=form.querySelector('[name="'+n+'"]');return e?e.value.trim():'';}
+  function setStep(n){[1,2,3].forEach(function(i){var d=document.getElementById('cp'+i);d.classList.remove('active','done');if(i<n)d.classList.add('done');if(i===n)d.classList.add('active');});document.querySelector('.cf-step.active').classList.remove('active');document.getElementById('cf-step-'+n).classList.add('active');cur=n;}
+  function validateStep(n){var step=document.getElementById('cf-step-'+n);var ok=true;step.querySelectorAll('[required]').forEach(function(el){var err=el.parentNode.querySelector('.cf-field-err');var v=el.value.trim();var inv=(el.type==='email')&&v&&!v.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);if(!v||inv){if(err)err.style.display='block';if(ok)el.focus();ok=false;}else{if(err)err.style.display='none';}});return ok;}
+  form.querySelectorAll('.cf-next').forEach(function(btn){btn.addEventListener('click',function(){if(validateStep(cur))setStep(cur+1);});});
+  form.querySelectorAll('.cf-prev').forEach(function(btn){btn.addEventListener('click',function(){setStep(cur-1);});});
+  form.addEventListener('submit',function(e){e.preventDefault();if(!validateStep(3))return;var btn=document.getElementById('cf-btn');btn.disabled=true;btn.textContent='...';
+    fetch('/.netlify/functions/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstname:val('firstname'),email:val('email'),role:val('role'),company_type:val('company_type'),industry:val('industry'),stage:val('stage'),revenue:val('revenue'),problem:val('problem'),budget:val('budget'),urgency:val('urgency'),message:val('message')})})
+    .then(function(r){return r.json();}).then(function(d){if(d.success){form.style.display='none';succ.style.display='block';}else{btn.disabled=false;btn.textContent='Envoyer →';}}).catch(function(){btn.disabled=false;btn.textContent='Envoyer →';});
   });
 })();
 
-// ── Magnetic CTA ──
 var cta=document.getElementById('cta-main');
-if(cta){
-  cta.addEventListener('mouseenter',function(){cta.style.transition='transform .2s linear'});
-  cta.addEventListener('mousemove',function(e){
-    var r=cta.getBoundingClientRect();
-    cta.style.transform='translate('+(e.clientX-r.left-r.width/2)*.25+'px,'+(e.clientY-r.top-r.height/2)*.25+'px)';
-  });
-  cta.addEventListener('mouseleave',function(){
-    cta.style.transition='transform .5s cubic-bezier(.16,1,.3,1)';
-    cta.style.transform='translate(0,0)';
-  });
-}
+if(cta){cta.addEventListener('mouseenter',function(){cta.style.transition='transform .2s linear'});cta.addEventListener('mousemove',function(e){var r=cta.getBoundingClientRect();cta.style.transform='translate('+(e.clientX-r.left-r.width/2)*.25+'px,'+(e.clientY-r.top-r.height/2)*.25+'px)';});cta.addEventListener('mouseleave',function(){cta.style.transition='transform .5s cubic-bezier(.16,1,.3,1)';cta.style.transform='translate(0,0)';});}
 </script>
 </body>
 </html>
