@@ -246,7 +246,11 @@ READTIME: [minutes de lecture entre 6 et 12]`
   const excerpt = excerptMatch ? excerptMatch[1].trim() : topic.title;
   const readTime = readtimeMatch ? readtimeMatch[1] + ' min' : '8 min';
 
-  const content = raw.replace(/\nEXCERPT:.+/, '').replace(/\nREADTIME:.+/, '').trim();
+  const content = raw
+    .replace(/\nEXCERPT:.+/, '').replace(/\nREADTIME:.+/, '')
+    .replace(/^```(?:html)?\n?/m, '').replace(/\n?```$/m, '')
+    .replace(/^<article[^>]*>\n?/, '').replace(/\n?<\/article>$/m, '')
+    .trim();
 
   console.log(`✓ Contenu généré (${content.length} caractères)`);
   console.log(`✓ Excerpt : ${excerpt}`);
