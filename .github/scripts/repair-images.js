@@ -19,15 +19,18 @@ const PEXELS_QUERIES = {
   'Organisation & Ops': 'team collaboration workplace professional',
 };
 
-async function getPexelsImage(category, title) {
+async function getPexelsImage(category, title, excludeIds = new Set()) {
   const query = encodeURIComponent(PEXELS_QUERIES[category] || 'business professional office');
-  const res = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=10&orientation=landscape&size=large`, {
+  const res = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=30&orientation=landscape&size=large`, {
     headers: { Authorization: process.env.PEXELS_API_KEY },
   });
   if (!res.ok) throw new Error(`Pexels ${res.status}: ${await res.text()}`);
   const data = await res.json();
   if (!data.photos?.length) throw new Error('No Pexels results');
-  const photo = data.photos[Math.floor(Math.random() * data.photos.length)];
+  const available = data.photos.filter(p => !excludeIds.has(String(p.id)));
+  const photo = available.length
+    ? available[Math.floor(Math.random() * available.length)]
+    : data.photos[Math.floor(Math.random() * data.photos.length)];
   return { url: photo.src.large, alt: photo.alt || title };
 }
 
@@ -53,32 +56,43 @@ async function main() {
 
   console.log(`\n🔧 ${toFix.length} article(s) à réparer...\n`);
 
+  // Track used photo IDs to avoid duplicates across repairs
+  const usedIds = new Set();
+  for (const a of articles) {
+    if (a.image && a.image.includes('pexels.com/photos/')) {
+      const m = a.image.match(/\/photos\/(\d+)\//);
+      if (m) usedIds.add(m[1]);
+    }
+  }
+
   for (const article of toFix) {
     console.log(`  → ${article.slug}`);
     try {
-      const { url, alt } = await getPexelsImage(article.category, article.title);
+      const { url, alt } = await getPexelsImage(article.category, article.title, usedIds);
       article.image = url;
+
+      // Track this photo so next article in the loop doesn't reuse it
+      const m = url.match(/\/photos\/(\d+)\//);
+      if (m) usedIds.add(m[1]);
 
       // Update the article HTML
       const htmlPath = path.join(ROOT, 'insights', article.slug, 'index.html');
       if (fs.existsSync(htmlPath)) {
-        let html = fs.readFileSync(htmlPath, 'utf-8');
+        // Normalize line endings to \n for reliable regex matching
+        let html = fs.readFileSync(htmlPath, 'utf-8').replace(/\r\n/g, '\n');
 
         if (html.includes('<figure class="art-img">')) {
-          // Replace existing broken figure
           html = html.replace(
             /<figure class="art-img">[\s\S]*?<\/figure>/,
             `<figure class="art-img">\n  <img src="${url}" alt="${alt}" loading="lazy">\n</figure>`
           );
         } else {
-          // No figure exists — inject after opening of art-body
           html = html.replace(
             /(<div class="art-body">)\n/,
             `$1\n<figure class="art-img">\n  <img src="${url}" alt="${alt}" loading="lazy">\n</figure>\n`
           );
         }
 
-        // Update og:image meta if present
         if (html.includes('og:image')) {
           html = html.replace(
             /<meta property="og:image" content="[^"]*">/,
@@ -100,7 +114,6 @@ async function main() {
       console.error(`    ❌ Erreur pour ${article.slug}: ${e.message}`);
     }
 
-    // Pexels rate limit: be gentle
     await new Promise(r => setTimeout(r, 500));
   }
 

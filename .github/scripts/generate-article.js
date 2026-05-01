@@ -102,17 +102,31 @@ const PEXELS_QUERIES = {
   'Organisation & Ops': 'team collaboration workplace professional',
 };
 
-async function getPexelsImage(title, category) {
+function usedPexelsIds(articles) {
+  const ids = new Set();
+  for (const a of articles) {
+    if (a.image && a.image.includes('pexels.com/photos/')) {
+      const m = a.image.match(/\/photos\/(\d+)\//);
+      if (m) ids.add(m[1]);
+    }
+  }
+  return ids;
+}
+
+async function getPexelsImage(title, category, excludeIds = new Set()) {
   if (!process.env.PEXELS_API_KEY) return null;
   try {
     const query = encodeURIComponent(PEXELS_QUERIES[category] || 'business professional office');
-    const res = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=10&orientation=landscape&size=large`, {
+    const res = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=30&orientation=landscape&size=large`, {
       headers: { Authorization: process.env.PEXELS_API_KEY },
     });
     if (!res.ok) throw new Error(`Pexels ${res.status}`);
     const data = await res.json();
     if (!data.photos?.length) throw new Error('No results');
-    const photo = data.photos[Math.floor(Math.random() * data.photos.length)];
+    const available = data.photos.filter(p => !excludeIds.has(String(p.id)));
+    const photo = available.length
+      ? available[Math.floor(Math.random() * available.length)]
+      : data.photos[Math.floor(Math.random() * data.photos.length)];
     return { large: photo.src.large2x, medium: photo.src.large, alt: photo.alt || title };
   } catch (e) {
     console.warn(`⚠ Pexels: ${e.message}`);
@@ -212,7 +226,7 @@ async function main() {
     console.log(`✓ Image FLUX générée`);
   } else {
     console.log('→ Fallback Pexels...');
-    image = await getPexelsImage(topic.title, topic.category);
+    image = await getPexelsImage(topic.title, topic.category, usedPexelsIds(existing));
     if (image) console.log(`✓ Image Pexels obtenue`);
     else console.log('⚠ Pas d\'image (FLUX + Pexels indisponibles)');
   }
