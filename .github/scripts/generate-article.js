@@ -95,6 +95,31 @@ async function generateFluxImage(title, category) {
   }
 }
 
+const PEXELS_QUERIES = {
+  'Stratégie dirigeant': 'business strategy boardroom executive',
+  'Vision & Recul': 'leadership perspective office window',
+  'Croissance & Scale': 'business growth startup office',
+  'Organisation & Ops': 'team collaboration workplace professional',
+};
+
+async function getPexelsImage(title, category) {
+  if (!process.env.PEXELS_API_KEY) return null;
+  try {
+    const query = encodeURIComponent(PEXELS_QUERIES[category] || 'business professional office');
+    const res = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=10&orientation=landscape&size=large`, {
+      headers: { Authorization: process.env.PEXELS_API_KEY },
+    });
+    if (!res.ok) throw new Error(`Pexels ${res.status}`);
+    const data = await res.json();
+    if (!data.photos?.length) throw new Error('No results');
+    const photo = data.photos[Math.floor(Math.random() * data.photos.length)];
+    return { large: photo.src.large2x, medium: photo.src.large, alt: photo.alt || title };
+  } catch (e) {
+    console.warn(`⚠ Pexels: ${e.message}`);
+    return null;
+  }
+}
+
 function formatDate(d) {
   return d.toISOString().split('T')[0];
 }
@@ -182,9 +207,15 @@ async function main() {
 
   console.log(`\n📝 Génération de l'article : "${topic.title}"\n`);
 
-  const image = await generateFluxImage(topic.title, topic.category);
-  if (image) console.log(`✓ Image FLUX générée`);
-  else console.log('⚠ Pas d\'image (Replicate indisponible)');
+  let image = await generateFluxImage(topic.title, topic.category);
+  if (image) {
+    console.log(`✓ Image FLUX générée`);
+  } else {
+    console.log('→ Fallback Pexels...');
+    image = await getPexelsImage(topic.title, topic.category);
+    if (image) console.log(`✓ Image Pexels obtenue`);
+    else console.log('⚠ Pas d\'image (FLUX + Pexels indisponibles)');
+  }
 
   const resp = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
