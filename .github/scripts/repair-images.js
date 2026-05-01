@@ -21,17 +21,20 @@ const PEXELS_QUERIES = {
 
 async function getPexelsImage(category, title, excludeIds = new Set()) {
   const query = encodeURIComponent(PEXELS_QUERIES[category] || 'business professional office');
-  const res = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=30&orientation=landscape&size=large`, {
-    headers: { Authorization: process.env.PEXELS_API_KEY },
-  });
-  if (!res.ok) throw new Error(`Pexels ${res.status}: ${await res.text()}`);
-  const data = await res.json();
-  if (!data.photos?.length) throw new Error('No Pexels results');
-  const available = data.photos.filter(p => !excludeIds.has(String(p.id)));
-  const photo = available.length
-    ? available[Math.floor(Math.random() * available.length)]
-    : data.photos[Math.floor(Math.random() * data.photos.length)];
-  return { url: photo.src.large, alt: photo.alt || title };
+  for (let page = 1; page <= 5; page++) {
+    const res = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=80&page=${page}&orientation=landscape&size=large`, {
+      headers: { Authorization: process.env.PEXELS_API_KEY },
+    });
+    if (!res.ok) throw new Error(`Pexels ${res.status}: ${await res.text()}`);
+    const data = await res.json();
+    if (!data.photos?.length) break;
+    const available = data.photos.filter(p => !excludeIds.has(String(p.id)));
+    if (available.length) {
+      const photo = available[Math.floor(Math.random() * available.length)];
+      return { url: photo.src.large, alt: photo.alt || title };
+    }
+  }
+  throw new Error('No unused photos found after 5 pages');
 }
 
 function needsRepair(imageUrl) {
