@@ -324,10 +324,15 @@ READTIME: [minutes de lecture entre 6 et 12]`
 <meta property="og:description" content="${excerpt}">
 <meta property="og:url" content="https://exe-cutio.com/insights/${topic.slug}/">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="EXECUTIO — Financial Advisory">${image ? `\n<meta property="og:image" content="${image.large}">` : ''}
+<meta property="og:site_name" content="EXECUTIO — Conseil stratégique">
+<meta property="og:locale" content="fr_FR">${image ? `\n<meta property="og:image" content="${image.large}">` : ''}
 <meta property="article:published_time" content="${dateStr}">
 <meta property="article:section" content="${topic.category}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${topic.title}">
+<meta name="twitter:description" content="${excerpt}">${image ? `\n<meta name="twitter:image" content="${image.large}">` : ''}
 <script type="application/ld+json">
+[
 {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -337,10 +342,20 @@ READTIME: [minutes de lecture entre 6 et 12]`
   "datePublished": "${dateStr}",
   "dateModified": "${dateStr}",
   "author": {"@type": "Organization", "name": "EXECUTIO", "url": "https://exe-cutio.com"},
-  "publisher": {"@type": "Organization", "name": "EXECUTIO", "url": "https://exe-cutio.com"},
+  "publisher": {"@type": "Organization", "name": "EXECUTIO", "url": "https://exe-cutio.com", "logo": {"@type": "ImageObject", "url": "https://exe-cutio.com/og-home.jpg"}},
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://exe-cutio.com/insights/${topic.slug}/"},
-  "keywords": "${topic.keywords}"
+  "keywords": "${topic.keywords}"${image ? `,\n  "image": "${image.large}"` : ''}
+},
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://exe-cutio.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://exe-cutio.com/insights/"},
+    {"@type": "ListItem", "position": 3, "name": "${topic.title}", "item": "https://exe-cutio.com/insights/${topic.slug}/"}
+  ]
 }
+]
 <\/script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/insights/style.css">
@@ -423,6 +438,17 @@ ${image ? `<figure class="art-img">
   const remainingTopics = topics.filter(t => t.slug !== topic.slug);
   fs.writeFileSync(TOPICS_JSON, JSON.stringify(remainingTopics, null, 2), 'utf-8');
   console.log(`✓ data/article-topics.json mis à jour (${remainingTopics.length} sujets restants)`);
+
+  // Régénérer sitemap.xml
+  const BASE = 'https://exe-cutio.com';
+  const sitemapPages = [
+    { url: '/', priority: '1.0', changefreq: 'weekly' },
+    { url: '/insights/', priority: '0.9', changefreq: 'daily' },
+    ...updatedArticles.map(a => ({ url: `/insights/${a.slug}/`, lastmod: a.date, priority: '0.8', changefreq: 'monthly' }))
+  ];
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map(p => `  <url>\n    <loc>${BASE}${p.url}</loc>${p.lastmod ? `\n    <lastmod>${p.lastmod}</lastmod>` : ''}\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`).join('\n')}\n</urlset>`;
+  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemapXml, 'utf-8');
+  console.log(`✓ sitemap.xml régénéré (${sitemapPages.length} URLs)`);
 
   console.log(`\n✅ Article publié : "${topic.title}"`);
 
