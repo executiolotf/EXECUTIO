@@ -569,12 +569,41 @@ ${image ? `<figure class="art-img">
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemapXml, 'utf-8');
   console.log(`✓ sitemap.xml régénéré (${sitemapPages.length} URLs)`);
 
+  // Mettre à jour insights/index.html : blogPost[] JSON-LD + noscript
+  updateBlogIndex(updatedArticles);
+  console.log(`✓ insights/index.html mis à jour (blogPost + noscript)`);
+
   console.log(`\n✅ Article publié : "${topic.title}"`);
 
   const output = process.env.GITHUB_OUTPUT;
   if (output) {
     fs.appendFileSync(output, `title=${topic.title.substring(0, 80)}\n`);
   }
+}
+
+function updateBlogIndex(articles) {
+  const indexPath = path.join(ROOT, 'insights', 'index.html');
+  let html = fs.readFileSync(indexPath, 'utf-8');
+
+  // Remplacer le tableau blogPost[] dans le JSON-LD
+  const blogPostItems = articles
+    .map(a => `    {"@type": "BlogPosting", "headline": ${JSON.stringify(a.title)}, "url": "https://exe-cutio.com/insights/${a.slug}/", "datePublished": "${a.date}"}`)
+    .join(',\n');
+  html = html.replace(
+    /"blogPost": \[[\s\S]*?\]/,
+    `"blogPost": [\n${blogPostItems}\n  ]`
+  );
+
+  // Remplacer la section <noscript> avec les liens statiques
+  const noscriptCards = articles
+    .map(a => `      <a href="/insights/${a.slug}/" class="bcard"><div class="bcard-body"><div class="bcat">${a.category}</div><div class="btitle">${a.title}</div></div></a>`)
+    .join('\n');
+  html = html.replace(
+    /<noscript>\s*<div class="blog-grid">[\s\S]*?<\/div>\s*<\/noscript>/,
+    `<noscript>\n    <div class="blog-grid">\n${noscriptCards}\n    </div>\n  </noscript>`
+  );
+
+  fs.writeFileSync(indexPath, html, 'utf-8');
 }
 
 main().catch(err => {
