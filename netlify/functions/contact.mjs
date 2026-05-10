@@ -68,17 +68,23 @@ async function upsertPerson(apiKey, fields) {
 }
 
 async function addToPipeline(apiKey, listId, personId, fields) {
-  // Attio v2: /lists/{id}/entries with body key "record" (not "record_id")
+  // Attio v2 correct format: parent_record_id + parent_object + entry_values
   const { status, data } = await attio(apiKey, 'POST',
     `/lists/${listId}/entries`,
-    { data: { record: { object: 'people', record_id: personId } } }
+    {
+      data: {
+        parent_record_id: personId,
+        parent_object:    'people',
+        entry_values:     {}
+      }
+    }
   );
   console.log('[Attio] POST /lists entries status:', status, JSON.stringify(data));
   if (status !== 200 && status !== 201) {
     throw new Error(`addToPipeline ${status}: ${JSON.stringify(data)}`);
   }
 
-  // Step 2: patch custom fields (isolated — won't break entry creation if slugs differ)
+  // Step 2: patch custom fields wrapped under entry_values
   const entryId = data?.data?.id?.entry_id;
   if (!entryId) return;
 
@@ -91,15 +97,17 @@ async function addToPipeline(apiKey, listId, personId, fields) {
     `/lists/${listId}/entries/${entryId}`,
     {
       data: {
-        valore_deal:            [{ currency_value: amount, currency_code: 'EUR' }],
-        data_chiusura_prevista: [{ value: closeDate.toISOString().split('T')[0] }],
-        probabilita:            [{ value: probabilityMap[priority] }],
-        priorite:               [{ value: priority }],
-        urgence:                fields.urgency      ? [{ value: fields.urgency }]      : [],
-        industrie:              fields.industry     ? [{ value: fields.industry }]     : [],
-        role_contact:           fields.role         ? [{ value: fields.role }]         : [],
-        type_structure:         fields.company_type ? [{ value: fields.company_type }] : [],
-        message:                fields.message      ? [{ value: fields.message }]      : []
+        entry_values: {
+          valore_deal:            [{ currency_value: amount, currency_code: 'EUR' }],
+          data_chiusura_prevista: [{ value: closeDate.toISOString().split('T')[0] }],
+          probabilita:            [{ value: probabilityMap[priority] }],
+          priorite:               [{ value: priority }],
+          urgence:                fields.urgency      ? [{ value: fields.urgency }]      : [],
+          industrie:              fields.industry     ? [{ value: fields.industry }]     : [],
+          role_contact:           fields.role         ? [{ value: fields.role }]         : [],
+          type_structure:         fields.company_type ? [{ value: fields.company_type }] : [],
+          message:                fields.message      ? [{ value: fields.message }]      : []
+        }
       }
     }
   );
