@@ -68,16 +68,11 @@ async function upsertPerson(apiKey, fields) {
 }
 
 async function addToPipeline(apiKey, listId, personId, fields) {
-  // Try /lists/ first, fall back to /collections/ (Attio renamed lists → collections in UI)
-  let status, data;
-  for (const prefix of ['/lists/', '/collections/']) {
-    ({ status, data } = await attio(apiKey, 'POST',
-      `${prefix}${listId}/entries`,
-      { data: { record_id: { object: 'people', record_id: personId } } }
-    ));
-    if (status === 200 || status === 201) break;
-    console.warn(`[Attio] ${prefix} returned ${status}, trying next...`);
-  }
+  // Attio v2: /lists/{id}/entries with body key "record" (not "record_id")
+  const { status, data } = await attio(apiKey, 'POST',
+    `/lists/${listId}/entries`,
+    { data: { record: { object: 'people', record_id: personId } } }
+  );
   if (status !== 200 && status !== 201) {
     console.error('[Attio] addToPipeline failed', status, JSON.stringify(data));
     return;
@@ -92,9 +87,8 @@ async function addToPipeline(apiKey, listId, personId, fields) {
   closeDate.setDate(closeDate.getDate() + 45);
   const probabilityMap = { HIGH: 75, MEDIUM: 45, LOW: 20 };
 
-  const prefix = data?.data?.id?.list_id ? '/lists/' : '/collections/';
   const { status: ps, data: pd } = await attio(apiKey, 'PATCH',
-    `${prefix}${listId}/entries/${entryId}`,
+    `/lists/${listId}/entries/${entryId}`,
     {
       data: {
         valore_deal:            [{ currency_value: amount, currency_code: 'EUR' }],
