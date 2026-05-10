@@ -5,119 +5,14 @@
     "topics": ["stratégie", "positionnement", "avantage concurrentiel", "croissance"]
   },
   {
-    "url": "https://hbr.org/2009/08/managing-oneself",
-    "title": "Managing Oneself (Drucker, HBR 2009)",
-    "topics": ["leadership", "recul", "productivité", "temps", "dirigeant"]
-  },
-  {
     "url": "https://hbr.org/1999/11/management-time-whos-got-the-monkey",
     "title": "Management Time: Who's Got the Monkey? (HBR 1999)",
     "topics": ["délégation", "management", "temps", "organisation", "surcharge"]
   },
   {
-    "url": "https://hbr.org/2000/01/leadership-that-gets-results",
-    "title": "Leadership That Gets Results (Goleman, HBR 2000)",
-    "topics": ["leadership", "management", "équipe", "performance", "style de management"]
-  },
-  {
     "url": "https://hbr.org/2008/02/the-founders-dilemma",
     "title": "The Founder's Dilemma (Wasserman, HBR 2008)",
     "topics": ["fondateur", "croissance", "contrôle", "actionnariat", "startup", "dirigeant"]
-  },
-  {
-    "url": "https://hbr.org/2007/07/in-praise-of-the-incomplete-leader",
-    "title": "In Praise of the Incomplete Leader (HBR 2007)",
-    "topics": ["leadership", "délégation", "équipe", "complémentarité", "recul", "dirigeant"]
-  },
-  {
-    "url": "https://hbr.org/2004/07/the-work-of-leadership",
-    "title": "The Work of Leadership (Heifetz & Linsky, HBR 2004)",
-    "topics": ["leadership", "changement", "stratégie", "vision", "recul", "dirigeant"]
-  },
-  {
-    "url": "https://hbr.org/2017/02/stop-the-meeting-madness",
-    "title": "Stop the Meeting Madness (HBR 2017)",
-    "topics": ["réunions", "organisation", "productivité", "temps", "management"]
-  },
-  {
-    "url": "https://hbr.org/2015/03/get-the-most-out-of-your-one-on-ones",
-    "title": "Get the Most Out of Your One-on-Ones (HBR 2015)",
-    "topics": ["réunions", "management", "équipe", "délégation", "organisation"]
-  },
-  {
-    "url": "https://hbr.org/2019/02/how-to-design-an-agenda-for-an-effective-meeting",
-    "title": "How to Design an Agenda for an Effective Meeting (HBR 2019)",
-    "topics": ["réunions", "organisation", "productivité", "management"]
-  },
-  {
-    "url": "https://hbr.org/2013/01/why-the-lean-startup-changes-everything",
-    "title": "Why the Lean Start-Up Changes Everything (HBR 2013)",
-    "topics": ["startup", "croissance", "itération", "stratégie", "fondateur"]
-  },
-  {
-    "url": "https://hbr.org/2008/07/the-five-stages-of-small-business-growth",
-    "title": "The Five Stages of Small Business Growth (HBR 2008)",
-    "topics": ["PME", "croissance", "scale", "organisation", "dirigeant", "paliers"]
-  },
-  {
-    "url": "https://hbr.org/2016/11/what-having-a-growth-mindset-actually-means",
-    "title": "What Having a Growth Mindset Actually Means (HBR 2016)",
-    "topics": ["leadership", "croissance", "mindset", "apprentissage", "recul", "dirigeant"]
-  },
-  {
-    "url": "https://hbr.org/2012/09/the-real-leadership-lessons-of-steve-jobs",
-    "title": "The Real Leadership Lessons of Steve Jobs (HBR 2012)",
-    "topics": ["leadership", "vision", "stratégie", "produit", "fondateur", "dirigeant"]
-  },
-  {
-    "url": "https://hbr.org/2014/12/your-strategic-plans-probably-arent-strategic-or-even-plans",
-    "title": "Your Strategic Plans Probably Aren't Strategic (HBR 2014)",
-    "topics": ["stratégie", "planification", "priorités", "dirigeant", "vision"]
-  },
-  {
-    "url": "https://hbr.org/2019/09/the-surprising-power-of-questions",
-    "title": "The Surprising Power of Questions (HBR 2019)",
-    "topics": ["management", "communication", "leadership", "décision", "équipe"]
-  },
-  {
-    "url": "https://hbr.org/2011/11/how-to-keep-your-top-talent",
-    "title": "How to Keep Your Top Talent (HBR 2011)",
-    "topics": ["équipe", "recrutement", "rétention", "croissance", "organisation", "management"]
-  },
-  {
-    "url": "https://hbr.org/2016/07/the-productivity-paradox-of-the-smart-office",
-    "title": "The Productivity Paradox of the Smart Office (HBR 2016)",
-    "topics": ["productivité", "organisation", "espace de travail", "management"]
-  },
-  {
-    "url": "https://hbr.org/2006/11/reinventing-your-business-model",
-    "title": "Reinventing Your Business Model (HBR 2006)",
-    "topics": ["modèle d'affaires", "stratégie", "croissance", "innovation", "scale"]
-  },
-  {
-    "url": "https://hbr.org/2010/07/leadership-make-or-break",
-    "title": "Leadership: Make or Break (HBR 2010)",
-    "topics": ["leadership", "croissance", "décision", "dirigeant", "performance"]
-  },
-  {
-    "url": "https://hbr.org/2020/11/make-time-for-small-talk-with-your-remote-employees",
-    "title": "Make Time for Small Talk with Your Remote Employees (HBR 2020)",
-    "topics": ["management", "équipe", "remote", "organisation", "communication"]
-  },
-  {
-    "url": "https://hbr.org/2018/11/research-when-small-teams-are-better-than-big-ones",
-    "title": "Research: When Small Teams Are Better Than Big Ones (HBR 2018)",
-    "topics": ["équipe", "organisation", "scale", "PME", "management", "croissance"]
-  },
-  {
-    "url": "https://hbr.org/2017/11/a-step-by-step-guide-to-structuring-better-meetings",
-    "title": "A Step-by-Step Guide to Structuring Better Meetings (HBR 2017)",
-    "topics": ["réunions", "organisation", "productivité", "management"]
-  },
-  {
-    "url": "https://hbr.org/2014/06/the-problem-with-saying-my-door-is-always-open",
-    "title": "The Problem with Saying 'My Door Is Always Open' (HBR 2014)",
-    "topics": ["management", "délégation", "communication", "équipe", "organisation"]
   },
   {
     "url": "https://hbr.org/2015/12/proof-that-positive-work-cultures-are-more-productive",
@@ -130,158 +25,128 @@
     "topics": ["leadership", "focus", "priorités", "attention", "dirigeant", "recul"]
   },
   {
-    "url": "https://hbr.org/2022/03/what-great-managers-do-differently",
-    "title": "What Great Managers Do Differently (HBR 2022)",
-    "topics": ["management", "équipe", "délégation", "performance", "organisation"]
+    "url": "https://statbel.fgov.be/fr/themes/entreprises",
+    "title": "Chiffres clés des entreprises belges (Statbel)",
+    "topics": ["PME", "entreprise", "Belgique", "statistiques", "croissance", "scale"]
   },
   {
-    "url": "https://hbr.org/2011/01/the-age-of-hyperspecialization",
-    "title": "The Age of Hyperspecialization (HBR 2011)",
-    "topics": ["organisation", "spécialisation", "scale", "croissance", "équipe"]
+    "url": "https://statbel.fgov.be/fr/themes/emploi-et-conditions-de-travail",
+    "title": "Emploi et conditions de travail en Belgique (Statbel)",
+    "topics": ["emploi", "équipe", "recrutement", "organisation", "Belgique"]
   },
   {
-    "url": "https://hbr.org/2018/01/the-real-reason-people-wont-change",
-    "title": "The Real Reason People Won't Change (HBR 2018)",
-    "topics": ["changement", "management", "organisation", "dirigeant", "transformation"]
+    "url": "https://www.lecho.be/entreprises",
+    "title": "Entreprises & Management — L'Echo (Belgique)",
+    "topics": ["dirigeant", "PME", "stratégie", "croissance", "management", "Belgique"]
   },
   {
-    "url": "https://hbr.org/2020/07/dont-let-crisis-go-to-waste",
-    "title": "Don't Let a Crisis Go to Waste (HBR 2020)",
-    "topics": ["stratégie", "crise", "décision", "dirigeant", "recul", "résilience"]
+    "url": "https://trends.be/economie/strategie",
+    "title": "Stratégie d'entreprise — Trends-Tendances (Belgique)",
+    "topics": ["stratégie", "croissance", "PME", "dirigeant", "scale", "Belgique"]
   },
   {
-    "url": "https://hbr.org/2007/11/a-sense-of-urgency",
-    "title": "A Sense of Urgency (HBR 2007)",
-    "topics": ["changement", "stratégie", "leadership", "exécution", "dirigeant"]
+    "url": "https://trends.be/economie/management",
+    "title": "Management & Leadership — Trends-Tendances (Belgique)",
+    "topics": ["management", "leadership", "équipe", "organisation", "dirigeant"]
   },
   {
-    "url": "https://hbr.org/2016/10/the-1-reason-plans-fail",
-    "title": "The #1 Reason Plans Fail (HBR 2016)",
-    "topics": ["stratégie", "exécution", "organisation", "priorités", "planification"]
+    "url": "https://www.ucm.be/nos-services/gerer/management",
+    "title": "Gestion et management pour PME — UCM Belgique",
+    "topics": ["PME", "management", "organisation", "Belgique", "gestion", "dirigeant"]
   },
   {
-    "url": "https://hbr.org/2023/01/stop-promoting-your-best-salespeople-into-management",
-    "title": "Stop Promoting Your Best Salespeople Into Management (HBR 2023)",
-    "topics": ["management", "recrutement", "équipe", "croissance", "organisation", "expert"]
+    "url": "https://www.feb.be/domaines-daction/entrepreneuriat",
+    "title": "Entrepreneuriat et croissance — FEB (Fédération des Entreprises de Belgique)",
+    "topics": ["PME", "entrepreneuriat", "croissance", "Belgique", "dirigeant", "stratégie"]
   },
   {
-    "url": "https://hbr.org/2012/04/the-discipline-of-managing-disruption",
-    "title": "The Discipline of Managing Disruption (HBR 2012)",
-    "topics": ["stratégie", "innovation", "croissance", "changement", "dirigeant"]
+    "url": "https://hub.brussels/fr/articles/category/growth",
+    "title": "Croissance d'entreprise — hub.brussels",
+    "topics": ["croissance", "scale", "PME", "Belgique", "Bruxelles", "startup"]
   },
   {
-    "url": "https://hbr.org/2021/09/the-real-reason-your-company-cant-scale",
-    "title": "The Real Reason Your Company Can't Scale (HBR 2021)",
-    "topics": ["scale", "croissance", "organisation", "PME", "processus", "dirigeant"]
+    "url": "https://www.nbb.be/fr/publications-et-recherche/rapports-sur-les-entreprises",
+    "title": "Rapports sur la situation des entreprises belges (Banque Nationale de Belgique)",
+    "topics": ["PME", "performance", "croissance", "Belgique", "statistiques", "rentabilité"]
   },
   {
-    "url": "https://hbr.org/2019/11/why-your-managers-are-burned-out",
-    "title": "Why Your Managers Are Burned Out (HBR 2019)",
-    "topics": ["management", "organisation", "surcharge", "équipe", "délégation"]
+    "url": "https://www.insee.fr/fr/statistiques/2045395",
+    "title": "Les entreprises en France — édition statistique (INSEE)",
+    "topics": ["PME", "entreprise", "statistiques", "France", "croissance", "scale"]
   },
   {
-    "url": "https://hbr.org/2018/07/to-retain-employees-focus-on-inclusion-not-just-diversity",
-    "title": "To Retain Employees, Focus on Inclusion (HBR 2018)",
-    "topics": ["équipe", "rétention", "organisation", "culture", "management"]
+    "url": "https://lelab.bpifrance.fr/dirigeants-de-pme-eti-les-grands-enjeux-de-la-croissance",
+    "title": "Dirigeants de PME-ETI : les grands enjeux de la croissance (Bpifrance Le Lab)",
+    "topics": ["PME", "croissance", "dirigeant", "enjeux", "scale", "stratégie"]
   },
   {
-    "url": "https://hbr.org/2017/07/great-companies-obsess-over-productivity-not-efficiency",
-    "title": "Great Companies Obsess Over Productivity, Not Efficiency (HBR 2017)",
-    "topics": ["productivité", "croissance", "performance", "organisation", "scale"]
+    "url": "https://lelab.bpifrance.fr/les-pme-et-eti-face-au-defi-de-la-croissance",
+    "title": "Les PME et ETI face au défi de la croissance (Bpifrance Le Lab)",
+    "topics": ["PME", "ETI", "croissance", "défis", "scale", "France", "dirigeant"]
   },
   {
-    "url": "https://hbr.org/2016/03/your-company-doesnt-need-a-digital-transformation",
-    "title": "Your Company Doesn't Need a Digital Transformation (HBR 2016)",
-    "topics": ["stratégie", "digital", "transformation", "PME", "priorités", "dirigeant"]
+    "url": "https://lelab.bpifrance.fr/le-dirigeant-de-pme-en-france",
+    "title": "Portrait du dirigeant de PME en France (Bpifrance Le Lab)",
+    "topics": ["dirigeant", "PME", "France", "leadership", "recul", "profil"]
   },
   {
-    "url": "https://hbr.org/2020/01/are-you-spending-your-time-the-right-way",
-    "title": "Are You Spending Your Time the Right Way? (HBR 2020)",
-    "topics": ["temps", "priorités", "dirigeant", "productivité", "recul", "agenda"]
+    "url": "https://entrepreneurs.lesechos.fr/content/actualites/management",
+    "title": "Management & Leadership pour entrepreneurs — Les Echos Entrepreneurs",
+    "topics": ["management", "leadership", "dirigeant", "croissance", "organisation"]
   },
   {
-    "url": "https://hbr.org/2013/05/what-makes-a-good-boss-exactly",
-    "title": "What Makes a Good Boss, Exactly? (HBR 2013)",
-    "topics": ["management", "équipe", "leadership", "performance", "organisation"]
+    "url": "https://www.lesechos.fr/idees-debats/leadership-management",
+    "title": "Leadership & Management — Les Echos",
+    "topics": ["leadership", "management", "dirigeant", "stratégie", "organisation"]
   },
   {
-    "url": "https://hbr.org/2019/06/the-leader-as-coach",
-    "title": "The Leader as Coach (HBR 2019)",
-    "topics": ["leadership", "management", "délégation", "équipe", "coaching", "dirigeant"]
+    "url": "https://www.capital.fr/votre-carriere/management",
+    "title": "Management & Leadership — Capital.fr",
+    "topics": ["management", "leadership", "dirigeant", "équipe", "organisation", "délégation"]
   },
   {
-    "url": "https://hbr.org/2018/09/what-most-people-get-wrong-about-focus",
-    "title": "What Most People Get Wrong About Focus (HBR 2018)",
-    "topics": ["focus", "priorités", "productivité", "dirigeant", "recul", "temps"]
+    "url": "https://www.capital.fr/entreprises-marches/strategie",
+    "title": "Stratégie d'entreprise — Capital.fr",
+    "topics": ["stratégie", "croissance", "PME", "scale", "priorités", "dirigeant"]
   },
   {
-    "url": "https://hbr.org/2011/04/the-big-idea-creating-shared-value",
-    "title": "Creating Shared Value (Porter, HBR 2011)",
-    "topics": ["stratégie", "croissance", "valeur", "positionnement", "PME"]
+    "url": "https://www.journaldunet.com/management/direction-generale/",
+    "title": "Direction générale & stratégie — Journal du Net",
+    "topics": ["dirigeant", "stratégie", "management", "décision", "organisation"]
   },
   {
-    "url": "https://hbr.org/2016/01/what-sets-high-performing-ceos-apart",
-    "title": "What Sets Successful CEOs Apart (HBR 2016)",
-    "topics": ["dirigeant", "CEO", "performance", "leadership", "stratégie", "recul"]
+    "url": "https://www.journaldunet.com/management/direction-generale/1213736-deleguer/",
+    "title": "Comment déléguer efficacement ? — Journal du Net",
+    "topics": ["délégation", "management", "organisation", "équipe", "contrôle"]
   },
   {
-    "url": "https://hbr.org/2020/09/the-best-strategic-leaders-balance-agility-and-consistency",
-    "title": "The Best Strategic Leaders Balance Agility and Consistency (HBR 2020)",
-    "topics": ["stratégie", "agilité", "leadership", "scale", "décision", "dirigeant"]
+    "url": "https://ec.europa.eu/growth/smes_en",
+    "title": "Small and Medium Enterprises — European Commission",
+    "topics": ["PME", "Europe", "croissance", "scale", "statistiques", "entrepreneuriat"]
   },
   {
-    "url": "https://hbr.org/2022/01/how-to-move-from-strategy-to-execution",
-    "title": "How to Move from Strategy to Execution (HBR 2022)",
-    "topics": ["stratégie", "exécution", "organisation", "priorités", "dirigeant", "scale"]
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php/Statistics_on_small_and_medium-sized_enterprises",
+    "title": "Statistics on SMEs in Europe (Eurostat)",
+    "topics": ["PME", "statistiques", "Europe", "croissance", "scale", "rentabilité"]
   },
   {
-    "url": "https://hbr.org/2019/05/the-feedback-fallacy",
-    "title": "The Feedback Fallacy (HBR 2019)",
-    "topics": ["management", "équipe", "performance", "organisation", "délégation"]
+    "url": "https://www.economie.gouv.fr/entreprises/petites-moyennes-entreprises",
+    "title": "Guide des PME — Ministère de l'Économie (France)",
+    "topics": ["PME", "France", "gestion", "croissance", "financement", "dirigeant"]
   },
   {
-    "url": "https://hbr.org/2014/09/the-employer-employee-mismatch",
-    "title": "The Employer-Employee Mismatch (HBR 2014)",
-    "topics": ["équipe", "recrutement", "organisation", "PME", "croissance"]
+    "url": "https://www.cpme.fr/dossiers/croissance-des-entreprises",
+    "title": "Croissance des PME — CPME (Confédération des PME, France)",
+    "topics": ["PME", "croissance", "France", "scale", "dirigeant", "stratégie"]
   },
   {
-    "url": "https://hbr.org/2015/10/why-the-problem-with-learning-is-unlearning",
-    "title": "Why the Problem with Learning Is Unlearning (HBR 2015)",
-    "topics": ["changement", "leadership", "recul", "transformation", "dirigeant"]
+    "url": "https://www.lalibre.be/economie/entreprises",
+    "title": "Entreprises & Économie — La Libre Belgique",
+    "topics": ["PME", "entreprise", "Belgique", "management", "croissance", "dirigeant"]
   },
   {
-    "url": "https://hbr.org/2018/10/when-to-delegate-and-when-to-micromanage",
-    "title": "When to Delegate and When to Micromanage (HBR 2018)",
-    "topics": ["délégation", "management", "contrôle", "équipe", "organisation"]
-  },
-  {
-    "url": "https://hbr.org/2021/03/the-three-pillars-of-a-teaming-culture",
-    "title": "The Three Pillars of a Teaming Culture (HBR 2021)",
-    "topics": ["équipe", "culture", "organisation", "scale", "management", "croissance"]
-  },
-  {
-    "url": "https://hbr.org/2022/09/stop-trying-to-be-the-smartest-person-in-the-room",
-    "title": "Stop Trying to Be the Smartest Person in the Room (HBR 2022)",
-    "topics": ["leadership", "délégation", "expert", "recul", "équipe", "dirigeant"]
-  },
-  {
-    "url": "https://hbr.org/2017/04/the-new-ceo-work-managing-the-external-environment",
-    "title": "The New CEO Work: Managing the External Environment (HBR 2017)",
-    "topics": ["dirigeant", "stratégie", "vision", "recul", "leadership"]
-  },
-  {
-    "url": "https://hbr.org/2019/07/do-you-have-a-healthy-relationship-with-power",
-    "title": "Do You Have a Healthy Relationship with Power? (HBR 2019)",
-    "topics": ["leadership", "dirigeant", "recul", "management", "vision"]
-  },
-  {
-    "url": "https://hbr.org/2023/05/the-limits-of-efficiency",
-    "title": "The Limits of Efficiency (HBR 2023)",
-    "topics": ["organisation", "productivité", "croissance", "scale", "stratégie"]
-  },
-  {
-    "url": "https://hbr.org/2020/03/leading-with-humility-in-a-crisis",
-    "title": "Leading with Humility in a Crisis (HBR 2020)",
-    "topics": ["leadership", "crise", "recul", "dirigeant", "décision"]
+    "url": "https://www.levif.be/economie",
+    "title": "Économie & Entreprises — Le Vif (Belgique)",
+    "topics": ["PME", "stratégie", "Belgique", "croissance", "management", "dirigeant"]
   }
 ]

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page introuvable — EXECUTIO</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+<style>
+:root {
+  --bg: #08090e;
+  --surface: #0d1018;
+  --panel: #111622;
+  --indigo: #6366f1;
+  --blue: #3b82f6;
+  --cyan: #22d3ee;
+  --green: #22c55e;
+  --border: rgba(255,255,255,.07);
+  --text: rgba(255,255,255,.85);
+  --muted: rgba(255,255,255,.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;cursor:default}
+a{color:inherit;text-decoration:none}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:62px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,9,14,.85);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-bottom-color:var(--border)}
+.logo span{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;letter-spacing:.22em;color:#fff}
+.nav-links{display:flex;align-items:center;gap:1.8rem}
+.nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-cta{background:var(--indigo);color:#fff !important;padding:.45rem 1.1rem;border-radius:6px;font-size:.72rem !important;letter-spacing:.1em !important}
+.nav-cta:hover{background:#5558e8 !important}
+
+/* 404 main */
+.err-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:120px 5% 80px;text-align:center}
+.err-inner{max-width:560px}
+.err-code{font-family:'Cormorant Garamond',serif;font-size:clamp(6rem,18vw,10rem);font-weight:300;line-height:1;color:var(--indigo);opacity:.25;letter-spacing:-.02em;user-select:none}
+.err-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:400;margin:.5rem 0 1.2rem;color:#fff}
+.err-sub{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:2.5rem}
+.err-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--indigo);color:#fff;padding:.7rem 1.6rem;border-radius:8px;font-size:.82rem;font-weight:500;letter-spacing:.06em;transition:background .2s,transform .15s}
+.btn-primary:hover{background:#5558e8;transform:translateY(-1px)}
+.btn-ghost{border:1px solid var(--border);color:var(--muted);padding:.7rem 1.6rem;border-radius:8px;font-size:.82rem;font-weight:500;letter-spacing:.06em;transition:border-color .2s,color .2s,transform .15s}
+.btn-ghost:hover{border-color:rgba(255,255,255,.2);color:#fff;transform:translateY(-1px)}
+
+/* Footer */
+footer{background:#04050a;padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--border)}
+.fbrand span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.3)}
+.fcopy{font-size:.7rem;color:rgba(255,255,255,.2)}
+.flink{font-size:.7rem;color:rgba(255,255,255,.3);transition:color .2s}
+.flink:hover{color:var(--indigo)}
+
+@media(max-width:640px){
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="logo"><span>EXECUTIO</span></a>
+  <div class="nav-links">
+    <a href="/#services">Services</a>
+    <a href="/insights/">Insights</a>
+    <a href="/#booking" class="nav-cta">Réserver un appel</a>
+  </div>
+</nav>
+
+<div class="err-wrap">
+  <div class="err-inner">
+    <div class="err-code">404</div>
+    <h1 class="err-title">Cette page n'existe plus</h1>
+    <p class="err-sub">Le contenu que vous cherchez a peut-être été déplacé ou supprimé.<br>Retournez à l'accueil ou explorez nos derniers articles.</p>
+    <div class="err-actions">
+      <a href="/" class="btn-primary">← Retour à l'accueil</a>
+      <a href="/insights/" class="btn-ghost">Voir tous les articles</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fbrand"><span>EXECUTIO</span></div>
+  <span class="fcopy">© 2026 Executio — Conseil stratégique · Tous droits réservés</span>
+  <a href="mailto:contact@exe-cutio.com" class="flink">contact@exe-cutio.com</a>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+}, {passive: true});
+</script>
+</body>
+</html>
