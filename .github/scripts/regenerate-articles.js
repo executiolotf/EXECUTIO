@@ -25,6 +25,22 @@ if (!process.env.ANTHROPIC_API_KEY) {
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
+const AUTHORITY_LINKS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'authority-links.json'), 'utf-8'));
+
+function getRelevantLinks(title, category, n = 18) {
+  const needle = (title + ' ' + category).toLowerCase();
+  const scored = AUTHORITY_LINKS
+    .filter(l => l.title)
+    .map(l => {
+      const hits = l.topics.filter(t => needle.includes(t.toLowerCase())).length;
+      return { ...l, hits };
+    })
+    .sort((a, b) => b.hits - a.hits || Math.random() - 0.5);
+  const top = scored.slice(0, n);
+  if (top.length < n) top.push(...scored.slice(n, n + (n - top.length)));
+  return top;
+}
+
 function formatDateFR(dateStr) {
   const d = new Date(dateStr + 'T12:00:00Z');
   const months = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
@@ -112,26 +128,9 @@ RÈGLES ABSOLUES :
 ✗ Pas de keyword stuffing
 ✓ Minimum 1800 mots, idéalement 2000-2200 mots de contenu réel
 ✓ Au moins 4 observations terrain concrètes avec chiffres ou durée
-✓ Inclure 1 à 2 liens externes vers des articles de référence, uniquement parmi cette liste — intégrés naturellement dans le texte au format <a href="URL" target="_blank" rel="noopener noreferrer">texte ancre descriptif</a> :
-  RÉUNIONS & ORGANISATION :
-  - https://hbr.org/2017/02/stop-the-meeting-madness — "Stop the Meeting Madness" (HBR, 2017)
-  - https://hbr.org/1999/11/management-time-whos-got-the-monkey — "Management Time: Who's Got the Monkey?" (HBR, 1999)
-  DÉLÉGATION & MANAGEMENT :
-  - https://hbr.org/2017/07/stop-delegating-the-wrong-tasks — "Stop Delegating the Wrong Tasks" (HBR, 2017)
-  - https://hbr.org/2013/03/overcoming-the-do-it-all-yourself-trap — "Overcoming the Do-It-All-Yourself Trap" (HBR, 2013)
-  CROISSANCE & SCALE :
-  - https://hbr.org/2016/07/the-explainer-the-startup-curve — "The Startup Curve" (HBR, 2016)
-  - https://hbr.org/2022/09/rethinking-your-growth-strategy — "Rethinking Your Growth Strategy" (HBR, 2022)
-  STRATÉGIE & PRISE DE DÉCISION :
-  - https://hbr.org/2019/09/the-surprising-power-of-questions — "The Surprising Power of Questions" (HBR, 2019)
-  - https://hbr.org/2013/06/making-dumb-groups-smarter — "Making Dumb Groups Smarter" (HBR, 2013)
-  LEADERSHIP & RECUL :
-  - https://hbr.org/2007/07/in-praise-of-the-incomplete-leader — "In Praise of the Incomplete Leader" (HBR, 2007)
-  - https://hbr.org/2021/05/the-real-reason-so-many-leaders-avoid-feedback — "Why Leaders Avoid Feedback" (HBR, 2021)
-  PRIORITÉS & FOCUS :
-  - https://hbr.org/2018/05/eliminate-strategic-overload — "Eliminate Strategic Overload" (HBR, 2018)
-  - https://hbr.org/2014/12/your-strategic-plans-probably-arent-strategic-or-even-plans — "Your Strategic Plans Aren't Strategic" (HBR, 2014)
-✗ INTERDIT : ne génère jamais toi-même une URL. Si aucun lien de la liste ne s'applique naturellement, cite la source par son nom sans lien — ex. : "selon une analyse McKinsey (2023)" sans balise <a>.
+✓ Inclure 1 à 2 liens externes vers des articles de référence, uniquement parmi cette liste — choisis les 1 ou 2 plus pertinents, intégrés naturellement dans le texte au format <a href="URL" target="_blank" rel="noopener noreferrer">texte ancre descriptif</a> :
+${getRelevantLinks(article.title, article.category).map(l => `  - ${l.url} — "${l.title}"`).join('\n')}
+✗ INTERDIT : n'utilise JAMAIS une URL que tu inventes ou qui ne figure pas dans cette liste. Si aucun lien ne s'applique naturellement, cite la source par son nom sans lien — ex. : "selon McKinsey (2023)" sans balise <a>.
 ✓ Inclure 1 à 2 liens internes vers d'autres articles Executio si le contexte s'y prête naturellement :
 ${allArticles.filter(a => a.slug !== article.slug).slice(0, 5).map(a => `  - "${a.title}" → https://exe-cutio.com/insights/${a.slug}/`).join('\n')}
 ✓ Terminer sur une tension prospective, une question qui pousse à agir
