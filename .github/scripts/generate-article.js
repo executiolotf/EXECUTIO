@@ -137,6 +137,19 @@ async function getPexelsImage(title, category, excludeIds = new Set()) {
   }
 }
 
+async function downloadImage(url, destPath) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const buffer = Buffer.from(await res.arrayBuffer());
+    fs.writeFileSync(destPath, buffer);
+    return true;
+  } catch (e) {
+    console.warn(`⚠ Download image: ${e.message}`);
+    return false;
+  }
+}
+
 function formatDate(d) {
   return d.toISOString().split('T')[0];
 }
@@ -234,6 +247,9 @@ async function main() {
     else console.log('⚠ Pas d\'image (FLUX + Pexels indisponibles)');
   }
 
+  // Compute local image path early (slug is known)
+  const localImagePath = `/insights/${topic.slug}/hero.jpg`;
+
   const resp = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 5000,
@@ -280,6 +296,8 @@ RÈGLES ABSOLUES :
 ✓ Minimum 1800 mots, idéalement 2000-2200 mots
 ✓ Au moins 4 observations concrètes ou benchmarks contextualisés dans l'article
 ✓ Inclure 2 à 3 liens externes vers des sources françaises autoritaires (Bpifrance, INSEE, HBR France, McKinsey, Xerfi) au format <a href="URL" target="_blank" rel="noopener">texte ancre</a> — intégrés naturellement dans le texte
+✓ Inclure 1 à 2 liens internes vers d'autres articles Executio si le contexte s'y prête naturellement :
+${existing.slice(0, 6).map(a => `  - "${a.title}" → https://exe-cutio.com/insights/${a.slug}/`).join('\n')}
 ✓ Terminer sur une note prospective ou une tension qui pousse à l'action — pas une répétition
 
 À la fin, sur une NOUVELLE LIGNE, écris exactement :
@@ -351,13 +369,13 @@ FAQ_END`
 <meta property="og:url" content="https://exe-cutio.com/insights/${topic.slug}/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EXECUTIO — Conseil stratégique">
-<meta property="og:locale" content="fr_FR">${image ? `\n<meta property="og:image" content="${image.large}">` : ''}
+<meta property="og:locale" content="fr_FR">${image ? `\n<meta property="og:image" content="${localImagePath}">` : ''}
 <meta property="article:published_time" content="${dateStr}">
 <meta property="article:section" content="${topic.category}">
 <meta property="article:author" content="Executio Team">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${topic.title}">
-<meta name="twitter:description" content="${excerpt}">${image ? `\n<meta name="twitter:image" content="${image.large}">` : ''}
+<meta name="twitter:description" content="${excerpt}">${image ? `\n<meta name="twitter:image" content="${localImagePath}">` : ''}
 <script type="application/ld+json">
 [
 {
@@ -382,7 +400,8 @@ FAQ_END`
     "logo": {"@type": "ImageObject", "url": "https://exe-cutio.com/favicon.svg", "width": 32, "height": 32}
   },
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://exe-cutio.com/insights/${topic.slug}/"},
-  "keywords": "${topic.keywords}"${image ? `,\n  "image": {"@type": "ImageObject", "url": "${image.large}", "width": 940, "height": 650}` : ''}
+  "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["h1", ".art-lead"]},
+  "keywords": "${topic.keywords}"${image ? `,\n  "image": {"@type": "ImageObject", "url": "https://exe-cutio.com${localImagePath}", "width": 940, "height": 650}` : ''}
 },
 {
   "@context": "https://schema.org",
@@ -428,7 +447,7 @@ FAQ_END`
 <div class="art-wrap">
   <div class="art-body">
 ${image ? `<figure class="art-img">
-  <img src="${image.medium}" alt="${image.alt}" width="940" height="650" loading="lazy">
+  <img src="${localImagePath}" alt="${image.alt}" width="940" height="650" loading="lazy">
 </figure>
 ` : ''}${content}${faqPairs.length ? `
 <div class="art-faq">
@@ -461,6 +480,13 @@ ${image ? `<figure class="art-img">
 
   const dir = path.join(ROOT, 'insights', topic.slug);
   fs.mkdirSync(dir, { recursive: true });
+
+  // Download image locally so og:image never expires
+  if (image) {
+    const downloaded = await downloadImage(image.large, path.join(dir, 'hero.jpg'));
+    if (downloaded) console.log(`✓ Image téléchargée : insights/${topic.slug}/hero.jpg`);
+  }
+
   fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf-8');
   console.log(`✓ Fichier créé : insights/${topic.slug}/index.html`);
 
@@ -472,7 +498,7 @@ ${image ? `<figure class="art-img">
     readTime,
     date: dateStr,
     icon: topic.icon,
-    image: image ? image.medium : null
+    image: image ? localImagePath : null
   };
 
   const updatedArticles = [newArticle, ...existing];

@@ -47,7 +47,7 @@ function buildFaqHtml(faqPairs) {
   return `\n<div class="art-faq">\n  <h2>Questions fréquentes</h2>\n${items}\n</div>`;
 }
 
-async function regenerate(article) {
+async function regenerate(article, allArticles) {
   const filePath = path.join(ROOT, 'insights', article.slug, 'index.html');
   if (!fs.existsSync(filePath)) {
     console.warn(`⚠ Fichier introuvable : ${article.slug}`);
@@ -116,6 +116,8 @@ RÈGLES ABSOLUES :
   Format : <a href="URL_REELLE" target="_blank" rel="noopener">texte ancre naturel</a>
   Sources acceptées : bpifrance.fr, insee.fr, hbr.org, mckinsey.com, bcg.com, deloitte.com
   Utilise des URLs plausibles et réalistes (pas inventées au hasard)
+✓ Inclure 1 à 2 liens internes vers d'autres articles Executio si le contexte s'y prête naturellement :
+${allArticles.filter(a => a.slug !== article.slug).slice(0, 5).map(a => `  - "${a.title}" → https://exe-cutio.com/insights/${a.slug}/`).join('\n')}
 ✓ Terminer sur une tension prospective, une question qui pousse à agir
 
 À la fin, sur des NOUVELLES LIGNES séparées, écris exactement :
@@ -171,6 +173,14 @@ FAQ_END`
     .replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${newExcerpt.replace(/"/g, '&quot;')}">`)
     // Aussi mettre à jour la description dans le JSON-LD Article
     .replace(/"description": "[^"]*",\n  "url": "https:\/\/exe-cutio\.com\/insights/, `"description": "${newExcerpt.replace(/"/g, '\\"')}",\n  "url": "https://exe-cutio.com/insights`);
+
+  // Injecter speakable dans l'Article JSON-LD si absent
+  if (!updatedHead.includes('"speakable"')) {
+    updatedHead = updatedHead.replace(
+      /"mainEntityOfPage": \{"@type": "WebPage", "@id": "[^"]+"\}/,
+      `"mainEntityOfPage": {"@type": "WebPage", "@id": "https://exe-cutio.com/insights/${article.slug}/"},\n  "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["h1", ".art-lead"]}`
+    );
+  }
 
   // Injecter FAQPage schema juste avant </head>
   updatedHead += buildFaqSchema(faqPairs);
@@ -230,7 +240,7 @@ async function main() {
   const updated = [];
   for (const article of articles) {
     try {
-      const result = await regenerate(article);
+      const result = await regenerate(article, articles);
       updated.push(result ? { ...article, excerpt: result.newExcerpt, readTime: result.newReadTime } : article);
     } catch (err) {
       console.error(`  ❌ Erreur sur ${article.slug}: ${err.message}`);
