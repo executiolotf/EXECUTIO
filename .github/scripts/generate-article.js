@@ -341,7 +341,26 @@ RÈGLES ABSOLUES :
 ✗ Pas de conseils sur la comptabilité, la fiscalité ou les outils logiciels sauf si directement lié au sujet
 ✓ Minimum 1800 mots, idéalement 2000-2200 mots
 ✓ Au moins 4 observations concrètes ou benchmarks contextualisés dans l'article
-✓ Inclure 2 à 3 liens externes vers des sources françaises autoritaires (Bpifrance, INSEE, HBR France, McKinsey, Xerfi) au format <a href="URL" target="_blank" rel="noopener">texte ancre</a> — intégrés naturellement dans le texte
+✓ Inclure 1 à 2 liens externes vers des articles de référence, uniquement parmi cette liste — choisis les plus pertinents selon le sujet traité, intégrés naturellement dans le texte au format <a href="URL" target="_blank" rel="noopener noreferrer">texte ancre descriptif</a> :
+  RÉUNIONS & ORGANISATION :
+  - https://hbr.org/2017/02/stop-the-meeting-madness — "Stop the Meeting Madness" (HBR, 2017)
+  - https://hbr.org/1999/11/management-time-whos-got-the-monkey — "Management Time: Who's Got the Monkey?" (HBR, 1999)
+  DÉLÉGATION & MANAGEMENT :
+  - https://hbr.org/2017/07/stop-delegating-the-wrong-tasks — "Stop Delegating the Wrong Tasks" (HBR, 2017)
+  - https://hbr.org/2013/03/overcoming-the-do-it-all-yourself-trap — "Overcoming the Do-It-All-Yourself Trap" (HBR, 2013)
+  CROISSANCE & SCALE :
+  - https://hbr.org/2016/07/the-explainer-the-startup-curve — "The Startup Curve" (HBR, 2016)
+  - https://hbr.org/2022/09/rethinking-your-growth-strategy — "Rethinking Your Growth Strategy" (HBR, 2022)
+  STRATÉGIE & PRISE DE DÉCISION :
+  - https://hbr.org/2019/09/the-surprising-power-of-questions — "The Surprising Power of Questions" (HBR, 2019)
+  - https://hbr.org/2013/06/making-dumb-groups-smarter — "Making Dumb Groups Smarter" (HBR, 2013)
+  LEADERSHIP & RECUL :
+  - https://hbr.org/2007/07/in-praise-of-the-incomplete-leader — "In Praise of the Incomplete Leader" (HBR, 2007)
+  - https://hbr.org/2021/05/the-real-reason-so-many-leaders-avoid-feedback — "Why Leaders Avoid Feedback" (HBR, 2021)
+  PRIORITÉS & FOCUS :
+  - https://hbr.org/2018/05/eliminate-strategic-overload — "Eliminate Strategic Overload" (HBR, 2018)
+  - https://hbr.org/2014/12/your-strategic-plans-probably-arent-strategic-or-even-plans — "Your Strategic Plans Aren't Strategic" (HBR, 2014)
+✗ INTERDIT : ne génère jamais toi-même une URL. Si aucun lien de la liste ne s'applique naturellement, cite la source par son nom sans lien — ex. : "selon une analyse McKinsey (2023)" sans balise <a>.
 ✓ Inclure 1 à 2 liens internes vers d'autres articles Executio si le contexte s'y prête naturellement :
 ${existing.slice(0, 6).map(a => `  - "${a.title}" → https://exe-cutio.com/insights/${a.slug}/`).join('\n')}
 ✓ Terminer sur une note prospective ou une tension qui pousse à l'action — pas une répétition
