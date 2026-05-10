@@ -211,6 +211,7 @@ FAQ_END`
   <div class="nav-links">
     <a href="/#services">Services</a>
     <a href="/insights/">Insights</a>
+    <a href="/#contact">Contact</a>
     <a href="/#booking" class="nav-cta">Réserver un appel</a>
   </div>
 </nav>
