@@ -10,7 +10,19 @@ const TOPICS_JSON = path.join(ROOT, 'data', 'article-topics.json');
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
+const FLUX_VISUAL_APPROACHES = [
+  'A dramatic close-up of hands in action (marking documents, writing metrics, pointing at a chart)',
+  'A strong environmental shot (glass-walled boardroom, open-plan office at dusk, city-view window)',
+  'A textural detail (dog-eared report with red annotations, sticky note on a screen, leather notebook with handwritten numbers)',
+  'A human silhouette moment (lone figure at floor-to-ceiling windows, two people reviewing a projected chart, founder still at desk after hours)',
+  'An overhead desk composition (financial deck spread on conference table, printed strategy map with coffee cup, annotated org chart)',
+  'A candid in-motion shot (someone walking through a modern open-plan office, a whiteboard being actively filled with arrows)',
+];
+
 async function buildFluxPrompt(title, category) {
+  // Pick a random visual approach to force variety across articles
+  const approach = FLUX_VISUAL_APPROACHES[Math.floor(Math.random() * FLUX_VISUAL_APPROACHES.length)];
+
   const msg = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 180,
@@ -22,13 +34,10 @@ Write a FLUX image generation prompt for a blog article hero image.
 Article title: "${title}"
 Category: "${category}"
 
-VISUAL DIRECTION: Editorial photography — McKinsey or HBR article imagery. BE SPECIFIC AND ORIGINAL based on the article topic. DO NOT default to the generic laptop+notebook scene. Choose a genuinely distinctive visual:
-- A dramatic action: hands marking a printed P&L with a highlighter, a whiteboard being filled with arrows and numbers, a founder reviewing a printed report
-- A strong setting: a glass-walled boardroom, an open-plan startup office at dusk, a city-view window, a printed financial deck spread on a conference table
-- A textural close-up: a dog-eared page with a red pen, a sticky note on a screen, a hand-written metric in a leather notebook
-- A human moment: silhouette at floor-to-ceiling windows, two people reviewing a projected chart, a lone founder still at work after hours
+MANDATORY VISUAL APPROACH FOR THIS IMAGE: ${approach}
+You MUST use this specific type of shot — do not default to another approach even if it seems easier.
 
-The image must feel like a magazine editorial — specific, visually interesting, not generic.
+VISUAL DIRECTION: Editorial photography — McKinsey or HBR article imagery. BE SPECIFIC AND ORIGINAL based on the article topic.
 
 HARD RULES:
 - NO full human faces — hands, arms, silhouettes only
@@ -38,7 +47,7 @@ HARD RULES:
 - Clean neutral tones: white, warm grey, natural wood, soft ambient or natural light
 - Landscape 16:9 composition
 
-Reply with ONLY the prompt — 2 sharp, specific sentences.`,
+Reply with ONLY the prompt — 2 sharp, specific sentences that implement the mandatory approach.`,
     }],
   });
   return msg.content[0].text.trim();
@@ -95,17 +104,49 @@ async function generateFluxImage(title, category) {
   }
 }
 
-const PEXELS_QUERIES = {
-  'Stratégie dirigeant': 'business strategy boardroom executive',
-  'Vision & Recul': 'leadership perspective office window',
-  'Croissance & Scale': 'business growth startup office',
-  'Organisation & Ops': 'team collaboration workplace professional',
+// Per-category query pools — picked randomly to ensure visual variety
+const PEXELS_QUERY_POOLS = {
+  'Stratégie dirigeant': [
+    'executive strategy meeting boardroom',
+    'business decision making office',
+    'corporate leadership planning',
+    'CEO desk strategy documents',
+    'professional business presentation',
+    'business plan whiteboard office',
+  ],
+  'Vision & Recul': [
+    'office window city view executive',
+    'thinking businessman window light',
+    'strategic perspective aerial view office',
+    'founder reflection glass wall',
+    'solitary executive office dusk',
+    'business vision horizon wide angle',
+  ],
+  'Croissance & Scale': [
+    'startup growth team office',
+    'business expansion chart meeting',
+    'growth metrics dashboard office',
+    'modern tech office open space',
+    'team scaling company progress',
+    'business momentum energy office',
+  ],
+  'Organisation & Ops': [
+    'team workflow collaboration office',
+    'business process operations desk',
+    'project management meeting room',
+    'organized workplace productivity',
+    'office operations professional team',
+    'delegation meeting whiteboard office',
+  ],
 };
 
 function usedPexelsIds(articles) {
   const ids = new Set();
   for (const a of articles) {
-    if (a.image && a.image.includes('pexels.com/photos/')) {
+    // Support both old URL format and new pexelsId field
+    if (a.pexelsId) {
+      ids.add(String(a.pexelsId));
+    } else if (a.image && a.image.includes('pexels.com/photos/')) {
       const m = a.image.match(/\/photos\/(\d+)\//);
       if (m) ids.add(m[1]);
     }
@@ -116,18 +157,23 @@ function usedPexelsIds(articles) {
 async function getPexelsImage(title, category, excludeIds = new Set()) {
   if (!process.env.PEXELS_API_KEY) return null;
   try {
-    const query = encodeURIComponent(PEXELS_QUERIES[category] || 'business professional office');
-    for (let page = 1; page <= 5; page++) {
+    const pool = PEXELS_QUERY_POOLS[category] || ['business professional office modern'];
+    // Pick a random query from the pool each time for visual variety
+    const query = encodeURIComponent(pool[Math.floor(Math.random() * pool.length)]);
+    // Start on a random page to further diversify results
+    const startPage = Math.floor(Math.random() * 3) + 1;
+    for (let offset = 0; offset < 5; offset++) {
+      const page = ((startPage + offset - 1) % 5) + 1;
       const res = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=80&page=${page}&orientation=landscape&size=large`, {
         headers: { Authorization: process.env.PEXELS_API_KEY },
       });
       if (!res.ok) throw new Error(`Pexels ${res.status}`);
       const data = await res.json();
-      if (!data.photos?.length) break;
+      if (!data.photos?.length) continue;
       const available = data.photos.filter(p => !excludeIds.has(String(p.id)));
       if (available.length) {
         const photo = available[Math.floor(Math.random() * available.length)];
-        return { large: photo.src.large2x, medium: photo.src.large, alt: photo.alt || title };
+        return { large: photo.src.large2x, medium: photo.src.large, alt: photo.alt || title, pexelsId: photo.id };
       }
     }
     throw new Error('No unused photos found after 5 pages');
@@ -498,7 +544,8 @@ ${image ? `<figure class="art-img">
     readTime,
     date: dateStr,
     icon: topic.icon,
-    image: image ? localImagePath : null
+    image: image ? localImagePath : null,
+    pexelsId: image?.pexelsId ?? null
   };
 
   const updatedArticles = [newArticle, ...existing];
