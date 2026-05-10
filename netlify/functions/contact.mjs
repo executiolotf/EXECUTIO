@@ -192,19 +192,25 @@ export const handler = async (event) => {
   const BR_LIST = process.env.BREVO_LIST_ID;
 
   const dbg = {};
+  console.log('[Attio] AT key present:', !!AT, '| LIST:', AT_LIST || 'NOT SET');
   if (AT) {
     try {
       const personId = await upsertPerson(AT, body);
       dbg.personId = personId;
+      console.log('[Attio] upsertPerson personId:', personId);
       if (personId) {
         if (AT_LIST) {
-          try { await addToPipeline(AT, AT_LIST, personId, body); dbg.pipeline = 'ok'; }
-          catch (e) { dbg.pipelineError = e.message; }
+          try { await addToPipeline(AT, AT_LIST, personId, body); dbg.pipeline = 'ok'; console.log('[Attio] pipeline ok'); }
+          catch (e) { dbg.pipelineError = e.message; console.error('[Attio] pipeline error:', e.message); }
+        } else {
+          console.warn('[Attio] ATTIO_LIST_ID not set — skipping pipeline');
         }
-        try { await createNote(AT, personId, body); dbg.note = 'ok'; }
-        catch (e) { dbg.noteError = e.message; }
+        try { await createNote(AT, personId, body); dbg.note = 'ok'; console.log('[Attio] note ok'); }
+        catch (e) { dbg.noteError = e.message; console.error('[Attio] note error:', e.message); }
       }
-    } catch (e) { dbg.attioError = e.message; }
+    } catch (e) { dbg.attioError = e.message; console.error('[Attio] upsertPerson error:', e.message); }
+  } else {
+    console.error('[Attio] ATTIO_API_KEY not set — skipping entirely');
   }
 
   if (BR) {
