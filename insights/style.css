@@ -81,6 +81,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .breadcrumb a:hover{color:var(--blue)}
 .breadcrumb span{margin:0 .4rem;color:rgba(13,35,64,.25)}
 
+/* FAQ */
+.art-faq{margin:3rem 0;padding:2rem;background:var(--lgray);border-radius:8px;border:1px solid var(--border)}
+.art-faq h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--lnavy);margin-bottom:1.2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:.9rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-item summary{font-size:.9rem;font-weight:600;color:var(--lnavy);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-item summary::after{content:'+';font-size:1.2rem;color:var(--blue);flex-shrink:0;transition:transform .2s}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{font-size:.85rem;line-height:1.7;color:var(--lmuted);margin-top:.6rem;padding-left:.2rem}
+
 /* FOOTER */
 footer{background:#020b15;padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,255,.04)}
 .fbrand span{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.3)}

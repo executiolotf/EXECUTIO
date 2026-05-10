@@ -1,0 +1,40 @@
+name: Regenerate All Articles (SEO Upgrade)
+
+on:
+  workflow_dispatch:  # Déclenchement manuel uniquement
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install @anthropic-ai/sdk
+
+      - name: Regenerate all articles
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node .github/scripts/regenerate-articles.js
+
+      - name: Commit and push
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "EXECUTIO Bot"
+          git add insights/ data/articles.json
+          git diff --cached --quiet || git commit -m "seo: régénération articles — 1800+ mots, FAQ schema, liens externes"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin main && git push origin main && break
+            echo "Push failed (attempt $i), retrying in 10s..."
+            sleep 10
+          done

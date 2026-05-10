@@ -155,7 +155,7 @@ async function regenerateTopics(existingSlugs) {
     max_tokens: 2000,
     messages: [{
       role: 'user',
-      content: `Tu es un expert SEO spécialisé en stratégie d'entreprise et management pour les PME et startups en France et en Belgique.
+      content: `Tu es un expert SEO spécialisé en stratégie d'entreprise et management pour les PME et startups en croissance.
 
 Génère exactement 20 nouveaux sujets d'articles de blog SEO pour Executio (partenaire stratégique externe pour dirigeants de PME). Ces articles ciblent des dirigeants de PME (5 à 50 personnes), fondateurs et entrepreneurs en croissance.
 
@@ -236,10 +236,10 @@ async function main() {
 
   const resp = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
-    max_tokens: 3000,
+    max_tokens: 5000,
     messages: [{
       role: 'user',
-      content: `Tu es un conseiller stratégique senior — l'équivalent d'un partner de cabinet de conseil de direction (McKinsey OPS, Roland Berger, Kearney) qui travaille exclusivement avec des dirigeants de PME et de startups en croissance en France et en Belgique. Tu rédiges des articles qui font référence dans la communauté des fondateurs et dirigeants francophones.
+      content: `Tu es un conseiller stratégique senior — l'équivalent d'un partner de cabinet de conseil de direction (McKinsey OPS, Roland Berger, Kearney) qui travaille avec des dirigeants de PME et de startups en croissance. Tu rédiges des articles qui font référence dans la communauté des fondateurs et dirigeants de PME.
 
 Narrative de marque : les dirigeants sont trop souvent "la tête dans le guidon" — absorbés par l'opérationnel, sans recul pour voir ce qui freine leur croissance ou ce qui mérite d'être scalé. Le regard extérieur d'un partenaire stratégique change ça.
 
@@ -277,13 +277,22 @@ RÈGLES ABSOLUES :
 ✗ Pas de keyword stuffing — les mots-clés s'intègrent naturellement dans les phrases
 ✗ Pas de rembourrage — si une phrase n'apporte pas de valeur nouvelle, elle n'existe pas
 ✗ Pas de conseils sur la comptabilité, la fiscalité ou les outils logiciels sauf si directement lié au sujet
-✓ Minimum 750 mots, maximum 1100 mots
-✓ Au moins 3 observations concrètes ou benchmarks contextualisés dans l'article
+✓ Minimum 1800 mots, idéalement 2000-2200 mots
+✓ Au moins 4 observations concrètes ou benchmarks contextualisés dans l'article
+✓ Inclure 2 à 3 liens externes vers des sources françaises autoritaires (Bpifrance, INSEE, HBR France, McKinsey, Xerfi) au format <a href="URL" target="_blank" rel="noopener">texte ancre</a> — intégrés naturellement dans le texte
 ✓ Terminer sur une note prospective ou une tension qui pousse à l'action — pas une répétition
 
 À la fin, sur une NOUVELLE LIGNE, écris exactement :
 EXCERPT: [une phrase de 150-180 caractères qui capture l'angle principal de l'article — écrite pour donner envie de lire, pas pour résumer]
-READTIME: [minutes de lecture entre 6 et 12]`
+READTIME: [minutes de lecture entre 8 et 15]
+FAQ_START
+Q: [question fréquente des dirigeants sur ce sujet, 60-90 chars]
+A: [réponse directe et actionnable, 100-150 chars]
+Q: [deuxième question, différente angle]
+A: [réponse directe]
+Q: [troisième question]
+A: [réponse directe]
+FAQ_END`
     }]
   });
 
@@ -292,10 +301,23 @@ READTIME: [minutes de lecture entre 6 et 12]`
   const excerptMatch = raw.match(/\nEXCERPT:\s*(.+)/);
   const readtimeMatch = raw.match(/\nREADTIME:\s*(\d+)/);
   const excerpt = excerptMatch ? excerptMatch[1].trim() : topic.title;
-  const readTime = readtimeMatch ? readtimeMatch[1] + ' min' : '8 min';
+  const readTime = readtimeMatch ? readtimeMatch[1] + ' min' : '10 min';
+
+  // Extract FAQ pairs
+  const faqMatch = raw.match(/FAQ_START\n([\s\S]+?)\nFAQ_END/);
+  const faqPairs = [];
+  if (faqMatch) {
+    const faqLines = faqMatch[1].trim().split('\n');
+    for (let i = 0; i < faqLines.length - 1; i += 2) {
+      const q = faqLines[i]?.replace(/^Q:\s*/, '').trim();
+      const a = faqLines[i + 1]?.replace(/^A:\s*/, '').trim();
+      if (q && a) faqPairs.push({ q, a });
+    }
+  }
 
   const content = raw
     .replace(/\nEXCERPT:.+/, '').replace(/\nREADTIME:.+/, '')
+    .replace(/\nFAQ_START[\s\S]+?FAQ_END/, '')
     .replace(/^```(?:html)?\n?/m, '').replace(/\n?```$/m, '')
     .replace(/^<article[^>]*>\n?/, '').replace(/\n?<\/article>$/m, '')
     .trim();
@@ -311,6 +333,8 @@ READTIME: [minutes de lecture entre 6 et 12]`
         <div class="rread">${a.readTime} de lecture</div>
       </a>`).join('');
 
+  const faqSchema = faqPairs.length ? `,\n{\n  "@context": "https://schema.org",\n  "@type": "FAQPage",\n  "mainEntity": [\n${faqPairs.map(f => `    {\n      "@type": "Question",\n      "name": "${f.q.replace(/"/g, '\\"')}",\n      "acceptedAnswer": {"@type": "Answer", "text": "${f.a.replace(/"/g, '\\"')}"}\n    }`).join(',\n')}\n  ]\n}` : '';
+
   const html = `<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -320,6 +344,8 @@ READTIME: [minutes de lecture entre 6 et 12]`
 <meta name="description" content="${excerpt}">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://exe-cutio.com/insights/${topic.slug}/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
 <meta property="og:title" content="${topic.title}">
 <meta property="og:description" content="${excerpt}">
 <meta property="og:url" content="https://exe-cutio.com/insights/${topic.slug}/">
@@ -328,6 +354,7 @@ READTIME: [minutes de lecture entre 6 et 12]`
 <meta property="og:locale" content="fr_FR">${image ? `\n<meta property="og:image" content="${image.large}">` : ''}
 <meta property="article:published_time" content="${dateStr}">
 <meta property="article:section" content="${topic.category}">
+<meta property="article:author" content="Executio Team">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${topic.title}">
 <meta name="twitter:description" content="${excerpt}">${image ? `\n<meta name="twitter:image" content="${image.large}">` : ''}
@@ -341,10 +368,21 @@ READTIME: [minutes de lecture entre 6 et 12]`
   "url": "https://exe-cutio.com/insights/${topic.slug}/",
   "datePublished": "${dateStr}",
   "dateModified": "${dateStr}",
-  "author": {"@type": "Organization", "name": "EXECUTIO", "url": "https://exe-cutio.com"},
-  "publisher": {"@type": "Organization", "name": "EXECUTIO", "url": "https://exe-cutio.com", "logo": {"@type": "ImageObject", "url": "https://exe-cutio.com/og-home.jpg"}},
+  "author": {
+    "@type": "Person",
+    "@id": "https://exe-cutio.com/a-propos/#founder",
+    "name": "Executio Team",
+    "url": "https://exe-cutio.com/a-propos/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://exe-cutio.com/#organization",
+    "name": "EXECUTIO",
+    "url": "https://exe-cutio.com",
+    "logo": {"@type": "ImageObject", "url": "https://exe-cutio.com/favicon.svg", "width": 32, "height": 32}
+  },
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://exe-cutio.com/insights/${topic.slug}/"},
-  "keywords": "${topic.keywords}"${image ? `,\n  "image": "${image.large}"` : ''}
+  "keywords": "${topic.keywords}"${image ? `,\n  "image": {"@type": "ImageObject", "url": "${image.large}", "width": 940, "height": 650}` : ''}
 },
 {
   "@context": "https://schema.org",
@@ -355,9 +393,12 @@ READTIME: [minutes de lecture entre 6 et 12]`
     {"@type": "ListItem", "position": 3, "name": "${topic.title}", "item": "https://exe-cutio.com/insights/${topic.slug}/"}
   ]
 }
-]
+]${faqSchema}
 <\/script>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/insights/style.css">
 </head>
 <body>
@@ -387,9 +428,13 @@ READTIME: [minutes de lecture entre 6 et 12]`
 <div class="art-wrap">
   <div class="art-body">
 ${image ? `<figure class="art-img">
-  <img src="${image.medium}" alt="${image.alt}" loading="lazy">
+  <img src="${image.medium}" alt="${image.alt}" width="940" height="650" loading="lazy">
 </figure>
-` : ''}${content}
+` : ''}${content}${faqPairs.length ? `
+<div class="art-faq">
+  <h2>Questions fréquentes</h2>
+  ${faqPairs.map(f => `<details class="faq-item"><summary>${f.q}</summary><p>${f.a}</p></details>`).join('\n  ')}
+</div>` : ''}
   </div>
 
   <div class="art-cta">
@@ -444,6 +489,7 @@ ${image ? `<figure class="art-img">
   const sitemapPages = [
     { url: '/', priority: '1.0', changefreq: 'weekly' },
     { url: '/insights/', priority: '0.9', changefreq: 'daily' },
+    { url: '/a-propos/', priority: '0.8', changefreq: 'monthly' },
     ...updatedArticles.map(a => ({ url: `/insights/${a.slug}/`, lastmod: a.date, priority: '0.8', changefreq: 'monthly' }))
   ];
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map(p => `  <url>\n    <loc>${BASE}${p.url}</loc>${p.lastmod ? `\n    <lastmod>${p.lastmod}</lastmod>` : ''}\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`).join('\n')}\n</urlset>`;

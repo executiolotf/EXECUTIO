@@ -7,6 +7,8 @@
 <meta name="description" content="Articles de fond pour dirigeants de PME : stratégie, prise de recul, croissance, organisation. Pas de théorie — des réalités de terrain.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://exe-cutio.com/insights/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
 <meta property="og:title" content="Insights — Stratégie, Croissance & Recul pour dirigeants | EXECUTIO">
 <meta property="og:description" content="Articles de fond pour dirigeants de PME : stratégie, prise de recul, croissance, organisation. Pas de théorie — des réalités de terrain.">
 <meta property="og:url" content="https://exe-cutio.com/insights/">
@@ -25,10 +27,29 @@
   "name": "EXECUTIO Insights",
   "description": "Articles de fond pour dirigeants de PME et startups : stratégie, prise de recul, croissance scalable, organisation. Réalités de terrain.",
   "url": "https://exe-cutio.com/insights/",
-  "publisher": {"@type": "Organization", "name": "EXECUTIO", "url": "https://exe-cutio.com"}
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://exe-cutio.com/#organization",
+    "name": "EXECUTIO",
+    "url": "https://exe-cutio.com",
+    "logo": {"@type": "ImageObject", "url": "https://exe-cutio.com/favicon.svg"}
+  },
+  "blogPost": [
+    {"@type": "BlogPosting", "headline": "Les 4 réunions qui remplacent 80% des problèmes d'organisation d'une PME", "url": "https://exe-cutio.com/insights/reunions-organisation-pme-efficaces/"},
+    {"@type": "BlogPosting", "headline": "Comment identifier les 20% d'activités qui génèrent 80% de votre chiffre d'affaires", "url": "https://exe-cutio.com/insights/pareto-activites-chiffre-affaires-pme/"},
+    {"@type": "BlogPosting", "headline": "Ce que votre agenda dit de l'état réel de votre entreprise", "url": "https://exe-cutio.com/insights/agenda-dirigeant-etat-reel-entreprise/"},
+    {"@type": "BlogPosting", "headline": "Priorisation stratégique : comment choisir quoi scaler quand tout semble urgent", "url": "https://exe-cutio.com/insights/priorisation-strategique-quoi-scaler/"},
+    {"@type": "BlogPosting", "headline": "Déléguer sans perdre le contrôle : ce que font les PME qui y arrivent", "url": "https://exe-cutio.com/insights/deleguer-sans-perdre-controle-pme/"},
+    {"@type": "BlogPosting", "headline": "Les 3 leviers de croissance qu'une PME peut activer sans lever de fonds", "url": "https://exe-cutio.com/insights/leviers-croissance-pme-sans-levee-fonds/"},
+    {"@type": "BlogPosting", "headline": "Pourquoi être le meilleur expert de votre équipe est votre principal frein à la croissance", "url": "https://exe-cutio.com/insights/expert-equipe-frein-croissance-dirigeant/"},
+    {"@type": "BlogPosting", "headline": "Les dirigeants qui scalent ne travaillent pas plus — ils travaillent différemment", "url": "https://exe-cutio.com/insights/dirigeants-qui-scalent-travaillent-differemment/"}
+  ]
 }
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/insights/style.css">
 <style>
 .blog-hero{padding:8rem 5% 4rem;background:var(--bg);position:relative;overflow:hidden}
@@ -103,6 +124,18 @@
   <div class="blog-grid" id="blog-grid">
     <!-- Injecté dynamiquement depuis /data/articles.json -->
   </div>
+  <noscript>
+    <div class="blog-grid">
+      <a href="/insights/reunions-organisation-pme-efficaces/" class="bcard"><div class="bcard-body"><div class="bcat">Organisation &amp; Ops</div><div class="btitle">Les 4 réunions qui remplacent 80% des problèmes d'organisation d'une PME</div></div></a>
+      <a href="/insights/pareto-activites-chiffre-affaires-pme/" class="bcard"><div class="bcard-body"><div class="bcat">Croissance &amp; Scale</div><div class="btitle">Comment identifier les 20% d'activités qui génèrent 80% de votre chiffre d'affaires</div></div></a>
+      <a href="/insights/agenda-dirigeant-etat-reel-entreprise/" class="bcard"><div class="bcard-body"><div class="bcat">Vision &amp; Recul</div><div class="btitle">Ce que votre agenda dit de l'état réel de votre entreprise</div></div></a>
+      <a href="/insights/priorisation-strategique-quoi-scaler/" class="bcard"><div class="bcard-body"><div class="bcat">Stratégie dirigeant</div><div class="btitle">Priorisation stratégique : comment choisir quoi scaler quand tout semble urgent</div></div></a>
+      <a href="/insights/deleguer-sans-perdre-controle-pme/" class="bcard"><div class="bcard-body"><div class="bcat">Organisation &amp; Ops</div><div class="btitle">Déléguer sans perdre le contrôle : ce que font les PME qui y arrivent</div></div></a>
+      <a href="/insights/leviers-croissance-pme-sans-levee-fonds/" class="bcard"><div class="bcard-body"><div class="bcat">Croissance &amp; Scale</div><div class="btitle">Les 3 leviers de croissance qu'une PME peut activer sans lever de fonds</div></div></a>
+      <a href="/insights/expert-equipe-frein-croissance-dirigeant/" class="bcard"><div class="bcard-body"><div class="bcat">Vision &amp; Recul</div><div class="btitle">Pourquoi être le meilleur expert de votre équipe est votre principal frein à la croissance</div></div></a>
+      <a href="/insights/dirigeants-qui-scalent-travaillent-differemment/" class="bcard"><div class="bcard-body"><div class="bcat">Stratégie dirigeant</div><div class="btitle">Les dirigeants qui scalent ne travaillent pas plus — ils travaillent différemment</div></div></a>
+    </div>
+  </noscript>
 
   <div class="blog-cta">
     <h2>Vous reconnaissez-vous dans ces situations ?</h2>
