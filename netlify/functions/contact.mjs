@@ -73,9 +73,9 @@ async function addToPipeline(apiKey, listId, personId, fields) {
     `/lists/${listId}/entries`,
     { data: { record: { object: 'people', record_id: personId } } }
   );
+  console.log('[Attio] POST /lists entries status:', status, JSON.stringify(data));
   if (status !== 200 && status !== 201) {
-    console.error('[Attio] addToPipeline failed', status, JSON.stringify(data));
-    return;
+    throw new Error(`addToPipeline ${status}: ${JSON.stringify(data)}`);
   }
 
   // Step 2: patch custom fields (isolated — won't break entry creation if slugs differ)
