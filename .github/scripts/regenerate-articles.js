@@ -72,7 +72,7 @@ async function regenerate(article, allArticles) {
 
   const resp = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
-    max_tokens: 6000,
+    max_tokens: 8000,
     messages: [{
       role: 'user',
       content: `Tu es un conseiller stratégique senior qui rédige des articles de référence pour des dirigeants de PME et startups en croissance. Tu rédiges des articles qui font référence dans la communauté des fondateurs et dirigeants de PME.
