@@ -1,1 +1,135 @@
-[]
+[
+  {
+    "title": "Priorisation stratégique : comment choisir vos 3 leviers de croissance",
+    "slug": "priorisation-strategique-leviers-croissance",
+    "category": "Stratégie dirigeant",
+    "icon": "trending-up",
+    "keywords": "priorisation stratégique PME, leviers croissance, focus dirigeant"
+  },
+  {
+    "title": "Positionnement PME : définir votre différenciation en 6 mois",
+    "slug": "positionnement-pme-differentiation",
+    "category": "Stratégie dirigeant",
+    "icon": "briefcase",
+    "keywords": "positionnement PME, différenciation marché, stratégie dirigeant"
+  },
+  {
+    "title": "Vendre ou scaler : la vraie question du dirigeant en croissance",
+    "slug": "vendre-ou-scaler-decision-dirigeant",
+    "category": "Stratégie dirigeant",
+    "icon": "bar-chart",
+    "keywords": "sortie PME, scaling stratégie, décision dirigeant croissance"
+  },
+  {
+    "title": "Gérer l'incertitude stratégique : le cadre des dirigeants avertis",
+    "slug": "gerer-incertitude-strategique-dirigeant",
+    "category": "Stratégie dirigeant",
+    "icon": "clock",
+    "keywords": "incertitude stratégique, prise décision PME, management dirigeant"
+  },
+  {
+    "title": "Les angles morts du fondateur : ce que vous ne voyez pas",
+    "slug": "angles-morts-fondateur-croissance",
+    "category": "Vision & Recul",
+    "icon": "activity",
+    "keywords": "angles morts fondateur, biais dirigeant, croissance PME"
+  },
+  {
+    "title": "Biais du fondateur : pourquoi vous avez tort sur votre stratégie",
+    "slug": "biais-fondateur-strategie-pme",
+    "category": "Vision & Recul",
+    "icon": "trending-up",
+    "keywords": "biais fondateur, vision stratégique, diagnostic externe PME"
+  },
+  {
+    "title": "Regard extérieur stratégique : l'atout caché des PME qui scalent",
+    "slug": "regard-exterieur-strategique-scale",
+    "category": "Vision & Recul",
+    "icon": "briefcase",
+    "keywords": "regard extérieur PME, conseil stratégique, croissance scalable"
+  },
+  {
+    "title": "Recul stratégique : pourquoi la tête dans le guidon tue votre PME",
+    "slug": "recul-strategique-tete-guidon",
+    "category": "Vision & Recul",
+    "icon": "bar-chart",
+    "keywords": "recul stratégique, opérationnel PME, vision dirigeant"
+  },
+  {
+    "title": "Proximité et décisions : ce que votre proximité vous cache vraiment",
+    "slug": "proximite-decisions-ce-que-cache",
+    "category": "Vision & Recul",
+    "icon": "clock",
+    "keywords": "proximité opérationnelle, prise décision, stratégie PME"
+  },
+  {
+    "title": "Paliers de croissance PME : reconnaître le moment du changement",
+    "slug": "paliers-croissance-pme-moment",
+    "category": "Croissance & Scale",
+    "icon": "activity",
+    "keywords": "paliers croissance, seuils PME, scaling moment"
+  },
+  {
+    "title": "Unit economics : le vrai pilote de votre croissance rentable",
+    "slug": "unit-economics-croissance-rentable",
+    "category": "Croissance & Scale",
+    "icon": "trending-up",
+    "keywords": "unit economics, rentabilité PME, croissance profitable"
+  },
+  {
+    "title": "Leviers de scale organique : croître sans dépendre du marketing",
+    "slug": "leviers-scale-organique-pme",
+    "category": "Croissance & Scale",
+    "icon": "briefcase",
+    "keywords": "scale organique, croissance PME, leviers rentables"
+  },
+  {
+    "title": "Croissance rentable vs croissance rapide : choisir votre modèle",
+    "slug": "croissance-rentable-rapide-modele",
+    "category": "Croissance & Scale",
+    "icon": "bar-chart",
+    "keywords": "croissance rentable, modèle PME, scaling stratégique"
+  },
+  {
+    "title": "Modèle scalable : construire une PME qui se reproduit sans vous",
+    "slug": "modele-scalable-sans-vous",
+    "category": "Croissance & Scale",
+    "icon": "clock",
+    "keywords": "modèle scalable, indépendance dirigeant, PME growth"
+  },
+  {
+    "title": "Délégation stratégique : libérer le dirigeant pour vrai",
+    "slug": "delegation-strategique-dirigeant",
+    "category": "Organisation & Ops",
+    "icon": "activity",
+    "keywords": "délégation PME, libération dirigeant, management équipe"
+  },
+  {
+    "title": "Processus PME : les 5 processus clés du passage à l'échelle",
+    "slug": "processus-pme-passage-echelle",
+    "category": "Organisation & Ops",
+    "icon": "trending-up",
+    "keywords": "processus PME, scalabilité opérationnelle, croissance structure"
+  },
+  {
+    "title": "Réunions dirigeant : arrêter de vous perdre dans l'opérationnel",
+    "slug": "reunions-dirigeant-operationnel",
+    "category": "Organisation & Ops",
+    "icon": "briefcase",
+    "keywords": "réunions PME, temps dirigeant, recul stratégique"
+  },
+  {
+    "title": "Recrutement vs automatisation : le vrai arbitrage du croissance",
+    "slug": "recrutement-automatisation-arbitrage",
+    "category": "Organisation & Ops",
+    "icon": "bar-chart",
+    "keywords": "recrutement PME, automatisation, scaling équipe"
+  },
+  {
+    "title": "Structure organisationnelle : adapter votre org au stade de croissance",
+    "slug": "structure-organisationnelle-croissance",
+    "category": "Organisation & Ops",
+    "icon": "users",
+    "keywords": "structure PME, organisation croissance, scaling structure"
+  }
+]
