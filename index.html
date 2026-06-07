@@ -830,12 +830,12 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
           <div class="cf-step active" id="cf-step-1">
             <div class="cf-step-title">Qui êtes-vous ?</div>
             <div class="cf-row">
-              <div class="cf-field"><label>Prénom *</label><input type="text" name="firstname" placeholder="Thomas" required><span class="cf-field-err">Requis</span></div>
-              <div class="cf-field"><label>Email *</label><input type="email" name="email" placeholder="thomas@entreprise.com" required><span class="cf-field-err">Email invalide</span></div>
+              <div class="cf-field"><label for="firstname">Prénom *</label><input type="text" name="firstname" id="firstname" placeholder="Thomas" required><span class="cf-field-err">Requis</span></div>
+              <div class="cf-field"><label for="email">Email *</label><input type="email" name="email" id="email" placeholder="thomas@entreprise.com" required><span class="cf-field-err">Email invalide</span></div>
             </div>
             <div class="cf-field">
-              <label>Votre rôle *</label>
-              <select name="role" required>
+              <label for="role">Votre rôle *</label>
+              <select name="role" id="role" required>
                 <option value="" disabled selected>Choisissez...</option>
                 <option>Fondateur / CEO</option>
                 <option>Co-fondateur</option>
@@ -847,8 +847,8 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
               <span class="cf-field-err">Requis</span>
             </div>
             <div class="cf-field">
-              <label>Type de structure *</label>
-              <select name="company_type" required>
+              <label for="company_type">Type de structure *</label>
+              <select name="company_type" id="company_type" required>
                 <option value="" disabled selected>Choisissez...</option>
                 <option>Startup (moins de 3 ans)</option>
                 <option>Scale-up en croissance</option>
@@ -864,8 +864,8 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
           <div class="cf-step" id="cf-step-2">
             <div class="cf-step-title">Votre contexte</div>
             <div class="cf-field">
-              <label>Secteur *</label>
-              <select name="industry" required>
+              <label for="industry">Secteur *</label>
+              <select name="industry" id="industry" required>
                 <option value="" disabled selected>Choisissez...</option>
                 <option>SaaS / Tech</option>
                 <option>E-commerce / Retail</option>
@@ -880,8 +880,8 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
             </div>
             <div class="cf-row">
               <div class="cf-field">
-                <label>Taille équipe *</label>
-                <select name="stage" required>
+                <label for="stage">Taille équipe *</label>
+                <select name="stage" id="stage" required>
                   <option value="" disabled selected>Choisissez...</option>
                   <option>Solo / 1–2 pers.</option>
                   <option>3 – 10 personnes</option>
@@ -892,8 +892,8 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
                 <span class="cf-field-err">Requis</span>
               </div>
               <div class="cf-field">
-                <label>CA annuel</label>
-                <select name="revenue">
+                <label for="revenue">CA annuel</label>
+                <select name="revenue" id="revenue">
                   <option value="" disabled selected>Choisissez...</option>
                   <option>Pré-revenu</option>
                   <option>Moins de €500K</option>
@@ -912,8 +912,8 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
           <div class="cf-step" id="cf-step-3">
             <div class="cf-step-title">Votre situation</div>
             <div class="cf-field">
-              <label>Ce qui vous amène *</label>
-              <select name="problem" required>
+              <label for="problem">Ce qui vous amène *</label>
+              <select name="problem" id="problem" required>
                 <option value="" disabled selected>Choisissez...</option>
                 <option>Je manque de recul sur ma situation globale</option>
                 <option>Je ne sais pas quoi prioriser pour scaler</option>
@@ -927,13 +927,13 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
               <span class="cf-field-err">Requis</span>
             </div>
             <div class="cf-field">
-              <label>Décrivez votre situation</label>
-              <textarea name="message" placeholder="Ex: on a doublé notre CA cette année mais j'ai l'impression qu'on perd en efficacité, je n'arrive plus à savoir où concentrer mon énergie et j'aimerais un regard extérieur honnête sur notre situation..."></textarea>
+              <label for="message">Décrivez votre situation</label>
+              <textarea name="message" id="message" placeholder="Ex: on a doublé notre CA cette année mais j'ai l'impression qu'on perd en efficacité, je n'arrive plus à savoir où concentrer mon énergie et j'aimerais un regard extérieur honnête sur notre situation..."></textarea>
             </div>
             <div class="cf-row">
               <div class="cf-field">
-                <label>Budget envisagé</label>
-                <select name="budget">
+                <label for="budget">Budget envisagé</label>
+                <select name="budget" id="budget">
                   <option value="" disabled selected>Choisissez...</option>
                   <option>À définir ensemble</option>
                   <option>Moins de €1.500</option>
@@ -943,8 +943,8 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
                 </select>
               </div>
               <div class="cf-field">
-                <label>Urgence</label>
-                <select name="urgency">
+                <label for="urgency">Urgence</label>
+                <select name="urgency" id="urgency">
                   <option value="" disabled selected>Choisissez...</option>
                   <option>Urgent — dès que possible</option>
                   <option>Dans le mois qui vient</option>
