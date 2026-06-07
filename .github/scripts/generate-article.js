@@ -315,6 +315,9 @@ async function main() {
 
   // Compute local image path early (slug is known)
   const localImagePath = `/insights/${topic.slug}/hero.jpg`;
+  // Open Graph / Twitter exigent une URL ABSOLUE (les scrapers LinkedIn/FB
+  // ignorent les chemins relatifs). On préfixe le domaine.
+  const absoluteImagePath = `https://exe-cutio.com${localImagePath}`;
 
   const resp = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
@@ -437,13 +440,13 @@ FAQ_END`
 <meta property="og:url" content="https://exe-cutio.com/insights/${topic.slug}/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EXECUTIO — Conseil stratégique">
-<meta property="og:locale" content="fr_FR">${image ? `\n<meta property="og:image" content="${localImagePath}">` : ''}
+<meta property="og:locale" content="fr_FR">${image ? `\n<meta property="og:image" content="${absoluteImagePath}">` : ''}
 <meta property="article:published_time" content="${dateStr}">
 <meta property="article:section" content="${topic.category}">
 <meta property="article:author" content="Executio Team">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${topic.title}">
-<meta name="twitter:description" content="${excerpt}">${image ? `\n<meta name="twitter:image" content="${localImagePath}">` : ''}
+<meta name="twitter:description" content="${excerpt}">${image ? `\n<meta name="twitter:image" content="${absoluteImagePath}">` : ''}
 <script type="application/ld+json">
 [
 {
@@ -465,7 +468,7 @@ FAQ_END`
     "@id": "https://exe-cutio.com/#organization",
     "name": "EXECUTIO",
     "url": "https://exe-cutio.com",
-    "logo": {"@type": "ImageObject", "url": "https://exe-cutio.com/favicon.svg", "width": 32, "height": 32}
+    "logo": {"@type": "ImageObject", "url": "https://exe-cutio.com/favicon.svg", "width": 112, "height": 112}
   },
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://exe-cutio.com/insights/${topic.slug}/"},
   "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["h1", ".art-lead"]},
@@ -479,8 +482,8 @@ FAQ_END`
     {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://exe-cutio.com/insights/"},
     {"@type": "ListItem", "position": 3, "name": "${topic.title}", "item": "https://exe-cutio.com/insights/${topic.slug}/"}
   ]
-}
-]${faqSchema}
+}${faqSchema}
+]
 <\/script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
