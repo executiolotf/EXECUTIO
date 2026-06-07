@@ -60,14 +60,28 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="preconnect" href="https://assets.calendly.com">
+<!-- preconnect GTM/Calendly retirés : ressources chargées en différé (hors chemin critique) -->
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
 <!-- Calendly CSS/JS chargés à la demande (voir ensureCalendly) pour ne pas alourdir le chargement initial -->
 <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/bd845eb6b81c1b4aa1f6e240/script.js" defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KN8X80V958"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KN8X80V958');</script>
+<script>
+// GA différé : chargé à la 1ʳᵉ interaction (ou 3 s après load) pour sortir
+// les ~155 Ko de gtag.js du chemin critique de chargement.
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){
+  var done=false;
+  function loadGA(){
+    if(done)return;done=true;
+    var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-KN8X80V958';document.head.appendChild(s);
+    gtag('js',new Date());gtag('config','G-KN8X80V958');
+  }
+  var evs=['scroll','pointerdown','keydown','touchstart'];
+  function trig(){evs.forEach(function(e){window.removeEventListener(e,trig)});loadGA();}
+  evs.forEach(function(e){window.addEventListener(e,trig,{passive:true,once:true})});
+  window.addEventListener('load',function(){setTimeout(loadGA,3000)});
+})();
+</script>
 <style>
 :root {
   --bg: #08090e;
@@ -1056,6 +1070,7 @@ document.querySelectorAll('.scard').forEach(function(card){
 (function(){
   var ICONS={'briefcase':'<path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>','trending-up':'<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>','bar-chart':'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>','clock':'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>','shield':'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>','activity':'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>','book':'<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>'};
   var CC={'Croissance & Scale':'ic-indigo','Stratégie dirigeant':'ic-blue','Opérations':'ic-cyan','Outils & Productivité':'ic-violet','Vision & Recul':'ic-teal'};
+  function loadInsights(){
   fetch('/data/articles.json').then(function(r){return r.json()}).then(function(articles){
     var top3=articles.sort(function(a,b){return new Date(b.date)-new Date(a.date)}).slice(0,3);
     var grid=document.getElementById('home-insights');
@@ -1067,6 +1082,12 @@ document.querySelectorAll('.scard').forEach(function(card){
     }).join('');
     grid.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
   }).catch(function(){});
+  }
+  var _hi=document.getElementById('home-insights');
+  if(!_hi){return}
+  if(!('IntersectionObserver'in window)){loadInsights();return}
+  var _iio=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){loadInsights();_iio.disconnect();}})},{rootMargin:'500px'});
+  _iio.observe(_hi);
 })();
 
 (function(){
