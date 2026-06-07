@@ -64,8 +64,7 @@
 <link rel="preconnect" href="https://assets.calendly.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-<link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"></noscript>
+<!-- Calendly CSS/JS chargés à la demande (voir ensureCalendly) pour ne pas alourdir le chargement initial -->
 <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/bd845eb6b81c1b4aa1f6e240/script.js" defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KN8X80V958"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KN8X80V958');</script>
@@ -418,12 +417,12 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
 <nav id="nav">
   <div class="logo"><span>EXECUTIO</span></div>
   <div class="nav-links">
-    <a onclick="goTo('problem')"><span data-fr>Le problème</span><span data-en>The problem</span></a>
-    <a onclick="goTo('services')"><span data-fr>Ce qu'on fait</span><span data-en>What we do</span></a>
-    <a onclick="goTo('offer')"><span data-fr>Offre</span><span data-en>Offer</span></a>
+    <a href="#problem" onclick="return goTo('problem')"><span data-fr>Le problème</span><span data-en>The problem</span></a>
+    <a href="#services" onclick="return goTo('services')"><span data-fr>Ce qu'on fait</span><span data-en>What we do</span></a>
+    <a href="#offer" onclick="return goTo('offer')"><span data-fr>Offre</span><span data-en>Offer</span></a>
     <a href="/insights/">Insights</a>
     <a href="/#contact"><span data-fr>Contact</span><span data-en>Contact</span></a>
-    <a onclick="openCalendly()" class="nav-cta"><span data-fr>Prendre du recul</span><span data-en>Get perspective</span></a>
+    <a href="#booking" onclick="return openCalendly()" class="nav-cta"><span data-fr>Prendre du recul</span><span data-en>Get perspective</span></a>
     <div class="lang-toggle">
       <button class="lbtn active" onclick="setLang('fr')">FR</button>
       <button class="lbtn" onclick="setLang('en')">EN</button>
@@ -992,7 +991,7 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
       </h2>
       <p class="bsub"><span data-fr>Gratuit. Sans engagement. On prend le temps de comprendre votre situation et de vous donner un premier regard honnête — sans vous vendre quoi que ce soit.</span><span data-en>Free. No commitment. We take time to understand your situation and give you an honest first perspective — without selling you anything.</span></p>
     </div>
-    <div class="calendly-inline-widget rv" data-url="https://calendly.com/executio/30min?hide_gdpr_banner=1&primary_color=6366f1" style="min-width:320px;height:700px;"></div>
+    <div id="calendly-embed" class="calendly-inline-widget rv" data-url="https://calendly.com/executio/30min?hide_gdpr_banner=1&primary_color=6366f1" style="min-width:320px;height:700px;"></div>
   </div>
 </section>
 
@@ -1003,10 +1002,30 @@ footer{background:#04050a;padding:2.5rem 5%;display:flex;justify-content:space-b
   <a href="mailto:contact@exe-cutio.com" class="flink">contact@exe-cutio.com</a>
 </footer>
 
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-function goTo(id){var e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth',block:'start'})}
-function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/executio/30min'});return false}
+function goTo(id){var e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth',block:'start'});return false}
+// Calendly chargé à la demande pour alléger le chargement initial
+// (~2.4 Mo de JS/CSS retirés du chemin critique → meilleurs LCP/TBT).
+var _cal={loading:false,cbs:[]};
+function ensureCalendly(cb){
+  if(window.Calendly){if(cb)cb();return}
+  if(cb)_cal.cbs.push(cb);
+  if(_cal.loading)return;
+  _cal.loading=true;
+  var css=document.createElement('link');css.rel='stylesheet';css.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(css);
+  var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;
+  s.onload=function(){_cal.cbs.forEach(function(f){f()});_cal.cbs=[]};
+  document.body.appendChild(s);
+}
+function openCalendly(){ensureCalendly(function(){Calendly.initPopupWidget({url:'https://calendly.com/executio/30min'})});return false}
+// Précharge le widget inline quand la section booking approche du viewport
+(function(){
+  var el=document.getElementById('calendly-embed');
+  if(!el)return;
+  if(!('IntersectionObserver'in window)){ensureCalendly();return}
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){ensureCalendly();io.disconnect()}})},{rootMargin:'600px'});
+  io.observe(el);
+})();
 function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.lbtn').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.lbtn').forEach(function(b){if(b.textContent.trim().toLowerCase()===l)b.classList.add('active')})}
 </script>
 <script>
