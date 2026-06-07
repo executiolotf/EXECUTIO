@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "description": "Carte de clusters SEO hub-and-spoke pour exe-cutio.com, ancrée sur des SERP FR/BE réels (recherche web juin 2026). Pilote la génération d'articles (.github/scripts/generate-article.js via data/article-topics.json, champ 'cluster') et le maillage interne. pillarSlug = page pilier/service à créer (la plus commerciale = direction financière externalisée).",
+    "generated": "2026-06-07"
+  },
+  "clusters": [
+    {
+      "id": "daf-externalise",
+      "name": "Direction financière externalisée",
+      "intent": "commercial",
+      "priority": 1,
+      "pillarSlug": "daf-externalise",
+      "pillarTitle": "DAF externalisé : missions, tarifs et quand y recourir",
+      "note": "Cluster MONEY = l'offre réelle d'Executio. À transformer en page service (commercial). Aucun contenu sur le site actuellement = plus grosse opportunité.",
+      "headKeywords": ["DAF externalisé", "CFO externalisé", "DAF à temps partagé", "directeur financier à temps partagé", "DAF externalisé tarif", "coût DAF externalisé"],
+      "competitors": ["exoqua.com", "smashgroup.fr", "dscaleup.com", "plateya.fr", "mondaf.fr", "digidaf.com", "mindsetfinance.fr"]
+    },
+    {
+      "id": "financement",
+      "name": "Financement & Levée de fonds",
+      "intent": "commercial",
+      "priority": 2,
+      "pillarSlug": "preparer-levee-de-fonds-financier",
+      "pillarTitle": "Préparer sa levée de fonds côté financier",
+      "headKeywords": ["préparer une levée de fonds", "questions investisseurs levée de fonds", "valorisation startup", "business plan financier 3 ans", "dette vs levée de fonds"],
+      "competitors": ["bpifrance-creation.fr", "seedlegals.com", "assurup.com", "reseau-entreprendre.org", "captaincontrat.com"]
+    },
+    {
+      "id": "tresorerie",
+      "name": "Trésorerie & Cash",
+      "intent": "info",
+      "priority": 3,
+      "pillarSlug": "gestion-tresorerie-pme-guide",
+      "pillarTitle": "Gestion de trésorerie PME : le guide complet",
+      "headKeywords": ["gestion trésorerie PME", "prévisionnel de trésorerie", "plan de trésorerie", "BFR", "réduire le BFR", "crise de trésorerie", "DSO"],
+      "competitors": ["agicap.com", "clearnox.com", "fygr.io", "orcom.fr", "archipel-lyon.fr"]
+    },
+    {
+      "id": "pilotage",
+      "name": "Pilotage & Reporting",
+      "intent": "info",
+      "priority": 4,
+      "pillarSlug": "tableau-de-bord-financier-kpis-pme",
+      "pillarTitle": "Tableau de bord financier : les KPIs du dirigeant",
+      "headKeywords": ["tableau de bord financier", "KPIs financiers PME", "reporting financier mensuel", "indicateurs financiers PME", "EBITDA"],
+      "competitors": ["archipel-lyon.fr", "fygr.io", "entreprisma.fr", "cegid.com", "oranova-conseil.fr"]
+    },
+    {
+      "id": "rentabilite",
+      "name": "Rentabilité & Marges",
+      "intent": "info",
+      "priority": 5,
+      "pillarSlug": "seuil-de-rentabilite-calcul-pme",
+      "pillarTitle": "Rentabilité PME : seuil, marges et coût de revient",
+      "headKeywords": ["seuil de rentabilité", "calcul point mort", "marge brute marge nette", "coût de revient", "réduire les coûts fixes", "taux de marge"],
+      "competitors": ["cegid.com", "the-big-win.com", "implid.com", "finom.co", "initiative-crm.com"]
+    },
+    {
+      "id": "strategie-dirigeant",
+      "name": "Stratégie & posture dirigeant",
+      "intent": "info",
+      "priority": 6,
+      "pillarSlug": "recul-strategique-planifier-temps-dirigeant",
+      "pillarTitle": "Recul stratégique : piloter sa PME sans subir",
+      "note": "Cluster existant (27 articles déjà en ligne). Intent plus faible mais cohérent avec le positionnement actuel du site. À interlier comme hub.",
+      "headKeywords": ["recul stratégique dirigeant", "biais du fondateur", "scaler PME", "déléguer dirigeant", "priorisation stratégique"],
+      "competitors": []
+    }
+  ]
+}

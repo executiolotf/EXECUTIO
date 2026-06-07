@@ -8,7 +8,8 @@
     "date": "2026-06-05",
     "icon": "trending-up",
     "image": "/insights/biais-fondateur-strategie-pme/hero.jpg",
-    "pexelsId": 20749938
+    "pexelsId": 20749938,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "angles-morts-fondateur-croissance",
@@ -19,7 +20,8 @@
     "date": "2026-06-04",
     "icon": "activity",
     "image": "/insights/angles-morts-fondateur-croissance/hero.jpg",
-    "pexelsId": 14840821
+    "pexelsId": 14840821,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "gerer-incertitude-strategique-dirigeant",
@@ -30,7 +32,8 @@
     "date": "2026-06-02",
     "icon": "clock",
     "image": "/insights/gerer-incertitude-strategique-dirigeant/hero.jpg",
-    "pexelsId": 7971358
+    "pexelsId": 7971358,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "vendre-ou-scaler-decision-dirigeant",
@@ -41,7 +44,8 @@
     "date": "2026-06-01",
     "icon": "bar-chart",
     "image": "/insights/vendre-ou-scaler-decision-dirigeant/hero.jpg",
-    "pexelsId": 7433835
+    "pexelsId": 7433835,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "positionnement-pme-differentiation",
@@ -52,7 +56,8 @@
     "date": "2026-05-29",
     "icon": "briefcase",
     "image": "/insights/positionnement-pme-differentiation/hero.jpg",
-    "pexelsId": 7794093
+    "pexelsId": 7794093,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "priorisation-strategique-leviers-croissance",
@@ -63,7 +68,8 @@
     "date": "2026-05-28",
     "icon": "trending-up",
     "image": "/insights/priorisation-strategique-leviers-croissance/hero.jpg",
-    "pexelsId": 7876671
+    "pexelsId": 7876671,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "erreurs-strategiques-bloquent-croissance",
@@ -74,7 +80,8 @@
     "date": "2026-05-26",
     "icon": "activity",
     "image": "/insights/erreurs-strategiques-bloquent-croissance/hero.jpg",
-    "pexelsId": 7947667
+    "pexelsId": 7947667,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "recul-strategique-planifier-temps-dirigeant",
@@ -85,7 +92,8 @@
     "date": "2026-05-25",
     "icon": "clock",
     "image": "/insights/recul-strategique-planifier-temps-dirigeant/hero.jpg",
-    "pexelsId": 5483236
+    "pexelsId": 5483236,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "quand-changer-positionnement-pme",
@@ -96,7 +104,8 @@
     "date": "2026-05-22",
     "icon": "bar-chart",
     "image": "/insights/quand-changer-positionnement-pme/hero.jpg",
-    "pexelsId": 7698719
+    "pexelsId": 7698719,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "signaux-pme-prete-niveau-superieur",
@@ -107,7 +116,8 @@
     "date": "2026-05-21",
     "icon": "trending-up",
     "image": "/insights/signaux-pme-prete-niveau-superieur/hero.jpg",
-    "pexelsId": 20044382
+    "pexelsId": 20044382,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "recruter-automatiser-externaliser-capacite-pme",
@@ -118,7 +128,8 @@
     "date": "2026-05-19",
     "icon": "users",
     "image": "/insights/recruter-automatiser-externaliser-capacite-pme/hero.jpg",
-    "pexelsId": 3184311
+    "pexelsId": 3184311,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "difference-pme-tourne-vs-scale",
@@ -129,7 +140,8 @@
     "date": "2026-05-18",
     "icon": "activity",
     "image": "/insights/difference-pme-tourne-vs-scale/hero.jpg",
-    "pexelsId": 10375934
+    "pexelsId": 10375934,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "meilleurs-clients-positionnement-reel-pme",
@@ -140,7 +152,8 @@
     "date": "2026-05-15",
     "icon": "users",
     "image": "/insights/meilleurs-clients-positionnement-reel-pme/hero.jpg",
-    "pexelsId": 32424519
+    "pexelsId": 32424519,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "exit-ou-scale-decision-dirigeant",
@@ -151,7 +164,8 @@
     "date": "2026-05-14",
     "icon": "trending-up",
     "image": "/insights/exit-ou-scale-decision-dirigeant/hero.jpg",
-    "pexelsId": 7433902
+    "pexelsId": 7433902,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "decision-sans-donnees-parfaites-methode-dirigeant",
@@ -162,7 +176,8 @@
     "date": "2026-05-12",
     "icon": "briefcase",
     "image": "/insights/decision-sans-donnees-parfaites-methode-dirigeant/hero.jpg",
-    "pexelsId": 8190817
+    "pexelsId": 8190817,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "processus-liberation-dirigeant-taches-recurrentes",
@@ -173,7 +188,8 @@
     "date": "2026-05-11",
     "icon": "clock",
     "image": "/insights/processus-liberation-dirigeant-taches-recurrentes/hero.jpg",
-    "pexelsId": 6592558
+    "pexelsId": 6592558,
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "croissance-sans-rentabilite-piege-pme",
@@ -183,7 +199,8 @@
     "readTime": "12 min",
     "date": "2026-05-08",
     "icon": "bar-chart",
-    "image": "https://images.pexels.com/photos/7413913/pexels-photo-7413913.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/7413913/pexels-photo-7413913.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "angle-mort-dirigeant-proximite-vision",
@@ -193,7 +210,8 @@
     "readTime": "12 min",
     "date": "2026-05-07",
     "icon": "activity",
-    "image": "https://images.pexels.com/photos/8297424/pexels-photo-8297424.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/8297424/pexels-photo-8297424.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "scaler-sans-se-perdre-cap-croissance",
@@ -203,7 +221,8 @@
     "readTime": "12 min",
     "date": "2026-05-05",
     "icon": "trending-up",
-    "image": "https://images.pexels.com/photos/7180493/pexels-photo-7180493.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/7180493/pexels-photo-7180493.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "reunions-organisation-pme-efficaces",
@@ -213,7 +232,8 @@
     "readTime": "12 min",
     "date": "2026-05-04",
     "icon": "briefcase",
-    "image": "https://images.pexels.com/photos/8068836/pexels-photo-8068836.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/8068836/pexels-photo-8068836.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "pareto-activites-chiffre-affaires-pme",
@@ -223,7 +243,8 @@
     "readTime": "12 min",
     "date": "2026-04-30",
     "icon": "bar-chart",
-    "image": "https://images.pexels.com/photos/7413910/pexels-photo-7413910.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/7413910/pexels-photo-7413910.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "agenda-dirigeant-etat-reel-entreprise",
@@ -233,7 +254,8 @@
     "readTime": "12 min",
     "date": "2026-04-29",
     "icon": "clock",
-    "image": "https://images.pexels.com/photos/8297136/pexels-photo-8297136.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/8297136/pexels-photo-8297136.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "priorisation-strategique-quoi-scaler",
@@ -243,7 +265,8 @@
     "readTime": "13 min",
     "date": "2026-04-29",
     "icon": "activity",
-    "image": "https://images.pexels.com/photos/7433828/pexels-photo-7433828.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/7433828/pexels-photo-7433828.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "deleguer-sans-perdre-controle-pme",
@@ -253,7 +276,8 @@
     "readTime": "12 min",
     "date": "2026-04-29",
     "icon": "users",
-    "image": "https://images.pexels.com/photos/1181405/pexels-photo-1181405.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/1181405/pexels-photo-1181405.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "leviers-croissance-pme-sans-levee-fonds",
@@ -263,7 +287,8 @@
     "readTime": "12 min",
     "date": "2026-04-29",
     "icon": "trending-up",
-    "image": "https://images.pexels.com/photos/7414310/pexels-photo-7414310.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/7414310/pexels-photo-7414310.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "expert-equipe-frein-croissance-dirigeant",
@@ -273,7 +298,8 @@
     "readTime": "12 min",
     "date": "2026-04-29",
     "icon": "users",
-    "image": "https://images.pexels.com/photos/13219418/pexels-photo-13219418.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/13219418/pexels-photo-13219418.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   },
   {
     "slug": "dirigeants-qui-scalent-travaillent-differemment",
@@ -283,6 +309,7 @@
     "readTime": "12 min",
     "date": "2026-04-29",
     "icon": "trending-up",
-    "image": "https://images.pexels.com/photos/11045731/pexels-photo-11045731.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    "image": "https://images.pexels.com/photos/11045731/pexels-photo-11045731.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "cluster": "strategie-dirigeant"
   }
 ]

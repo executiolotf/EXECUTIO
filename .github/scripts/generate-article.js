@@ -279,6 +279,15 @@ Réponds UNIQUEMENT avec le tableau JSON, sans texte autour.`
   return fresh;
 }
 
+// Sélectionne des articles de la même thématique (cluster) en priorité, pour
+// renforcer le maillage interne hub-and-spoke ; complète avec les plus récents.
+function clusterSiblings(existing, topic, n) {
+  if (!topic || !topic.cluster) return existing.slice(0, n);
+  const same = existing.filter(a => a.cluster === topic.cluster);
+  const rest = existing.filter(a => a.cluster !== topic.cluster);
+  return [...same, ...rest].slice(0, n);
+}
+
 async function main() {
   const existing = JSON.parse(fs.readFileSync(ARTICLES_JSON, 'utf-8'));
   const existingSlugs = new Set(existing.map(a => a.slug));
@@ -367,8 +376,8 @@ RÈGLES ABSOLUES :
 ✓ Inclure 1 à 2 liens externes vers des articles de référence, uniquement parmi cette liste — choisis les 1 ou 2 plus pertinents par rapport au sujet traité, intégrés naturellement dans le texte au format <a href="URL" target="_blank" rel="noopener noreferrer">texte ancre descriptif</a> :
 ${getRelevantLinks(topic.title, topic.category).map(l => `  - ${l.url} — "${l.title}"`).join('\n')}
 ✗ INTERDIT : n'utilise JAMAIS une URL que tu inventes ou qui ne figure pas dans cette liste. Si aucun lien ne s'applique naturellement, cite la source par son nom sans lien — ex. : "selon McKinsey (2023)" sans balise <a>.
-✓ Inclure 1 à 2 liens internes vers d'autres articles Executio si le contexte s'y prête naturellement :
-${existing.slice(0, 6).map(a => `  - "${a.title}" → https://exe-cutio.com/insights/${a.slug}/`).join('\n')}
+✓ Inclure 2 à 3 liens internes contextuels vers d'autres articles Executio de la MÊME thématique (priorité aux plus pertinents ci-dessous), intégrés naturellement dans le corps du texte au format <a href="URL">ancre descriptive</a> — ce maillage interne renforce l'autorité thématique :
+${clusterSiblings(existing, topic, 6).map(a => `  - "${a.title}" → https://exe-cutio.com/insights/${a.slug}/`).join('\n')}
 ✓ Terminer sur une note prospective ou une tension qui pousse à l'action — pas une répétition
 
 À la fin, sur une NOUVELLE LIGNE, écris exactement :
@@ -415,7 +424,7 @@ FAQ_END`
   console.log(`✓ Excerpt : ${excerpt}`);
   console.log(`✓ Temps de lecture : ${readTime}`);
 
-  const related = existing.slice(0, 3).map(a => `
+  const related = clusterSiblings(existing, topic, 3).map(a => `
       <a href="/insights/${a.slug}/" class="rcard">
         <div class="rcat">${a.category}</div>
         <div class="rtitle">${a.title}</div>
@@ -566,6 +575,7 @@ ${image ? `<figure class="art-img">
     slug: topic.slug,
     title: topic.title,
     category: topic.category,
+    cluster: topic.cluster || null,
     excerpt,
     readTime,
     date: dateStr,

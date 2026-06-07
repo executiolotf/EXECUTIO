@@ -1,5 +1,214 @@
 [
   {
+    "cluster": "daf-externalise",
+    "category": "Direction financière",
+    "intent": "commercial",
+    "icon": "briefcase",
+    "title": "DAF externalisé : missions, tarifs et quand y recourir en 2026",
+    "slug": "daf-externalise-missions-tarifs",
+    "keywords": "DAF externalisé, tarif DAF externalisé, missions DAF, directeur financier externalisé"
+  },
+  {
+    "cluster": "daf-externalise",
+    "category": "Direction financière",
+    "intent": "commercial",
+    "icon": "bar-chart",
+    "title": "Combien coûte un DAF externalisé ? Grille de prix et retour sur investissement",
+    "slug": "cout-daf-externalise-prix",
+    "keywords": "coût DAF externalisé, prix DAF externalisé, tarif jour DAF, DAF temps partagé prix"
+  },
+  {
+    "cluster": "daf-externalise",
+    "category": "Direction financière",
+    "intent": "commercial",
+    "icon": "activity",
+    "title": "DAF externalisé ou DAF interne : le vrai calcul coût-bénéfice",
+    "slug": "daf-externalise-vs-daf-interne",
+    "keywords": "DAF externalisé vs interne, internaliser ou externaliser DAF, coût DAF interne"
+  },
+  {
+    "cluster": "daf-externalise",
+    "category": "Direction financière",
+    "intent": "commercial",
+    "icon": "briefcase",
+    "title": "CFO à temps partagé vs DAF de transition : lequel pour votre phase",
+    "slug": "cfo-temps-partage-vs-daf-transition",
+    "keywords": "CFO à temps partagé, DAF de transition, directeur financier temps partagé"
+  },
+  {
+    "cluster": "daf-externalise",
+    "category": "Direction financière",
+    "intent": "commercial",
+    "icon": "shield",
+    "title": "Les 5 signaux qu une startup a besoin d un CFO externalisé",
+    "slug": "quand-startup-besoin-cfo-externalise",
+    "keywords": "CFO externalisé startup, quand prendre un DAF, besoin direction financière"
+  },
+  {
+    "cluster": "tresorerie",
+    "category": "Trésorerie & Cash",
+    "intent": "info",
+    "icon": "activity",
+    "title": "Gestion de trésorerie PME : le guide pour piloter au lieu de subir",
+    "slug": "gestion-tresorerie-pme-guide",
+    "keywords": "gestion trésorerie PME, piloter trésorerie, cash PME"
+  },
+  {
+    "cluster": "tresorerie",
+    "category": "Trésorerie & Cash",
+    "intent": "info",
+    "icon": "bar-chart",
+    "title": "Construire un prévisionnel de trésorerie fiable (méthode + erreurs)",
+    "slug": "previsionnel-tresorerie-pme-methode",
+    "keywords": "prévisionnel de trésorerie, plan de trésorerie, budget trésorerie"
+  },
+  {
+    "cluster": "tresorerie",
+    "category": "Trésorerie & Cash",
+    "intent": "info",
+    "icon": "trending-up",
+    "title": "BFR : comment le réduire et libérer du cash immédiatement",
+    "slug": "reduire-bfr-liberer-cash-pme",
+    "keywords": "BFR, réduire le BFR, besoin en fonds de roulement, optimiser BFR"
+  },
+  {
+    "cluster": "tresorerie",
+    "category": "Trésorerie & Cash",
+    "intent": "info",
+    "icon": "shield",
+    "title": "Les 3 signaux d une crise de trésorerie imminente",
+    "slug": "signaux-crise-tresorerie-pme",
+    "keywords": "crise de trésorerie, signaux alerte cash, rupture trésorerie PME"
+  },
+  {
+    "cluster": "tresorerie",
+    "category": "Trésorerie & Cash",
+    "intent": "info",
+    "icon": "clock",
+    "title": "DSO, BFR, runway : les indicateurs de trésorerie à suivre chaque semaine",
+    "slug": "indicateurs-tresorerie-dso-bfr-runway",
+    "keywords": "indicateurs trésorerie, DSO, runway, suivi cash"
+  },
+  {
+    "cluster": "pilotage",
+    "category": "Pilotage & Reporting",
+    "intent": "info",
+    "icon": "bar-chart",
+    "title": "Tableau de bord financier : les 8 KPIs que tout dirigeant doit suivre",
+    "slug": "tableau-de-bord-financier-kpis-pme",
+    "keywords": "tableau de bord financier, KPIs financiers PME, indicateurs dirigeant"
+  },
+  {
+    "cluster": "pilotage",
+    "category": "Pilotage & Reporting",
+    "intent": "info",
+    "icon": "clock",
+    "title": "Reporting financier mensuel : quoi mettre, à quelle fréquence",
+    "slug": "reporting-financier-mensuel-pme",
+    "keywords": "reporting financier mensuel, reporting PME, pilotage mensuel"
+  },
+  {
+    "cluster": "pilotage",
+    "category": "Pilotage & Reporting",
+    "intent": "info",
+    "icon": "book",
+    "title": "EBITDA, marge, cash : lire ses chiffres en 10 minutes sans être financier",
+    "slug": "lire-chiffres-financiers-dirigeant",
+    "keywords": "EBITDA, lire un bilan, comprendre ses chiffres dirigeant"
+  },
+  {
+    "cluster": "pilotage",
+    "category": "Pilotage & Reporting",
+    "intent": "info",
+    "icon": "activity",
+    "title": "Budget vs réalité : analyser les écarts qui comptent vraiment",
+    "slug": "budget-vs-realite-analyse-ecarts",
+    "keywords": "budget vs réalité, analyse des écarts, contrôle de gestion PME"
+  },
+  {
+    "cluster": "financement",
+    "category": "Financement & Levée",
+    "intent": "commercial",
+    "icon": "trending-up",
+    "title": "Préparer sa levée de fonds côté financier : la checklist complète",
+    "slug": "preparer-levee-de-fonds-financier",
+    "keywords": "préparer levée de fonds, pack investisseur, dossier financier levée"
+  },
+  {
+    "cluster": "financement",
+    "category": "Financement & Levée",
+    "intent": "info",
+    "icon": "shield",
+    "title": "Les 10 questions financières que tout investisseur va vous poser",
+    "slug": "questions-financieres-investisseurs-levee",
+    "keywords": "questions investisseurs, levée de fonds questions, due diligence financière"
+  },
+  {
+    "cluster": "financement",
+    "category": "Financement & Levée",
+    "intent": "info",
+    "icon": "bar-chart",
+    "title": "Valorisation de startup : méthodes, multiples et pièges",
+    "slug": "valorisation-startup-methodes",
+    "keywords": "valorisation startup, méthodes valorisation, multiples levée de fonds"
+  },
+  {
+    "cluster": "financement",
+    "category": "Financement & Levée",
+    "intent": "info",
+    "icon": "briefcase",
+    "title": "Business plan financier sur 3 ans : structure et erreurs à éviter",
+    "slug": "business-plan-financier-3-ans",
+    "keywords": "business plan financier 3 ans, prévisionnel financier, plan de financement"
+  },
+  {
+    "cluster": "financement",
+    "category": "Financement & Levée",
+    "intent": "info",
+    "icon": "activity",
+    "title": "Dette bancaire ou levée de fonds : comment financer sa croissance",
+    "slug": "dette-vs-levee-financer-croissance",
+    "keywords": "dette vs levée de fonds, financer la croissance PME, financement croissance"
+  },
+  {
+    "cluster": "rentabilite",
+    "category": "Rentabilité & Marges",
+    "intent": "info",
+    "icon": "trending-up",
+    "title": "Seuil de rentabilité : le calculer et s en servir pour décider",
+    "slug": "seuil-de-rentabilite-calcul-pme",
+    "keywords": "seuil de rentabilité, calcul point mort, break-even PME"
+  },
+  {
+    "cluster": "rentabilite",
+    "category": "Rentabilité & Marges",
+    "intent": "info",
+    "icon": "bar-chart",
+    "title": "Marge brute vs marge nette : où regarder en priorité",
+    "slug": "marge-brute-vs-marge-nette-pme",
+    "keywords": "marge brute marge nette, taux de marge, analyse marge PME"
+  },
+  {
+    "cluster": "rentabilite",
+    "category": "Rentabilité & Marges",
+    "intent": "info",
+    "icon": "book",
+    "title": "Connaître son coût de revient pour arrêter de se sous-vendre",
+    "slug": "cout-de-revient-pricing-pme",
+    "keywords": "coût de revient, pricing PME, politique tarifaire, fixer ses prix"
+  },
+  {
+    "cluster": "rentabilite",
+    "category": "Rentabilité & Marges",
+    "intent": "info",
+    "icon": "shield",
+    "title": "Réduire ses coûts fixes sans casser la croissance",
+    "slug": "reduire-couts-fixes-pme",
+    "keywords": "réduire coûts fixes, optimisation des coûts, frais généraux PME"
+  },
+  {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Regard extérieur stratégique : l'atout caché des PME qui scalent",
     "slug": "regard-exterieur-strategique-scale",
     "category": "Vision & Recul",
@@ -7,6 +216,8 @@
     "keywords": "regard extérieur PME, conseil stratégique, croissance scalable"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Recul stratégique : pourquoi la tête dans le guidon tue votre PME",
     "slug": "recul-strategique-tete-guidon",
     "category": "Vision & Recul",
@@ -14,6 +225,8 @@
     "keywords": "recul stratégique, opérationnel PME, vision dirigeant"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Proximité et décisions : ce que votre proximité vous cache vraiment",
     "slug": "proximite-decisions-ce-que-cache",
     "category": "Vision & Recul",
@@ -21,6 +234,8 @@
     "keywords": "proximité opérationnelle, prise décision, stratégie PME"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Paliers de croissance PME : reconnaître le moment du changement",
     "slug": "paliers-croissance-pme-moment",
     "category": "Croissance & Scale",
@@ -28,6 +243,8 @@
     "keywords": "paliers croissance, seuils PME, scaling moment"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Unit economics : le vrai pilote de votre croissance rentable",
     "slug": "unit-economics-croissance-rentable",
     "category": "Croissance & Scale",
@@ -35,6 +252,8 @@
     "keywords": "unit economics, rentabilité PME, croissance profitable"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Leviers de scale organique : croître sans dépendre du marketing",
     "slug": "leviers-scale-organique-pme",
     "category": "Croissance & Scale",
@@ -42,6 +261,8 @@
     "keywords": "scale organique, croissance PME, leviers rentables"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Croissance rentable vs croissance rapide : choisir votre modèle",
     "slug": "croissance-rentable-rapide-modele",
     "category": "Croissance & Scale",
@@ -49,6 +270,8 @@
     "keywords": "croissance rentable, modèle PME, scaling stratégique"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Modèle scalable : construire une PME qui se reproduit sans vous",
     "slug": "modele-scalable-sans-vous",
     "category": "Croissance & Scale",
@@ -56,6 +279,8 @@
     "keywords": "modèle scalable, indépendance dirigeant, PME growth"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Délégation stratégique : libérer le dirigeant pour vrai",
     "slug": "delegation-strategique-dirigeant",
     "category": "Organisation & Ops",
@@ -63,6 +288,8 @@
     "keywords": "délégation PME, libération dirigeant, management équipe"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Processus PME : les 5 processus clés du passage à l'échelle",
     "slug": "processus-pme-passage-echelle",
     "category": "Organisation & Ops",
@@ -70,6 +297,8 @@
     "keywords": "processus PME, scalabilité opérationnelle, croissance structure"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Réunions dirigeant : arrêter de vous perdre dans l'opérationnel",
     "slug": "reunions-dirigeant-operationnel",
     "category": "Organisation & Ops",
@@ -77,6 +306,8 @@
     "keywords": "réunions PME, temps dirigeant, recul stratégique"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Recrutement vs automatisation : le vrai arbitrage du croissance",
     "slug": "recrutement-automatisation-arbitrage",
     "category": "Organisation & Ops",
@@ -84,6 +315,8 @@
     "keywords": "recrutement PME, automatisation, scaling équipe"
   },
   {
+    "cluster": "strategie-dirigeant",
+    "intent": "info",
     "title": "Structure organisationnelle : adapter votre org au stade de croissance",
     "slug": "structure-organisationnelle-croissance",
     "category": "Organisation & Ops",
