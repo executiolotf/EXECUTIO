@@ -10,6 +10,8 @@
       "intent": "commercial",
       "priority": 1,
       "pillarSlug": "daf-externalise",
+      "pillarUrl": "/daf-externalise/",
+      "pillarLive": true,
       "pillarTitle": "DAF externalisé : missions, tarifs et quand y recourir",
       "note": "Cluster MONEY = l'offre réelle d'Executio. À transformer en page service (commercial). Aucun contenu sur le site actuellement = plus grosse opportunité.",
       "headKeywords": ["DAF externalisé", "CFO externalisé", "DAF à temps partagé", "directeur financier à temps partagé", "DAF externalisé tarif", "coût DAF externalisé"],

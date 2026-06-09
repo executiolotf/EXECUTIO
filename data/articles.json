@@ -1,29 +1,5 @@
 [
   {
-    "slug": "cout-daf-externalise-prix",
-    "title": "Combien coûte un DAF externalisé ? Grille de prix et retour sur investissement",
-    "category": "Direction financière",
-    "cluster": "daf-externalise",
-    "excerpt": "Le vrai coût d'un DAF externalisé ne se lit pas dans une grille tarifaire — il se mesure dans la qualité des décisions structurantes que vous prenez sans lui.",
-    "readTime": "10 min",
-    "date": "2026-06-09",
-    "icon": "bar-chart",
-    "image": "/insights/cout-daf-externalise-prix/hero.jpg",
-    "pexelsId": 7679568
-  },
-  {
-    "slug": "daf-externalise-missions-tarifs",
-    "title": "DAF externalisé : missions, tarifs et quand y recourir en 2026",
-    "category": "Direction financière",
-    "cluster": "daf-externalise",
-    "excerpt": "DAF externalisé : missions, tarifs et quand y recourir en 2026",
-    "readTime": "10 min",
-    "date": "2026-06-08",
-    "icon": "briefcase",
-    "image": "/insights/daf-externalise-missions-tarifs/hero.jpg",
-    "pexelsId": 7652134
-  },
-  {
     "slug": "biais-fondateur-strategie-pme",
     "title": "Biais du fondateur : pourquoi vous avez tort sur votre stratégie",
     "category": "Vision & Recul",
