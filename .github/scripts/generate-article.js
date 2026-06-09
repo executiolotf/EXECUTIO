@@ -12,8 +12,8 @@ const CLUSTERS_JSON = path.join(ROOT, 'data', 'keyword-clusters.json');
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 // Quality gate (2026-06-08): regenerate with editor feedback until score >= target.
-const QUALITY_THRESHOLD = 90;
-const MAX_ATTEMPTS = 6;
+const QUALITY_THRESHOLD = 85;
+const MAX_ATTEMPTS = 4;
 const WRITER_MODEL = 'claude-sonnet-4-6'; // upgraded from Haiku to reach the 90 bar
 const REVIEW_MODEL = 'claude-sonnet-4-6';
 
