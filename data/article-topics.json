@@ -2,15 +2,6 @@
   {
     "cluster": "strategie-dirigeant",
     "intent": "info",
-    "title": "Regard extérieur stratégique : l'atout caché des PME qui scalent",
-    "slug": "regard-exterieur-strategique-scale",
-    "category": "Vision & Recul",
-    "icon": "briefcase",
-    "keywords": "regard extérieur PME, conseil stratégique, croissance scalable"
-  },
-  {
-    "cluster": "strategie-dirigeant",
-    "intent": "info",
     "title": "Recul stratégique : pourquoi la tête dans le guidon tue votre PME",
     "slug": "recul-strategique-tete-guidon",
     "category": "Vision & Recul",
