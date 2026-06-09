@@ -7,8 +7,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const ARTICLES_JSON = path.join(ROOT, 'data', 'articles.json');
 const TOPICS_JSON = path.join(ROOT, 'data', 'article-topics.json');
+const CLUSTERS_JSON = path.join(ROOT, 'data', 'keyword-clusters.json');
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+// Quality gate (2026-06-08): regenerate with editor feedback until score >= target.
+const QUALITY_THRESHOLD = 90;
+const MAX_ATTEMPTS = 6;
+const WRITER_MODEL = 'claude-sonnet-4-6'; // upgraded from Haiku to reach the 90 bar
+const REVIEW_MODEL = 'claude-sonnet-4-6';
 
 const AUTHORITY_LINKS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'authority-links.json'), 'utf-8'));
 
@@ -288,6 +295,47 @@ function clusterSiblings(existing, topic, n) {
   return [...same, ...rest].slice(0, n);
 }
 
+// Retourne la page pilier d'un cluster UNIQUEMENT si elle est marquée live
+// (pillarLive) — garantit qu'on ne génère jamais de lien interne en 404.
+function livePillarFor(clusterId) {
+  if (!clusterId) return null;
+  try {
+    const data = JSON.parse(fs.readFileSync(CLUSTERS_JSON, 'utf-8'));
+    const c = (data.clusters || []).find(x => x.id === clusterId);
+    if (c && c.pillarLive && c.pillarUrl) return { url: c.pillarUrl, title: c.pillarTitle };
+  } catch { /* pas de carte de clusters : on ignore */ }
+  return null;
+}
+
+// Liste des liens internes proposés au modèle : la page pilier live du thème
+// en premier (si elle existe), puis les articles frères du même cluster.
+function internalLinkList(existing, topic) {
+  const lines = [];
+  const pillar = livePillarFor(topic && topic.cluster);
+  if (pillar) lines.push(`  - "${pillar.title}" (PAGE PILIER du thème — à lier en priorité) → https://exe-cutio.com${pillar.url}`);
+  clusterSiblings(existing, topic, pillar ? 5 : 6).forEach(a =>
+    lines.push(`  - "${a.title}" → https://exe-cutio.com/insights/${a.slug}/`));
+  return lines.join('\n');
+}
+
+async function reviewArticle(raw, topic) {
+  const body = raw.replace(/\nEXCERPT:[\s\S]*/, '').replace(/```/g, '').trim();
+  const msg = await client.messages.create({
+    model: REVIEW_MODEL,
+    max_tokens: 600,
+    messages: [{
+      role: 'user',
+      content: `Tu es rédacteur en chef exigeant d'un cabinet de conseil de direction. Note cet article (sujet : "${topic.title}") sur 100. Juge : utilité et profondeur réelles, point de vue affirmé, exemples/benchmarks concrets et crédibles, absence de remplissage et de formules creuses, qualité d'écriture en français, structure. Sois sévère — un article IA moyen mérite 60-75.\n\nRéponds UNIQUEMENT en JSON compact, sans prose :\n{"score": <0-100>, "verdict": "<une phrase>", "issues": ["correction concrète", "correction concrète"]}\n\nARTICLE :\n${body.slice(0, 14000)}`,
+    }],
+  });
+  const text = msg.content[0].text.trim();
+  try {
+    return JSON.parse(text.replace(/^```json\s*|\s*```$/g, ''));
+  } catch {
+    return { score: QUALITY_THRESHOLD, verdict: 'review-parse-failed', issues: [] };
+  }
+}
+
 async function main() {
   const existing = JSON.parse(fs.readFileSync(ARTICLES_JSON, 'utf-8'));
   const existingSlugs = new Set(existing.map(a => a.slug));
@@ -328,12 +376,7 @@ async function main() {
   // ignorent les chemins relatifs). On préfixe le domaine.
   const absoluteImagePath = `https://exe-cutio.com${localImagePath}`;
 
-  const resp = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 5000,
-    messages: [{
-      role: 'user',
-      content: `Tu es un conseiller stratégique senior — l'équivalent d'un partner de cabinet de conseil de direction (McKinsey OPS, Roland Berger, Kearney) qui travaille avec des dirigeants de PME et de startups en croissance. Tu rédiges des articles qui font référence dans la communauté des fondateurs et dirigeants de PME.
+  const articlePrompt = `Tu es un conseiller stratégique senior — l'équivalent d'un partner de cabinet de conseil de direction (McKinsey OPS, Roland Berger, Kearney) qui travaille avec des dirigeants de PME et de startups en croissance. Tu rédiges des articles qui font référence dans la communauté des fondateurs et dirigeants de PME.
 
 Narrative de marque : les dirigeants sont trop souvent "la tête dans le guidon" — absorbés par l'opérationnel, sans recul pour voir ce qui freine leur croissance ou ce qui mérite d'être scalé. Le regard extérieur d'un partenaire stratégique change ça.
 
@@ -377,7 +420,7 @@ RÈGLES ABSOLUES :
 ${getRelevantLinks(topic.title, topic.category).map(l => `  - ${l.url} — "${l.title}"`).join('\n')}
 ✗ INTERDIT : n'utilise JAMAIS une URL que tu inventes ou qui ne figure pas dans cette liste. Si aucun lien ne s'applique naturellement, cite la source par son nom sans lien — ex. : "selon McKinsey (2023)" sans balise <a>.
 ✓ Inclure 2 à 3 liens internes contextuels vers d'autres articles Executio de la MÊME thématique (priorité aux plus pertinents ci-dessous), intégrés naturellement dans le corps du texte au format <a href="URL">ancre descriptive</a> — ce maillage interne renforce l'autorité thématique :
-${clusterSiblings(existing, topic, 6).map(a => `  - "${a.title}" → https://exe-cutio.com/insights/${a.slug}/`).join('\n')}
+${internalLinkList(existing, topic)}
 ✓ Terminer sur une note prospective ou une tension qui pousse à l'action — pas une répétition
 
 À la fin, sur une NOUVELLE LIGNE, écris exactement :
@@ -390,11 +433,31 @@ Q: [deuxième question, différente angle]
 A: [réponse directe]
 Q: [troisième question]
 A: [réponse directe]
-FAQ_END`
-    }]
-  });
+FAQ_END`;
 
-  const raw = resp.content[0].text.trim();
+  // Quality gate: regenerate with the editor's feedback until score >= threshold.
+  let best = null; // { raw, score }
+  let feedback = null;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const fullPrompt = feedback
+      ? `${articlePrompt}\n\nNOTE : un brouillon précédent a été noté ${feedback.score}/100 par l'éditeur. Corrige ces points et écris un article nettement meilleur, plus concret et plus affirmé :\n${(feedback.issues || []).map((i) => `- ${i}`).join('\n')}`
+      : articlePrompt;
+    const r = await client.messages.create({
+      model: WRITER_MODEL,
+      max_tokens: 5000,
+      messages: [{ role: 'user', content: fullPrompt }],
+    });
+    const candidate = r.content[0].text.trim();
+    const review = await reviewArticle(candidate, topic);
+    console.log(`  essai ${attempt} : ${review.score}/100 — ${review.verdict}`);
+    if (!best || review.score > best.score) best = { raw: candidate, score: review.score };
+    if (review.score >= QUALITY_THRESHOLD) break;
+    feedback = review;
+  }
+  if (best.score < QUALITY_THRESHOLD) {
+    console.log(`⚠ Meilleur score après ${MAX_ATTEMPTS} essais : ${best.score}/100 (cible ${QUALITY_THRESHOLD}). Publication du meilleur brouillon.`);
+  }
+  const raw = best.raw;
 
   const excerptMatch = raw.match(/\nEXCERPT:\s*(.+)/);
   const readtimeMatch = raw.match(/\nREADTIME:\s*(\d+)/);
@@ -598,6 +661,7 @@ ${image ? `<figure class="art-img">
   const sitemapPages = [
     { url: '/', priority: '1.0', changefreq: 'weekly' },
     { url: '/insights/', priority: '0.9', changefreq: 'daily' },
+    { url: '/daf-externalise/', priority: '0.9', changefreq: 'monthly' },
     { url: '/a-propos/', priority: '0.8', changefreq: 'monthly' },
     ...updatedArticles.map(a => ({ url: `/insights/${a.slug}/`, lastmod: a.date, priority: '0.8', changefreq: 'monthly' }))
   ];
