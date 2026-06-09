@@ -329,11 +329,12 @@ async function reviewArticle(raw, topic) {
     }],
   });
   const text = msg.content[0].text.trim();
-  try {
-    return JSON.parse(text.replace(/^```json\s*|\s*```$/g, ''));
-  } catch {
-    return { score: QUALITY_THRESHOLD, verdict: 'review-parse-failed', issues: [] };
+  const m = text.match(/\{[\s\S]*\}/);
+  if (m) {
+    try { return JSON.parse(m[0]); } catch { /* fall through */ }
   }
+  // Parse failed: score low so a glitchy review never falsely passes the gate.
+  return { score: 0, verdict: 'review-unparseable', issues: [] };
 }
 
 async function main() {
