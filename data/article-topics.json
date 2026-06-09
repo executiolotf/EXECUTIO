@@ -3,15 +3,6 @@
     "cluster": "daf-externalise",
     "category": "Direction financière",
     "intent": "commercial",
-    "icon": "bar-chart",
-    "title": "Combien coûte un DAF externalisé ? Grille de prix et retour sur investissement",
-    "slug": "cout-daf-externalise-prix",
-    "keywords": "coût DAF externalisé, prix DAF externalisé, tarif jour DAF, DAF temps partagé prix"
-  },
-  {
-    "cluster": "daf-externalise",
-    "category": "Direction financière",
-    "intent": "commercial",
     "icon": "activity",
     "title": "DAF externalisé ou DAF interne : le vrai calcul coût-bénéfice",
     "slug": "daf-externalise-vs-daf-interne",
