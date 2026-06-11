@@ -2,15 +2,6 @@
   {
     "cluster": "strategie-dirigeant",
     "intent": "info",
-    "title": "Recul stratégique : pourquoi la tête dans le guidon tue votre PME",
-    "slug": "recul-strategique-tete-guidon",
-    "category": "Vision & Recul",
-    "icon": "bar-chart",
-    "keywords": "recul stratégique, opérationnel PME, vision dirigeant"
-  },
-  {
-    "cluster": "strategie-dirigeant",
-    "intent": "info",
     "title": "Proximité et décisions : ce que votre proximité vous cache vraiment",
     "slug": "proximite-decisions-ce-que-cache",
     "category": "Vision & Recul",
