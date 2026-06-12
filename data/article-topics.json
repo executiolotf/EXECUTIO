@@ -2,15 +2,6 @@
   {
     "cluster": "strategie-dirigeant",
     "intent": "info",
-    "title": "Proximité et décisions : ce que votre proximité vous cache vraiment",
-    "slug": "proximite-decisions-ce-que-cache",
-    "category": "Vision & Recul",
-    "icon": "clock",
-    "keywords": "proximité opérationnelle, prise décision, stratégie PME"
-  },
-  {
-    "cluster": "strategie-dirigeant",
-    "intent": "info",
     "title": "Paliers de croissance PME : reconnaître le moment du changement",
     "slug": "paliers-croissance-pme-moment",
     "category": "Croissance & Scale",
