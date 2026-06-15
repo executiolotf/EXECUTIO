@@ -2,15 +2,6 @@
   {
     "cluster": "strategie-dirigeant",
     "intent": "info",
-    "title": "Paliers de croissance PME : reconnaître le moment du changement",
-    "slug": "paliers-croissance-pme-moment",
-    "category": "Croissance & Scale",
-    "icon": "activity",
-    "keywords": "paliers croissance, seuils PME, scaling moment"
-  },
-  {
-    "cluster": "strategie-dirigeant",
-    "intent": "info",
     "title": "Unit economics : le vrai pilote de votre croissance rentable",
     "slug": "unit-economics-croissance-rentable",
     "category": "Croissance & Scale",
