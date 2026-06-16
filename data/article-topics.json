@@ -2,15 +2,6 @@
   {
     "cluster": "strategie-dirigeant",
     "intent": "info",
-    "title": "Unit economics : le vrai pilote de votre croissance rentable",
-    "slug": "unit-economics-croissance-rentable",
-    "category": "Croissance & Scale",
-    "icon": "trending-up",
-    "keywords": "unit economics, rentabilité PME, croissance profitable"
-  },
-  {
-    "cluster": "strategie-dirigeant",
-    "intent": "info",
     "title": "Leviers de scale organique : croître sans dépendre du marketing",
     "slug": "leviers-scale-organique-pme",
     "category": "Croissance & Scale",
