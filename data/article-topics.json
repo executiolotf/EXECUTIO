@@ -2,15 +2,6 @@
   {
     "cluster": "strategie-dirigeant",
     "intent": "info",
-    "title": "Croissance rentable vs croissance rapide : choisir votre modèle",
-    "slug": "croissance-rentable-rapide-modele",
-    "category": "Croissance & Scale",
-    "icon": "bar-chart",
-    "keywords": "croissance rentable, modèle PME, scaling stratégique"
-  },
-  {
-    "cluster": "strategie-dirigeant",
-    "intent": "info",
     "title": "Modèle scalable : construire une PME qui se reproduit sans vous",
     "slug": "modele-scalable-sans-vous",
     "category": "Croissance & Scale",
