@@ -2,15 +2,6 @@
   {
     "cluster": "strategie-dirigeant",
     "intent": "info",
-    "title": "Modèle scalable : construire une PME qui se reproduit sans vous",
-    "slug": "modele-scalable-sans-vous",
-    "category": "Croissance & Scale",
-    "icon": "clock",
-    "keywords": "modèle scalable, indépendance dirigeant, PME growth"
-  },
-  {
-    "cluster": "strategie-dirigeant",
-    "intent": "info",
     "title": "Délégation stratégique : libérer le dirigeant pour vrai",
     "slug": "delegation-strategique-dirigeant",
     "category": "Organisation & Ops",
