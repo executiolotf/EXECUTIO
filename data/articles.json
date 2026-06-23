@@ -1,5 +1,17 @@
 [
   {
+    "slug": "delegation-strategique-dirigeant",
+    "title": "Délégation stratégique : libérer le dirigeant pour vrai",
+    "category": "Organisation & Ops",
+    "cluster": "strategie-dirigeant",
+    "excerpt": "Déléguer des tâches ne libère pas le dirigeant — seul un transfert réel d'autorité décisionnelle le fait. Voici pourquoi la plupart échouent et ce qui change vraiment.",
+    "readTime": "9 min",
+    "date": "2026-06-23",
+    "icon": "activity",
+    "image": "/insights/delegation-strategique-dirigeant/hero.jpg",
+    "pexelsId": 8204370
+  },
+  {
     "slug": "modele-scalable-sans-vous",
     "title": "Modèle scalable : construire une PME qui se reproduit sans vous",
     "category": "Croissance & Scale",
