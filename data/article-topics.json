@@ -2,15 +2,6 @@
   {
     "cluster": "strategie-dirigeant",
     "intent": "info",
-    "title": "Processus PME : les 5 processus clés du passage à l'échelle",
-    "slug": "processus-pme-passage-echelle",
-    "category": "Organisation & Ops",
-    "icon": "trending-up",
-    "keywords": "processus PME, scalabilité opérationnelle, croissance structure"
-  },
-  {
-    "cluster": "strategie-dirigeant",
-    "intent": "info",
     "title": "Réunions dirigeant : arrêter de vous perdre dans l'opérationnel",
     "slug": "reunions-dirigeant-operationnel",
     "category": "Organisation & Ops",

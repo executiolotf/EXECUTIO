@@ -1,5 +1,17 @@
 [
   {
+    "slug": "processus-pme-passage-echelle",
+    "title": "Processus PME : les 5 processus clés du passage à l'échelle",
+    "category": "Organisation & Ops",
+    "cluster": "strategie-dirigeant",
+    "excerpt": "La plupart des PME ne scalent pas par manque de clients — mais parce que leur organisation n'a jamais été conçue pour en accueillir davantage. Voici les 5 processus qui changent ça.",
+    "readTime": "10 min",
+    "date": "2026-06-25",
+    "icon": "trending-up",
+    "image": "/insights/processus-pme-passage-echelle/hero.jpg",
+    "pexelsId": 9034992
+  },
+  {
     "slug": "delegation-strategique-dirigeant",
     "title": "Délégation stratégique : libérer le dirigeant pour vrai",
     "category": "Organisation & Ops",
