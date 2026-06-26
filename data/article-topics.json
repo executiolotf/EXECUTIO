@@ -2,15 +2,6 @@
   {
     "cluster": "strategie-dirigeant",
     "intent": "info",
-    "title": "Réunions dirigeant : arrêter de vous perdre dans l'opérationnel",
-    "slug": "reunions-dirigeant-operationnel",
-    "category": "Organisation & Ops",
-    "icon": "briefcase",
-    "keywords": "réunions PME, temps dirigeant, recul stratégique"
-  },
-  {
-    "cluster": "strategie-dirigeant",
-    "intent": "info",
     "title": "Recrutement vs automatisation : le vrai arbitrage du croissance",
     "slug": "recrutement-automatisation-arbitrage",
     "category": "Organisation & Ops",

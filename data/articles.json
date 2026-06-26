@@ -1,5 +1,17 @@
 [
   {
+    "slug": "reunions-dirigeant-operationnel",
+    "title": "Réunions dirigeant : arrêter de vous perdre dans l'opérationnel",
+    "category": "Organisation & Ops",
+    "cluster": "strategie-dirigeant",
+    "excerpt": "Vos réunions PME absorbent votre temps dirigeant dans l'opérationnel — et chaque heure perdue là est une décision stratégique qui ne se prend pas.",
+    "readTime": "10 min",
+    "date": "2026-06-26",
+    "icon": "briefcase",
+    "image": "/insights/reunions-dirigeant-operationnel/hero.jpg",
+    "pexelsId": 8636589
+  },
+  {
     "slug": "processus-pme-passage-echelle",
     "title": "Processus PME : les 5 processus clés du passage à l'échelle",
     "category": "Organisation & Ops",
