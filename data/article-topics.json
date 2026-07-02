@@ -1,1 +1,128 @@
-[]
+[
+  {
+    "title": "Priorisation stratégique : arrêter 80% pour grandir sur 20%",
+    "slug": "priorisation-stratégique-pme-croissance",
+    "category": "Stratégie dirigeant",
+    "icon": "trending-up",
+    "keywords": "priorisation PME, stratégie croissance, focus dirigeant"
+  },
+  {
+    "title": "Sortie ou croissance ? Le dilemme que tout fondateur doit trancher",
+    "slug": "sortie-ou-croissance-fondateur",
+    "category": "Stratégie dirigeant",
+    "icon": "briefcase",
+    "keywords": "sortie entreprise, croissance PME, décision fondateur"
+  },
+  {
+    "title": "Gérer l'incertitude en croissance : du doute à la décision éclairée",
+    "slug": "gerer-incertitude-croissance-pme",
+    "category": "Stratégie dirigeant",
+    "icon": "clock",
+    "keywords": "incertitude stratégique, croissance PME, prise décision"
+  },
+  {
+    "title": "Positionnement stratégique : se différencier dans un marché saturé",
+    "slug": "positionnement-strategique-pme-marche",
+    "category": "Stratégie dirigeant",
+    "icon": "bar-chart",
+    "keywords": "positionnement marché, différenciation PME, stratégie"
+  },
+  {
+    "title": "Les angles morts du fondateur : ce que la proximité vous cache",
+    "slug": "angles-morts-fondateur-pme",
+    "category": "Vision & Recul",
+    "icon": "activity",
+    "keywords": "angles morts fondateur, biais cognitif, recul stratégique"
+  },
+  {
+    "title": "Biais du fondateur : pourquoi vous ne voyez pas vos freins de croissance",
+    "slug": "biais-fondateur-freins-croissance",
+    "category": "Vision & Recul",
+    "icon": "trending-up",
+    "keywords": "biais fondateur, vision stratégique, croissance PME"
+  },
+  {
+    "title": "Le regard extérieur : comment un partenaire stratégique accélère votre croissance",
+    "slug": "regard-exterieur-partenaire-stratégique",
+    "category": "Vision & Recul",
+    "icon": "briefcase",
+    "keywords": "partenaire stratégique, conseil PME, croissance"
+  },
+  {
+    "title": "Prendre du recul sans ralentir : la clé des PME en hypercroissance",
+    "slug": "recul-strategique-hypercroissance-pme",
+    "category": "Vision & Recul",
+    "icon": "clock",
+    "keywords": "recul stratégique, hypercroissance, management PME"
+  },
+  {
+    "title": "Ce que votre proximité vous empêche de voir dans votre business model",
+    "slug": "proximité-business-model-blind-spot",
+    "category": "Vision & Recul",
+    "icon": "bar-chart",
+    "keywords": "business model PME, vision stratégique, proximité opérationnelle"
+  },
+  {
+    "title": "Paliers de croissance : identifier et franchir les seuils critiques",
+    "slug": "paliers-croissance-pme-seuils",
+    "category": "Croissance & Scale",
+    "icon": "activity",
+    "keywords": "paliers croissance, seuils PME, scale-up"
+  },
+  {
+    "title": "Unit economics : la métrique oubliée qui freine 70% des croissances",
+    "slug": "unit-economics-pme-rentabilité",
+    "category": "Croissance & Scale",
+    "icon": "trending-up",
+    "keywords": "unit economics PME, rentabilité, croissance"
+  },
+  {
+    "title": "Croissance rentable vs croissance à tout prix : le vrai choix des PME",
+    "slug": "croissance-rentable-versus-brûler-cash",
+    "category": "Croissance & Scale",
+    "icon": "clock",
+    "keywords": "croissance rentable PME, unit economics, trésorerie"
+  },
+  {
+    "title": "Modèle scalable : construire une machine de croissance qui tourne toute seule",
+    "slug": "modele-scalable-croissance-automatisée",
+    "category": "Croissance & Scale",
+    "icon": "bar-chart",
+    "keywords": "modèle scalable, croissance PME, automatisation"
+  },
+  {
+    "title": "Délégation efficace : passer de fondateur à manager sans perdre le contrôle",
+    "slug": "delegation-fondateur-manager-pme",
+    "category": "Organisation & Ops",
+    "icon": "activity",
+    "keywords": "délégation PME, management fondateur, contrôle"
+  },
+  {
+    "title": "Processus et documentation : transformer votre chaos en machine prévisible",
+    "slug": "processus-documentation-pme-croissance",
+    "category": "Organisation & Ops",
+    "icon": "trending-up",
+    "keywords": "processus PME, documentation, scalabilité"
+  },
+  {
+    "title": "Réunions inutiles : comment récupérer 15h par semaine de temps stratégique",
+    "slug": "reunions-inutiles-temps-strategique",
+    "category": "Organisation & Ops",
+    "icon": "briefcase",
+    "keywords": "réunions PME, productivité dirigeant, temps"
+  },
+  {
+    "title": "Recrutement vs automatisation : où investir pour scaler intelligemment",
+    "slug": "recrutement-automatisation-scale-pme",
+    "category": "Organisation & Ops",
+    "icon": "clock",
+    "keywords": "recrutement PME, automatisation, structure"
+  },
+  {
+    "title": "Structure organisationnelle : comment l'adapter à chaque étape de croissance",
+    "slug": "structure-organisationnelle-etapes-croissance",
+    "category": "Organisation & Ops",
+    "icon": "bar-chart",
+    "keywords": "structure PME, organisation croissance, management"
+  }
+]
