@@ -1,5 +1,17 @@
 [
   {
+    "slug": "delegation-fondateur-manager-pme",
+    "title": "Délégation efficace : passer de fondateur à manager sans perdre le contrôle",
+    "category": "Organisation & Ops",
+    "cluster": null,
+    "excerpt": "Déléguer sans perdre le contrôle : le paradoxe que tout fondateur de PME doit résoudre avant de scaler — et que la plupart ratent pour une raison inattendue.",
+    "readTime": "9 min",
+    "date": "2026-07-27",
+    "icon": "activity",
+    "image": "/insights/delegation-fondateur-manager-pme/hero.jpg",
+    "pexelsId": 6804075
+  },
+  {
     "slug": "modele-scalable-croissance-automatisée",
     "title": "Modèle scalable : construire une machine de croissance qui tourne toute seule",
     "category": "Croissance & Scale",
