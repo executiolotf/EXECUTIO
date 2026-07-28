@@ -1,5 +1,17 @@
 [
   {
+    "slug": "processus-documentation-pme-croissance",
+    "title": "Processus et documentation : transformer votre chaos en machine prévisible",
+    "category": "Organisation & Ops",
+    "cluster": null,
+    "excerpt": "Votre entreprise ne stagne pas faute de clients — elle stagne parce qu'elle tient dans la tête de trois personnes. Ce que la documentation change vraiment.",
+    "readTime": "9 min",
+    "date": "2026-07-28",
+    "icon": "trending-up",
+    "image": "/insights/processus-documentation-pme-croissance/hero.jpg",
+    "pexelsId": 5899169
+  },
+  {
     "slug": "delegation-fondateur-manager-pme",
     "title": "Délégation efficace : passer de fondateur à manager sans perdre le contrôle",
     "category": "Organisation & Ops",
