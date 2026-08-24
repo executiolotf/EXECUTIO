@@ -1,5 +1,17 @@
 [
   {
+    "slug": "unit-economics-pme",
+    "title": "Unit economics : comprendre les vrais leviers de rentabilité de votre PME",
+    "category": "Croissance & Scale",
+    "cluster": null,
+    "excerpt": "Votre CA progresse, mais savez-vous quels clients, offres et segments créent vraiment de la valeur ? Les unit economics révèlent ce que le compte de résultat masque.",
+    "readTime": "10 min",
+    "date": "2026-08-24",
+    "icon": "bar-chart",
+    "image": "/insights/unit-economics-pme/hero.jpg",
+    "pexelsId": 3183150
+  },
+  {
     "slug": "paliers-croissance-pme",
     "title": "Les 3 paliers de croissance : où votre PME est-elle bloquée ?",
     "category": "Croissance & Scale",
