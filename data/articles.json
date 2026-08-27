@@ -1,5 +1,17 @@
 [
   {
+    "slug": "modele-scalable-couts",
+    "title": "Construire un modèle scalable sans explosion des coûts d'exploitation",
+    "category": "Croissance & Scale",
+    "cluster": null,
+    "excerpt": "Doubler son CA sans doubler ses coûts : c'est possible, mais ça ne s'improvise pas. Ce que les PME qui y arrivent font différemment.",
+    "readTime": "9 min",
+    "date": "2026-08-27",
+    "icon": "briefcase",
+    "image": "/insights/modele-scalable-couts/hero.jpg",
+    "pexelsId": 7653578
+  },
+  {
     "slug": "leviers-croissance-organique",
     "title": "Croissance organique rentable : les 5 leviers que les PME oublient",
     "category": "Croissance & Scale",
