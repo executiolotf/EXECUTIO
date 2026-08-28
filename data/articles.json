@@ -1,5 +1,17 @@
 [
   {
+    "slug": "croissance-rentable-marge",
+    "title": "Croissance rentable : comment ne pas sacrifier la marge pour le volume",
+    "category": "Croissance & Scale",
+    "cluster": null,
+    "excerpt": "Doubler son CA en sacrifiant sa marge : le piège le plus fréquent — et le moins discuté — de la croissance en PME. Ce qu'il faut vraiment changer.",
+    "readTime": "10 min",
+    "date": "2026-08-28",
+    "icon": "bar-chart",
+    "image": "/insights/croissance-rentable-marge/hero.jpg",
+    "pexelsId": 28955772
+  },
+  {
     "slug": "modele-scalable-couts",
     "title": "Construire un modèle scalable sans explosion des coûts d'exploitation",
     "category": "Croissance & Scale",
