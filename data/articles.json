@@ -1,5 +1,17 @@
 [
   {
+    "slug": "delegation-dirigeant-controle",
+    "title": "Délégation dirigeant : comment lâcher prise sans perdre le contrôle",
+    "category": "Organisation & Ops",
+    "cluster": null,
+    "excerpt": "Déléguer sans lâcher le contrôle, c'est possible — mais ça demande du design organisationnel, pas de la confiance aveugle. Voici ce que font vraiment les dirigeants qui y arrivent.",
+    "readTime": "10 min",
+    "date": "2026-08-31",
+    "icon": "users",
+    "image": "/insights/delegation-dirigeant-controle/hero.jpg",
+    "pexelsId": 31259261
+  },
+  {
     "slug": "croissance-rentable-marge",
     "title": "Croissance rentable : comment ne pas sacrifier la marge pour le volume",
     "category": "Croissance & Scale",
