@@ -1,5 +1,17 @@
 [
   {
+    "slug": "audit-reunions-productivite",
+    "title": "Les réunions qui tuent la productivité : audit et restructuration",
+    "category": "Organisation & Ops",
+    "cluster": null,
+    "excerpt": "Vous passez des heures en réunion pour avancer — et c'est exactement pour ça que vous reculez. Voici ce que révèle vraiment votre agenda.",
+    "readTime": "9 min",
+    "date": "2026-09-03",
+    "icon": "clock",
+    "image": "/insights/audit-reunions-productivite/hero.jpg",
+    "pexelsId": 8485591
+  },
+  {
     "slug": "processus-flexibilite-pme",
     "title": "Processus vs flexibilité : trouver l'équilibre pour une PME en croissance",
     "category": "Organisation & Ops",
