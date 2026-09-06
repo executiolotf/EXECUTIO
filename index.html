@@ -1099,7 +1099,7 @@ document.querySelectorAll('.scard').forEach(function(card){
   form.querySelectorAll('.cf-next').forEach(function(btn){btn.addEventListener('click',function(){if(validateStep(cur))setStep(cur+1);});});
   form.querySelectorAll('.cf-prev').forEach(function(btn){btn.addEventListener('click',function(){setStep(cur-1);});});
   form.addEventListener('submit',function(e){e.preventDefault();if(!validateStep(3))return;var btn=document.getElementById('cf-btn');btn.disabled=true;btn.textContent='...';
-    fetch('/.netlify/functions/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstname:val('firstname'),email:val('email'),role:val('role'),company_type:val('company_type'),industry:val('industry'),stage:val('stage'),revenue:val('revenue'),problem:val('problem'),budget:val('budget'),urgency:val('urgency'),message:val('message')})})
+    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstname:val('firstname'),email:val('email'),role:val('role'),company_type:val('company_type'),industry:val('industry'),stage:val('stage'),revenue:val('revenue'),problem:val('problem'),budget:val('budget'),urgency:val('urgency'),message:val('message')})})
     .then(function(r){return r.json();}).then(function(d){if(d.success){form.style.display='none';succ.style.display='block';}else{btn.disabled=false;btn.textContent='Envoyer →';}}).catch(function(){btn.disabled=false;btn.textContent='Envoyer →';});
   });
 })();
