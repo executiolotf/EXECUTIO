@@ -1,5 +1,17 @@
 [
   {
+    "slug": "structure-agile-pme-croissance",
+    "title": "Structure organisationnelle agile : adapter votre PME à la croissance",
+    "category": "Organisation & Ops",
+    "cluster": null,
+    "excerpt": "Votre CA a doublé, mais votre organisation n'a pas bougé — et c'est précisément ce qui va freiner la suite. Ce que font vraiment les PME qui scalent.",
+    "readTime": "9 min",
+    "date": "2026-09-07",
+    "icon": "trending-up",
+    "image": "/insights/structure-agile-pme-croissance/hero.jpg",
+    "pexelsId": 8867276
+  },
+  {
     "slug": "recruter-automatiser-scale",
     "title": "Recruter ou automatiser : la vraie question pour scale votre PME",
     "category": "Organisation & Ops",
