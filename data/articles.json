@@ -1,5 +1,17 @@
 [
   {
+    "slug": "processus-blocages-operationnels",
+    "title": "Processus qui tue la croissance : audit des blocages opérationnels",
+    "category": "Organisation & Ops",
+    "cluster": null,
+    "excerpt": "Vos processus PME ont été conçus pour hier — et ils freinent silencieusement votre croissance aujourd'hui. Voici comment auditer ce qui bloque vraiment.",
+    "readTime": "9 min",
+    "date": "2026-10-15",
+    "icon": "clock",
+    "image": "/insights/processus-blocages-operationnels/hero.jpg",
+    "pexelsId": 8866738
+  },
+  {
     "slug": "delegation-controle-direction-pme",
     "title": "Délégation sans perte de contrôle : la clé pour diriger à distance",
     "category": "Organisation & Ops",
