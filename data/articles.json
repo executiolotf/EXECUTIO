@@ -1,5 +1,17 @@
 [
   {
+    "slug": "reunions-cout-productivite-pme",
+    "title": "Réunions qui mangent votre temps : le coût caché que personne ne chiffre",
+    "category": "Organisation & Ops",
+    "cluster": null,
+    "excerpt": "Vos réunions ne coûtent pas que du temps — elles coûtent les décisions stratégiques que vous n'avez pas prises. Un calcul que peu de dirigeants font vraiment.",
+    "readTime": "9 min",
+    "date": "2026-10-16",
+    "icon": "activity",
+    "image": "/insights/reunions-cout-productivite-pme/hero.jpg",
+    "pexelsId": 6814341
+  },
+  {
     "slug": "processus-blocages-operationnels",
     "title": "Processus qui tue la croissance : audit des blocages opérationnels",
     "category": "Organisation & Ops",
