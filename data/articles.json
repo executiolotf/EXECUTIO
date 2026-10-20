@@ -1,5 +1,17 @@
 [
   {
+    "slug": "structure-organisation-croissance-pme",
+    "title": "Structure organisationnelle : la colonne vertébrale invisible de la croissance",
+    "category": "Organisation & Ops",
+    "cluster": null,
+    "excerpt": "Une structure organisationnelle ne se construit pas en urgence — elle se conçoit. Les PME qui franchissent les paliers de croissance l'ont compris avant les autres.",
+    "readTime": "10 min",
+    "date": "2026-10-20",
+    "icon": "briefcase",
+    "image": "/insights/structure-organisation-croissance-pme/hero.jpg",
+    "pexelsId": 8154163
+  },
+  {
     "slug": "recruter-vs-automatiser-croissance",
     "title": "Recruter ou automatiser ? Le piège des PME en croissance accélérée",
     "category": "Organisation & Ops",
