@@ -1,11 +1,9 @@
 name: Generate Weekly Insights Articles
 
 on:
-  schedule:
-    - cron: '0 8 * * 1'  # Lundi 9h CET
-    - cron: '0 8 * * 2'  # Mardi 9h CET
-    - cron: '0 8 * * 4'  # Jeudi 9h CET
-    - cron: '0 8 * * 5'  # Vendredi 9h CET
+  # Publication automatique suspendue (2026-10-24) : 4 articles/semaine non relus
+  # nuisaient à la crédibilité (doublons, cas clients inventés). Lancer à la main
+  # puis relire l'article avant de le laisser en ligne.
   workflow_dispatch:      # Déclenchement manuel
 
 jobs:

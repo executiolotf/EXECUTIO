@@ -232,7 +232,7 @@ function formatDateFR(d) {
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
-async function regenerateTopics(existingSlugs) {
+async function regenerateTopics(existingSlugs, existing = []) {
   console.log('\n🔄 Pool de sujets épuisé — génération de nouveaux sujets via Claude...\n');
 
   const currentYear = new Date().getFullYear();
@@ -243,15 +243,18 @@ async function regenerateTopics(existingSlugs) {
       role: 'user',
       content: `Tu es un expert SEO spécialisé en stratégie d'entreprise et management pour les PME et startups en croissance.
 
-Génère exactement 20 nouveaux sujets d'articles de blog SEO pour Executio (partenaire stratégique externe pour dirigeants de PME). Ces articles ciblent des dirigeants de PME (5 à 50 personnes), fondateurs et entrepreneurs en croissance.
+Génère jusqu'à 20 nouveaux sujets d'articles de blog SEO pour Executio (partenaire stratégique externe pour dirigeants de PME). Ces articles ciblent des dirigeants de PME (5 à 50 personnes), fondateurs et entrepreneurs en croissance.
 
 Narrative centrale : les dirigeants sont trop souvent "la tête dans le guidon" — pris dans l'opérationnel, sans recul pour voir ce qui freine leur croissance et ce qui mérite d'être scalé. Executio apporte ce regard extérieur.
 
-Mélange obligatoire :
+Répartition indicative (uniquement des angles nouveaux) :
 - 5 sujets "Stratégie dirigeant" : décision stratégique, priorisation, positionnement, sortie vs croissance, gestion de l'incertitude
 - 5 sujets "Vision & Recul" : angles morts, biais du fondateur, regard extérieur, recul stratégique, ce que la proximité cache
 - 5 sujets "Croissance & Scale" : paliers de croissance, unit economics, leviers de scale organique, croissance rentable, modèle scalable
 - 5 sujets "Organisation & Ops" : délégation, processus, réunions, recrutement vs automatisation, structure organisationnelle
+
+Sujets DÉJÀ publiés — INTERDIT de proposer un sujet qui traite du même problème, même reformulé (la cannibalisation tue le référencement et la crédibilité). Ne propose que des angles réellement nouveaux ; mieux vaut moins de 20 sujets que des doublons :
+${existing.map(a => `- ${a.title}`).join('\n')}
 
 Pour chaque sujet, réponds en JSON strict (tableau de 20 objets), chaque objet ayant :
 - "title": titre SEO en français (60-80 chars, direct, affirmé — éviter "Comment", préférer "Les X...", "Pourquoi...", affirmations directes)
@@ -325,7 +328,7 @@ async function reviewArticle(raw, topic) {
     max_tokens: 600,
     messages: [{
       role: 'user',
-      content: `Tu es rédacteur en chef exigeant d'un cabinet de conseil de direction. Note cet article (sujet : "${topic.title}") sur 100. Juge : utilité et profondeur réelles, point de vue affirmé, exemples/benchmarks concrets et crédibles, absence de remplissage et de formules creuses, qualité d'écriture en français, structure. Sois sévère — un article IA moyen mérite 60-75.\n\nRéponds UNIQUEMENT en JSON compact, sans prose :\n{"score": <0-100>, "verdict": "<une phrase>", "issues": ["correction concrète", "correction concrète"]}\n\nARTICLE :\n${body.slice(0, 14000)}`,
+      content: `Tu es rédacteur en chef exigeant d'un cabinet de conseil de direction. Note cet article (sujet : "${topic.title}") sur 100. Juge : utilité et profondeur réelles, point de vue affirmé, exemples concrets, absence de remplissage et de formules creuses, qualité d'écriture en français, structure. Sois sévère — un article IA moyen mérite 60-75.\n\nÉLIMINATOIRE (score maximum 40) : toute expérience client présentée comme réelle ("nous accompagnons", "un client depuis X mois", "sur les N dirigeants rencontrés", années ou villes de missions), ou tout chiffre attribué à une source (Bpifrance, McKinsey, HBR, étude…) qui pourrait être inventé. Pénalise aussi les tics IA : "Ce n'est pas X. C'est Y.", tirets cadratins en excès, question rhétorique finale.\n\nRéponds UNIQUEMENT en JSON compact, sans prose :\n{"score": <0-100>, "verdict": "<une phrase>", "issues": ["correction concrète", "correction concrète"]}\n\nARTICLE :\n${body.slice(0, 14000)}`,
     }],
   });
   const text = msg.content[0].text.trim();
@@ -345,7 +348,7 @@ async function main() {
   let available = topics.filter(t => !existingSlugs.has(t.slug));
 
   if (!available.length) {
-    topics = await regenerateTopics(existingSlugs);
+    topics = await regenerateTopics(existingSlugs, existing);
     available = topics;
   }
 
@@ -387,8 +390,13 @@ Mots-clés à intégrer naturellement : ${topic.keywords}
 VOIX ET TON — ce qui distingue un article d'autorité d'un article SEO générique :
 - Tu ouvres avec une vérité inconfortable, un paradoxe, ou une situation concrète que le lecteur reconnaît immédiatement. Jamais avec "Découvrez", "Dans cet article" ou une définition.
 - Tu as un point de vue affirmé : tu dis ce qui est vrai, ce qui est faux, ce que la majorité rate. Pas de langue de bois.
-- Tes exemples sont précis et crédibles : "un fondateur e-commerce que nous accompagnons depuis 14 mois" ou "sur les 30 dirigeants de PME rencontrés cette année". Jamais vagues.
-- Tes benchmarks ont un contexte réel : "en France, 73% des dirigeants de PME déclarent manquer de temps pour la réflexion stratégique (Bpifrance, 2024)" ou "les PME qui franchissent le palier 2M→5M de CA ont presque toutes structuré leur délégation avant de scaler".
+- Tes exemples sont des SCÉNARIOS ILLUSTRATIFS présentés comme tels ("Prenons une PME de services de 15 personnes…", "Imaginez un fondateur qui…"). Jamais présentés comme des clients réels.
+- Tu raisonnes avec des ordres de grandeur et des calculs que le lecteur peut refaire lui-même, plutôt qu'avec des statistiques citées.
+
+HONNÊTETÉ — RÈGLE NON NÉGOCIABLE (le cabinet engage sa crédibilité et sa responsabilité juridique) :
+✗ INTERDIT d'inventer une expérience du cabinet : pas de "nous accompagnons", "un client que nous suivons depuis X mois", "sur les N dirigeants rencontrés cette année", "dans notre pratique", "nos accompagnements", ni aucune année, ville, ou nombre de clients.
+✗ INTERDIT d'attribuer un chiffre, un pourcentage ou une conclusion à une source (Bpifrance, McKinsey, HBR, INSEE, DARES, études…) sauf s'il figure mot pour mot dans la liste de liens ci-dessous. Dans le doute, pas de chiffre sourcé.
+✓ Tu peux exprimer un avis ("à notre sens", "ce que l'on observe souvent en PME") sans le déguiser en donnée.
 - Tu parles de croissance, d'organisation, de décision, de recul — pas de fiscalité ou de comptabilité sauf si le sujet l'exige.
 - Ton lecteur est un pair, pas un élève. Tu l'informes, tu ne l'instruis pas.
 
@@ -416,10 +424,12 @@ RÈGLES ABSOLUES :
 ✗ Pas de rembourrage — si une phrase n'apporte pas de valeur nouvelle, elle n'existe pas
 ✗ Pas de conseils sur la comptabilité, la fiscalité ou les outils logiciels sauf si directement lié au sujet
 ✓ Minimum 1800 mots, idéalement 2000-2200 mots
-✓ Au moins 4 observations concrètes ou benchmarks contextualisés dans l'article
+✓ Au moins 4 éléments concrets : scénario illustratif, calcul, check-list, critère de décision
+✗ Tics d'écriture IA interdits : la tournure "Ce n'est pas X. C'est Y." (une fois maximum), plus de 5 tirets cadratins (—) dans tout l'article, finir sur une question rhétorique adressée au lecteur, les triades systématiques
+✗ Pas de "Dans cet article" ni de jargon anglais inutile (POV, mindset…) : écris en français soigné
 ✓ Inclure 1 à 2 liens externes vers des articles de référence, uniquement parmi cette liste — choisis les 1 ou 2 plus pertinents par rapport au sujet traité, intégrés naturellement dans le texte au format <a href="URL" target="_blank" rel="noopener noreferrer">texte ancre descriptif</a> :
 ${getRelevantLinks(topic.title, topic.category).map(l => `  - ${l.url} — "${l.title}"`).join('\n')}
-✗ INTERDIT : n'utilise JAMAIS une URL que tu inventes ou qui ne figure pas dans cette liste. Si aucun lien ne s'applique naturellement, cite la source par son nom sans lien — ex. : "selon McKinsey (2023)" sans balise <a>.
+✗ INTERDIT : n'utilise JAMAIS une URL que tu inventes ou qui ne figure pas dans cette liste. Si aucun lien ne s'applique naturellement, ne cite aucune source.
 ✓ Inclure 2 à 3 liens internes contextuels vers d'autres articles Executio de la MÊME thématique (priorité aux plus pertinents ci-dessous), intégrés naturellement dans le corps du texte au format <a href="URL">ancre descriptive</a> — ce maillage interne renforce l'autorité thématique :
 ${internalLinkList(existing, topic)}
 ✓ Terminer sur une note prospective ou une tension qui pousse à l'action — pas une répétition
@@ -516,7 +526,7 @@ FAQ_END`;
 <meta property="og:locale" content="fr_FR">${image ? `\n<meta property="og:image" content="${absoluteImagePath}">` : ''}
 <meta property="article:published_time" content="${dateStr}">
 <meta property="article:section" content="${topic.category}">
-<meta property="article:author" content="Executio Team">
+<meta property="article:author" content="EXECUTIO">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${topic.title}">
 <meta name="twitter:description" content="${excerpt}">${image ? `\n<meta name="twitter:image" content="${absoluteImagePath}">` : ''}
@@ -530,12 +540,7 @@ FAQ_END`;
   "url": "https://exe-cutio.com/insights/${topic.slug}/",
   "datePublished": "${dateStr}",
   "dateModified": "${dateStr}",
-  "author": {
-    "@type": "Person",
-    "@id": "https://exe-cutio.com/a-propos/#founder",
-    "name": "Executio Team",
-    "url": "https://exe-cutio.com/a-propos/"
-  },
+  "author": {"@id": "https://exe-cutio.com/#organization"},
   "publisher": {
     "@type": "Organization",
     "@id": "https://exe-cutio.com/#organization",
