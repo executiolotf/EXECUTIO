@@ -622,7 +622,7 @@ ${image ? `<figure class="art-img">
 
 <footer>
   <div class="fbrand"><span>EXECUTIO</span></div>
-  <span class="fcopy">© 2026 Executio — Financial Advisory · Tous droits réservés</span>
+  <span class="fcopy">© 2026 Executio — Conseil stratégique · Tous droits réservés</span>
   <a href="mailto:contact@exe-cutio.com" class="flink">contact@exe-cutio.com</a>
 </footer>
 </body>
@@ -667,7 +667,6 @@ ${image ? `<figure class="art-img">
   const sitemapPages = [
     { url: '/', priority: '1.0', changefreq: 'weekly' },
     { url: '/insights/', priority: '0.9', changefreq: 'daily' },
-    { url: '/daf-externalise/', priority: '0.9', changefreq: 'monthly' },
     { url: '/a-propos/', priority: '0.8', changefreq: 'monthly' },
     ...updatedArticles.map(a => ({ url: `/insights/${a.slug}/`, lastmod: a.date, priority: '0.8', changefreq: 'monthly' }))
   ];
