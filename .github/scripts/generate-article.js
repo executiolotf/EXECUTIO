@@ -667,7 +667,6 @@ ${image ? `<figure class="art-img">
   const sitemapPages = [
     { url: '/', priority: '1.0', changefreq: 'weekly' },
     { url: '/insights/', priority: '0.9', changefreq: 'daily' },
-    { url: '/daf-externalise/', priority: '0.9', changefreq: 'monthly' },
     { url: '/a-propos/', priority: '0.8', changefreq: 'monthly' },
     ...updatedArticles.map(a => ({ url: `/insights/${a.slug}/`, lastmod: a.date, priority: '0.8', changefreq: 'monthly' }))
   ];
