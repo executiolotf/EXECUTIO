@@ -413,7 +413,7 @@ FORMAT HTML STRICT :
 - <h3> : sous-sections uniquement si indispensable (2 max par article)
 - <p> : paragraphes courts, 2-4 phrases. Respiration entre les idées.
 - <ul><li> : listes de 3-5 items max, chacun actionnable et précis
-- <div class="highlight"><strong>Point clé :</strong> ...</div> : UN seul encadré, pour l'observation ou le principe le plus important
+- <div class="highlight">...</div> : au plus UN encadré, sans étiquette du type "Point clé", et seulement s'il apporte quelque chose
 - <strong> : pour les concepts clés et chiffres — pas pour décorer
 - <em> : pour les formules ou principes synthétiques uniquement
 
